@@ -16,4 +16,5 @@ Imports:
   udpipe,
   magrittr,
   rlang,
-  purrr
+  purrr,
+  rappdirs
