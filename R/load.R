@@ -13,4 +13,3 @@ load_udpipe <- function(model.location=pid.pos_env$deault_model_location){
 }
 
 pid.pos_env$default_model <- load_udpipe()
-pid.pos_env$app_data_dir <- user_data_dir("pid.pos")
