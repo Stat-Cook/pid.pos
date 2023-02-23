@@ -10,6 +10,8 @@
 library(shiny)
 # library(pid.pos)
 
+
+
 is.not.numeric <- function(...) !is.numeric(...)
 
 help_text <- div(
@@ -85,9 +87,11 @@ shinyServer(function(input, output, session) {
     if (!is.null(input$file_data)){
       data <<- read.csv(input$file_data$datapath)
     }
+
     output$data_table <- renderDataTable(data)
 
-    categorical.data <- dplyr::select(data, where(is.not.numeric))
+    categorical.data <- select(data, where(is.not.numeric))
+
     updateSelectInput(
       session, "variable_input",
       choices = colnames(categorical.data)
