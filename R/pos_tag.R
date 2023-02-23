@@ -23,6 +23,7 @@ pos_tag <- function(docs, model="english-ewt", pb=NULL, doc_id = NULL){
 
 chunked_pos_tag <- function(docs, model="english-ewt", chunk_size=100, pb=NULL,
                             doc_ids = NULL){
+  #' @importFrom purrr map2
 
   if (is.null(doc_ids)){
     doc_ids <- seq_along(docs)
