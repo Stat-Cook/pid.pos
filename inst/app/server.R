@@ -87,7 +87,7 @@ shinyServer(function(input, output, session) {
     }
     output$data_table <- renderDataTable(data)
 
-    categorical.data <- select(data, where(is.not.numeric))
+    categorical.data <- dplyr::select(data, where(is.not.numeric))
     updateSelectInput(
       session, "variable_input",
       choices = colnames(categorical.data)
