@@ -1,5 +1,6 @@
 longer_than <- function(limit=5){
   function(vec){
+    vec <- vec[!is.na(vec)]
     lengths <- stringr::str_length(vec)
     any(lengths > limit)
   }
@@ -13,11 +14,11 @@ first <- function(frm, ...){
 }
 
 
-data_frame_tagger <- function(frm, chunk_size = 1e2, ...){
+data_frame_tagger <- function(frm, chunk_size = 1e2, ..., str_length_limit=3){
   #' @export
   characters <- frm %>%
       select(where(is.character))%>%
-      select(where(longer_than()))# %>% TODO: exclude columns
+      select(where(longer_than(str_length_limit=str_length_limit))) # %>% TODO: exclude columns
 
 
   doc.id.grid <- expand.grid(rows=rownames(characters), cols = colnames(characters))
