@@ -31,7 +31,10 @@ data_frame_tagger <- function(frm, chunk_size = 1e2, ..., str_length_limit=3){
   sentence.id <- doc.id[!is.na(characters)]
 
   if (length(sent) == 0){
-    return(NULL)
+    return(  list(
+      `All Tags` = NULL,
+      `Proper Nouns` = NULL
+    ))
   }
 
   sentence.frm <- data.frame(ID = sentence.id, Sentence = sent) %>%
