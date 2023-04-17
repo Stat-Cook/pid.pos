@@ -30,6 +30,10 @@ data_frame_tagger <- function(frm, chunk_size = 1e2, ..., str_length_limit=3){
   sent <- characters[!is.na(characters)]
   sentence.id <- doc.id[!is.na(characters)]
 
+  if (length(sent) == 0){
+    return(NULL)
+  }
+
   sentence.frm <- data.frame(ID = sentence.id, Sentence = sent) %>%
     group_by(Sentence) %>% group_modify(first)
 
