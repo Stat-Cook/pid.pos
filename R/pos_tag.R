@@ -1,12 +1,18 @@
 pos_tag <- function(docs, model="english-ewt", pb=NULL, doc_id = NULL){
   #' @importFrom udpipe udpipe
+  #' @noRd
   if (is.null(doc_id)){
     doc_id <- seq_along(docs)
   }
+
+  if (is.numeric(doc_id)){
+    doc_id <- paste("doc", doc_id, sep = "")
+  }
+
   tagged <- tryCatch(
     udpipe(docs, model,
            model_dir = pid.pos_env$model_folder,
-           doc_id = paste("doc", doc_id, sep = "")
+           doc_id = doc_id
     ),
     error = function(e) stop("UDPipe Model can't be loaded/ downloaded.
                              Please run `browse_model_location()` to see if models are downloaded
@@ -24,6 +30,7 @@ pos_tag <- function(docs, model="english-ewt", pb=NULL, doc_id = NULL){
 chunked_pos_tag <- function(docs, model="english-ewt", chunk_size=100, pb=NULL,
                             doc_ids = NULL){
   #' @importFrom purrr map2
+  #' @noRd
 
   if (is.null(doc_ids)){
     doc_ids <- seq_along(docs)

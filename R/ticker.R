@@ -1,5 +1,7 @@
-#' @export
-Ticker <- R6::R6Class("Ticker", list(
+
+
+Ticker <- R6Class("Ticker", list(
+  #' @importFrom R6 R6Class
   X = NA,
   initialize = function(){
     self$reset()

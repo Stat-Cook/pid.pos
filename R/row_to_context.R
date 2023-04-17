@@ -35,6 +35,7 @@ convert_frame_to_context.list <- function(noun_frame, tag_frm, margin=4, pb=NULL
 convert_row_to_context <- function(row, tag_frm, margin = 4){
   #' @importFrom dplyr filter
   #' @importFrom purrr prepend
+  #' @noRd
 
   tid <- row$`Token No`
 

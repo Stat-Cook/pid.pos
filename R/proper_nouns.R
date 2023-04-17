@@ -1,4 +1,8 @@
 get_proper_nouns <- function(pos_frm){
+  #' This is a generic method that dispatches based on the first argument.
+  #'
+  #' @param pos_frm The data to be tagged for part of sentence
+  #'
   #' @export
   UseMethod("get_proper_nouns", pos_frm)
 }
