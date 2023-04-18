@@ -10,6 +10,7 @@ find_files <- function(path,
                        extensions=get_implemented_extensions(),
                        .lis=list()){
   #' @importFrom purrr reduce
+  #' @export
 
   dirs <- list.dirs(path, recursive = F)
 
@@ -41,7 +42,7 @@ list_files_by_extension <- function(extension, path="."){
   pattern <- glue::glue(".{extension}$")
   .class <- glue::glue("{extension}_path")
 
-  fp <- list.files(path, pattern=pattern, full.names = T)
+  fp <- list.files(path, pattern=pattern, full.names = T, ignore.case = T)
 
   lapply(fp, set_class, .class)
 }
