@@ -13,12 +13,18 @@ first <- function(frm, ...){
   first
 }
 
+remove_if_exists <- function(frm, to_remove){
+  to_remove <- intersect(colnames(frm), to_remove)
+  frm %>% select(-all_of(to_remove))
+}
 
-data_frame_tagger <- function(frm, chunk_size = 1e2, ..., str_length_limit=3){
+data_frame_tagger <- function(frm, chunk_size = 1e2,
+                              to_remove = c()){
   #' @export
   characters <- frm %>%
       select(where(is.character))%>%
-      select(where(longer_than(limit=str_length_limit))) # %>% TODO: exclude columns
+      remove_if_exists(to_remove)
+      # select(where(longer_than(limit=str_length_limit))) # %>% TODO: exclude columns
 
 
   doc.id.grid <- expand.grid(rows=rownames(characters), cols = colnames(characters))
