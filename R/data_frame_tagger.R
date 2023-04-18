@@ -29,12 +29,16 @@ data_frame_tagger <- function(frm, chunk_size = 1e2,
 
   doc.id.grid <- expand.grid(rows=rownames(characters), cols = colnames(characters))
 
-  doc.id <- glue::glue("Doc{seq_len(nrow(doc.id.grid))} \\
-                       Col:{doc.id.grid$cols} \\
-                       Row:{doc.id.grid$rows}")
+  # doc.id <- glue::glue("Doc{seq_len(nrow(doc.id.grid))} \\
+  #                      Col:{doc.id.grid$cols} \\
+  #                      Row:{doc.id.grid$rows}")
 
-  sent <- characters[!is.na(characters)]
-  sentence.id <- doc.id[!is.na(characters)]
+  index <- seq_len(nrow(doc.id.grid))
+  sel <- !is.na(characters)
+  sent <- characters[sel]
+  rows <- doc.id.grid$rows[sel]
+  cols <- doc.id.grid$cols[sel]
+  index <- index[col]
 
   if (length(sent) == 0){
     return(  list(
@@ -43,9 +47,9 @@ data_frame_tagger <- function(frm, chunk_size = 1e2,
     ))
   }
 
-  sentence.frm <- data.frame(ID = sentence.id, Sentence = sent) %>%
-    group_by(Sentence) %>% group_modify(first)
-
+  sentence.frm <- data.frame(Sentence = sent, Column = cols, Row = rows, Index=index)
+  sentence.frm <- group_by(sentence.frm, Sentence) %>% group_modify(pid.pos:::first)
+  sentence.frm$ID <- glue::glue("Doc{sentence.frm$Index} Row:{sentence.frm$Row} Col:{sentence.frm$Column}")
 
   max.ticks <- ceiling(nrow(sentence.frm) / chunk_size)
   pb <- progress::progress_bar$new(total = max.ticks)
