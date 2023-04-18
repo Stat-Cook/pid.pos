@@ -38,7 +38,7 @@ data_frame_tagger <- function(frm, chunk_size = 1e2,
   sent <- characters[sel]
   rows <- doc.id.grid$rows[sel]
   cols <- doc.id.grid$cols[sel]
-  index <- index[col]
+  index <- index[sel]
 
   if (length(sent) == 0){
     return(  list(
