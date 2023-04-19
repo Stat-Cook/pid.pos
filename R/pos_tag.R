@@ -9,8 +9,10 @@ pos_tag <- function(docs, model="english-ewt", pb=NULL, doc_id = NULL){
     doc_id <- paste("doc", doc_id, sep = "")
   }
 
+  utf8_docs <- utf8::utf8_encode(docs)
+
   tagged <- tryCatch(
-    udpipe(docs, model,
+    udpipe(utf8_docs, model,
            model_dir = pid.pos_env$model_folder,
            doc_id = doc_id
     ),
