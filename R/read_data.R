@@ -45,5 +45,20 @@ fix_colnames <- function(frm, pattern="V{.x}"){
   }
 
   colnames(frm) <- .cols
+  handle_duplicates(frm)
+}
+
+handle_duplicates <- function(frm){
+  #' @importFrom  glue glue
+  .cols <- colnames(frm)
+  .tab <- table(.cols)
+  duplicated <- names(which(.tab > 1))
+  dupe <- duplicated[1]
+
+  for (dupe in duplicated){
+    index <- which(.cols == dupe)
+    .cols[index] <- glue::glue("{dupe}.{seq_len(length(index))}")
+  }
+  colnames(frm) <- .cols
   frm
 }
