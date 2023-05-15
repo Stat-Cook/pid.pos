@@ -71,7 +71,8 @@ data_frame_tagger <- function(frm, chunk_size = 1e2,
 
   list(
     `All Tags` = tag_frm,
-    `Proper Nouns` = pnouns
+    `Proper Nouns` = pnouns,
+    `Sentences` = sentence.frm
   )
 
 }
