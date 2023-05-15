@@ -6,10 +6,13 @@ longer_than <- function(limit=5){
   }
 }
 
-
 first <- function(frm, ...){
   first <- head(frm, 1)
   first$Repeats <- nrow(frm)
+  first$`Affected Columns` <- paste(
+    glue::glue("`{unique(frm$Column)}`"),
+    collapse = ", "
+  )
   first
 }
 
@@ -47,8 +50,9 @@ data_frame_tagger <- function(frm, chunk_size = 1e2,
     ))
   }
 
-  sentence.frm <- data.frame(Sentence = sent, Column = cols, Row = rows, Index=index)
-  sentence.frm <- group_by(sentence.frm, Sentence) %>% group_modify(pid.pos:::first)
+  sentence.frm.raw <- data.frame(Sentence = sent, Column = cols, Row = rows, Index=index)
+
+  sentence.frm <- group_by(sentence.frm.raw, Sentence) %>% group_modify(pid.pos:::first)
   sentence.frm$ID <- glue::glue("Doc{sentence.frm$Index} Row:{sentence.frm$Row} Col:{sentence.frm$Column}")
 
   max.ticks <- ceiling(nrow(sentence.frm) / chunk_size)
