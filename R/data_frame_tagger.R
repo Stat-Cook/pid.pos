@@ -21,9 +21,12 @@ remove_if_exists <- function(frm, to_remove){
   frm %>% select(-all_of(to_remove))
 }
 
+
 data_frame_tagger <- function(frm, chunk_size = 1e2,
                               to_remove = c()){
   #' @export
+  #'
+  #' @importFrom dplyr group_by group_modify
   characters <- frm %>%
       select(where(is.character))%>%
       remove_if_exists(to_remove)
@@ -52,7 +55,8 @@ data_frame_tagger <- function(frm, chunk_size = 1e2,
 
   sentence.frm.raw <- data.frame(Sentence = sent, Column = cols, Row = rows, Index=index)
 
-  sentence.frm <- group_by(sentence.frm.raw, Sentence) %>% group_modify(pid.pos:::first)
+  sentence.frm <- group_by(sentence.frm.raw, Sentence) %>%
+    group_modify(pid.pos:::first)
   sentence.frm$ID <- glue::glue("Doc{sentence.frm$Index} Row:{sentence.frm$Row} Col:{sentence.frm$Column}")
 
   max.ticks <- ceiling(nrow(sentence.frm) / chunk_size)
