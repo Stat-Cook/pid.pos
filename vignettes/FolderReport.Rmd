@@ -1,0 +1,79 @@
+---
+title: "PID detection on every file in a folder"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{PID detection on every file in a folder}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(knitr)
+```
+
+## The `PID.POS` report
+
+A common struggle in research is how data controllers can gain some level of confidence that large data sets don't contain personally identifiable data.  In some cases, this job only requires a brief inspection and columns that often contain PID such as name, or ID are obvious.  However, data sets can contain broad free text fields, fields that are only needed in a small number of cases, or may have been shifted - placing PID in harder to detect locations.  If the data sets consist of ~10,000  or more observations manual inspection of rare PID has only a limited chance of finding problems, let alone the resource cost required to do any pass of the data.   
+
+To help overcome these issues, as part of the `PID.POS` package we have implemented an API for the automated production  of proper noun reports on all files found within the same directory.  The intention is that should a collection of data sets be required for transfer, they can be placed in a single location, and the reports generated. 
+
+To demonstrate how this function works - we have supplied a collection of data sets featuring free text with the package.  The free text data draws on the `janeaustenr` package - constructing three csv files:
+
+* `Emma.csv`
+* `PridePrejudice.csv`
+* `SenseSensability.csv`
+
+with each file consisting of 1000 rows and four columns (a primary key, a line of text from the book, a reference category, and the string-length of the text).  The first step in processing the data is to identify where the files are in your local folder structure:
+
+```{r setup}
+library(pid.pos)
+
+data_path <- system.file("vignette_data", package="pid.pos")
+list.files(data_path)
+```
+and we check the files are the intended data:
+
+``` {r}
+emma.csv <- system.file("vignette_data", "Emma.csv",  package="pid.pos")
+kable(read.csv(emma.csv, nrows=5))
+```
+To generate reports we call `report_on_folder` which takes three arguments:
+
+* `data_path` - the path to the data directory
+* `report_dir` - a system path to where the proper noun reports should be saved
+* `to_remove` [optional] - a vector of columns to be ignored e.g. primary keys.
+
+``` {r, eval=F}
+report_on_folder(data_path, report_dir = "Proper Noun Report")
+```
+
+Once evaluated the `report_dir` folder  gets populated by a set of csv files, one per data set found at `data_path`:
+
+``` {r, eval=F}
+browseURL("Proper Noun Report")
+```
+
+Each of these files consists of 5 columns:
+
+* `doc_id` - a reference of where the proper noun was detected
+* `token` - the proper noun detected
+* `sentence` - the full free text field
+* `Repeats` - how many times `sentence` appeared in the data set
+* `Affected Columns` - all the columns that `sentence` occured in.
+
+``` {r, eval=F}
+read.csv("Proper Noun Report/Emma.csv")
+```
+
+``` {r, echo=F}
+kable(read.csv("Proper Noun Report/Emma.csv", nrows = 5))
+```
+
+From these reports - the data controller can inspect the `token` and `sentence` fields and shortlist any `Affected Columns` that need removal.
+
+
+
