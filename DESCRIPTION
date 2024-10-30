@@ -28,6 +28,7 @@ Imports:
     R6,
     glue,
     progress,
+    openxlsx,
     readxl,
     stringr,
     utf8
