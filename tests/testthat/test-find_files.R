@@ -4,7 +4,6 @@
 test_that("find_files() works", {
   local({
     temp_dir <- local_tempdir("dir")
-    writeClipboard(temp_dir)
     temp_file <- local_tempfile(tmpdir = temp_dir, fileext = ".csv")
     writeLines("foo", temp_file)
     
@@ -34,7 +33,6 @@ test_that("get_implemented_extensions() works", {
 test_that("list_files_by_extension() works", {
   local({
     temp_dir <- local_tempdir("dir")
-    writeClipboard(temp_dir)
     temp_file <- local_tempfile(tmpdir = temp_dir, fileext = "csv")
     writeLines("foo", temp_file)
 
