@@ -1,6 +1,6 @@
 #' @importFrom udpipe udpipe_load_model
-#' @importFrom rappdirs user_data_dir user_cache_dir
-library(rappdirs)
+#' @importFrom rappdirs user_data_dir 
+function() {}
 
 pid.pos_env <- new.env()
 
