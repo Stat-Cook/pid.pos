@@ -7,8 +7,8 @@ A package of tools for the detection of personally identifiable data (PID) in da
 
 To install from github straight into R, use:
 
-``` 
-devtools::install_github("https://github.com/Stat-Cook/pid.pos")
+```r
+devtools::install_github("Stat-Cook/pid.pos")
 
 ```
 
