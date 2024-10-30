@@ -1,5 +1,6 @@
 pos_tag <- function(docs, model="english-ewt", pb=NULL, doc_id = NULL){
   #' @importFrom udpipe udpipe
+  #' @importFrom utf8 utf8_encode
   #' @noRd
   if (is.null(doc_id)){
     doc_id <- seq_along(docs)
@@ -9,7 +10,7 @@ pos_tag <- function(docs, model="english-ewt", pb=NULL, doc_id = NULL){
     doc_id <- paste("doc", doc_id, sep = "")
   }
 
-  utf8_docs <- utf8::utf8_encode(docs)
+  utf8_docs <- utf8_encode(docs)
 
   tagged <- tryCatch(
     udpipe(utf8_docs, model,

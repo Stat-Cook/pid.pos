@@ -1,4 +1,4 @@
-start_app <- function(){
+pid.pos_app <- function(){
   #' Launch the PID app
   #' @importFrom purrr map2
   #' @importFrom dplyr select
@@ -8,6 +8,7 @@ start_app <- function(){
   runApp(app.dir)
 }
 
+# TODO: Rename shiny start function to a project dependent name.
 
 # null.init <- function(...){
 #   for (i in c(...)){

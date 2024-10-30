@@ -1,4 +1,9 @@
 read_data <- function(file_path, ...){
+  #' Reads a data file
+  #' 
+  #' @param file_path The path to the file to read
+  #' @param ... Additional arguments to pass to the read function
+  #' 
   #' @export
   UseMethod("read_data")
 }
@@ -10,15 +15,15 @@ read_data.csv_path <- function(file_path, ...){
 }
 
 read_data.xls_path <- function(file_path, ...){
-  #' @importFrom readxl read_xls
+  #' @importFrom readxl read_excel
   #' @exportS3Method
-  readxl::read_excel(file_path, ...)
+  read_excel(file_path, ...)
 }
 
 read_data.xlsx_path <- function(file_path, ...){
-  #' @importFrom readxl read_xls
+  #' @importFrom readxl read_excel
   #' @exportS3Method
-  readxl::read_excel(file_path, ...)
+  read_excel(file_path, ...)
 }
 
 read_data.tsv_path <- function(file_path, ...){
@@ -26,7 +31,6 @@ read_data.tsv_path <- function(file_path, ...){
   frm <- read.csv(file_path, sep = "\t", check.names = F, ...)
   fix_colnames(frm)
 }
-
 
 fix_colnames <- function(frm, pattern="V{.x}"){
   .cols <- colnames(frm)
@@ -57,7 +61,7 @@ handle_duplicates <- function(frm){
 
   for (dupe in duplicated){
     index <- which(.cols == dupe)
-    .cols[index] <- glue::glue("{dupe}.{seq_len(length(index))}")
+    .cols[index] <- glue("{dupe}.{seq_len(length(index))}")
   }
   colnames(frm) <- .cols
   frm

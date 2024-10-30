@@ -1,9 +1,4 @@
-# MP <- read.csv("MP.csv")
-# text <- MP$Sentence
-# progress_bar <- NULL
-# chunk_size=10
-#
-# ticker <- Ticker$new()
+
 
 proper_noun_report <- function(text, context_margin=4, chunk_size = 100, progress_bar=NULL,
                                verbose = FALSE){

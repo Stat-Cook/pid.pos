@@ -1,3 +1,7 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^LICENSE\.md$
+docs
+Proper Noun Report
+Main.R
+^\.github$

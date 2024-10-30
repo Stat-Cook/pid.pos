@@ -19,4 +19,3 @@ browse_model_location <- function(){
 
   browseURL(pid.pos_env$model_folder)
 }
-

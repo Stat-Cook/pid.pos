@@ -9,10 +9,21 @@ empty.report <- data.frame(
 
 report_on_folder <- function(data_path, report_dir = "Proper Noun Reports",
                              to_remove = c()){
+  #' Itterates over a folder of data files and produces a report on proper nouns.
+  #' 
+  #' @param data_path The path to the data files
+  #' @param report_dir The directory to save the reports
+  #' @param to_remove A character vector of column names to remove from the data frame
+  #' 
+  #' @return NULL
+  #' 
   #' @export
   #'
   #' @importFrom dplyr arrange
+  #' @importFrom stringr str_replace str_replace_all
   .files <- find_files(data_path)
+  
+  doc_id <- NA
 
   if (!dir.exists(report_dir)) dir.create(report_dir)
 
@@ -25,7 +36,7 @@ report_on_folder <- function(data_path, report_dir = "Proper Noun Reports",
 
     tags <- data_frame_tagger(frm)
 
-    base <- stringr::str_replace(base, "\\..*$", ".csv")
+    base <- str_replace(base, "\\..*$", ".csv")
 
     noun.report.path <- file.path(report_dir, base)
 
@@ -38,7 +49,7 @@ report_on_folder <- function(data_path, report_dir = "Proper Noun Reports",
         tags$Sentences,
         by.x = "doc_id", by.y = "ID"
       ) %>%
-        select(doc_id, token, sentence, Repeats, `Affected Columns`) %>%
+        select('doc_id', 'token', 'sentence', 'Repeats', 'Affected Columns') %>%
         arrange(doc_id)
 
       write.csv(report, noun.report.path)
@@ -46,4 +57,5 @@ report_on_folder <- function(data_path, report_dir = "Proper Noun Reports",
   }
 
 }
+
 

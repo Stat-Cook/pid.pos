@@ -25,7 +25,15 @@ Imports:
     purrr,
     rappdirs,
     shiny,
-    R6
+    R6,
+    glue,
+    progress,
+    readxl,
+    stringr,
+    utf8
 Suggests: 
+    knitr,
+    rmarkdown,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
+VignetteBuilder: knitr
