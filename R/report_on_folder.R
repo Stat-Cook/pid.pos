@@ -57,5 +57,3 @@ report_on_folder <- function(data_path, report_dir = "Proper Noun Reports",
   }
 
 }
-
-
