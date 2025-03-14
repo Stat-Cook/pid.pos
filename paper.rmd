@@ -45,6 +45,13 @@ rather than fully automate it.
 
 # In practice
 
+To install the current version of `PID.POS` package, use the following code:
+
+``` {r, eval=F}
+# install.packages("pak")
+pak::pkg_install("Stat-Cook/PID.POS")
+```
+
 To assist with understanding the `PID.POS` package, we include a subset of the 'friends' 
 data set from the `friends` package.
 
@@ -54,9 +61,93 @@ library(dplyr)
 glimpse(the_one_in_massapequa)
 ```
 
+The package has two main functions for identifying PID  risks, depending on the users needs.  
+First, the `data_frame_report` function converts a typical R data frame into a new data frame of:
+
+* `Sentence` - the sentence containing proper nouns
+* `Token` - the specific proper noun token 
+* `Repeats` - the number of times the sentence occurs in the data set
+* `Affected Columns` - the columns in the original data frame which contain the sentence
+* `ID` - the column and row where the sentence first appears
+
 ``` {r}
 report <- data_frame_report(the_one_in_massapequa)
 report
 ```
+
+The second function is `report_on_folder` which iterates over a folder of data files,
+producing a proper noun report for each.  It is foreseen that this function will 
+be the more useful, used just before data release to evidence no PID risks.
+
+``` {r, eval=F}
+report_on_folder('path/to/data/')
+browse_model_location()
+```    
+
+NB: the `data_frame_report` and `report_on_folder` functions automate the download 
+of the pre-trained `udpipe` model.  These models are required to be cached to the users 
+hard-drive and hence firewall issues may present.  The vignette ... is included to 
+help with common issues.
+
+While being able to identify PID risks is the core premise of this package, it would be 
+remiss to not supply some tools to aid in the removal of PID.  Hence, we supply  
+basic functionality designed for minimal technical knowledge to assist in the 
+redaction of PID.
+
+Where a PID report has been ran, the resulting data frame can be passed to the function 
+`report_as_rules_template` which will convert the report to a csv file with three headings:
+
+* `If` - the sentence pattern which, if it matches, the replacement is applied
+* `From` - the pattern to be replaced
+* `To` - the intended replacement
+
+``` {r, eval=F}
+report_as_rules_template(report, path='path/to/report.csv')
+```
+
+The csv file is intended to be edited by the data controller, who hence does not need 
+to understand R, and can be reimported using the `template_to_rules` function:
+
+``` {r}
+template_to_rules('path/to/report.csv')
+```
+
+The  `template_to_rules` function creates a string replacement rule to capture the 
+desired redactions, with the option for R to 'parse' the function for use as part of a data
+pipeline:
+
+``` {r}
+replacement.func <- template_to_rules('path/to/report.csv', parse=T)
+
+the_one_in_massapequa |>
+  mutate(
+    across(
+      where(is.character),
+      replacement.func
+    )
+  )
+
+```
+
+For a more advanced user, the `template_to_rules` function utilizes the `str_detect` and 
+`str_replace_all` functions from the `stringr` package, and hence supports regex. 
+
+# Current applications
+
+The `PID.POS` package was developed for applications in the NuRS and AmReS research projects
+which aim to extract and analyse retrospective operational data from NHS Trusts to understand
+staff retention and patient safety.
+
+# Contributions
+
+The package was designed by RC and .... Implementation was done by RC. Quality assurance was 
+done by ... Documentation was written by RC.... Funding for the work was won by RC and SJ.
+
+# Acknowledgements
+
+The development of `PID.POS` was part of the NuRS and AmReS projects funded by the
+Health Foundation.
+
+
 
 
