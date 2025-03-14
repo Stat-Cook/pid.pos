@@ -1,0 +1,72 @@
+---
+title: "The udpipe Model"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{udpipe-model}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+The part of sentence (POS) tagging performed in `PID.POS` leverage's the pretrained `udpipe` 
+model framework.  This model is not included in `PID.POS` due to its size, and hence has 
+to be downloaded when the package is first used.  For most users this process is seamless,
+but if users are behind a firewall or have limited permission to write to the hard-drive 
+the automated model download may fail.
+
+Here we provide brief advice on how to diagnose and fix common problems. 
+
+## Step 1
+
+When first installed and loaded `PID.POS` will not have the udpipe model.  The first time 
+`data_frame_report` is run, an attempt is made to download the model. Hence, it is recommended
+to start by evaluating the `data_frame_report` function with the example data (`the_one_in_massapequa`):
+
+```{r setup}
+library(pid.pos)
+
+report <- data_frame_report(the_one_in_massapequa)
+browse_udpipe_repo()
+browse_model_location()
+```
+
+If the model is not downloaded, an error is thrown signposting the functions `browse_model_location` 
+and  `browse_udpipe_repo`.  
+
+## Step 2
+
+Assuming the `data_frame_report` throws an error, the next step is to check if the model is present.
+This can be done by running `browse_model_location()` and checking for a file named 
+'english-ewt-ud-2.5-191206.udpipe' or similar.  If the user does not have permission to 
+write to this location, the model will not be downloaded and `browse_model_location` may 
+throw its own error.  If this happens, there are two approaches we suggest:
+
+1. Contact your system administrator and have them either grant permissions or add 
+the udpipe model to this location e.g. by running the code on your behalf.
+2. Change the default model location using `set_model_folder('new/path')`.
+
+The former of these is the more reliable, and will allow `PID.POS` to operate 
+as intended in future sessions.  The latter is a temporary fix, and will need to be
+repeated each time the package is loaded.
+
+## Step 3
+
+Assuming the user has permission to read and write from the model location,
+the next possibility is that the user is behind a firewall.  In this case, there are 
+two steps to consider:
+
+1. Contact your IT team and ask them to allow downloads from `github.com`
+2. Navigate to the `udpipe` repository via `browse_udpipe_repo()` and download the 
+model manually.  It will then need to be deposited in the folder opened by 
+`browse_model_location()`.
+
+## Step 4
+
+If further problems persist please raise an issue on the `PID.POS` github page.  We will
+be striving to expand this document as new problems/ solutions present.
