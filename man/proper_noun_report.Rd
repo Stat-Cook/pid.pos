@@ -4,10 +4,24 @@
 \alias{proper_noun_report}
 \title{Detect examples of proper nouns in free text via natural language processing}
 \usage{
-proper_noun_report(text)
+proper_noun_report(
+  text,
+  context_margin = 4,
+  chunk_size = 100,
+  progress_bar = NULL,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{text}{A passage of free text or vector of free text.}
+
+\item{context_margin}{The number of tokens either side of proper nouns to report}
+
+\item{chunk_size}{The no. of docs per batche to process}
+
+\item{progress_bar}{An object with method 'tick()' for tracking progress}
+
+\item{verbose}{Boolean flag to print results}
 }
 \value{
 list with `Proper Noun`, `All Tags` and `Raw Text` data frames
