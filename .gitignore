@@ -1,5 +1,8 @@
 .Rproj.user/*
 *.Rproj
+.RHistory
+.RData
 .Rproj.user
 inst/doc
 Proper Noun Reports/*
+Main.R
