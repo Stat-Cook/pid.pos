@@ -10,19 +10,21 @@ data_frame_report <- function(frm,
   #'
   #' @export
   #'
-  #' @importFrom dplyr group_by group_modify
+  #' @importFrom dplyr group_by group_modify left_join where all_of
   #' @importFrom glue glue
   #' @importFrom progress progress_bar
-  #' @importFrom dplyr where all_of
   tags <- data_frame_tagger(frm, chunk_size, to_remove)
   
-  merge(
+  left_join(
     tags$`Proper Nouns`,
     tags$Sentences,
-    by.x = "doc_id", by.y = "ID"
+    by = "ID"
   ) %>%
-    select('doc_id', 'token', 'sentence', 'Repeats', 'Affected Columns') %>%
-    arrange(doc_id)
+    select(-Sentence) |>
+    arrange(PK) |>
+    rename(Token = token, Sentence = sentence) |>
+    select('ID', 'Token', 'Sentence', 'Repeats', 'Affected Columns')
+
 }
 
 
