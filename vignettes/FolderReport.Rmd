@@ -68,12 +68,3 @@ Each of these files consists of 5 columns:
 ``` {r, eval=F}
 read.csv("Proper Noun Report/Emma.csv")
 ```
-
-``` {r, echo=F}
-kable(read.csv("Proper Noun Report/Emma.csv", nrows = 5))
-```
-
-From these reports - the data controller can inspect the `token` and `sentence` fields and shortlist any `Affected Columns` that need removal.
-
-
-

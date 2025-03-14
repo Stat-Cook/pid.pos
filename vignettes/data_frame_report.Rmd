@@ -1,0 +1,26 @@
+---
+title: "data_frame_report"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{data_frame_report}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+The `data_frame_report` function is used to generate a report on a given data frame of 
+which columns contains "propoer nouns", what the nouns were and 
+
+```{r setup}
+library(pid.pos)
+
+sentence_frm
+
+data_frame_report(sentence_frm)
+```

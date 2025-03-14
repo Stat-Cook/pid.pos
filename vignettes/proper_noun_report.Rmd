@@ -1,0 +1,41 @@
+---
+title: "Proper Noun Report"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{proper_noun_report}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+The `proper_noun_report` function is used to generate a report of proper nouns in a text. The report includes the frequency of each proper noun, the number of times each proper noun is mentioned, and the context in which each proper noun is mentioned.
+
+The function is intended to be used on a vector of sentences, where each sentence is a character string. The function uses the `udpipe` package to identify proper nouns in the text.
+
+## Usage
+
+```{r}
+library(pid.pos)
+
+sentence_frm
+
+report <- proper_noun_report(sentence_frm$Sentence)
+report$`Proper Nouns`
+```
+
+The output of `propoer_noun_report` is a list with three items:
+
+* `Proper Nouns`: a data frame of each "proper noun" detected in the given data.
+* `All Tags`: a data frame of every words and tag (the raw output of `udpipe`)
+* `Raw Text`: the original text.
+
+
+
+
+
