@@ -17,6 +17,7 @@ report_as_rules_template <- function(report, path=NULL) {
 }
 
 template_to_rules <- function(path, parse=F){
+  #' @export 
   rules.frm <- read.csv(path)
   
   frame_to_rules(rules.frm, parse)
@@ -25,9 +26,15 @@ template_to_rules <- function(path, parse=F){
 
 
 frame_to_rules <- function(rules.frm, parse=F) {
+  #' @importFrom dplyr group_by group_map
   
   .rules <- rules.frm |>
-    mutate(Replace = sprintf("str_replace_all('%s', '%s')", From, To)) |>
+    mutate(
+      From = escape_quote_mark(From), 
+      To = escape_quote_mark(To),
+      If = escape_quote_mark(If),
+      Replace = sprintf("str_replace_all('%s', '%s')", From, To)
+    ) |>
     group_by(If) |>
     group_map(if_modify) |>
     simplify()
@@ -56,4 +63,8 @@ if_modify <- function(frm, group) {
   
   
   sprintf("%s ~ %s", .left, .right)
+}
+
+escape_quote_mark <- function(vec){
+  str_replace_all(vec, "'", "\\\\'")
 }

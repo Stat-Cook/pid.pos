@@ -47,7 +47,7 @@ data_frame_tagger <- function(frm, chunk_size = 1e2,
   #' @importFrom dplyr group_by group_modify row_number ungroup
   #' @importFrom glue glue
   #' @importFrom progress progress_bar
-  #' @importFrom dplyr where all_of
+  #' @importFrom dplyr where all_of filter
   #' @importFrom purrr simplify
   
   Sentence <- upos <- doc_id <- NA
