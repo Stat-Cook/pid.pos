@@ -55,8 +55,7 @@ data_frame_tagger <- function(frm, chunk_size = 1e2,
   character.frm <- frm %>%
       select(where(is.character))%>%
       remove_if_exists(to_remove)
-      # select(where(longer_than(limit=str_length_limit))) # %>% TODO: exclude columns
-  
+    
   
   if (nrow(character.frm) == 0){
     return(  list(
@@ -81,10 +80,6 @@ data_frame_tagger <- function(frm, chunk_size = 1e2,
     mutate(
       ID = glue("Col:{Column} Row:{Row}")
     )
-
-
-  # max.ticks <- ceiling(nrow(sentence.frm) / chunk_size)
-  # pb <- progress_bar$new(total = max.ticks)
 
   tag_frm <- chunked_pos_tag(sentence.frm$Sentence,
                              chunk_size=chunk_size,

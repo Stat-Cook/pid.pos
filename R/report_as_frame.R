@@ -1,4 +1,5 @@
 report_as_rules_template <- function(report, path=NULL) {
+  #' @export
   .frm <- report |>
     mutate(
       If = Sentence,

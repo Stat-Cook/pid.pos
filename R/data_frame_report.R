@@ -10,7 +10,8 @@ data_frame_report <- function(frm,
   #'
   #' @export
   #'
-  #' @importFrom dplyr group_by group_modify left_join where all_of
+  #' @importFrom dplyr group_by group_modify left_join where all_of 
+  #' @importFrom dplyr rename select mutate
   #' @importFrom glue glue
   #' @importFrom progress progress_bar
   tags <- data_frame_tagger(frm, chunk_size, to_remove)

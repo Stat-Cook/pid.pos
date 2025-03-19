@@ -1,3 +1,5 @@
+# Write a test for report_on_folder
+
 
 test_that("report_on_folder() ", {
   local({
@@ -22,11 +24,11 @@ test_that("report_on_folder() ", {
     .report <- report_on_folder(.tempdir, report_dir = report_dir)
 
     reports <- list.files(report_dir)
-    
+
     expect_equal(length(reports), 5)
     
     report.1 <- read.csv(file.path(report_dir, reports)[1])
     
-    expect_equal(report.1$token, c("Peter", "Jane", "John"))
+    expect_equal(report.1$Token, c("Peter", "Jane", "John"))
   })
 })
