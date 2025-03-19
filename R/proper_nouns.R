@@ -18,5 +18,3 @@ get_proper_nouns.list <- function(pos_frm){
 
   lapply(pos_frm, get_proper_nouns)
 }
-
-data.frame(A = 1:10) %>% filter(A < 0)
