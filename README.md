@@ -2,7 +2,9 @@
 
 <!-- badges: start -->
 [![codecov](https://codecov.io/gh/Stat-Cook/pid.pos/graph/badge.svg?token=MU68U4JMP3)](https://codecov.io/gh/Stat-Cook/pid.pos)
+[![Codecov test coverage](https://codecov.io/gh/Stat-Cook/pid.pos/branch/master/graph/badge.svg)](https://app.codecov.io/gh/Stat-Cook/pid.pos?branch=redesign)
 <!-- badges: end -->
+
 A package of tools for the detection of personally identifiable data (PID) in data sets via natural language processing.  Considers there to be a risk of PID when a data set contains any text element that is considered to be a 'proper noun'.
 
 To install from github straight into R, use:
