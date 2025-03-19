@@ -27,6 +27,7 @@ template_to_rules <- function(path, parse=F){
 
 frame_to_rules <- function(rules.frm, parse=F) {
   #' @importFrom dplyr group_by group_map
+  #' @importFrom dplyr case_when
   
   .rules <- rules.frm |>
     mutate(
@@ -40,7 +41,7 @@ frame_to_rules <- function(rules.frm, parse=F) {
     simplify()
   
   .result <- sprintf(
-  "function(.x) case_when(
+  "function(.x) dplyr::case_when(
     %s,
     .default=.x
   )",
