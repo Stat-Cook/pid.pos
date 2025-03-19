@@ -9,7 +9,7 @@ data_frame_report <- function(frm,
   #' @param to_remove A character vector of column names to remove from the data frame
   #'
   #' @export
-  #'
+  #' @importFrom magrittr %>%
   #' @importFrom dplyr group_by group_modify left_join where all_of 
   #' @importFrom dplyr rename select mutate
   #' @importFrom glue glue

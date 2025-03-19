@@ -28,13 +28,14 @@ template_to_rules <- function(path, parse=F){
 frame_to_rules <- function(rules.frm, parse=F) {
   #' @importFrom dplyr group_by group_map
   #' @importFrom dplyr case_when
+  #' @importFrom stringr str_replace_all str_detect
   
   .rules <- rules.frm |>
     mutate(
       From = escape_quote_mark(From), 
       To = escape_quote_mark(To),
       If = escape_quote_mark(If),
-      Replace = sprintf("str_replace_all('%s', '%s')", From, To)
+      Replace = sprintf("stringr::str_replace_all('%s', '%s')", From, To)
     ) |>
     group_by(If) |>
     group_map(if_modify) |>
@@ -59,7 +60,7 @@ frame_to_rules <- function(rules.frm, parse=F) {
 if_modify <- function(frm, group) {
   .if <- group$If
   
-  .left <- sprintf("str_detect(.x, '%s')", .if)
+  .left <- sprintf("stringr::str_detect(.x, '%s')", .if)
   .right <- paste(c(".x", frm$Replace), collapse = " |> ")
   
   
