@@ -1,21 +1,4 @@
-longer_than <- function(limit=5){
-  #' Produces a function that checks if any strings in a vector is longer than 'limit'
-  #' 
-  #' @param limit The length to check against
-  #' @examples 
-  #' longer_than_5 <- longer_than(5)
-  #' .str <- c("ABCDE", "ABC", "ABCDEFG")
-  #' longer_than_5(.str)
-  #' 
-  #' @importFrom stringr str_length
-  #' 
-  #' @export
-  function(vec){
-    vec <- vec[!is.na(vec)]
-    lengths <- str_length(vec)
-    any(lengths > limit)
-  }
-}
+
 
 summarize_repeated_setences <- function(frm, ...){
   #' @importFrom utils head read.csv write.csv
@@ -57,10 +40,11 @@ data_frame_tagger <- function(frm, chunk_size = 1e2,
       remove_if_exists(to_remove)
     
   
-  if (nrow(character.frm) == 0){
+  if (any(dim(character.frm) == 0)){
     return(  list(
       `All Tags` = NULL,
-      `Proper Nouns` = NULL
+      `Proper Nouns` = NULL,
+      `Sentences` = NULL
     ))
   }
   
