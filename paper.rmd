@@ -1,7 +1,7 @@
 ---
-  output: 
+output: 
   md_document:
-  variant: markdown_github
+    variant: markdown_github
 bibliography: paper.bib
 ---
   
@@ -108,7 +108,7 @@ report_as_rules_template(report, path='path/to/report.csv')
 The csv file is intended to be edited by the data controller, who hence does not need 
 to understand R, and can be reimported using the `template_to_rules` function:
 
-``` {r}
+``` {r, eval=F}
 template_to_rules('path/to/report.csv')
 ```
 
@@ -116,7 +116,7 @@ The  `template_to_rules` function creates a string replacement rule to capture t
 desired redactions, with the option for R to 'parse' the function for use as part of a data
 pipeline:
 
-``` {r}
+``` {r, eval=F}
 replacement.func <- template_to_rules('path/to/report.csv', parse=T)
 
 the_one_in_massapequa |>
