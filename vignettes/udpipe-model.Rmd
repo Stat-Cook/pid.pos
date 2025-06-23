@@ -2,7 +2,7 @@
 title: "The udpipe Model"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{udpipe-model}
+  %\VignetteIndexEntry{The udpipe Model}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -28,7 +28,7 @@ When first installed and loaded `PID.POS` will not have the udpipe model.  The f
 `data_frame_report` is run, an attempt is made to download the model. Hence, it is recommended
 to start by evaluating the `data_frame_report` function with the example data (`the_one_in_massapequa`):
 
-```{r setup}
+```{r setup, eval=F}
 library(pid.pos)
 
 report <- data_frame_report(the_one_in_massapequa)
