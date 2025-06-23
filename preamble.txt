@@ -1,5 +1,5 @@
 ---
-title: 'Deident: An R package for data anonymization'
+title: 'PID.POS: An R package for the detection of personally identifiable data'
 tags:
   - R
 authors:
