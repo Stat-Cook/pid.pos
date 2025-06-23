@@ -14,8 +14,6 @@ test_that(
     )
     frm <- data_frame_tagger(frm)
 
-    expect_true(nrow(frm$Sentences)  == 10)
+    expect_true(nrow(frm$Sentences) == 10)
   }
 )
-
-

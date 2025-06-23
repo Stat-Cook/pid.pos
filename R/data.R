@@ -1,7 +1,7 @@
 #' The One in Massapequa
-#' 
-#' A subset of the 'Friends' data set containing the scene, utterance, speaker and 
-#' text of the episode 'The One in Massapequa' (s8e18).    
+#'
+#' A subset of the 'Friends' data set containing the scene, utterance, speaker and
+#' text of the episode 'The One in Massapequa' (s8e18).
 #'
 #' @format  A data frame with 3,100 rows and 6 columns:
 #' \describe{
