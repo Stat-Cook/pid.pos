@@ -1,3 +1,26 @@
+---
+title: 'PID.POS: An R package for the detection of personally identifiable data'
+tags:
+  - R
+authors:
+  - name: Robert M. Cook
+    orcid: 0000-0003-3343-8271
+    equal-contrib: false
+    affiliation: 1
+  - name: A N Other
+    orcid: XXXX-XXXX-XXXX-XXXX
+    equal-contrib: false # (This is how you can denote equal contributions between multiple authors)
+    affiliation: 1
+  - name: Sarahjane Jones
+    orcid: 0000-0003-4729-4029
+    equal-contrib: false # (This is how you can denote equal contributions between multiple authors)
+    affiliation: 1
+affiliations:
+ - name: University of Staffordshire, Centre for Health Innovation, Blackheath Lane, Stafford,  England
+   index: 1
+date: 12 December 2023
+bibliography: paper.bib
+---
 # Summary
 
 The `PID.POS` package is designed to aid with the identification of
@@ -16,14 +39,14 @@ present, and this is only set to increase. Following a period of rapid
 development in the spaces of machine learning and artificial
 intelligence, regulatory bodies are now playing catch up, with national
 and international acts coming into force to protect individual rights to
-privacy\[@GDPR; @CalCiv2018\].
+privacy[@GDPR; @CalCiv2018].
 
 One effect of increase legislation and visibility of privacy concerns
 has been a surge in data literacy, with data controllers becoming more
-aware of the risks associated with the data they hold\[ref\]. Of all
+aware of the risks associated with the data they hold[ref]. Of all
 concerns, ‘personal identifiability’ i.e. the ability to directly or
-indirectly identify an individual from a dataset\[ref\], is paramount
-and, if breeched, can lead to reputation damage and fines\[ref\]. Where
+indirectly identify an individual from a dataset[ref], is paramount
+and, if breeched, can lead to reputation damage and fines[ref]. Where
 data is structured and complete, a manual inspection can readily
 identify variables which contain directly personally identifiable data
 (PID). However, in the case of modern large data sets which may comprise
@@ -42,7 +65,7 @@ providing a mechanism for the review and redaction of PID risks.
 
 The need to review data sets to identify risks is not new, and there are
 a number of packages which have been developed to aid in this process.
-The most notable of these are the `PII` package\[ref\], which is
+The most notable of these are the `PII` package[ref], which is
 designed to identify personally identifiable features via pattern
 matching. These approaches can be effective in identifying PID, but have
 a risk of missing edge cases e.g. relying on sentence case to identify
