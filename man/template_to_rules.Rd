@@ -2,7 +2,7 @@
 % Please edit documentation in R/report_as_frame.R
 \name{template_to_rules}
 \alias{template_to_rules}
-\title{Convert a 'replacement tempalte' as defined with `report_as_rules_template` to 
+\title{Convert a 'replacement tempalte' as defined with `report_as_rules_template` to
 a function that can be used to modify a data frame.}
 \usage{
 template_to_rules(path, parse = F)
@@ -13,6 +13,6 @@ template_to_rules(path, parse = F)
 \item{parse}{Binary-flag.  If True the replacement function is parsed.}
 }
 \description{
-Convert a 'replacement tempalte' as defined with `report_as_rules_template` to 
+Convert a 'replacement tempalte' as defined with `report_as_rules_template` to
 a function that can be used to modify a data frame.
 }

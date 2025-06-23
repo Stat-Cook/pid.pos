@@ -3,7 +3,7 @@
 \name{report_as_rules_template}
 \alias{report_as_rules_template}
 \title{Convert the output of `data_frame_report` to a csv file for editing.
-It is intended the user changes the `To` column to define desired 
+It is intended the user changes the `To` column to define desired
 replacements.}
 \usage{
 report_as_rules_template(report, path = NULL)
@@ -15,6 +15,6 @@ report_as_rules_template(report, path = NULL)
 }
 \description{
 Convert the output of `data_frame_report` to a csv file for editing.
-It is intended the user changes the `To` column to define desired 
+It is intended the user changes the `To` column to define desired
 replacements.
 }

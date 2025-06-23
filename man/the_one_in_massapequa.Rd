@@ -17,7 +17,7 @@ A data frame with 3,100 rows and 6 columns:
 the_one_in_massapequa
 }
 \description{
-A subset of the 'Friends' data set containing the scene, utterance, speaker and 
+A subset of the 'Friends' data set containing the scene, utterance, speaker and
 text of the episode 'The One in Massapequa' (s8e18).
 }
 \keyword{datasets}
