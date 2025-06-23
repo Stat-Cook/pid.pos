@@ -23,7 +23,7 @@
 #'   \item{ID}{The row number (integer)}
 #'   \item{Sentence}{The free text to detect PID in.}
 #'   \item{Numeric}{Example numeric data (discrete) to be ignored by the algorithm}
-#'   \item{Radnom}{Example numeric data (continuous) to be ignored by the algorithm}
+#'   \item{Random}{Example numeric data (continuous) to be ignored by the algorithm}
 #' }
 #'
 "sentence_frm"
