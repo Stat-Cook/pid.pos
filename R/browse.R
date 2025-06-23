@@ -1,4 +1,4 @@
-browse_udpipe_repo <- function(){
+browse_udpipe_repo <- function() {
   #' Open github link to the 'english-ewt-2.5' UD model.
   #'
   #' Intended for user download where `udpipe` fails to download automatically.
@@ -10,7 +10,7 @@ browse_udpipe_repo <- function(){
   browseURL(udpipe_repo)
 }
 
-browse_model_location <- function(){
+browse_model_location <- function() {
   #' Browse user to folder for UDPipe models.
   #'
   #' Intended for usage in `udpipe` fails to download automatically.

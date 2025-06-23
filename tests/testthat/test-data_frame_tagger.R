@@ -36,7 +36,7 @@ test_that("data_frame_tagger: correct size with `to_remove`", {
 
 test_that("data_frame_tagger: No data", {
   # test that the function returns the expected results
-  
+
   frm <- data.frame(A = character(0))
 
   res <- data_frame_tagger(frm)
@@ -44,17 +44,15 @@ test_that("data_frame_tagger: No data", {
   expect_null(res$`All Tags`)
   expect_null(res$`Proper Nouns`)
   expect_null(res$`Sentences`)
-
 })
 
 test_that("data_frame_tagger: No characters", {
   # test that the function returns the expected results
-  
-  frm <- data.frame(A = 1:10, B=rnorm(10))
+
+  frm <- data.frame(A = 1:10, B = rnorm(10))
   res <- data_frame_tagger(frm)
-  
+
   expect_null(res$`All Tags`)
   expect_null(res$`Proper Nouns`)
   expect_null(res$`Sentences`)
-  
 })

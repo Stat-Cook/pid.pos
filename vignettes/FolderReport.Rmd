@@ -32,14 +32,14 @@ with each file consisting of 1000 rows and four columns (a primary key, a line o
 ```{r setup}
 library(pid.pos)
 
-data_path <- system.file("vignette_data", package="pid.pos")
+data_path <- system.file("vignette_data", package = "pid.pos")
 list.files(data_path)
 ```
 and we check the files are the intended data:
 
 ``` {r}
-emma.csv <- system.file("vignette_data", "Emma.csv",  package="pid.pos")
-kable(read.csv(emma.csv, nrows=5))
+emma.csv <- system.file("vignette_data", "Emma.csv", package = "pid.pos")
+kable(read.csv(emma.csv, nrows = 5))
 ```
 To generate reports we call `report_on_folder` which takes three arguments:
 

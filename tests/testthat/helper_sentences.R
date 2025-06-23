@@ -6,9 +6,9 @@
 #     "She was named Jane",
 #     "He was named John"
 #   )
-#   
+#
 #   sentences_length <- length(test_sentences)
-#   
+#
 #   sentence_frm <- data.frame(
 #     ID = 1:sentences_length,
 #     Sentence = test_sentences,
@@ -16,4 +16,4 @@
 #     Random = rnorm(sentences_length)
 #   )
 # }
-#   
+#
