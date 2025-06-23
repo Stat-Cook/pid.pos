@@ -15,7 +15,7 @@
 
 
 # sentence_frm
-#' A short data frame of free text including PID.  Used for basic examples 
+#' A short data frame of free text including PID.  Used for basic examples
 #' and tests.
 #'
 #' @format  A data frame with 5 rows and 4 columns:
