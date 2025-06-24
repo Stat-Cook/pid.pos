@@ -1,5 +1,5 @@
 ---
-title: "The udpipe Model"
+title: "Trouble shooting the UDpipe Model"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{The udpipe Model}
