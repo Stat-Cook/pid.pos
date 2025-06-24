@@ -146,7 +146,28 @@ basic functionality designed for minimal technical knowledge to assist in the re
 <code>To</code> - the intended replacement</li>
 </ul><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/report_as_rules_template.html">report_as_rules_template</a></span><span class="op">(</span><span class="va">report</span>, path<span class="op">=</span><span class="st">'path/to/report.csv'</span><span class="op">)</span></span></code></pre></div>
-<p>The csv file is intended to be edited by the data controller, who hence does not need to understand R, and can be reimported using the <code>template_to_rules</code> function:</p>
+<table class="table"><thead><tr class="header"><th align="left">If</th>
+<th align="left">From</th>
+<th align="left">To</th>
+</tr></thead><tbody><tr class="odd"><td align="left">Phoebe Buffay</td>
+<td align="left">Phoebe</td>
+<td align="left">Phoebe</td>
+</tr><tr class="even"><td align="left">Phoebe Buffay</td>
+<td align="left">Buffay</td>
+<td align="left">Buffay</td>
+</tr><tr class="odd"><td align="left">Monica Geller</td>
+<td align="left">Monica</td>
+<td align="left">Monica</td>
+</tr><tr class="even"><td align="left">Monica Geller</td>
+<td align="left">Geller</td>
+<td align="left">Geller</td>
+</tr><tr class="odd"><td align="left">Ross Geller</td>
+<td align="left">Ross</td>
+<td align="left">Ross</td>
+</tr><tr class="even"><td align="left">Ross Geller</td>
+<td align="left">Geller</td>
+<td align="left">Geller</td>
+</tr></tbody></table><p>The csv file is intended to be edited by the data controller, who hence does not need to understand R, and can be reimported using the <code>template_to_rules</code> function:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/template_to_rules.html">template_to_rules</a></span><span class="op">(</span><span class="st">'path/to/report.csv'</span><span class="op">)</span></span></code></pre></div>
 <p>The <code>template_to_rules</code> function creates a string replacement rule to capture the desired redactions, with the option for R to ‘parse’ the function for use as part of a data pipeline:</p>
