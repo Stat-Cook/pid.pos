@@ -37,27 +37,26 @@ The world is embedded in a data revolution. Never before have we had the
 depth or breadth of data being captured and analysed than we do at
 present, and this is only set to increase. In response, international
 bodies are taking steps to ensure legal protection of an individual’s
-rights to their own data[@GDPR].  
-One effect of increase legislation has been a growing awareness of the
-role and responsibility of data controllers[@ICODataController] and
-the risks of big data[@clarke2016big]. Among these concerns, a risk of
-‘personal identifiability’ i.e. the ability to directly or indirectly
-identify an individual from a dataset[@finck2020they], is paramount
-and, if breeched, can lead to reputation damage and fines[@ICOWhatIf].
+rights to their own data[@GDPR]. One effect of increase legislation
+has been a growing awareness of the role and responsibility of data
+controllers[@ICODataController] and the risks of big
+data[@clarke2016big]. Among these concerns, a risk of ‘personal
+identifiability’ i.e. the ability to directly or indirectly identify an
+individual from a dataset[@finck2020they], is paramount and, if
+breeched, can lead to reputation damage and fines[@ICOWhatIf].
 
 Where data is structured and comprises only a few hundred observations,
 a manual inspection can identify variables which contain directly
 personally identifiable data (PID) with a reasonable time investment.
 However, in the case of modern large data sets which may comprise
-millions of observations,  
-a manual inspection may miss PID if it is embedded within a passage of
-text, or is a rarity for the given variable.  
-The `PID.POS` (Personal Identifiability Detection by Part Of Speech
-tagging) package is designed to aid with the identification of PID risks
-in data sets. In comparison to existing packages which rely on a curated
-list of common names and string-matching, `PID.POS` builds on the
-existing `udpipe` framework, extracting all examples of proper nouns and
-providing a mechanism for the review and redaction of PID risks.
+millions of observations, a manual inspection may miss PID if it is
+embedded within a passage of text, or is a rarity for the given
+variable. The `PID.POS` (Personal Identifiability Detection by Part Of
+Speech tagging) package is designed to aid with the identification of
+PID risks in data sets. In comparison to existing packages which rely on
+a curated list of common names and string-matching, `PID.POS` builds on
+the existing `udpipe` framework, extracting all examples of proper nouns
+and providing a mechanism for the review and redaction of PID risks.
 
 # Comparison to existing R packages
 
@@ -93,10 +92,10 @@ glimpse(the_one_in_massapequa)
 
     ## Rows: 257
     ## Columns: 4
-    ## $ scene     <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,…
-    ## $ utterance <int> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,…
-    ## $ speaker   <chr> "Scene Directions", "Phoebe Buffay", "Monica Geller", "Ross Geller", "Joey Tribbiani", "Phoebe Buffay", "Chandler…
-    ## $ text      <chr> "[Scene: Central Perk, everyone is there.]", "Oh, Ross, Mon, is it okay if I bring someone to your parent's anniv…
+    ## $ scene     <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, …
+    ## $ utterance <int> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, …
+    ## $ speaker   <chr> "Scene Directions", "Phoebe Buffay", "Monica Geller", "Ross Geller", "Joey Tribbiani", "Phoebe Buffay", "Chandler …
+    ## $ text      <chr> "[Scene: Central Perk, everyone is there.]", "Oh, Ross, Mon, is it okay if I bring someone to your parent's annive…
 
 The package has two main functions for identifying PID risks, depending
 on the users needs.  
