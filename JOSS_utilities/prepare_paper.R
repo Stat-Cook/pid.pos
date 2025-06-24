@@ -1,19 +1,22 @@
+library(rmarkdown)
+library(readr)
 
-rmarkdown::render("JOSS_utilities/paper.rmd", 
-                  output_file = "../paper.md"
-                  )
+paper.md <- read_lines("JOSS_utilities/paper.rmd")
 
-preamble <- readr::read_lines("JOSS_utilities/preamble.txt")
+render_preamble <- read_lines("JOSS_utilities/render_preamble.txt")
+joss_preamble <- read_lines("JOSS_utilities/joss_preamble.txt")
 
-c(preamble, readr::read_lines("paper.md")) |>
-  stringr::str_replace_all("\\\\\\[", "\\[") |>
-  stringr::str_replace_all("\\\\\\]", "\\]") |>
+temp_rmd <- tempfile(fileext = ".Rmd")
+
+c(render_preamble, paper.md) |>
+  readr::write_lines(temp_rmd)
+
+render(temp_rmd, output_file = "paper.md", output_dir = getwd())
+
+c(joss_preamble, read_lines("paper.md")) |>
   readr::write_lines("paper.md")
 
-rmarkdown::render("JOSS_utilities/paper.rmd", 
-                  output_file = "../vignettes/PaperVignette.Rmd")
+vignette_preamble <- read_lines("JOSS_utilities/vignette_preamble.txt")
 
-c(preamble, readr::read_lines("vignettes/PaperVignette.Rmd")) |>
-  stringr::str_replace_all("\\\\\\[", " \\[") |>
-  stringr::str_replace_all("\\\\\\]", "\\]") |>
+c(vignette_preamble, paper.md) |>
   readr::write_lines("vignettes/PaperVignette.Rmd")
