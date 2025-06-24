@@ -35,7 +35,7 @@ load_replacement_rules <- function(path, parse = F) {
   #' @export
   rules.frm <- read.csv(path)
 
-  frame_to_rules(rules.frm, parse)
+  parse_replacement_rules(rules.frm, parse)
 }
 
 
