@@ -87,32 +87,41 @@ of the ‘friends’ data set from the `friends` package.
 ``` r
 library(pid.pos)
 library(dplyr)
-glimpse(the_one_in_massapequa, 60)
+the_one_in_massapequa
 ```
 
-    ## Rows: 257
-    ## Columns: 4
-    ## $ scene     <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
-    ## $ utterance <int> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1…
-    ## $ speaker   <chr> "Scene Directions", "Phoebe Buffay", "Mo…
-    ## $ text      <chr> "[Scene: Central Perk, everyone is there…
+| scene | utterance | speaker          | text                                                                             |
+|----:|------:|:----------|:------------------------------------------------|
+|     1 |         1 | Scene Directions | \[Scene: Central Perk, everyone is there.\]                                      |
+|     1 |         2 | Phoebe Buffay    | Oh, Ross, Mon, is it okay if I bring someone to your parent’s anniversary party? |
+|     1 |         3 | Monica Geller    | Yeah.                                                                            |
+|     1 |         4 | Ross Geller      | Sure. Yeah.                                                                      |
+|     1 |         5 | Joey Tribbiani   | So, who’s the guy?                                                               |
 
 The package has two main functions for identifying PID risks, depending
 on the users needs.  
 First, the `data_frame_report` function converts a typical R data frame
 into a new data frame of:
 
--   `Sentence` - the sentence containing proper nouns
+-   `ID` - the column and row where the sentence first appears
 -   `Token` - the specific proper noun token
+-   `Sentence` - the sentence containing proper nouns
 -   `Repeats` - the number of times the sentence occurs in the data set
 -   `Affected Columns` - the columns in the original data frame which
     contain the sentence
--   `ID` - the column and row where the sentence first appears
 
 ``` r
 report <- data_frame_report(the_one_in_massapequa)
 report
 ```
+
+| ID                | Token  | Sentence      | Repeats | Affected Columns |
+|:------------------|:-------|:--------------|--------:|:-----------------|
+| Col:speaker Row:2 | Phoebe | Phoebe Buffay |      40 | `speaker`        |
+| Col:speaker Row:2 | Buffay | Phoebe Buffay |      40 | `speaker`        |
+| Col:speaker Row:3 | Monica | Monica Geller |      25 | `speaker`        |
+| Col:speaker Row:3 | Geller | Monica Geller |      25 | `speaker`        |
+| Col:speaker Row:4 | Ross   | Ross Geller   |      43 | `speaker`        |
 
 The second function is `report_on_folder` which iterates over a folder
 of data files, producing a proper noun report for each. It is foreseen

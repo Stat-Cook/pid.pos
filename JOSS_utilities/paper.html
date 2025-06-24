@@ -413,24 +413,57 @@ pak::pkg_install(&quot;Stat-Cook/PID.POS&quot;)</code></pre>
 include a subset of the ‘friends’ data set from the <code>friends</code>
 package.</p>
 <pre class="r"><code>library(pid.pos)
-
-library(dplyr)</code></pre>
-<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 4.2.3</code></pre>
-<pre><code>## 
-## Attaching package: &#39;dplyr&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:stats&#39;:
-## 
-##     filter, lag</code></pre>
-<pre><code>## The following objects are masked from &#39;package:base&#39;:
-## 
-##     intersect, setdiff, setequal, union</code></pre>
-<pre class="r"><code>glimpse(the_one_in_massapequa)</code></pre>
-<pre><code>## Rows: 257
-## Columns: 4
-## $ scene     &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, …
-## $ utterance &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1…
-## $ speaker   &lt;chr&gt; &quot;Scene Directions&quot;, &quot;Phoebe Buffay&quot;, &quot;Monica Geller&quot;, &quot;Ross …
-## $ text      &lt;chr&gt; &quot;[Scene: Central Perk, everyone is there.]&quot;, &quot;Oh, Ross, Mon,…</code></pre>
+library(dplyr)
+the_one_in_massapequa</code></pre>
+<table>
+<colgroup>
+<col width="5%" />
+<col width="8%" />
+<col width="14%" />
+<col width="71%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">scene</th>
+<th align="right">utterance</th>
+<th align="left">speaker</th>
+<th align="left">text</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="left">Scene Directions</td>
+<td align="left">[Scene: Central Perk, everyone is there.]</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="left">Phoebe Buffay</td>
+<td align="left">Oh, Ross, Mon, is it okay if I bring someone to your
+parent’s anniversary party?</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="left">Monica Geller</td>
+<td align="left">Yeah.</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="left">Ross Geller</td>
+<td align="left">Sure. Yeah.</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">5</td>
+<td align="left">Joey Tribbiani</td>
+<td align="left">So, who’s the guy?</td>
+</tr>
+</tbody>
+</table>
 <p>The package has two main functions for identifying PID risks,
 depending on the users needs.<br />
 First, the <code>data_frame_report</code> function converts a typical R
@@ -447,6 +480,54 @@ appears</li>
 </ul>
 <pre class="r"><code>report &lt;- data_frame_report(the_one_in_massapequa)
 report</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">ID</th>
+<th align="left">Token</th>
+<th align="left">Sentence</th>
+<th align="right">Repeats</th>
+<th align="left">Affected Columns</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Col:speaker Row:2</td>
+<td align="left">Phoebe</td>
+<td align="left">Phoebe Buffay</td>
+<td align="right">40</td>
+<td align="left"><code>speaker</code></td>
+</tr>
+<tr class="even">
+<td align="left">Col:speaker Row:2</td>
+<td align="left">Buffay</td>
+<td align="left">Phoebe Buffay</td>
+<td align="right">40</td>
+<td align="left"><code>speaker</code></td>
+</tr>
+<tr class="odd">
+<td align="left">Col:speaker Row:3</td>
+<td align="left">Monica</td>
+<td align="left">Monica Geller</td>
+<td align="right">25</td>
+<td align="left"><code>speaker</code></td>
+</tr>
+<tr class="even">
+<td align="left">Col:speaker Row:3</td>
+<td align="left">Geller</td>
+<td align="left">Monica Geller</td>
+<td align="right">25</td>
+<td align="left"><code>speaker</code></td>
+</tr>
+<tr class="odd">
+<td align="left">Col:speaker Row:4</td>
+<td align="left">Ross</td>
+<td align="left">Ross Geller</td>
+<td align="right">43</td>
+<td align="left"><code>speaker</code></td>
+</tr>
+</tbody>
+</table>
 <p>The second function is <code>report_on_folder</code> which iterates
 over a folder of data files, producing a proper noun report for each. It
 is foreseen that this function will be the more useful, used just before

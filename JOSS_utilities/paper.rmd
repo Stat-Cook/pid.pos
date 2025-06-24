@@ -54,24 +54,36 @@ pak::pkg_install("Stat-Cook/PID.POS")
 To assist with understanding the `PID.POS` package, we include a subset of the 'friends' 
 data set from the `friends` package.
 
-``` {r, warning = F, message = F}
+``` {r, warning = F, message = F, eval=F}
 library(pid.pos)
 library(dplyr)
-glimpse(the_one_in_massapequa, 60)
+the_one_in_massapequa
 ```
+
+``` {r, warning = F, message = F, echo=F}
+library(pid.pos)
+library(dplyr)
+knitr::kable(head(the_one_in_massapequa, 5))
+```
+
 
 The package has two main functions for identifying PID  risks, depending on the users needs.  
 First, the `data_frame_report` function converts a typical R data frame into a new data frame of:
 
-* `Sentence` - the sentence containing proper nouns
+* `ID` - the column and row where the sentence first appears
 * `Token` - the specific proper noun token 
+* `Sentence` - the sentence containing proper nouns
 * `Repeats` - the number of times the sentence occurs in the data set
 * `Affected Columns` - the columns in the original data frame which contain the sentence
-* `ID` - the column and row where the sentence first appears
 
 ``` {r, eval=F}
 report <- data_frame_report(the_one_in_massapequa)
 report
+```
+
+``` {r, echo=F, message=F}
+report <- data_frame_report(the_one_in_massapequa)
+knitr::kable(head(report, 5))
 ```
 
 The second function is `report_on_folder` which iterates over a folder of data files,
