@@ -15,19 +15,21 @@ implementation of a redaction process.
 
 # Statement of need  
 
-The world is embedded in a data revolution.  Never before have we had the depth or breadth of data being captured 
-and analysed than we do at present, and this is only set to increase.  Following a period of rapid  development 
-in the spaces of machine learning and artificial intelligence, regulatory bodies are now playing catch up, with 
-national and international acts coming into force to protect individual rights to privacy[\@GDPR; \@CalCiv2018].  
+The world is embedded in a data revolution.  Never before have we had the depth or 
+breadth of data being captured  and analysed than we do at present, and this is only set to increase. 
+In response, international bodies are taking steps to ensure legal protection of an individual's rights 
+to their own data[\@GDPR].   
+One effect of increase legislation  has been a growing awareness of the role and 
+responsibility of data controllers[\@ICODataController] and the risks of big data[\@clarke2016big]. 
+Among these concerns, a risk of 'personal identifiability' i.e. the ability to directly or indirectly 
+identify an individual from a dataset[\@finck2020they], is paramount  and, if breeched, can lead 
+to reputation damage and fines[\@ICOWhatIf]. 
 
-One effect of increase legislation and visibility of privacy concerns has been a surge in data literacy,  with
-data controllers becoming more aware of the risks associated with the data they hold[ref].  Of all concerns, 'personal
-identifiability' i.e. the ability to directly or indirectly identify an individual from a dataset[ref], is paramount 
-and, if breeched, can lead to reputation damage and fines[ref]. Where data is structured and  complete, a manual inspection 
-can readily  identify variables which contain directly personally identifiable data (PID).  However, in the case of 
-modern large data sets which may comprise millions of observations,  a manual inspection may miss PID if it is 
-embedded within a passage of text, or is a rarity for the given variable.  
 
+Where data  is structured  and comprises only a few hundred observations, a manual inspection can 
+identify variables which contain directly personally identifiable data (PID) with a reasonable time investment. 
+However, in the case of  modern large data sets which may comprise millions of observations,  
+a manual inspection may miss PID if it is  embedded within a passage of text, or is a rarity for the given variable.  
 The `PID.POS` (Personal Identifiability Detection by Part Of Speech tagging) package is designed to aid 
 with the identification of PID risks in data sets.   In comparison to existing packages which rely on a curated list
 of common names and string-matching, `PID.POS` builds on the existing `udpipe` framework, extracting all examples of 
@@ -37,7 +39,7 @@ proper nouns and providing a mechanism for the review and redaction of PID risks
 # Comparison to existing R packages
 
 The need to review data sets to identify risks is not new, and there are a number of packages which have been developed
-to aid in this process.  The most notable of these are the `PII` package[ref], which is designed to 
+to aid in this process.  The most notable of these are the `PII` package[\@pii], which is designed to 
 identify personally identifiable features via pattern matching. These approaches can be effective in 
 identifying PID, but have a risk of missing edge cases e.g. relying on sentence case  to identify names. The 
 approach taken in `PID.POS` conversely takes the approach of purposefully extracting all proper-nouns, and hence
@@ -149,6 +151,7 @@ done by ... Documentation was written by RC.... Funding for the work was won by 
 The development of `PID.POS` was part of the NuRS and AmReS projects funded by the
 Health Foundation.
 
+# References
 
 
 
