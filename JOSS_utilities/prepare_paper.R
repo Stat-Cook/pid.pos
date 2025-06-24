@@ -13,7 +13,8 @@ c(render_preamble, paper.md) |>
 
 render(temp_rmd, output_file = "paper.md", output_dir = getwd())
 
-c(joss_preamble, read_lines("paper.md")) |>
+c(joss_preamble, read_lines("paper.md")) |> 
+  stringr::str_replace_all("\\\\(\\[|\\])", "\\1") |>
   readr::write_lines("paper.md")
 
 vignette_preamble <- read_lines("JOSS_utilities/vignette_preamble.txt")

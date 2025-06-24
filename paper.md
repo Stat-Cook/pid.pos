@@ -37,13 +37,13 @@ The world is embedded in a data revolution. Never before have we had the
 depth or breadth of data being captured and analysed than we do at
 present, and this is only set to increase. In response, international
 bodies are taking steps to ensure legal protection of an individual’s
-rights to their own data \[@GDPR\]. One effect of increase legislation
+rights to their own data [@GDPR]. One effect of increase legislation
 has been a growing awareness of the role and responsibility of data
-controllers \[@ICODataController\] and the risks of big data
-\[@clarke2016big\]. Among these concerns, a risk of ‘personal
+controllers [@ICODataController] and the risks of big data
+[@clarke2016big]. Among these concerns, a risk of ‘personal
 identifiability’ i.e. the ability to directly or indirectly identify an
-individual from a dataset \[@finck2020they\], is paramount and, if
-breeched, can lead to reputation damage and fines \[@ICOWhatIf\].
+individual from a dataset [@finck2020they], is paramount and, if
+breeched, can lead to reputation damage and fines [@ICOWhatIf].
 
 Where data is structured and comprises only a few hundred observations,
 a manual inspection can identify variables which contain directly
@@ -62,7 +62,7 @@ and providing a mechanism for the review and redaction of PID risks.
 
 The need to review data sets to identify risks is not new, and there are
 a number of packages which have been developed to aid in this process.
-The most notable of these are the `PII` package \[@pii\], which is
+The most notable of these are the `PII` package [@pii], which is
 designed to identify personally identifiable features via pattern
 matching. These approaches can be effective in identifying PID, but have
 a risk of missing edge cases e.g. relying on sentence case to identify
@@ -92,7 +92,7 @@ the_one_in_massapequa
 
 | scene | utterance | speaker          | text                                                                             |
 |----:|------:|:----------|:------------------------------------------------|
-|     1 |         1 | Scene Directions | \[Scene: Central Perk, everyone is there.\]                                      |
+|     1 |         1 | Scene Directions | [Scene: Central Perk, everyone is there.]                                      |
 |     1 |         2 | Phoebe Buffay    | Oh, Ross, Mon, is it okay if I bring someone to your parent’s anniversary party? |
 |     1 |         3 | Monica Geller    | Yeah.                                                                            |
 |     1 |         4 | Ross Geller      | Sure. Yeah.                                                                      |
