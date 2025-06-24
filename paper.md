@@ -19,7 +19,7 @@ affiliations:
  - name: University of Staffordshire, Centre for Health Innovation, Blackheath Lane, Stafford,  England
    index: 1
 date: 12 December 2023
-bibliography: JOSS_utilities/paper.bib
+bibliography: vignettes/paper.bib
 ---
 # Summary
 
