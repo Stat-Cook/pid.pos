@@ -116,6 +116,11 @@ Where a PID report has been ran, the resulting data frame can be passed to the f
 report_as_rules_template(report, path='path/to/report.csv')
 ```
 
+
+``` {r, echo=F}
+template <- report_as_rules_template(report)
+knitr::kable(head(template))
+```
 The csv file is intended to be edited by the data controller, who hence does not need 
 to understand R, and can be reimported using the `template_to_rules` function:
 

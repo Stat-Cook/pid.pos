@@ -157,6 +157,15 @@ to a csv file with three headings:
 report_as_rules_template(report, path='path/to/report.csv')
 ```
 
+| If            | From   | To     |
+|:--------------|:-------|:-------|
+| Phoebe Buffay | Phoebe | Phoebe |
+| Phoebe Buffay | Buffay | Buffay |
+| Monica Geller | Monica | Monica |
+| Monica Geller | Geller | Geller |
+| Ross Geller   | Ross   | Ross   |
+| Ross Geller   | Geller | Geller |
+
 The csv file is intended to be edited by the data controller, who hence
 does not need to understand R, and can be reimported using the
 `template_to_rules` function:
