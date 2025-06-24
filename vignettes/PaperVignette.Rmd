@@ -88,7 +88,7 @@ producing a proper noun report for each.  It is foreseen that this function will
 be the more useful, used just before data release to evidence no PID risks.
 
 ``` {r, eval=F}
-report_on_folder('path/to/data/')
+report_on_folder("path/to/data/")
 browse_model_location()
 ```    
 
@@ -110,14 +110,14 @@ Where a PID report has been ran, the resulting data frame can be passed to the f
 * `To` - the intended replacement
 
 ``` {r, eval=F}
-report_as_rules_template(report, path='path/to/report.csv')
+report_as_rules_template(report, path = "path/to/report.csv")
 ```
 
 The csv file is intended to be edited by the data controller, who hence does not need 
 to understand R, and can be reimported using the `template_to_rules` function:
 
 ``` {r, eval=F}
-template_to_rules('path/to/report.csv')
+template_to_rules("path/to/report.csv")
 ```
 
 The  `template_to_rules` function creates a string replacement rule to capture the 
@@ -125,7 +125,7 @@ desired redactions, with the option for R to 'parse' the function for use as par
 pipeline:
 
 ``` {r, eval=F}
-replacement.func <- template_to_rules('path/to/report.csv', parse=T)
+replacement.func <- template_to_rules("path/to/report.csv", parse = T)
 
 the_one_in_massapequa |>
   mutate(
@@ -134,7 +134,6 @@ the_one_in_massapequa |>
       replacement.func
     )
   )
-
 ```
 
 For a more advanced user, the `template_to_rules` function utilizes the `str_detect` and 
