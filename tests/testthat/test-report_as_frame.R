@@ -1,6 +1,6 @@
 # Test for report_as_rules_template
 
-test_that("report_as_rules_template", {
+test_that("report_to_replacement_rules", {
   local({
     .report <- head(the_one_in_massapequa, 10) |>
       data_frame_report()
@@ -9,7 +9,7 @@ test_that("report_as_rules_template", {
     temp_file <- local_tempfile(fileext = ".csv")
 
     # Run the function
-    .rules <- report_as_rules_template(.report, path = temp_file)
+    .rules <- report_to_replacement_rules(.report, path = temp_file)
 
     # Check the file exists
     expect_true(file.exists(temp_file))
@@ -17,10 +17,10 @@ test_that("report_as_rules_template", {
     # Check the file is not empty
     expect_true(file.size(temp_file) > 0)
 
-    .rules_from_file <- template_to_rules(temp_file)
+    .rules_from_file <- load_replacement_rules(temp_file)
     expect_type(.rules_from_file, "character")
 
-    .rules_from_file.parsed <- template_to_rules(temp_file, parse = T)
+    .rules_from_file.parsed <- load_replacement_rules(temp_file, parse = T)
     expect_type(.rules_from_file.parsed, "closure")
   })
 })
@@ -35,7 +35,7 @@ test_that("report_as_rules_template", {
     To = c("XXX", "YYY")
   )
 
-  replacement.func <- frame_to_rules(.rules, parse = T)
+  replacement.func <- parse_replacement_rules(.rules, parse = T)
 
   replaced.data <- .data |>
     mutate(
