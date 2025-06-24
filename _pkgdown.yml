@@ -1,7 +1,6 @@
 url: https://stat-cook.github.io/pid.pos/
 template:
   bootstrap: 5
-
 articles:
 - title: Articles
   navbar: ~
