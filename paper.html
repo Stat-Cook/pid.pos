@@ -60,13 +60,13 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://stat-cook.github.io/pid.pos/">pid.pos</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">the_one_in_massapequa</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">the_one_in_massapequa</span>, <span class="fl">80</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="do">## Rows: 257</span></span>
 <span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="do">## Columns: 4</span></span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="do">## $ scene     &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, …</span></span>
-<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="do">## $ utterance &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 1, 2, 3, 4, 5, 6, 7, 8, 9, …</span></span>
-<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="do">## $ speaker   &lt;chr&gt; "Scene Directions", "Phoebe Buffay", "Monica Geller", "Ross Geller", "Joey Tribbiani", "Ph…</span></span>
-<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="do">## $ text      &lt;chr&gt; "[Scene: Central Perk, everyone is there.]", "Oh, Ross, Mon, is it okay if I bring someone…</span></span></code></pre></div>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="do">## $ scene     &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, …</span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="do">## $ utterance &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1…</span></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="do">## $ speaker   &lt;chr&gt; "Scene Directions", "Phoebe Buffay", "Monica Geller", "Ross …</span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="do">## $ text      &lt;chr&gt; "[Scene: Central Perk, everyone is there.]", "Oh, Ross, Mon,…</span></span></code></pre></div>
 <p>The package has two main functions for identifying PID risks, depending on the users needs.<br>
 First, the <code>data_frame_report</code> function converts a typical R data frame into a new data frame of:</p>
 <ul><li>
