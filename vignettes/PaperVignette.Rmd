@@ -1,6 +1,6 @@
 ---
 title: 'PID.POS: An R package for the detection of personally identifiable data'
-bibliography: paper.bib
+bibliography: ../JOSS_utilities/paper.bib
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{PID.POS: An R package for the detection of personally identifiable data}
