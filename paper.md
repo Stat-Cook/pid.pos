@@ -86,7 +86,6 @@ of the ‘friends’ data set from the `friends` package.
 
 ``` r
 library(pid.pos)
-
 library(dplyr)
 glimpse(the_one_in_massapequa)
 ```

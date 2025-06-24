@@ -54,9 +54,8 @@ pak::pkg_install("Stat-Cook/PID.POS")
 To assist with understanding the `PID.POS` package, we include a subset of the 'friends' 
 data set from the `friends` package.
 
-``` {r}
+``` {r, warning = F, message = F}
 library(pid.pos)
-
 library(dplyr)
 glimpse(the_one_in_massapequa)
 ```
