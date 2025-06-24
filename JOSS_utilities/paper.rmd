@@ -62,7 +62,7 @@ To assist with understanding the `PID.POS` package, we include a subset of the '
 data set from the `friends` package.
 
 ``` {r}
-library(dplyr)
+library(pid.pos)
 
 glimpse(the_one_in_massapequa)
 ```
