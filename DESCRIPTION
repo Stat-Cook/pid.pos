@@ -23,6 +23,7 @@ Imports:
     magrittr,
     rlang,
     purrr,
+    openssl,
     rappdirs,
     shiny,
     R6,
