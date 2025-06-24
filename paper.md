@@ -19,7 +19,7 @@ affiliations:
  - name: University of Staffordshire, Centre for Health Innovation, Blackheath Lane, Stafford,  England
    index: 1
 date: 12 December 2023
-bibliography: paper.bib
+bibliography: JOSS_utilities/paper.bib
 ---
 # Summary
 
@@ -85,17 +85,17 @@ To assist with understanding the `PID.POS` package, we include a subset
 of the ‘friends’ data set from the `friends` package.
 
 ``` r
-library(dplyr)
+library(pid.pos)
 
 glimpse(the_one_in_massapequa)
 ```
 
     ## Rows: 257
     ## Columns: 4
-    ## $ scene     <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, …
-    ## $ utterance <int> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, …
-    ## $ speaker   <chr> "Scene Directions", "Phoebe Buffay", "Monica Geller", "Ross Geller", "Joey Tribbiani", "Phoebe Buffay", "Chandler …
-    ## $ text      <chr> "[Scene: Central Perk, everyone is there.]", "Oh, Ross, Mon, is it okay if I bring someone to your parent's annive…
+    ## $ scene     <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, …
+    ## $ utterance <int> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 1, 2, 3, 4, 5, 6, 7, 8, 9, …
+    ## $ speaker   <chr> "Scene Directions", "Phoebe Buffay", "Monica Geller", "Ross Geller", "Joey Tribbiani", "Ph…
+    ## $ text      <chr> "[Scene: Central Perk, everyone is there.]", "Oh, Ross, Mon, is it okay if I bring someone…
 
 The package has two main functions for identifying PID risks, depending
 on the users needs.  
