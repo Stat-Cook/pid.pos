@@ -2,7 +2,7 @@
 title: "Reporting on every file in a folder"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{PID detection on every file in a folder}
+  %\VignetteIndexEntry{Reporting on every file in a folder}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

@@ -2,7 +2,7 @@
 title: "Trouble shooting the UDpipe Model"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{The udpipe Model}
+  %\VignetteIndexEntry{Trouble shooting the UDpipe Model}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
