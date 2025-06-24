@@ -145,8 +145,8 @@ basic functionality designed for minimal technical knowledge to assist
 in the redaction of PID.
 
 Where a PID report has been ran, the resulting data frame can be passed
-to the function `report_as_rules_template` which will convert the report
-to a csv file with three headings:
+to the function `report_to_replacement_rules` which will convert the
+report to a csv file with three headings:
 
 -   `If` - the sentence pattern which, if it matches, the replacement is
     applied
@@ -154,7 +154,7 @@ to a csv file with three headings:
 -   `To` - the intended replacement
 
 ``` r
-report_as_rules_template(report, path='path/to/report.csv')
+report_to_replacement_rules(report, path='path/to/report.csv')
 ```
 
 | If            | From   | To     |
@@ -171,15 +171,15 @@ does not need to understand R, and can be reimported using the
 `template_to_rules` function:
 
 ``` r
-template_to_rules('path/to/report.csv')
+load_replacement_rules('path/to/report.csv')
 ```
 
-The `template_to_rules` function creates a string replacement rule to
-capture the desired redactions, with the option for R to ‘parse’ the
+The `load_replacement_rules` function creates a string replacement rule
+to capture the desired redactions, with the option for R to ‘parse’ the
 function for use as part of a data pipeline:
 
 ``` r
-replacement.func <- template_to_rules('path/to/report.csv', parse=T)
+replacement.func <- load_replacement_rules('path/to/report.csv', parse=T)
 
 the_one_in_massapequa |>
   mutate(
@@ -190,9 +190,9 @@ the_one_in_massapequa |>
   )
 ```
 
-For a more advanced user, the `template_to_rules` function utilizes the
-`str_detect` and `str_replace_all` functions from the `stringr` package,
-and hence supports regex.
+For a more advanced user, the `load_replacement_rules` function utilizes
+the `str_detect` and `str_replace_all` functions from the `stringr`
+package, and hence supports regex.
 
 # Current applications
 
