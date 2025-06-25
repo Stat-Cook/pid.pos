@@ -1,6 +1,6 @@
 auto_replace <- function(frm, replacement.f) {
   #' Apply a replacement function to a `rules.frm`.
-  #' 
+  #'
   #'
   #' Several function factories have been implemented to create replacement functions
   #' (`hashing_replacement.f`, `random_replacement.f`, `all_random_replacement.f`)
