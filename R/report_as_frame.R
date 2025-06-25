@@ -25,11 +25,11 @@ report_to_replacement_rules <- function(report, path = NULL) {
   .frm
 }
 
-load_replacement_rules <- function(object, parse = F){
+load_replacement_rules <- function(object, parse = F) {
   #' Convert a set of `replacement_rules` (as defined with `report_to_replacement_rules`) to
   #' a function that can be used to modify a data frame.
   #'
-  #' @param object The `replacement_rules` (can be a `data.frame` 
+  #' @param object The `replacement_rules` (can be a `data.frame`
   #'    or a path to a csv file containing the rules).
   #' @param parse Binary-flag.  If True the replacement function is parsed.
   #'
@@ -38,15 +38,15 @@ load_replacement_rules <- function(object, parse = F){
 }
 
 load_replacement_rules.character <- function(object, parse = F) {
-  #' @exportS3Method 
+  #' @exportS3Method
   rules.frm <- read.csv(path)
 
   load_replacement_rules(rules.frm, parse)
 }
 
 load_replacement_rules.data.frame <- function(object, parse = F) {
-  #' @exportS3Method  
-  
+  #' @exportS3Method
+
   parse_replacement_rules(object, parse)
 }
 
