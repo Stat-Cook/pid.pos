@@ -3,6 +3,7 @@
 on:
   push:
     branches: [main, master, redesign]
+    paths: ["**.R", "DSCRIPTION", "NAMESPACE"]
   pull_request:
 
 name: R-CMD-check.yaml

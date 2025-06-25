@@ -3,6 +3,7 @@
 on:
   push:
     branches: [main, master, redesign]
+    paths: "**.R"
   pull_request:
   release:
     types: [published]
