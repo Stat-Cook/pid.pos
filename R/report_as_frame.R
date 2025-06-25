@@ -39,7 +39,7 @@ load_replacement_rules <- function(object, parse = F){
 
 load_replacement_rules.character <- function(object, parse = F) {
   #' @exportS3Method 
-  rules.frm <- read.csv(path)
+  rules.frm <- read.csv(object)
 
   load_replacement_rules(rules.frm, parse)
 }
