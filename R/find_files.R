@@ -18,7 +18,6 @@ find_files <- function(path,
   #' @return A list of file paths
   #'
   #' @importFrom purrr reduce
-  #' @export
   #'
   dirs <- list.dirs(path, recursive = F)
 

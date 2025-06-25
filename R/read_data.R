@@ -4,7 +4,6 @@ read_data <- function(file_path, ...) {
   #' @param file_path The path to the file to read
   #' @param ... Additional arguments to pass to the read function
   #'
-  #' @export
   UseMethod("read_data")
 }
 

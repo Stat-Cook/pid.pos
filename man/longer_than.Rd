@@ -12,9 +12,3 @@ longer_than(limit = 5)
 \description{
 Produces a function that checks if any strings in a vector is longer than 'limit'
 }
-\examples{
-longer_than_5 <- longer_than(5)
-.str <- c("ABCDE", "ABC", "ABCDEFG")
-longer_than_5(.str)
-
-}
