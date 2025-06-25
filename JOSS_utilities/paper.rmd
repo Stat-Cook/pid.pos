@@ -149,7 +149,8 @@ the_one_in_massapequa |>
 ```
 
 For a more advanced user, the `load_replacement_rules` function utilizes the `str_detect` and 
-`str_replace_all` functions from the `stringr` package, and hence supports regex. 
+`str_replace_all` functions from the `stringr` package, and hence supports regex. Further utilities are 
+available, notably tools to automatically encode the `To` column (see [Auto Replacements](https://stat-cook.github.io/pid.pos/articles/AutoReplacement.html)).
 
 # Current applications
 

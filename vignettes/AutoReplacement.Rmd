@@ -2,7 +2,7 @@
 title: "Automatic Replacement Tools"
 output: 
   rmarkdown::html_vignette:
-    df_print: paged
+    df_print: kable
 vignette: >
   %\VignetteIndexEntry{Automatic Replacement Tools}
   %\VignetteEngine{knitr::rmarkdown}
@@ -12,6 +12,7 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
+
   comment = "#>",
   rows.print = 6
 )
@@ -38,7 +39,7 @@ with three methods supplied by the package:
   
 The basic workflow is hence:
 
-```{r setup}
+```{r, results="hide", message=F}
 library(pid.pos)
 
 report <- data_frame_report(the_one_in_massapequa)
@@ -47,60 +48,53 @@ replacement_rules <- report_to_replacement_rules(report)
 replacement_rules
 ```
 
-
-  
-``` {r, eval=F}
-set.seed(101)
-head.replacement_rules <- head(replacement_rules, 5)
-
-replacement.f <- random_replacement.f(
-  replacement_size = 5,
-  replacement_space = LETTERS
-)
-
-updated.replacement_rules <- auto_replace(head.replacement_rules, replacement.f)
-updated.replacement_rules
+``` {r, echo=F}
+head(replacement_rules, 5)
 ```
 
-``` {r, echo=F}
-head.replacement_rules <- head(replacement_rules, 5)
+To fill in the `To` column we initialize a replacement function (in this case `random_replacement.f`):
+  
+``` {r}
 replacement.f <- random_replacement.f(
   replacement_size = 5,
   replacement_space = LETTERS
 )
+```
 
+and then apply it to the `replacement_rules` table:
+
+``` {r, results="hide"}
 set.seed(101)
 updated.replacement_rules <- auto_replace(replacement_rules, replacement.f)
-set.seed(101)
-head.updated.replacement_rules <- auto_replace(head.replacement_rules, replacement.f)
-knitr::kable(head.updated.replacement_rules)
+updated.replacement_rules
+```
+``` {r, echo=F}
+head(updated.replacement_rules, 5)
 ```
 
-The altered `replacement_rules` is then converted to a replacement function via `load_replacement_rules`: 
+The `updated.replacement_rules` can then converted to a replacement function via `load_replacement_rules`: 
 
 ``` {r, eval=F}
 load_replacement_rules(updated.replacement_rules)
 ```
-
 ``` {r, eval=F}
-function(.x) {
-  dplyr::case_when(
-    stringr::str_detect(.x, "Monica Geller") ~ .x |> stringr::str_replace_all("Monica", "SSZFX") |>
-      stringr::str_replace_all("Geller", "KASKK"),
-    stringr::str_detect(.x, "Phoebe Buffay") ~ .x |> stringr::str_replace_all("Phoebe", "OZJEG") |>
-      stringr::str_replace_all("Buffay", "XZPIZ"),
-    stringr::str_detect(.x, "Ross Geller") ~ .x |> stringr::str_replace_all("Ross", "KWNBJ"),
+function(.x) dplyr::case_when(
+    stringr::str_detect(.x, '(Cut to Monica and Chandler)') ~ .x |> stringr::str_replace_all('Monica', 'CCBTU') |>
+      stringr::str_replace_all('Chandler', 'TFXGJ'),
+    stringr::str_detect(.x, '(Cut to Monica, at the microphone)') ~ .x |> stringr::str_replace_all('Monica', 'CCBTU'),
+    stringr::str_detect(.x, '(Cut to Phoebe and Joey)') ~ .x |> stringr::str_replace_all('Phoebe', 'IYNWQ') |>
+      stringr::str_replace_all('Joey', 'JZKUZ'),
     ...,
-    .default = .x
+    .default=.x
   )
-}
 ```
 
 which if parsed, can be used to modify the original data set:    
 
-``` {r, eval=F}
+``` {r, results="hide", message=F}
 redaction.f <- load_replacement_rules(updated.replacement_rules, parse = T)
 
+library(dplyr)
 the_one_in_massapequa |>
   mutate(
     across(
@@ -110,14 +104,14 @@ the_one_in_massapequa |>
   )
 ```
 
-``` {r, echo=F}
-redaction.f <- load_replacement_rules(updated.replacement_rules, parse = T)
-
+``` {r, echo = F}
 the_one_in_massapequa |>
-  dplyr::mutate(
+  mutate(
     across(
       where(is.character),
       redaction.f
     )
-  )
+  ) |> 
+  head(5)
 ```
+
