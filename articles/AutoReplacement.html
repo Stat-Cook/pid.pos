@@ -98,456 +98,67 @@ replacements are unique.</li>
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://stat-cook.github.io/pid.pos/">pid.pos</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">report</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/data_frame_report.html">data_frame_report</a></span><span class="op">(</span><span class="va">the_one_in_massapequa</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Downloading udpipe model from https://raw.githubusercontent.com/jwijffels/udpipe.models.ud.2.5/master/inst/udpipe-ud-2.5-191206/english-ewt-ud-2.5-191206.udpipe to ~/.local/share/pid.pos/english-ewt-ud-2.5-191206.udpipe</span></span>
-<span><span class="co">#&gt;  - This model has been trained on version 2.5 of data from https://universaldependencies.org</span></span>
-<span><span class="co">#&gt;  - The model is distributed under the CC-BY-SA-NC license: https://creativecommons.org/licenses/by-nc-sa/4.0</span></span>
-<span><span class="co">#&gt;  - Visit https://github.com/jwijffels/udpipe.models.ud.2.5 for model license details.</span></span>
-<span><span class="co">#&gt;  - For a list of all models and their licenses (most models you can download with this package have either a CC-BY-SA or a CC-BY-SA-NC license) read the documentation at ?udpipe_download_model. For building your own models: visit the documentation by typing vignette('udpipe-train', package = 'udpipe')</span></span>
-<span><span class="co">#&gt; Downloading finished, model stored at '~/.local/share/pid.pos/english-ewt-ud-2.5-191206.udpipe'</span></span>
-<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■■■■                     </span>  33% |  ETA:  4s</span></span>
 <span><span class="va">replacement_rules</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/report_to_replacement_rules.html">report_to_replacement_rules</a></span><span class="op">(</span><span class="va">report</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">replacement_rules</span></span>
-<span><span class="co">#&gt;                                                                                                                                              If</span></span>
-<span><span class="co">#&gt; 1                                                                                                                                 Phoebe Buffay</span></span>
-<span><span class="co">#&gt; 2                                                                                                                                 Phoebe Buffay</span></span>
-<span><span class="co">#&gt; 3                                                                                                                                 Monica Geller</span></span>
-<span><span class="co">#&gt; 4                                                                                                                                 Monica Geller</span></span>
-<span><span class="co">#&gt; 5                                                                                                                                   Ross Geller</span></span>
-<span><span class="co">#&gt; 6                                                                                                                                   Ross Geller</span></span>
-<span><span class="co">#&gt; 7                                                                                                                                Joey Tribbiani</span></span>
-<span><span class="co">#&gt; 8                                                                                                                                Joey Tribbiani</span></span>
-<span><span class="co">#&gt; 9                                                                                                                                      Chandler</span></span>
-<span><span class="co">#&gt; 10                                                                                                                                         Bing</span></span>
-<span><span class="co">#&gt; 11                                                                                                                                 Rachel Green</span></span>
-<span><span class="co">#&gt; 12                                                                                                                                 Rachel Green</span></span>
-<span><span class="co">#&gt; 13                                                                                                                                       Parker</span></span>
-<span><span class="co">#&gt; 14                                                                                                                                           NA</span></span>
-<span><span class="co">#&gt; 15                                                                                                                                  Judy Geller</span></span>
-<span><span class="co">#&gt; 16                                                                                                                                  Judy Geller</span></span>
-<span><span class="co">#&gt; 17                                                                                                                                  Jack Geller</span></span>
-<span><span class="co">#&gt; 18                                                                                                                                  Jack Geller</span></span>
-<span><span class="co">#&gt; 19                                                                                                                                        Woman</span></span>
-<span><span class="co">#&gt; 20                                                                                                                                    Aunt Lisa</span></span>
-<span><span class="co">#&gt; 21                                                                                                                                    Aunt Lisa</span></span>
-<span><span class="co">#&gt; 22                                                                                                                                    Uncle Dan</span></span>
-<span><span class="co">#&gt; 23                                                                                                    [Scene: Central Perk, everyone is there.]</span></span>
-<span><span class="co">#&gt; 24                                                                                                    [Scene: Central Perk, everyone is there.]</span></span>
-<span><span class="co">#&gt; 25                                                             Oh, Ross, Mon, is it okay if I bring someone to your parent's anniversary party?</span></span>
-<span><span class="co">#&gt; 26                                                             Oh, Ross, Mon, is it okay if I bring someone to your parent's anniversary party?</span></span>
-<span><span class="co">#&gt; 27                                                                                   Well, his name is Parker and I met him at the drycleaners.</span></span>
-<span><span class="co">#&gt; 28                                                   Every year Ross makes the toast, and it's always really moving, and always makes them cry.</span></span>
-<span><span class="co">#&gt; 29                                                                                                   And you wonder why Ross is their favorite?</span></span>
-<span><span class="co">#&gt; 30  Any time Ross makes a toast everyone cries, and hugs him, and pats him on the back and they all come up to me and say, "God, your brother."</span></span>
-<span><span class="co">#&gt; 31                                                                [Scene: Chandler and Monica's, they're getting ready to leave for the party.]</span></span>
-<span><span class="co">#&gt; 32                                                                [Scene: Chandler and Monica's, they're getting ready to leave for the party.]</span></span>
-<span><span class="co">#&gt; 33                                                                                                                               Sob fest 2002.</span></span>
-<span><span class="co">#&gt; 34                                                                                          That's Chi-Chi; she died when I was in high school.</span></span>
-<span><span class="co">#&gt; 35                                                                                          That's Chi-Chi; she died when I was in high school.</span></span>
-<span><span class="co">#&gt; 36                                                                                                               (Ross, Joey, and Rachel enter)</span></span>
-<span><span class="co">#&gt; 37                                                                                                               (Ross, Joey, and Rachel enter)</span></span>
-<span><span class="co">#&gt; 38                                                                                                               (Ross, Joey, and Rachel enter)</span></span>
-<span><span class="co">#&gt; 39                                                                                        And I got them a book on Karma Sutra for the elderly.</span></span>
-<span><span class="co">#&gt; 40                                                                                        And I got them a book on Karma Sutra for the elderly.</span></span>
-<span><span class="co">#&gt; 41                                                                                                                                     Chi-Chi!</span></span>
-<span><span class="co">#&gt; 42                                                                       Y'know Monica couldn't get braces because Chi-Chi needed knee surgery.</span></span>
-<span><span class="co">#&gt; 43                                                                       Y'know Monica couldn't get braces because Chi-Chi needed knee surgery.</span></span>
-<span><span class="co">#&gt; 44                                                                       Y'know Monica couldn't get braces because Chi-Chi needed knee surgery.</span></span>
-<span><span class="co">#&gt; 45                                                                       Y'know Monica couldn't get braces because Chi-Chi needed knee surgery.</span></span>
-<span><span class="co">#&gt; 46                                                                                                                    (Phoebe and Parker enter)</span></span>
-<span><span class="co">#&gt; 47                                                                                                                    (Phoebe and Parker enter)</span></span>
-<span><span class="co">#&gt; 48                                                                                                 Everybody, this is Parker, Parker this is...</span></span>
-<span><span class="co">#&gt; 49                                                                                                 Everybody, this is Parker, Parker this is...</span></span>
-<span><span class="co">#&gt; 50                                                                                                                          Joey, Monica, Ross,</span></span>
-<span><span class="co">#&gt; 51                                                                                                                          Joey, Monica, Ross,</span></span>
-<span><span class="co">#&gt; 52                                                                                                                          Joey, Monica, Ross,</span></span>
-<span><span class="co">#&gt; 53                                                                                             Rachel and, I'm sorry Phoebe didn't mention you.</span></span>
-<span><span class="co">#&gt; 54                                                                                             Rachel and, I'm sorry Phoebe didn't mention you.</span></span>
-<span><span class="co">#&gt; 55                                                                                                                                    Chandler,</span></span>
-<span><span class="co">#&gt; 56                                                                                                                                          Ha!</span></span>
-<span><span class="co">#&gt; 57                                                                                                                                Classic Ross.</span></span>
-<span><span class="co">#&gt; 58                                                                                                                                Classic Ross.</span></span>
-<span><span class="co">#&gt; 59                                                                                                                                      Rachel,</span></span>
-<span><span class="co">#&gt; 60                                                                                                                     Rachel, oh how you glow.</span></span>
-<span><span class="co">#&gt; 61                                                                                                    Rachel, you have life growing inside you.</span></span>
-<span><span class="co">#&gt; 62                                                                                                                          It's in Massapequa.</span></span>
-<span><span class="co">#&gt; 63                                                                                                  Maaaassapequa, Sounds Like A Magical Place.</span></span>
-<span><span class="co">#&gt; 64                                                                            Tell Me About Massapequa, Is It Steep In Native American History?</span></span>
-<span><span class="co">#&gt; 65                                                                            Tell Me About Massapequa, Is It Steep In Native American History?</span></span>
-<span><span class="co">#&gt; 66                                                                                          Well, there is an Arby's in the shape of a tee-pee.</span></span>
-<span><span class="co">#&gt; 67                                                                                                     (Everyone except Ross and Rachel leave.)</span></span>
-<span><span class="co">#&gt; 68                                                                                                     (Everyone except Ross and Rachel leave.)</span></span>
-<span><span class="co">#&gt; 69                                                                                                     Ya wanna hang back and take our own cab?</span></span>
-<span><span class="co">#&gt; 70                                                            [Scene: The Anniversary Party, Ross and Rachel are arriving and see his parents.]</span></span>
-<span><span class="co">#&gt; 71                                                            [Scene: The Anniversary Party, Ross and Rachel are arriving and see his parents.]</span></span>
-<span><span class="co">#&gt; 72                                                            [Scene: The Anniversary Party, Ross and Rachel are arriving and see his parents.]</span></span>
-<span><span class="co">#&gt; 73                                                            [Scene: The Anniversary Party, Ross and Rachel are arriving and see his parents.]</span></span>
-<span><span class="co">#&gt; 74                                                                                                                                        Jack?</span></span>
-<span><span class="co">#&gt; 75                                                                                                                                    Wha-What?</span></span>
-<span><span class="co">#&gt; 76                                                                                                     Son, I had to shave my ears for tonight.</span></span>
-<span><span class="co">#&gt; 77                                                                                                                                        Ross!</span></span>
-<span><span class="co">#&gt; 78                                                                                                                                      Rachel!</span></span>
-<span><span class="co">#&gt; 79                                                                                                                     Hi Aunt Lisa, Uncle Dan.</span></span>
-<span><span class="co">#&gt; 80                                                                                                                     Hi Aunt Lisa, Uncle Dan.</span></span>
-<span><span class="co">#&gt; 81                                                                                                                     Hi Aunt Lisa, Uncle Dan.</span></span>
-<span><span class="co">#&gt; 82                                                                                                                     Hi Aunt Lisa, Uncle Dan.</span></span>
-<span><span class="co">#&gt; 83                                                                                             (The rest of the gang arrives including Parker.)</span></span>
-<span><span class="co">#&gt; 84                                                                                                                                      Dahaaa!</span></span>
-<span><span class="co">#&gt; 85                                                                                     He called the Long Island Expressway a concrete miracle.</span></span>
-<span><span class="co">#&gt; 86                                                                                     He called the Long Island Expressway a concrete miracle.</span></span>
-<span><span class="co">#&gt; 87                                                                                     He called the Long Island Expressway a concrete miracle.</span></span>
-<span><span class="co">#&gt; 88                                                                                                          Were you guys making fun of Parker?</span></span>
-<span><span class="co">#&gt; 89                                                                                                                           Tag, Janice, Mona?</span></span>
-<span><span class="co">#&gt; 90                                                                                                                           Tag, Janice, Mona?</span></span>
-<span><span class="co">#&gt; 91                                                                                                                           Tag, Janice, Mona?</span></span>
-<span><span class="co">#&gt; 92                                                                                                                    What was wrong with Mona?</span></span>
-<span><span class="co">#&gt; 93                                                    [Scene: The Anniversary Party, Ross and Rachel have just gotten another wedding present.]</span></span>
-<span><span class="co">#&gt; 94                                                    [Scene: The Anniversary Party, Ross and Rachel have just gotten another wedding present.]</span></span>
-<span><span class="co">#&gt; 95                                                    [Scene: The Anniversary Party, Ross and Rachel have just gotten another wedding present.]</span></span>
-<span><span class="co">#&gt; 96                                                    [Scene: The Anniversary Party, Ross and Rachel have just gotten another wedding present.]</span></span>
-<span><span class="co">#&gt; 97                                      On a cliff, in Barbados, at sunset, and Stevie Wonder sang Isn't She Lovely as I walked down the aisle.</span></span>
-<span><span class="co">#&gt; 98                                      On a cliff, in Barbados, at sunset, and Stevie Wonder sang Isn't She Lovely as I walked down the aisle.</span></span>
-<span><span class="co">#&gt; 99                                                                                                         Yeah, Stevie's an old family friend.</span></span>
-<span><span class="co">#&gt; 100                                                                                                                                  Oh my God.</span></span>
-<span><span class="co">#&gt; 101                                                             You wouldn't think that Annie Liebawitz would forget to put film in the camera.</span></span>
-<span><span class="co">#&gt; 102                                                             You wouldn't think that Annie Liebawitz would forget to put film in the camera.</span></span>
-<span><span class="co">#&gt; 103                                                                                                     Ooooh, ooh maybe I rode in on a Harley.</span></span>
-<span><span class="co">#&gt; 104                                                                                                         Okay, Ross, it has to be realistic.</span></span>
-<span><span class="co">#&gt; 105                                                                                                                  (Cut to Phoebe and Parker)</span></span>
-<span><span class="co">#&gt; 106                                                                                                                  (Cut to Phoebe and Parker)</span></span>
-<span><span class="co">#&gt; 107                                                                                                                (Cut to Monica and Chandler)</span></span>
-<span><span class="co">#&gt; 108                                                                                                                (Cut to Monica and Chandler)</span></span>
-<span><span class="co">#&gt; 109                                                                           Ya know if you want to, I can just hold them down and you could .</span></span>
-<span><span class="co">#&gt; 110                                                                                                                    (Cut to Rachel and Ross)</span></span>
-<span><span class="co">#&gt; 111                                                                                                                    (Cut to Rachel and Ross)</span></span>
-<span><span class="co">#&gt; 112                                                                                          And my veil was lace, made by blind, Belgium nuns.</span></span>
-<span><span class="co">#&gt; 113                                                                                                                                      Blind?</span></span>
-<span><span class="co">#&gt; 114                                     Then, Fred Astaire singing The Way You Look Tonight came on the sound system, and the lights came down.</span></span>
-<span><span class="co">#&gt; 115                                     Then, Fred Astaire singing The Way You Look Tonight came on the sound system, and the lights came down.</span></span>
-<span><span class="co">#&gt; 116                                     Then, Fred Astaire singing The Way You Look Tonight came on the sound system, and the lights came down.</span></span>
-<span><span class="co">#&gt; 117                                     Then, Fred Astaire singing The Way You Look Tonight came on the sound system, and the lights came down.</span></span>
-<span><span class="co">#&gt; 118                                                                                                                    (Cut to Phoebe and Joey)</span></span>
-<span><span class="co">#&gt; 119                                                                                                                    (Cut to Phoebe and Joey)</span></span>
-<span><span class="co">#&gt; 120                                                                                                                            Yeah uh, Phoebe!</span></span>
-<span><span class="co">#&gt; 121                                                                                        Parker's a nice guy and I'd like to get to know him.</span></span>
-<span><span class="co">#&gt; 122                                                                  I mean I'm all for living life, but this is the Geller's 35th anniversary.</span></span>
-<span><span class="co">#&gt; 123                                                                   Y'know, I just wiped it on Chandler's coat and got the hell out of there.</span></span>
-<span><span class="co">#&gt; 124                                                                                                                        Oh look it's Parker!</span></span>
-<span><span class="co">#&gt; 125                                                                                                          (Cut to Monica, at the microphone)</span></span>
-<span><span class="co">#&gt; 126                                                    Umm now-now, I know that Ross usually gives the toast, but this year I'm going to do it.</span></span>
-<span><span class="co">#&gt; 127                                                Nana, my beloved grandmother who would so want to be here, but she can't because she's dead.</span></span>
-<span><span class="co">#&gt; 128                                                                                                                      As is our dog Chi-Chi.</span></span>
-<span><span class="co">#&gt; 129                                                                                                         I mean look how cute she is. . Was.</span></span>
-<span><span class="co">#&gt; 130                                                                                                                   Okay, her and Nana, gone.</span></span>
-<span><span class="co">#&gt; 131                                                                                                                   Okay, her and Nana, gone.</span></span>
-<span><span class="co">#&gt; 132                                      Hey does anybody remember when Debra Winger had to say goodbye to her children in Terms of Endearment?</span></span>
-<span><span class="co">#&gt; 133                                      Hey does anybody remember when Debra Winger had to say goodbye to her children in Terms of Endearment?</span></span>
-<span><span class="co">#&gt; 134                  The other day I was watching 60 Minutes these orphans in Romania, who have been so neglected, they were incapable of love.</span></span>
-<span><span class="co">#&gt; 135                  The other day I was watching 60 Minutes these orphans in Romania, who have been so neglected, they were incapable of love.</span></span>
-<span><span class="co">#&gt; 136                                                                                                  Thank you Monica that was uh, interesting.</span></span>
-<span><span class="co">#&gt; 137                                                                                                                Wasn't it interesting, Jack?</span></span>
-<span><span class="co">#&gt; 138                                                                                                 Ross, why don't you give us your toast now?</span></span>
-<span><span class="co">#&gt; 139                                                                                                    Oh, no, Mom, it's just Monica this year.</span></span>
-<span><span class="co">#&gt; 140                                                                                                                        No, of course, Um...</span></span>
-<span><span class="co">#&gt; 141                                                                Um, I-I just wanted to say...on behalf of my new bride, Rachel , and myself.</span></span>
-<span><span class="co">#&gt; 142                                                                                                                                  Oh Ross...</span></span>
-<span><span class="co">#&gt; 143                                                                                           I just wish Nana were alive to hear Ross's toast.</span></span>
-<span><span class="co">#&gt; 144                                                                                           I just wish Nana were alive to hear Ross's toast.</span></span>
-<span><span class="co">#&gt; 145                                                                                   [Scene: Phoebe's apartment, Parker and her are entering.]</span></span>
-<span><span class="co">#&gt; 146                                                                                   [Scene: Phoebe's apartment, Parker and her are entering.]</span></span>
-<span><span class="co">#&gt; 147                                                                                                                    Like a water and Valium?</span></span>
-<span><span class="co">#&gt; 148                                                                                                                               Oh thank God.</span></span>
-<span><span class="co">#&gt; 149                                                                                                           A modern-day Eden in the midst...</span></span>
-<span><span class="co">#&gt; 150                                                               My God this is the most comfortable couch I've ever sat on in my entire life.</span></span>
-<span><span class="co">#&gt; 151                                                                                                                                 Or...Jenga.</span></span>
-<span><span class="co">#&gt; 152                                                                                                                          I lose, now Jenga.</span></span>
-<span><span class="co">#&gt; 153                                                                                                                                  Oh my God!</span></span>
-<span><span class="co">#&gt; 154                                                                                                                                  Oh my God!</span></span>
-<span><span class="co">#&gt; 155                                                                                                                                      Wrong?</span></span>
-<span><span class="co">#&gt; 156                                                                                                        They were just brake lights, Parker!</span></span>
-<span><span class="co">#&gt; 157                                                                           You are like Santa Clause on Prozac, at Disneyland, getting laid!</span></span>
-<span><span class="co">#&gt; 158                                                                           You are like Santa Clause on Prozac, at Disneyland, getting laid!</span></span>
-<span><span class="co">#&gt; 159                                                                           You are like Santa Clause on Prozac, at Disneyland, getting laid!</span></span>
-<span><span class="co">#&gt; 160                                                                           You are like Santa Clause on Prozac, at Disneyland, getting laid!</span></span>
-<span><span class="co">#&gt; 161                                                                                             Well then to quote Ross, "I'd better be going."</span></span>
-<span><span class="co">#&gt; 162                                                                                             (There's a knock on door, and Phoebe opens it.)</span></span>
-<span><span class="co">#&gt; 163                                                                               [Scene: Ross and Rachel's, they're returning from the party.]</span></span>
-<span><span class="co">#&gt; 164                                                                               [Scene: Ross and Rachel's, they're returning from the party.]</span></span>
-<span><span class="co">#&gt; 165                                                                                                  Ross, it just wouldn't have been feasible.</span></span>
-<span><span class="co">#&gt; 166                                                                                               Okay Ross, can I uh, can I ask you something?</span></span>
-<span><span class="co">#&gt; 167                                                                                           [Scene: Central Perk, Ross and Monica are there.]</span></span>
-<span><span class="co">#&gt; 168                                                                                           [Scene: Central Perk, Ross and Monica are there.]</span></span>
-<span><span class="co">#&gt; 169                                                                                           [Scene: Central Perk, Ross and Monica are there.]</span></span>
-<span><span class="co">#&gt; 170                                                                                           [Scene: Central Perk, Ross and Monica are there.]</span></span>
-<span><span class="co">#&gt; 171                                                                                      And that picture of Chi-Chi with her mischievous grin.</span></span>
-<span><span class="co">#&gt; 172                                                                                      And that picture of Chi-Chi with her mischievous grin.</span></span>
-<span><span class="co">#&gt; 173                                                                                                               And what you said about Nana.</span></span>
-<span><span class="co">#&gt; 174                                                                                                                          Oh good God, Ross!</span></span>
-<span><span class="co">#&gt; 175                                                                                                                          Oh good God, Ross!</span></span>
-<span><span class="co">#&gt; 176                                                                                                                                         End</span></span>
-<span><span class="co">#&gt;              From            To</span></span>
-<span><span class="co">#&gt; 1          Phoebe        Phoebe</span></span>
-<span><span class="co">#&gt; 2          Buffay        Buffay</span></span>
-<span><span class="co">#&gt; 3          Monica        Monica</span></span>
-<span><span class="co">#&gt; 4          Geller        Geller</span></span>
-<span><span class="co">#&gt; 5            Ross          Ross</span></span>
-<span><span class="co">#&gt; 6          Geller        Geller</span></span>
-<span><span class="co">#&gt; 7            Joey          Joey</span></span>
-<span><span class="co">#&gt; 8       Tribbiani     Tribbiani</span></span>
-<span><span class="co">#&gt; 9        Chandler      Chandler</span></span>
-<span><span class="co">#&gt; 10           Bing          Bing</span></span>
-<span><span class="co">#&gt; 11         Rachel        Rachel</span></span>
-<span><span class="co">#&gt; 12          Green         Green</span></span>
-<span><span class="co">#&gt; 13         Parker        Parker</span></span>
-<span><span class="co">#&gt; 14             NA            NA</span></span>
-<span><span class="co">#&gt; 15           Judy          Judy</span></span>
-<span><span class="co">#&gt; 16         Geller        Geller</span></span>
-<span><span class="co">#&gt; 17           Jack          Jack</span></span>
-<span><span class="co">#&gt; 18         Geller        Geller</span></span>
-<span><span class="co">#&gt; 19          Woman         Woman</span></span>
-<span><span class="co">#&gt; 20           Aunt          Aunt</span></span>
-<span><span class="co">#&gt; 21           Lisa          Lisa</span></span>
-<span><span class="co">#&gt; 22            Dan           Dan</span></span>
-<span><span class="co">#&gt; 23        Central       Central</span></span>
-<span><span class="co">#&gt; 24           Perk          Perk</span></span>
-<span><span class="co">#&gt; 25           Ross          Ross</span></span>
-<span><span class="co">#&gt; 26            Mon           Mon</span></span>
-<span><span class="co">#&gt; 27         Parker        Parker</span></span>
-<span><span class="co">#&gt; 28           Ross          Ross</span></span>
-<span><span class="co">#&gt; 29           Ross          Ross</span></span>
-<span><span class="co">#&gt; 30           Ross          Ross</span></span>
-<span><span class="co">#&gt; 31       Chandler      Chandler</span></span>
-<span><span class="co">#&gt; 32         Monica        Monica</span></span>
-<span><span class="co">#&gt; 33            Sob           Sob</span></span>
-<span><span class="co">#&gt; 34            Chi           Chi</span></span>
-<span><span class="co">#&gt; 35            Chi           Chi</span></span>
-<span><span class="co">#&gt; 36           Ross          Ross</span></span>
-<span><span class="co">#&gt; 37           Joey          Joey</span></span>
-<span><span class="co">#&gt; 38         Rachel        Rachel</span></span>
-<span><span class="co">#&gt; 39          Karma         Karma</span></span>
-<span><span class="co">#&gt; 40          Sutra         Sutra</span></span>
-<span><span class="co">#&gt; 41            Chi           Chi</span></span>
-<span><span class="co">#&gt; 42         Y'know        Y'know</span></span>
-<span><span class="co">#&gt; 43         Monica        Monica</span></span>
-<span><span class="co">#&gt; 44            Chi           Chi</span></span>
-<span><span class="co">#&gt; 45            Chi           Chi</span></span>
-<span><span class="co">#&gt; 46         Phoebe        Phoebe</span></span>
-<span><span class="co">#&gt; 47         Parker        Parker</span></span>
-<span><span class="co">#&gt; 48         Parker        Parker</span></span>
-<span><span class="co">#&gt; 49         Parker        Parker</span></span>
-<span><span class="co">#&gt; 50           Joey          Joey</span></span>
-<span><span class="co">#&gt; 51         Monica        Monica</span></span>
-<span><span class="co">#&gt; 52           Ross          Ross</span></span>
-<span><span class="co">#&gt; 53         Rachel        Rachel</span></span>
-<span><span class="co">#&gt; 54         Phoebe        Phoebe</span></span>
-<span><span class="co">#&gt; 55       Chandler      Chandler</span></span>
-<span><span class="co">#&gt; 56             Ha            Ha</span></span>
-<span><span class="co">#&gt; 57        Classic       Classic</span></span>
-<span><span class="co">#&gt; 58           Ross          Ross</span></span>
-<span><span class="co">#&gt; 59         Rachel        Rachel</span></span>
-<span><span class="co">#&gt; 60         Rachel        Rachel</span></span>
-<span><span class="co">#&gt; 61         Rachel        Rachel</span></span>
-<span><span class="co">#&gt; 62     Massapequa    Massapequa</span></span>
-<span><span class="co">#&gt; 63  Maaaassapequa Maaaassapequa</span></span>
-<span><span class="co">#&gt; 64          About         About</span></span>
-<span><span class="co">#&gt; 65     Massapequa    Massapequa</span></span>
-<span><span class="co">#&gt; 66           Arby          Arby</span></span>
-<span><span class="co">#&gt; 67           Ross          Ross</span></span>
-<span><span class="co">#&gt; 68         Rachel        Rachel</span></span>
-<span><span class="co">#&gt; 69             Ya            Ya</span></span>
-<span><span class="co">#&gt; 70    Anniversary   Anniversary</span></span>
-<span><span class="co">#&gt; 71          Party         Party</span></span>
-<span><span class="co">#&gt; 72           Ross          Ross</span></span>
-<span><span class="co">#&gt; 73         Rachel        Rachel</span></span>
-<span><span class="co">#&gt; 74           Jack          Jack</span></span>
-<span><span class="co">#&gt; 75            Wha           Wha</span></span>
-<span><span class="co">#&gt; 76            Son           Son</span></span>
-<span><span class="co">#&gt; 77           Ross          Ross</span></span>
-<span><span class="co">#&gt; 78         Rachel        Rachel</span></span>
-<span><span class="co">#&gt; 79           Aunt          Aunt</span></span>
-<span><span class="co">#&gt; 80           Lisa          Lisa</span></span>
-<span><span class="co">#&gt; 81          Uncle         Uncle</span></span>
-<span><span class="co">#&gt; 82            Dan           Dan</span></span>
-<span><span class="co">#&gt; 83         Parker        Parker</span></span>
-<span><span class="co">#&gt; 84         Dahaaa        Dahaaa</span></span>
-<span><span class="co">#&gt; 85           Long          Long</span></span>
-<span><span class="co">#&gt; 86         Island        Island</span></span>
-<span><span class="co">#&gt; 87     Expressway    Expressway</span></span>
-<span><span class="co">#&gt; 88         Parker        Parker</span></span>
-<span><span class="co">#&gt; 89            Tag           Tag</span></span>
-<span><span class="co">#&gt; 90         Janice        Janice</span></span>
-<span><span class="co">#&gt; 91           Mona          Mona</span></span>
-<span><span class="co">#&gt; 92           Mona          Mona</span></span>
-<span><span class="co">#&gt; 93    Anniversary   Anniversary</span></span>
-<span><span class="co">#&gt; 94          Party         Party</span></span>
-<span><span class="co">#&gt; 95           Ross          Ross</span></span>
-<span><span class="co">#&gt; 96         Rachel        Rachel</span></span>
-<span><span class="co">#&gt; 97       Barbados      Barbados</span></span>
-<span><span class="co">#&gt; 98         Stevie        Stevie</span></span>
-<span><span class="co">#&gt; 99         Stevie        Stevie</span></span>
-<span><span class="co">#&gt; 100           God           God</span></span>
-<span><span class="co">#&gt; 101         Annie         Annie</span></span>
-<span><span class="co">#&gt; 102     Liebawitz     Liebawitz</span></span>
-<span><span class="co">#&gt; 103        Harley        Harley</span></span>
-<span><span class="co">#&gt; 104          Ross          Ross</span></span>
-<span><span class="co">#&gt; 105        Phoebe        Phoebe</span></span>
-<span><span class="co">#&gt; 106        Parker        Parker</span></span>
-<span><span class="co">#&gt; 107        Monica        Monica</span></span>
-<span><span class="co">#&gt; 108      Chandler      Chandler</span></span>
-<span><span class="co">#&gt; 109            Ya            Ya</span></span>
-<span><span class="co">#&gt; 110        Rachel        Rachel</span></span>
-<span><span class="co">#&gt; 111          Ross          Ross</span></span>
-<span><span class="co">#&gt; 112       Belgium       Belgium</span></span>
-<span><span class="co">#&gt; 113         Blind         Blind</span></span>
-<span><span class="co">#&gt; 114          Fred          Fred</span></span>
-<span><span class="co">#&gt; 115       Astaire       Astaire</span></span>
-<span><span class="co">#&gt; 116           Way           Way</span></span>
-<span><span class="co">#&gt; 117       Tonight       Tonight</span></span>
-<span><span class="co">#&gt; 118        Phoebe        Phoebe</span></span>
-<span><span class="co">#&gt; 119          Joey          Joey</span></span>
-<span><span class="co">#&gt; 120        Phoebe        Phoebe</span></span>
-<span><span class="co">#&gt; 121        Parker        Parker</span></span>
-<span><span class="co">#&gt; 122        Geller        Geller</span></span>
-<span><span class="co">#&gt; 123      Chandler      Chandler</span></span>
-<span><span class="co">#&gt; 124        Parker        Parker</span></span>
-<span><span class="co">#&gt; 125        Monica        Monica</span></span>
-<span><span class="co">#&gt; 126          Ross          Ross</span></span>
-<span><span class="co">#&gt; 127          Nana          Nana</span></span>
-<span><span class="co">#&gt; 128           Chi           Chi</span></span>
-<span><span class="co">#&gt; 129           Was           Was</span></span>
-<span><span class="co">#&gt; 130          Nana          Nana</span></span>
-<span><span class="co">#&gt; 131          gone          gone</span></span>
-<span><span class="co">#&gt; 132         Debra         Debra</span></span>
-<span><span class="co">#&gt; 133        Winger        Winger</span></span>
-<span><span class="co">#&gt; 134       Minutes       Minutes</span></span>
-<span><span class="co">#&gt; 135       Romania       Romania</span></span>
-<span><span class="co">#&gt; 136        Monica        Monica</span></span>
-<span><span class="co">#&gt; 137          Jack          Jack</span></span>
-<span><span class="co">#&gt; 138          Ross          Ross</span></span>
-<span><span class="co">#&gt; 139        Monica        Monica</span></span>
-<span><span class="co">#&gt; 140            Um            Um</span></span>
-<span><span class="co">#&gt; 141        Rachel        Rachel</span></span>
-<span><span class="co">#&gt; 142          Ross          Ross</span></span>
-<span><span class="co">#&gt; 143          Nana          Nana</span></span>
-<span><span class="co">#&gt; 144          Ross          Ross</span></span>
-<span><span class="co">#&gt; 145        Phoebe        Phoebe</span></span>
-<span><span class="co">#&gt; 146        Parker        Parker</span></span>
-<span><span class="co">#&gt; 147        Valium        Valium</span></span>
-<span><span class="co">#&gt; 148           God           God</span></span>
-<span><span class="co">#&gt; 149          Eden          Eden</span></span>
-<span><span class="co">#&gt; 150           God           God</span></span>
-<span><span class="co">#&gt; 151         Jenga         Jenga</span></span>
-<span><span class="co">#&gt; 152         Jenga         Jenga</span></span>
-<span><span class="co">#&gt; 153           God           God</span></span>
-<span><span class="co">#&gt; 154           God           God</span></span>
-<span><span class="co">#&gt; 155         Wrong         Wrong</span></span>
-<span><span class="co">#&gt; 156        Parker        Parker</span></span>
-<span><span class="co">#&gt; 157         Santa         Santa</span></span>
-<span><span class="co">#&gt; 158        Clause        Clause</span></span>
-<span><span class="co">#&gt; 159        Prozac        Prozac</span></span>
-<span><span class="co">#&gt; 160    Disneyland    Disneyland</span></span>
-<span><span class="co">#&gt; 161          Ross          Ross</span></span>
-<span><span class="co">#&gt; 162        Phoebe        Phoebe</span></span>
-<span><span class="co">#&gt; 163          Ross          Ross</span></span>
-<span><span class="co">#&gt; 164        Rachel        Rachel</span></span>
-<span><span class="co">#&gt; 165          Ross          Ross</span></span>
-<span><span class="co">#&gt; 166          Ross          Ross</span></span>
-<span><span class="co">#&gt; 167       Central       Central</span></span>
-<span><span class="co">#&gt; 168          Perk          Perk</span></span>
-<span><span class="co">#&gt; 169          Ross          Ross</span></span>
-<span><span class="co">#&gt; 170        Monica        Monica</span></span>
-<span><span class="co">#&gt; 171           Chi           Chi</span></span>
-<span><span class="co">#&gt; 172           Chi           Chi</span></span>
-<span><span class="co">#&gt; 173          Nana          Nana</span></span>
-<span><span class="co">#&gt; 174           God           God</span></span>
-<span><span class="co">#&gt; 175          Ross          Ross</span></span>
-<span><span class="co">#&gt; 176           End           End</span></span></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">101</span><span class="op">)</span></span>
-<span><span class="va">head.replacement_rules</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">replacement_rules</span>, <span class="fl">5</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">replacement.f</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/random_replacement.f.html">random_replacement.f</a></span><span class="op">(</span></span>
+<span><span class="va">replacement_rules</span></span></code></pre></div>
+<pre><code><span><span class="co">#&gt;              If   From     To</span></span>
+<span><span class="co">#&gt; 1 Phoebe Buffay Phoebe Phoebe</span></span>
+<span><span class="co">#&gt; 2 Phoebe Buffay Buffay Buffay</span></span>
+<span><span class="co">#&gt; 3 Monica Geller Monica Monica</span></span>
+<span><span class="co">#&gt; 4 Monica Geller Geller Geller</span></span>
+<span><span class="co">#&gt; 5   Ross Geller   Ross   Ross</span></span></code></pre>
+<p>To fill in the <code>To</code> column we initialize a replacement
+function (in this case <code>random_replacement.f</code>):</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">replacement.f</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/random_replacement.f.html">random_replacement.f</a></span><span class="op">(</span></span>
 <span>  replacement_size <span class="op">=</span> <span class="fl">5</span>,</span>
 <span>  replacement_space <span class="op">=</span> <span class="va">LETTERS</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">updated.replacement_rules</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/auto_replace.html">auto_replace</a></span><span class="op">(</span><span class="va">head.replacement_rules</span>, <span class="va">replacement.f</span><span class="op">)</span></span>
-<span><span class="va">updated.replacement_rules</span></span></code></pre></div>
-<table class="table">
-<thead><tr class="header">
-<th align="left">If</th>
-<th align="left">From</th>
-<th align="left">To</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="left">Phoebe Buffay</td>
-<td align="left">Phoebe</td>
-<td align="left">IYNWQ</td>
-</tr>
-<tr class="even">
-<td align="left">Phoebe Buffay</td>
-<td align="left">Buffay</td>
-<td align="left">ZVCCI</td>
-</tr>
-<tr class="odd">
-<td align="left">Monica Geller</td>
-<td align="left">Monica</td>
-<td align="left">CCBTU</td>
-</tr>
-<tr class="even">
-<td align="left">Monica Geller</td>
-<td align="left">Geller</td>
-<td align="left">QNLAM</td>
-</tr>
-<tr class="odd">
-<td align="left">Ross Geller</td>
-<td align="left">Ross</td>
-<td align="left">FXZPU</td>
-</tr>
-</tbody>
-</table>
-<p>The altered <code>replacement_rules</code> is then converted to a
-replacement function via <code>load_replacement_rules</code>:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/load_replacement_rules.html">load_replacement_rules</a></span><span class="op">(</span><span class="va">updated.replacement_rules</span><span class="op">)</span></span></code></pre></div>
+<span><span class="op">)</span></span></code></pre></div>
+<p>and then apply it to the <code>replacement_rules</code> table:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw">function</span><span class="op">(</span><span class="va">.x</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html" class="external-link">case_when</a></span><span class="op">(</span></span>
-<span>    <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html" class="external-link">str_detect</a></span><span class="op">(</span><span class="va">.x</span>, <span class="st">"Monica Geller"</span><span class="op">)</span> <span class="op">~</span> <span class="va">.x</span> <span class="op">|&gt;</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html" class="external-link">str_replace_all</a></span><span class="op">(</span><span class="st">"Monica"</span>, <span class="st">"SSZFX"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>      <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html" class="external-link">str_replace_all</a></span><span class="op">(</span><span class="st">"Geller"</span>, <span class="st">"KASKK"</span><span class="op">)</span>,</span>
-<span>    <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html" class="external-link">str_detect</a></span><span class="op">(</span><span class="va">.x</span>, <span class="st">"Phoebe Buffay"</span><span class="op">)</span> <span class="op">~</span> <span class="va">.x</span> <span class="op">|&gt;</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html" class="external-link">str_replace_all</a></span><span class="op">(</span><span class="st">"Phoebe"</span>, <span class="st">"OZJEG"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>      <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html" class="external-link">str_replace_all</a></span><span class="op">(</span><span class="st">"Buffay"</span>, <span class="st">"XZPIZ"</span><span class="op">)</span>,</span>
-<span>    <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html" class="external-link">str_detect</a></span><span class="op">(</span><span class="va">.x</span>, <span class="st">"Ross Geller"</span><span class="op">)</span> <span class="op">~</span> <span class="va">.x</span> <span class="op">|&gt;</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html" class="external-link">str_replace_all</a></span><span class="op">(</span><span class="st">"Ross"</span>, <span class="st">"KWNBJ"</span><span class="op">)</span>,</span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">101</span><span class="op">)</span></span>
+<span><span class="va">updated.replacement_rules</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/auto_replace.html">auto_replace</a></span><span class="op">(</span><span class="va">replacement_rules</span>, <span class="va">replacement.f</span><span class="op">)</span></span>
+<span><span class="va">updated.replacement_rules</span></span></code></pre></div>
+<pre><code><span><span class="co">#&gt;              If   From    To</span></span>
+<span><span class="co">#&gt; 1 Phoebe Buffay Phoebe IYNWQ</span></span>
+<span><span class="co">#&gt; 2 Phoebe Buffay Buffay ZVCCI</span></span>
+<span><span class="co">#&gt; 3 Monica Geller Monica CCBTU</span></span>
+<span><span class="co">#&gt; 4 Monica Geller Geller QNLAM</span></span>
+<span><span class="co">#&gt; 5   Ross Geller   Ross FXZPU</span></span></code></pre>
+<p>The <code>updated.replacement_rules</code> can then converted to a
+replacement function via <code>load_replacement_rules</code>:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/load_replacement_rules.html">load_replacement_rules</a></span><span class="op">(</span><span class="va">updated.replacement_rules</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw">function</span><span class="op">(</span><span class="va">.x</span><span class="op">)</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html" class="external-link">case_when</a></span><span class="op">(</span></span>
+<span>    <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html" class="external-link">str_detect</a></span><span class="op">(</span><span class="va">.x</span>, <span class="st">'(Cut to Monica and Chandler)'</span><span class="op">)</span> <span class="op">~</span> <span class="va">.x</span> <span class="op">|&gt;</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html" class="external-link">str_replace_all</a></span><span class="op">(</span><span class="st">'Monica'</span>, <span class="st">'CCBTU'</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>      <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html" class="external-link">str_replace_all</a></span><span class="op">(</span><span class="st">'Chandler'</span>, <span class="st">'TFXGJ'</span><span class="op">)</span>,</span>
+<span>    <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html" class="external-link">str_detect</a></span><span class="op">(</span><span class="va">.x</span>, <span class="st">'(Cut to Monica, at the microphone)'</span><span class="op">)</span> <span class="op">~</span> <span class="va">.x</span> <span class="op">|&gt;</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html" class="external-link">str_replace_all</a></span><span class="op">(</span><span class="st">'Monica'</span>, <span class="st">'CCBTU'</span><span class="op">)</span>,</span>
+<span>    <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html" class="external-link">str_detect</a></span><span class="op">(</span><span class="va">.x</span>, <span class="st">'(Cut to Phoebe and Joey)'</span><span class="op">)</span> <span class="op">~</span> <span class="va">.x</span> <span class="op">|&gt;</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html" class="external-link">str_replace_all</a></span><span class="op">(</span><span class="st">'Phoebe'</span>, <span class="st">'IYNWQ'</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>      <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html" class="external-link">str_replace_all</a></span><span class="op">(</span><span class="st">'Joey'</span>, <span class="st">'JZKUZ'</span><span class="op">)</span>,</span>
 <span>    <span class="va">...</span>,</span>
-<span>    .default <span class="op">=</span> <span class="va">.x</span></span>
-<span>  <span class="op">)</span></span>
-<span><span class="op">}</span></span></code></pre></div>
+<span>    .default<span class="op">=</span><span class="va">.x</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
 <p>which if parsed, can be used to modify the original data set:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">redaction.f</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/load_replacement_rules.html">load_replacement_rules</a></span><span class="op">(</span><span class="va">updated.replacement_rules</span>, parse <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span>
 <span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="va">the_one_in_massapequa</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span></span>
-<span>    <span class="fu">across</span><span class="op">(</span></span>
-<span>      <span class="fu">where</span><span class="op">(</span><span class="va">is.character</span><span class="op">)</span>,</span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span></span>
+<span>      <span class="fu"><a href="https://tidyselect.r-lib.org/reference/where.html" class="external-link">where</a></span><span class="op">(</span><span class="va">is.character</span><span class="op">)</span>,</span>
 <span>      <span class="va">redaction.f</span></span>
 <span>    <span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 257 × 4</span></span></span>
-<span><span class="co">#&gt;    scene utterance speaker          text                                        </span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     1         1 Scene Directions [Scene: YIYLU MRGYZ, everyone is there.]    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     1         2 IYNWQ ZVCCI      Oh, FXZPU, EHUFY, is it okay if I bring som…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>     1         3 CCBTU QNLAM      Yeah.                                       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>     1         4 FXZPU QNLAM      Sure. Yeah.                                 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>     1         5 JZKUZ UTNHH      So, who's the guy?                          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>     1         6 IYNWQ ZVCCI      Well, his name is MVPNY and I met him at th…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>     1         7 Chandler JYZIE   Oooh, did he put a little starch in your bl…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>     1         8 IYNWQ ZVCCI      Yeah, he's really great though. He has this…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     1         9 CCBTU QNLAM      Oh, by the way. Would it be okay if I gave …</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>     1        10 FXZPU QNLAM      Uh, yeah, you sure you want to after what h…</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 247 more rows</span></span></span></code></pre>
+<pre><code><span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 4</span></span></span>
+<span><span class="co">#&gt;   scene utterance speaker          text                                         </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                        </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1         1 Scene Directions [Scene: YIYLU MRGYZ, everyone is there.]     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     1         2 IYNWQ ZVCCI      Oh, FXZPU, EHUFY, is it okay if I bring some…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     1         3 CCBTU QNLAM      Yeah.                                        </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     1         4 FXZPU QNLAM      Sure. Yeah.                                  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>     1         5 JZKUZ UTNHH      So, who's the guy?</span></span></code></pre>
   </main>
 </div>
 
