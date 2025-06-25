@@ -1,0 +1,121 @@
+---
+title: "Automatic Replacement Tools"
+output: 
+  rmarkdown::html_vignette:
+    df_print: paged
+vignette: >
+  %\VignetteIndexEntry{Automatic Replacement Tools}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  rows.print = 6
+)
+```
+
+
+This package intends to aid the user in identifying and removing PID from the data set.
+The `report_to_replacement_rules` function is used to generate a `replacement_rules` table, which
+contains the rules for replacing PID in the data set.  In the first instance it is intended 
+for the user to manually define the `To` column of the `replacement_rules` and then parse the 
+file back into R.
+
+If the data set contains a large quantity of PID, and hence it is not practical to
+define all replacements, the `auto_replace` utility may be beneficial.  This function
+operates on the `replacement_rules` table produced by `report_to_replacement_rules` 
+and encodes the `To` column.   The precise replacement method can be defined by the user, 
+with three methods supplied by the package:
+
+- `hashing_replacement.f` - hashes the `To` column using a key and salt, 
+  producing a unique replacement for each value.
+- `random_replacement.f` - replaces the `To` column with a random value from a defined space.
+- `all_random_replacement.f` - replaces the `To` column with a random value from a defined space, 
+  but ensures that all replacements are unique.
+  
+The basic workflow is hence:
+
+```{r setup}
+library(pid.pos)
+
+report <- data_frame_report(the_one_in_massapequa)
+replacement_rules <- report_to_replacement_rules(report)
+
+replacement_rules
+```
+
+
+  
+``` {r, eval=F}
+set.seed(101)
+head.replacement_rules <- head(replacement_rules, 5)
+
+replacement.f <- random_replacement.f(replacement_size = 5, 
+                                     replacement_space = LETTERS)
+
+updated.replacement_rules <- auto_replace(head.replacement_rules,  replacement.f)
+updated.replacement_rules
+```
+
+``` {r, echo=F}
+
+head.replacement_rules <- head(replacement_rules, 5)
+replacement.f <- random_replacement.f(
+  replacement_size = 5,
+  replacement_space = LETTERS
+)
+
+set.seed(101)
+updated.replacement_rules <- auto_replace(replacement_rules, replacement.f)
+set.seed(101)
+head.updated.replacement_rules <- auto_replace(head.replacement_rules, replacement.f)
+knitr::kable(head.updated.replacement_rules)
+```
+
+The altered `replacement_rules` is then converted to a replacement function via `load_replacement_rules`: 
+
+``` {r, eval=F}
+load_replacement_rules(updated.replacement_rules)
+```
+
+``` {r, eval=F}
+function(.x) dplyr::case_when(
+  stringr::str_detect(.x, 'Monica Geller') ~ .x |> stringr::str_replace_all('Monica', 'SSZFX') |>
+      stringr::str_replace_all('Geller', 'KASKK'),
+  stringr::str_detect(.x, 'Phoebe Buffay') ~ .x |> stringr::str_replace_all('Phoebe', 'OZJEG') |> 
+    stringr::str_replace_all('Buffay', 'XZPIZ'),
+  stringr::str_detect(.x, 'Ross Geller') ~ .x |> stringr::str_replace_all('Ross', 'KWNBJ'),
+  ...,
+  .default=.x
+  )
+```
+
+which if parsed, can be used to modify the original data set:    
+
+``` {r, eval=F}
+redaction.f <- load_replacement_rules(updated.replacement_rules, parse=T)
+
+the_one_in_massapequa |>
+  mutate(
+    across(
+      where(is.character),
+      redaction.f
+    )
+  )
+```
+
+``` {r, echo=F}
+redaction.f <- load_replacement_rules(updated.replacement_rules, parse=T)
+
+the_one_in_massapequa |>
+  dplyr::mutate(
+    across(
+      where(is.character),
+      redaction.f
+    )
+  ) 
+
+```

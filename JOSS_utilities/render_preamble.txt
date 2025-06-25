@@ -2,4 +2,5 @@
 output: 
   md_document:
     variant: markdown_github
+    df_print: kable
 ---

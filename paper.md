@@ -110,11 +110,6 @@ into a new data frame of:
 -   `Affected Columns` - the columns in the original data frame which
     contain the sentence
 
-``` r
-report <- data_frame_report(the_one_in_massapequa)
-report
-```
-
 | ID                | Token  | Sentence      | Repeats | Affected Columns |
 |:------------------|:-------|:--------------|--------:|:-----------------|
 | Col:speaker Row:2 | Phoebe | Phoebe Buffay |      40 | `speaker`        |
@@ -155,7 +150,6 @@ report to a csv file with three headings:
 
 ``` r
 replacement_rules <- report_to_replacement_rules(report, path='path/to/report.csv')
-replacement_rules
 ```
 
 | If            | From   | To     |
@@ -194,82 +188,6 @@ the_one_in_massapequa |>
 For a more advanced user, the `load_replacement_rules` function utilizes
 the `str_detect` and `str_replace_all` functions from the `stringr`
 package, and hence supports regex.
-
-If the data set contains a large quantity of PID, and hence it is not
-practical to define all replacements, the `auto_replace` utility may be
-beneficial. This function operates on the `replacement_rules` table
-produced by `report_to_replacement_rules` and encodes the `To` column.
-The precise replacement method can be defined by the user, with three
-methods supplied by the package:
-
--   `hashing_replacement.f` - hashes the `To` column using a key and
-    salt, producing a unique replacement for each value.
--   `random_replacement.f` - replaces the `To` column with a random
-    value from a defined space.
--   `all_random_replacement.f` - replaces the `To` column with a random
-    value from a defined space, but ensures that all replacements are
-    unique.
-
-``` r
-set.seed(101)
-head.replacement_rules <- head(replacement_rules, 5)
-
-replacement.f <- random_replacement.f(replacement_size = 5, 
-                                     replacement_space = LETTERS)
-
-updated.replacement_rules <- auto_replace(head.replacement_rules,  replacement.f)
-updated.replacement_rules
-```
-
-| If            | From   | To    |
-|:--------------|:-------|:------|
-| Phoebe Buffay | Phoebe | IYNWQ |
-| Phoebe Buffay | Buffay | ZVCCI |
-| Monica Geller | Monica | CCBTU |
-| Monica Geller | Geller | QNLAM |
-| Ross Geller   | Ross   | FXZPU |
-
-The altered `replacement_rules` is then converted to a replacement
-function via `load_replacement_rules`:
-
-``` r
-load_replacement_rules(updated.replacement_rules)
-```
-
-``` r
-function(.x) dplyr::case_when(
-  stringr::str_detect(.x, 'Monica Geller') ~ .x |> stringr::str_replace_all('Monica', 'SSZFX') |>
-      stringr::str_replace_all('Geller', 'KASKK'),
-  stringr::str_detect(.x, 'Phoebe Buffay') ~ .x |> stringr::str_replace_all('Phoebe', 'OZJEG') |> 
-    stringr::str_replace_all('Buffay', 'XZPIZ'),
-  stringr::str_detect(.x, 'Ross Geller') ~ .x |> stringr::str_replace_all('Ross', 'KWNBJ'),
-  ...,
-  .default=.x
-  )
-```
-
-which if parsed, can be used to modify the original data set:
-
-``` r
-redaction.f <- load_replacement_rules(updated.replacement_rules, parse=T)
-
-the_one_in_massapequa |>
-  mutate(
-    across(
-      where(is.character),
-      redaction.f
-    )
-  )
-```
-
-| scene | utterance | speaker          | text                                                                                |
-|----:|------:|:----------|:-------------------------------------------------|
-|     1 |         1 | Scene Directions | [Scene: YIYLU MRGYZ, everyone is there.]                                          |
-|     1 |         2 | IYNWQ ZVCCI      | Oh, FXZPU, EHUFY, is it okay if I bring someone to your parent’s anniversary party? |
-|     1 |         3 | CCBTU QNLAM      | Yeah.                                                                               |
-|     1 |         4 | FXZPU QNLAM      | Sure. Yeah.                                                                         |
-|     1 |         5 | JZKUZ UTNHH      | So, who’s the guy?                                                                  |
-|     1 |         6 | IYNWQ ZVCCI      | Well, his name is MVPNY and I met him at the drycleaners.                           |
 
 # Current applications
 

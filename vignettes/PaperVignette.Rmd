@@ -1,12 +1,19 @@
 ---
 title: 'PID.POS: An R package for the detection of personally identifiable data'
 bibliography: ../JOSS_utilities/paper.bib
-output: rmarkdown::html_vignette
+output: 
+  rmarkdown::html_vignette:
+    df_print: kable
 vignette: >
   %\VignetteIndexEntry{PID.POS: An R package for the detection of personally identifiable data}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+``` {r setup, echo=F}
+knitr::opts_chunk$set(collapse = T, comment = "#>")
+options(tibble.print_min = 4L, tibble.print_max = 4L)
+```
+
 # Summary
 
 The `PID.POS` package is designed to aid with the identification of personal identifiability risks in data sets.
@@ -63,16 +70,14 @@ pak::pkg_install("Stat-Cook/PID.POS")
 To assist with understanding the `PID.POS` package, we include a subset of the 'friends' 
 data set from the `friends` package.
 
-``` {r, warning = F, message = F, eval=F}
+``` {r, warning = F, message = F, results="hide"}
 library(pid.pos)
 library(dplyr)
 the_one_in_massapequa
 ```
 
-``` {r, warning = F, message = F, echo=F}
-library(pid.pos)
-library(dplyr)
-knitr::kable(head(the_one_in_massapequa, 5))
+``` {r, warning = F, message = F, echo=F, results="asis"}
+head(the_one_in_massapequa, 5)
 ```
 
 
@@ -85,14 +90,13 @@ First, the `data_frame_report` function converts a typical R data frame into a n
 * `Repeats` - the number of times the sentence occurs in the data set
 * `Affected Columns` - the columns in the original data frame which contain the sentence
 
-``` {r, eval=F}
+``` {r, results="hide", echo=F, message=F}
 report <- data_frame_report(the_one_in_massapequa)
 report
 ```
 
 ``` {r, echo=F, message=F}
-report <- data_frame_report(the_one_in_massapequa)
-knitr::kable(head(report, 5))
+head(report, 5)
 ```
 
 The second function is `report_on_folder` which iterates over a folder of data files,
@@ -121,15 +125,13 @@ Where a PID report has been ran, the resulting data frame can be passed to the f
 * `From` - the pattern to be replaced
 * `To` - the intended replacement
 
-``` {r, eval=F}
+``` {r, eval = F, results="hide"}
 replacement_rules <- report_to_replacement_rules(report, path='path/to/report.csv')
-replacement_rules
 ```
-
 
 ``` {r, echo=F}
 replacement_rules <- report_to_replacement_rules(report)
-knitr::kable(head(replacement_rules))
+head(replacement_rules)
 ```
 The csv file is intended to be edited by the data controller, who hence does not need 
 to understand R, and can be reimported using the `load_replacement_rules` function:
@@ -158,90 +160,6 @@ the_one_in_massapequa |>
 For a more advanced user, the `load_replacement_rules` function utilizes the `str_detect` and 
 `str_replace_all` functions from the `stringr` package, and hence supports regex. 
 
-If the data set contains a large quantity of PID, and hence it is not practical to
-define all replacements, the `auto_replace` utility may be beneficial.  This function
-operates on the `replacement_rules` table produced by `report_to_replacement_rules` 
-and encodes the `To` column.   The precise replacement method can be defined by the user, 
-with three methods supplied by the package:
-
-- `hashing_replacement.f` - hashes the `To` column using a key and salt, 
-  producing a unique replacement for each value.
-- `random_replacement.f` - replaces the `To` column with a random value from a defined space.
-- `all_random_replacement.f` - replaces the `To` column with a random value from a defined space, 
-  but ensures that all replacements are unique.
-  
-``` {r, eval=F}
-set.seed(101)
-head.replacement_rules <- head(replacement_rules, 5)
-
-replacement.f <- random_replacement.f(replacement_size = 5, 
-                                     replacement_space = LETTERS)
-
-updated.replacement_rules <- auto_replace(head.replacement_rules,  replacement.f)
-updated.replacement_rules
-```
-
-``` {r, echo=F}
-
-head.replacement_rules <- head(replacement_rules, 5)
-replacement.f <- random_replacement.f(
-  replacement_size = 5,
-  replacement_space = LETTERS
-)
-
-set.seed(101)
-updated.replacement_rules <- auto_replace(replacement_rules, replacement.f)
-set.seed(101)
-head.updated.replacement_rules <- auto_replace(head.replacement_rules, replacement.f)
-knitr::kable(head.updated.replacement_rules)
-```
-
-The altered `replacement_rules` is then converted to a replacement function via `load_replacement_rules`: 
-
-``` {r, eval=F}
-load_replacement_rules(updated.replacement_rules)
-```
-
-``` {r, eval=F}
-function(.x) dplyr::case_when(
-  stringr::str_detect(.x, 'Monica Geller') ~ .x |> stringr::str_replace_all('Monica', 'SSZFX') |>
-      stringr::str_replace_all('Geller', 'KASKK'),
-  stringr::str_detect(.x, 'Phoebe Buffay') ~ .x |> stringr::str_replace_all('Phoebe', 'OZJEG') |> 
-    stringr::str_replace_all('Buffay', 'XZPIZ'),
-  stringr::str_detect(.x, 'Ross Geller') ~ .x |> stringr::str_replace_all('Ross', 'KWNBJ'),
-  ...,
-  .default=.x
-  )
-```
-
-which if parsed, can be used to modify the original data set:    
-
-``` {r, eval=F}
-redaction.f <- load_replacement_rules(updated.replacement_rules, parse=T)
-
-the_one_in_massapequa |>
-  mutate(
-    across(
-      where(is.character),
-      redaction.f
-    )
-  )
-```
-
-``` {r, echo=F}
-redaction.f <- load_replacement_rules(updated.replacement_rules, parse=T)
-
-the_one_in_massapequa |>
-  mutate(
-    across(
-      where(is.character),
-      redaction.f
-    )
-  ) |> 
-  head() |> 
-  knitr::kable()
-
-```
 # Current applications
 
 The `PID.POS` package was developed for applications in the NuRS and AmReS research projects
