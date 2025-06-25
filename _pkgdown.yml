@@ -1,6 +1,32 @@
 url: https://stat-cook.github.io/pid.pos/
 template:
   bootstrap: 5
+reference:
+- title: "A"
+  desc: >
+  contents:
+  - data_frame_report
+  - data_frame_tagger
+  - report_on_folder
+  - report_to_replacement_rules
+  - load_replacement_rules
+- title: "UDpipe Utilities"
+  desc: >
+  contents:
+  - browse_model_location
+  - browse_udpipe_repo
+- title: "Automatic Replacement Utilities"
+  desc: >
+  contents:
+  - auto_replace
+  - hashing_replacement.f
+  - random_replacement.f
+  - all_random_replacement.f
+- title: "Datasets"
+  desc: >
+  contents:
+  - the_one_in_massapequa
+  - sentence_frm
 articles:
 - title: Articles
   navbar: ~
