@@ -1,6 +1,8 @@
 library(rmarkdown)
 library(readr)
 
+# devtools::install()
+
 paper.md <- read_lines("JOSS_utilities/paper.rmd")
 
 render_preamble <- read_lines("JOSS_utilities/render_preamble.txt")

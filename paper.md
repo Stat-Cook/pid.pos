@@ -223,11 +223,11 @@ updated.replacement_rules
 
 | If            | From   | To    |
 |:--------------|:-------|:------|
-| Phoebe Buffay | Phoebe | ERNYU |
-| Phoebe Buffay | Buffay | SOLEQ |
-| Monica Geller | Monica | LFZZD |
-| Monica Geller | Geller | TUYSB |
-| Ross Geller   | Ross   | ZQEKU |
+| Phoebe Buffay | Phoebe | IYNWQ |
+| Phoebe Buffay | Buffay | ZVCCI |
+| Monica Geller | Monica | CCBTU |
+| Monica Geller | Geller | QNLAM |
+| Ross Geller   | Ross   | FXZPU |
 
 The altered `replacement_rules` is then converted to a replacement
 function via `load_replacement_rules`:

@@ -173,12 +173,17 @@ updated.replacement_rules
 ```
 
 ``` {r, echo=F}
-set.seed(101)
-replacement.f <- random_replacement.f(replacement_size = 5, 
-                                     replacement_space = LETTERS)
 
-updated.replacement_rules <- auto_replace(replacement_rules,  replacement.f)
-head.updated.replacement_rules <- auto_replace(head.replacement_rules,  replacement.f)
+head.replacement_rules <- head(replacement_rules, 5)
+replacement.f <- random_replacement.f(
+  replacement_size = 5,
+  replacement_space = LETTERS
+)
+
+set.seed(101)
+updated.replacement_rules <- auto_replace(replacement_rules, replacement.f)
+set.seed(101)
+head.updated.replacement_rules <- auto_replace(head.replacement_rules, replacement.f)
 knitr::kable(head.updated.replacement_rules)
 ```
 
