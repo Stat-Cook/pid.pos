@@ -105,6 +105,7 @@ random_replacement.f <- function(replacement_size = 10, replacement_space = LETT
   #' @param replacement_space The space from which to sample replacements (default is `LETTERS`).
   #'
   #' @return `function`
+  #' @export
 
   .replace <- RandomReplacer$new(replacement_size, replacement_space)
 
@@ -127,6 +128,7 @@ all_random_replacement.f <- function(replacement_size = 10, replacement_space = 
   #' @param replacement_space The space from which to sample replacements (default is `LETTERS`).
   #'
   #' @return `function`
+  #' @export
 
   .replace <- RandomReplacer$new(replacement_size, replacement_space)
 
