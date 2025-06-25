@@ -100,7 +100,7 @@ producing a proper noun report for each.  It is foreseen that this function will
 be the more useful, used just before data release to evidence no PID risks.
 
 ``` {r, eval=F}
-report_on_folder('path/to/data/')
+report_on_folder("path/to/data/")
 browse_model_location()
 ```    
 
@@ -122,7 +122,7 @@ Where a PID report has been ran, the resulting data frame can be passed to the f
 * `To` - the intended replacement
 
 ``` {r, eval=F}
-replacement_rules <- report_to_replacement_rules(report, path='path/to/report.csv')
+replacement_rules <- report_to_replacement_rules(report, path = "path/to/report.csv")
 replacement_rules
 ```
 
@@ -135,7 +135,7 @@ The csv file is intended to be edited by the data controller, who hence does not
 to understand R, and can be reimported using the `load_replacement_rules` function:
 
 ``` {r, eval=F}
-load_replacement_rules('path/to/report.csv')
+load_replacement_rules("path/to/report.csv")
 ```
 
 The  `load_replacement_rules` function creates a string replacement rule to capture the 
@@ -143,7 +143,7 @@ desired redactions, with the option for R to 'parse' the function for use as par
 pipeline:
 
 ``` {r, eval=F}
-replacement.func <- load_replacement_rules('path/to/report.csv', parse=T)
+replacement.func <- load_replacement_rules("path/to/report.csv", parse = T)
 
 the_one_in_massapequa |>
   mutate(
@@ -152,7 +152,6 @@ the_one_in_massapequa |>
       replacement.func
     )
   )
-
 ```
 
 For a more advanced user, the `load_replacement_rules` function utilizes the `str_detect` and 
@@ -174,15 +173,16 @@ with three methods supplied by the package:
 set.seed(101)
 head.replacement_rules <- head(replacement_rules, 5)
 
-replacement.f <- random_replacement.f(replacement_size = 5, 
-                                     replacement_space = LETTERS)
+replacement.f <- random_replacement.f(
+  replacement_size = 5,
+  replacement_space = LETTERS
+)
 
-updated.replacement_rules <- auto_replace(head.replacement_rules,  replacement.f)
+updated.replacement_rules <- auto_replace(head.replacement_rules, replacement.f)
 updated.replacement_rules
 ```
 
 ``` {r, echo=F}
-
 head.replacement_rules <- head(replacement_rules, 5)
 replacement.f <- random_replacement.f(
   replacement_size = 5,
@@ -203,21 +203,23 @@ load_replacement_rules(updated.replacement_rules)
 ```
 
 ``` {r, eval=F}
-function(.x) dplyr::case_when(
-  stringr::str_detect(.x, 'Monica Geller') ~ .x |> stringr::str_replace_all('Monica', 'SSZFX') |>
-      stringr::str_replace_all('Geller', 'KASKK'),
-  stringr::str_detect(.x, 'Phoebe Buffay') ~ .x |> stringr::str_replace_all('Phoebe', 'OZJEG') |> 
-    stringr::str_replace_all('Buffay', 'XZPIZ'),
-  stringr::str_detect(.x, 'Ross Geller') ~ .x |> stringr::str_replace_all('Ross', 'KWNBJ'),
-  ...,
-  .default=.x
+function(.x) {
+  dplyr::case_when(
+    stringr::str_detect(.x, "Monica Geller") ~ .x |> stringr::str_replace_all("Monica", "SSZFX") |>
+      stringr::str_replace_all("Geller", "KASKK"),
+    stringr::str_detect(.x, "Phoebe Buffay") ~ .x |> stringr::str_replace_all("Phoebe", "OZJEG") |>
+      stringr::str_replace_all("Buffay", "XZPIZ"),
+    stringr::str_detect(.x, "Ross Geller") ~ .x |> stringr::str_replace_all("Ross", "KWNBJ"),
+    ...,
+    .default = .x
   )
+}
 ```
 
 which if parsed, can be used to modify the original data set:    
 
 ``` {r, eval=F}
-redaction.f <- load_replacement_rules(updated.replacement_rules, parse=T)
+redaction.f <- load_replacement_rules(updated.replacement_rules, parse = T)
 
 the_one_in_massapequa |>
   mutate(
@@ -229,7 +231,7 @@ the_one_in_massapequa |>
 ```
 
 ``` {r, echo=F}
-redaction.f <- load_replacement_rules(updated.replacement_rules, parse=T)
+redaction.f <- load_replacement_rules(updated.replacement_rules, parse = T)
 
 the_one_in_massapequa |>
   mutate(
@@ -237,10 +239,9 @@ the_one_in_massapequa |>
       where(is.character),
       redaction.f
     )
-  ) |> 
-  head() |> 
+  ) |>
+  head() |>
   knitr::kable()
-
 ```
 # Current applications
 
