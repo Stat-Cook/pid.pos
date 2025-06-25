@@ -15,6 +15,6 @@ random_replacement.f(replacement_size = 10, replacement_space = LETTERS)
 `function`
 }
 \description{
-It is designed to generate a replacement by a random combination of 
+It is designed to generate a replacement by a random combination of
 alpha-numeric characters, and apply the same replacement if the input is repeated.
 }

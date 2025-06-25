@@ -25,7 +25,7 @@ report_to_replacement_rules <- function(report, path = NULL) {
   .frm
 }
 
-load_replacement_rules <- function(path, parse = F) {
+load_replacement_rules <- function(object, parse = F){
   #' Convert a file of replacements (as defined with `report_as_rules_template`) to
   #' a function that can be used to modify a data frame.
   #'
@@ -33,9 +33,32 @@ load_replacement_rules <- function(path, parse = F) {
   #' @param parse Binary-flag.  If True the replacement function is parsed.
   #'
   #' @export
+  UseMethod("load_replacement_rules")
+}
+
+load_replacement_rules.character <- function(object, parse = F) {
+  #' Convert a file of replacements (as defined with `report_as_rules_template`) to
+  #' a function that can be used to modify a data frame.
+  #'
+  #' @param path File path for read.
+  #' @param parse Binary-flag.  If True the replacement function is parsed.
+  #'
+  #' @exportS3Method 
   rules.frm <- read.csv(path)
 
-  parse_replacement_rules(rules.frm, parse)
+  load_replacement_rules(rules.frm, parse)
+}
+
+load_replacement_rules.data.frame <- function(object, parse = F) {
+  #' Convert a file of replacements (as defined with `report_as_rules_template`) to
+  #' a function that can be used to modify a data frame.
+  #'
+  #' @param path File path for read.
+  #' @param parse Binary-flag.  If True the replacement function is parsed.
+  #'
+  #' @exportS3Method  
+  
+  parse_replacement_rules(object, parse)
 }
 
 
