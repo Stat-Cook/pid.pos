@@ -2,7 +2,6 @@
 
 <!-- badges: start -->
 [![codecov: master](https://codecov.io/gh/Stat-Cook/pid.pos/graph/badge.svg?token=MU68U4JMP3)](https://codecov.io/gh/Stat-Cook/pid.pos)
-[![codecov: redesign](https://codecov.io/gh/Stat-Cook/pid.pos/branch/master/graph/badge.svg)](https://app.codecov.io/gh/Stat-Cook/pid.pos?branch=redesign)
 [![R-CMD-check](https://github.com/Stat-Cook/pid.pos/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Stat-Cook/pid.pos/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
