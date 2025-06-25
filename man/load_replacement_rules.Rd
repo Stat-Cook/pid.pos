@@ -8,7 +8,7 @@ a function that can be used to modify a data frame.}
 load_replacement_rules(object, parse = F)
 }
 \arguments{
-\item{object}{The `replacement_rules` (can be a `data.frame` 
+\item{object}{The `replacement_rules` (can be a `data.frame`
 or a path to a csv file containing the rules).}
 
 \item{parse}{Binary-flag.  If True the replacement function is parsed.}
