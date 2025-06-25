@@ -5,3 +5,7 @@ docs
 Proper Noun Report
 Main.R
 ^\.github$
+^codecov\.yml$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$

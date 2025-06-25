@@ -23,6 +23,7 @@ Imports:
     magrittr,
     rlang,
     purrr,
+    openssl,
     rappdirs,
     shiny,
     R6,
@@ -35,8 +36,11 @@ Suggests:
     knitr,
     rmarkdown,
     openxlsx,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    covr,
+    withr
 Config/testthat/edition: 3
 VignetteBuilder: knitr
 Depends: 
     R (>= 2.10)
+URL: https://stat-cook.github.io/pid.pos/

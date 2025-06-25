@@ -1,28 +1,27 @@
-
-data_frame_report <- function(frm, 
+data_frame_report <- function(frm,
                               chunk_size = 1e2,
-                              to_remove = c()){
+                              to_remove = c()) {
   #' Tags a data frame with part of speech tags.
-  #' 
+  #'
   #' @param frm A data frame to tag
   #' @param chunk_size The number of sentences to tag at a time
   #' @param to_remove A character vector of column names to remove from the data frame
   #'
   #' @export
-  #'
-  #' @importFrom dplyr group_by group_modify
+  #' @importFrom magrittr %>%
+  #' @importFrom dplyr group_by group_modify left_join where all_of
+  #' @importFrom dplyr rename select mutate
   #' @importFrom glue glue
   #' @importFrom progress progress_bar
-  #' @importFrom dplyr where all_of
   tags <- data_frame_tagger(frm, chunk_size, to_remove)
-  
-  merge(
+
+  left_join(
     tags$`Proper Nouns`,
     tags$Sentences,
-    by.x = "doc_id", by.y = "ID"
+    by = "ID"
   ) %>%
-    select('doc_id', 'token', 'sentence', 'Repeats', 'Affected Columns') %>%
-    arrange(doc_id)
+    select(-Sentence) |>
+    arrange(PK) |>
+    rename(Token = token, Sentence = sentence) |>
+    select("ID", "Token", "Sentence", "Repeats", "Affected Columns")
 }
-
-

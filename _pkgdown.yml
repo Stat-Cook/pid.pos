@@ -1,0 +1,10 @@
+url: https://stat-cook.github.io/pid.pos/
+template:
+  bootstrap: 5
+articles:
+- title: Articles
+  navbar: ~
+  contents:
+  - PaperVignette
+  - udpipe-model
+  - FolderReport

@@ -3,8 +3,8 @@ library(friends)
 {
   the_one_in_massapequa <- friends |>
     filter(
-      season==8,
-      episode==18
+      season == 8,
+      episode == 18
     ) |>
     select(scene, utterance, speaker, text)
 }

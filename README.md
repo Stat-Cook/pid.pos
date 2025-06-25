@@ -1,8 +1,11 @@
 # pid.pos
 
 <!-- badges: start -->
-[![codecov](https://codecov.io/gh/Stat-Cook/pid.pos/graph/badge.svg?token=MU68U4JMP3)](https://codecov.io/gh/Stat-Cook/pid.pos)
+[![codecov: master](https://codecov.io/gh/Stat-Cook/pid.pos/graph/badge.svg?token=MU68U4JMP3)](https://codecov.io/gh/Stat-Cook/pid.pos)
+[![codecov: redesign](https://codecov.io/gh/Stat-Cook/pid.pos/branch/master/graph/badge.svg)](https://app.codecov.io/gh/Stat-Cook/pid.pos?branch=redesign)
+[![R-CMD-check](https://github.com/Stat-Cook/pid.pos/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Stat-Cook/pid.pos/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
+
 A package of tools for the detection of personally identifiable data (PID) in data sets via natural language processing.  Considers there to be a risk of PID when a data set contains any text element that is considered to be a 'proper noun'.
 
 To install from github straight into R, use:
@@ -16,5 +19,5 @@ The point of entry for most users will be the `report_on_folder` function.  This
 
 ## Troubleshooting 
 
-The package is a problem centered API build on  UDPipe tree banks via the `udpipe` R package.  Fetching the appropriate udpipe model is intended to be automatic, however if there are issues it is worth looking at the functions `browse_udpipe_repo` and `browse_model_location`.
+The package is built on the [UDPipe](https://lindat.mff.cuni.cz/services/udpipe/) tree banks via the `udpipe` R package.  Fetching the appropriate udpipe model is intended to be automatic, however if there are issues it is worth looking at the functions `browse_udpipe_repo` and `browse_model_location`.
 
