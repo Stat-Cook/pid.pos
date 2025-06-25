@@ -1,6 +1,6 @@
 longer_than <- function(limit = 5) {
   #' Produces a function that checks if any strings in a vector is longer than 'limit'
-devt  #'
+  devt #'
   #' @param limit The length to check against
   #'
   #' @importFrom stringr str_length
