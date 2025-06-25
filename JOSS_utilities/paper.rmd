@@ -61,11 +61,10 @@ data set from the `friends` package.
 
 ``` {r, warning = F, message = F, results="hide"}
 library(pid.pos)
-library(dplyr)
 the_one_in_massapequa
 ```
 
-``` {r, warning = F, message = F, echo=F, results="asis"}
+``` {r, warning = F, message = F, echo=F}
 head(the_one_in_massapequa, 5)
 ```
 
@@ -115,7 +114,10 @@ Where a PID report has been ran, the resulting data frame can be passed to the f
 * `To` - the intended replacement
 
 ``` {r, eval = F, results="hide"}
-replacement_rules <- report_to_replacement_rules(report, path='path/to/report.csv')
+replacement_rules <- report_to_replacement_rules(
+  report, 
+  path='path/to/report.csv'
+)
 ```
 
 ``` {r, echo=F}

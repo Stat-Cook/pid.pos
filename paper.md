@@ -86,7 +86,6 @@ of the ‘friends’ data set from the `friends` package.
 
 ``` r
 library(pid.pos)
-library(dplyr)
 the_one_in_massapequa
 ```
 
@@ -149,7 +148,10 @@ report to a csv file with three headings:
 -   `To` - the intended replacement
 
 ``` r
-replacement_rules <- report_to_replacement_rules(report, path='path/to/report.csv')
+replacement_rules <- report_to_replacement_rules(
+  report, 
+  path='path/to/report.csv'
+)
 ```
 
 | If            | From   | To     |
