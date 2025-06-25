@@ -42,6 +42,7 @@ hashing_replacement.f <- function(key, salt = "", hash = sha256) {
 }
 
 #' @importFrom R6 R6Class
+#' @importFrom purrr simplify
 RandomReplacer <- R6Class(
   "RandomReplacer",
   list(
