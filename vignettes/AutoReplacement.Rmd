@@ -12,7 +12,6 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-
   comment = "#>",
   rows.print = 6
 )
@@ -78,15 +77,17 @@ The `updated.replacement_rules` can then converted to a replacement function via
 load_replacement_rules(updated.replacement_rules)
 ```
 ``` {r, eval=F}
-function(.x) dplyr::case_when(
-    stringr::str_detect(.x, '(Cut to Monica and Chandler)') ~ .x |> stringr::str_replace_all('Monica', 'CCBTU') |>
-      stringr::str_replace_all('Chandler', 'TFXGJ'),
-    stringr::str_detect(.x, '(Cut to Monica, at the microphone)') ~ .x |> stringr::str_replace_all('Monica', 'CCBTU'),
-    stringr::str_detect(.x, '(Cut to Phoebe and Joey)') ~ .x |> stringr::str_replace_all('Phoebe', 'IYNWQ') |>
-      stringr::str_replace_all('Joey', 'JZKUZ'),
+function(.x) {
+  dplyr::case_when(
+    stringr::str_detect(.x, "(Cut to Monica and Chandler)") ~ .x |> stringr::str_replace_all("Monica", "CCBTU") |>
+      stringr::str_replace_all("Chandler", "TFXGJ"),
+    stringr::str_detect(.x, "(Cut to Monica, at the microphone)") ~ .x |> stringr::str_replace_all("Monica", "CCBTU"),
+    stringr::str_detect(.x, "(Cut to Phoebe and Joey)") ~ .x |> stringr::str_replace_all("Phoebe", "IYNWQ") |>
+      stringr::str_replace_all("Joey", "JZKUZ"),
     ...,
-    .default=.x
+    .default = .x
   )
+}
 ```
 
 which if parsed, can be used to modify the original data set:    
@@ -111,7 +112,7 @@ the_one_in_massapequa |>
       where(is.character),
       redaction.f
     )
-  ) |> 
+  ) |>
   head(5)
 ```
 
