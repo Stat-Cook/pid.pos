@@ -1,4 +1,4 @@
-# pid.pos
+# pid.pos <a href="https://stat-cook.github.io/pid.pos/"><img src="man/figures/logo.png" align="right" height="136" /></a>
 
 <!-- badges: start -->
 [![codecov: master](https://codecov.io/gh/Stat-Cook/pid.pos/graph/badge.svg?token=MU68U4JMP3)](https://codecov.io/gh/Stat-Cook/pid.pos)
