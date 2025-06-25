@@ -105,3 +105,30 @@ test_that("all_random_replacement.f with repeats", {
 
   expect_equal(length(unique(hashed)), 50)
 })
+
+
+test_that("auto_replace", {
+  
+  frm <- data.frame(
+    To = sample(LETTERS, 100, T)
+  )
+  
+  basic.replacement.f <- random_replacement.f()
+  
+  frm.replaced <- auto_replace(frm, basic.replacement.f)
+  
+  expect_true(all(frm$To != frm.replaced$To))
+})
+
+
+test_that("RandomReplacer exceptions", {
+  
+  replacer <- RandomReplacer$new(2, letters[1:3]) 
+  
+  set.seed(101)
+
+  expect_error(replacer$learn(letters[1:10]))
+  expect_warning(replacer$learn(letters[1:6]))
+
+
+})
