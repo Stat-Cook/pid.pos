@@ -2,17 +2,18 @@
 % Please edit documentation in R/report_as_frame.R
 \name{load_replacement_rules}
 \alias{load_replacement_rules}
-\title{Convert a file of replacements (as defined with `report_as_rules_template`) to
+\title{Convert a set of `replacement_rules` (as defined with `report_to_replacement_rules`) to
 a function that can be used to modify a data frame.}
 \usage{
 load_replacement_rules(object, parse = F)
 }
 \arguments{
-\item{parse}{Binary-flag.  If True the replacement function is parsed.}
+\item{object}{The `replacement_rules` (can be a `data.frame` 
+or a path to a csv file containing the rules).}
 
-\item{path}{File path for read.}
+\item{parse}{Binary-flag.  If True the replacement function is parsed.}
 }
 \description{
-Convert a file of replacements (as defined with `report_as_rules_template`) to
+Convert a set of `replacement_rules` (as defined with `report_to_replacement_rules`) to
 a function that can be used to modify a data frame.
 }
