@@ -19,3 +19,4 @@ A list of file paths
 \description{
 List all files in a directory with a given extension
 }
+\keyword{internal}

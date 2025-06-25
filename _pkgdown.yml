@@ -2,7 +2,7 @@ url: https://stat-cook.github.io/pid.pos/
 template:
   bootstrap: 5
 reference:
-- title: "A"
+- title: "PID.POS"
   desc: >
   contents:
   - data_frame_report

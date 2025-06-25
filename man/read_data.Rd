@@ -14,3 +14,4 @@ read_data(file_path, ...)
 \description{
 Reads a data file
 }
+\keyword{internal}

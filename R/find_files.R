@@ -16,6 +16,7 @@ find_files <- function(path,
   #' @param .lis A list of file paths
   #'
   #' @return A list of file paths
+  #' @keywords  internal
   #'
   #' @importFrom purrr reduce
   #'

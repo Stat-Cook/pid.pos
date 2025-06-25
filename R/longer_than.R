@@ -3,7 +3,7 @@ longer_than <- function(limit = 5) {
   #'
   #'
   #' @param limit The length to check against
-  #'
+  #' @keywords  internal
   #' @importFrom stringr str_length
   function(vec) {
     vec <- vec[!is.na(vec)]
