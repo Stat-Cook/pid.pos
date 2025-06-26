@@ -10,12 +10,11 @@ get_context <- function(sentences, tokens) {
   #' @importFrom dplyr mutate
   #' @importFrom stringr str_locate str_sub
   #' @importFrom tibble as_tibble
-  #' 
+  #'
   #' @keywords internal
-  context_window <- getOption('pid.pos.context_window')
-  
-  context.frm <- str_locate(sentences, tokens) |> 
+  context_window <- getOption("pid.pos.context_window")
 
+  context.frm <- str_locate(sentences, tokens) |>
     as_tibble() |>
     mutate(
       Sentence = sentences,
@@ -37,9 +36,9 @@ set_context_window <- function(x) {
   #'
   #' @param x  An integer specifying the number of characters to include
   #'   before and after the token in the context.
-  #' 
+  #'
   #' @keywords internal
-  .opt <- list('pid.pos.context_window' = x)
+  .opt <- list("pid.pos.context_window" = x)
 
   options(.opt)
 }
