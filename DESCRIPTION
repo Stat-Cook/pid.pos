@@ -26,6 +26,7 @@ Imports:
     openssl,
     rappdirs,
     shiny,
+    tibble,
     R6,
     glue,
     progress,
