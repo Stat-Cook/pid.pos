@@ -109,6 +109,11 @@ into a new data frame of:
 -   `Affected Columns` - the columns in the original data frame which
     contain the sentence
 
+``` r
+report <- data_frame_report(the_one_in_massapequa)
+report
+```
+
 | ID                | Token  | Sentence      | Repeats | Affected Columns |
 |:------------------|:-------|:--------------|--------:|:-----------------|
 | Col:speaker Row:2 | Phoebe | Phoebe Buffay |      40 | `speaker`        |

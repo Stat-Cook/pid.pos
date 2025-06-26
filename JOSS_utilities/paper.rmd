@@ -78,7 +78,7 @@ First, the `data_frame_report` function converts a typical R data frame into a n
 * `Repeats` - the number of times the sentence occurs in the data set
 * `Affected Columns` - the columns in the original data frame which contain the sentence
 
-``` {r, results="hide", echo=F, message=F}
+``` {r, results="hide", message=F}
 report <- data_frame_report(the_one_in_massapequa)
 report
 ```
