@@ -18,7 +18,7 @@ remove_if_exists <- function(frm, to_remove) {
 
 data_frame_tagger <- function(frm, chunk_size = 1e2,
                               to_remove = c()) {
-  #' Tags a data frame with part of speech tags.
+  #' Tags a data frame with part of speech tags
   #'
   #' @param frm A data frame to tag
   #' @param chunk_size The number of sentences to tag at a time

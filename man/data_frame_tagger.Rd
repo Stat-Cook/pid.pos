@@ -2,7 +2,7 @@
 % Please edit documentation in R/data_frame_tagger.R
 \name{data_frame_tagger}
 \alias{data_frame_tagger}
-\title{Tags a data frame with part of speech tags.}
+\title{Tags a data frame with part of speech tags}
 \usage{
 data_frame_tagger(frm, chunk_size = 100, to_remove = c())
 }
@@ -14,5 +14,5 @@ data_frame_tagger(frm, chunk_size = 100, to_remove = c())
 \item{to_remove}{A character vector of column names to remove from the data frame}
 }
 \description{
-Tags a data frame with part of speech tags.
+Tags a data frame with part of speech tags
 }

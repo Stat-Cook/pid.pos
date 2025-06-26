@@ -3,7 +3,7 @@
 on:
   push:
     branches: [main, master, redesign]
-    paths: ["**.R", "README.md", "**.Rmd"]
+    paths: ["**.R", "README.md", "**.Rmd", "**.Rd"]
   pull_request:
   release:
     types: [published]
