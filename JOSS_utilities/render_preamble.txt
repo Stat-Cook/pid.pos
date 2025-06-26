@@ -2,5 +2,5 @@
 output: 
   md_document:
     variant: markdown_github
-    df_print: kable
+    df_print: paged
 ---

@@ -11,7 +11,7 @@ vignette: >
 ---
 ``` {r setup, echo=F}
 knitr::opts_chunk$set(collapse = T, comment = "#>")
-options(tibble.print_min = 4L, tibble.print_max = 4L)
+options(rows.print = 5, max.print=5)
 ```
 
 # Summary
