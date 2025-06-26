@@ -14,4 +14,4 @@ get_context(sentences, tokens)
 \description{
 NB: to set the context window size, use `set_context_window()`.
 }
-\keyword{internals}
+\keyword{internal}

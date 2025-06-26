@@ -7,10 +7,10 @@
 set_context_window(x)
 }
 \arguments{
-\item{x}{An integer specifying the number of characters to include 
+\item{x}{An integer specifying the number of characters to include
 before and after the token in the context.}
 }
 \description{
 Set the context window size for the `get_context` function.
 }
-\keyword{internals}
+\keyword{internal}
