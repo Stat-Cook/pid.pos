@@ -25,5 +25,5 @@ data_frame_report <- function(frm,
     select(-Sentence) |>
     arrange(PK) |>
     rename(Token = token, Sentence = sentence) |>
-    select("ID", "Token", "Sentence", "Repeats", "Affected Columns") 
+    select("ID", "Token", "Sentence", "Repeats", "Affected Columns")
 }
