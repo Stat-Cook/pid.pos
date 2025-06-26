@@ -76,7 +76,7 @@ the_one_in_massapequa
 ```
 
 ``` {r, warning = F, message = F, echo=F}
-head(the_one_in_massapequa, 5)
+the_one_in_massapequa
 ```
 
 
@@ -95,7 +95,7 @@ report
 ```
 
 ``` {r, echo=F, message=F}
-head(report, 5)
+report
 ```
 
 The second function is `report_on_folder` which iterates over a folder of data files,
@@ -103,7 +103,7 @@ producing a proper noun report for each.  It is foreseen that this function will
 be the more useful, used just before data release to evidence no PID risks.
 
 ``` {r, eval=F}
-report_on_folder("path/to/data/")
+report_on_folder('path/to/data/')
 browse_model_location()
 ```    
 
@@ -126,20 +126,20 @@ Where a PID report has been ran, the resulting data frame can be passed to the f
 
 ``` {r, eval = F, results="hide"}
 replacement_rules <- report_to_replacement_rules(
-  report,
-  path = "path/to/report.csv"
+  report, 
+  path='path/to/report.csv'
 )
 ```
 
 ``` {r, echo=F}
 replacement_rules <- report_to_replacement_rules(report)
-head(replacement_rules)
+replacement_rules
 ```
 The csv file is intended to be edited by the data controller, who hence does not need 
 to understand R, and can be reimported using the `load_replacement_rules` function:
 
 ``` {r, eval=F}
-load_replacement_rules("path/to/report.csv")
+load_replacement_rules('path/to/report.csv')
 ```
 
 The  `load_replacement_rules` function creates a string replacement rule to capture the 
@@ -147,7 +147,7 @@ desired redactions, with the option for R to 'parse' the function for use as par
 pipeline:
 
 ``` {r, eval=F}
-replacement.func <- load_replacement_rules("path/to/report.csv", parse = T)
+replacement.func <- load_replacement_rules('path/to/report.csv', parse=T)
 
 the_one_in_massapequa |>
   mutate(
@@ -156,6 +156,7 @@ the_one_in_massapequa |>
       replacement.func
     )
   )
+
 ```
 
 For a more advanced user, the `load_replacement_rules` function utilizes the `str_detect` and 
