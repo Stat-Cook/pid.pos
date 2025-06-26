@@ -13,6 +13,7 @@ data_frame_report <- function(frm,
   #' @importFrom dplyr rename select mutate
   #' @importFrom glue glue
   #' @importFrom progress progress_bar
+  #' @importFrom tibble as_tibble
   tags <- data_frame_tagger(frm, chunk_size, to_remove)
 
   left_join(
@@ -20,8 +21,9 @@ data_frame_report <- function(frm,
     tags$Sentences,
     by = "ID"
   ) %>%
+    as_tibble() |>
     select(-Sentence) |>
     arrange(PK) |>
     rename(Token = token, Sentence = sentence) |>
-    select("ID", "Token", "Sentence", "Repeats", "Affected Columns")
+    select("ID", "Token", "Sentence", "Repeats", "Affected Columns") 
 }

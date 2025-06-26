@@ -56,7 +56,6 @@ data_frame_tagger <- function(frm, chunk_size = 1e2,
       PK = row_number()
     )
 
-
   sentence.frm <- group_by(doc.grid, Sentence) %>%
     group_modify(summarize_repeated_setences) |>
     ungroup() |>
