@@ -1,25 +1,29 @@
 library(rmarkdown)
 library(readr)
 
-# devtools::install()
 
-paper.md <- read_lines("JOSS_utilities/paper.rmd")
+kable_head <- function(x, ...) {
+  head(x, 5) |> 
+    knitr::kable() |>
+    knitr::knit_print(...)
+}
 
-render_preamble <- read_lines("JOSS_utilities/render_preamble.txt")
+md_style <- md_document("markdown_github", df_print = kable_head)
+render("JOSS_utilities/paper.rmd", md_style, output_file = "paper.md", output_dir = getwd())
+
 joss_preamble <- read_lines("JOSS_utilities/joss_preamble.txt")
-
-temp_rmd <- tempfile(fileext = ".Rmd")
-
-c(render_preamble, paper.md) |>
-  readr::write_lines(temp_rmd)
-
-render(temp_rmd, output_file = "paper.md", output_dir = getwd())
+joss_preamble
 
 c(joss_preamble, read_lines("paper.md")) |> 
   stringr::str_replace_all("\\\\(\\[|\\])", "\\1") |>
   readr::write_lines("paper.md")
 
+
+paper.md <- read_lines("JOSS_utilities/paper.rmd")
 vignette_preamble <- read_lines("JOSS_utilities/vignette_preamble.txt")
 
 c(vignette_preamble, paper.md) |>
   readr::write_lines("vignettes/PaperVignette.Rmd")
+
+detach("package:pid.pos", unload = TRUE)
+pkgdown::build_site()

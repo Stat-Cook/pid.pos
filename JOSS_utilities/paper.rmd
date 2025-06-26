@@ -1,6 +1,6 @@
 ``` {r setup, echo=F}
 knitr::opts_chunk$set(collapse = T, comment = "#>")
-options(rows.print = 5, max.print=5)
+options(tibble.print_min = 4, tibble.print_max = 4)
 ```
 
 # Summary

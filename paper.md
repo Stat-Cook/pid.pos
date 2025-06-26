@@ -89,9 +89,13 @@ library(pid.pos)
 the_one_in_massapequa
 ```
 
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["scene"],"name":[1],"type":["int"],"align":["right"]},{"label":["utterance"],"name":[2],"type":["int"],"align":["right"]},{"label":["speaker"],"name":[3],"type":["chr"],"align":["left"]},{"label":["text"],"name":[4],"type":["chr"],"align":["left"]}],"data":[{"1":"1","2":"1","3":"Scene Directions","4":"[Scene: Central Perk, everyone is there.]"},{"1":"1","2":"2","3":"Phoebe Buffay","4":"Oh, Ross, Mon, is it okay if I bring someone to your parent's anniversary party?"},{"1":"1","2":"3","3":"Monica Geller","4":"Yeah."},{"1":"1","2":"4","3":"Ross Geller","4":"Sure. Yeah."},{"1":"1","2":"5","3":"Joey Tribbiani","4":"So, who's the guy?"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[5],"max":[5]},"pages":{}}}
-  </script>
+| scene | utterance | speaker          | text                                                                             |
+|----:|------:|:----------|:------------------------------------------------|
+|     1 |         1 | Scene Directions | [Scene: Central Perk, everyone is there.]                                      |
+|     1 |         2 | Phoebe Buffay    | Oh, Ross, Mon, is it okay if I bring someone to your parent’s anniversary party? |
+|     1 |         3 | Monica Geller    | Yeah.                                                                            |
+|     1 |         4 | Ross Geller      | Sure. Yeah.                                                                      |
+|     1 |         5 | Joey Tribbiani   | So, who’s the guy?                                                               |
 
 The package has two main functions for identifying PID risks, depending
 on the users needs.  
@@ -110,9 +114,13 @@ report <- data_frame_report(the_one_in_massapequa)
 report
 ```
 
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["ID"],"name":[1],"type":["glue"],"align":["right"]},{"label":["Token"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Sentence"],"name":[3],"type":["chr"],"align":["left"]},{"label":["Repeats"],"name":[4],"type":["int"],"align":["right"]},{"label":["Affected Columns"],"name":[5],"type":["chr"],"align":["left"]}],"data":[{"1":"Col:speaker Row:2","2":"Phoebe","3":"Phoebe Buffay","4":"40","5":"`speaker`"},{"1":"Col:speaker Row:2","2":"Buffay","3":"Phoebe Buffay","4":"40","5":"`speaker`"},{"1":"Col:speaker Row:3","2":"Monica","3":"Monica Geller","4":"25","5":"`speaker`"},{"1":"Col:speaker Row:3","2":"Geller","3":"Monica Geller","4":"25","5":"`speaker`"},{"1":"Col:speaker Row:4","2":"Ross","3":"Ross Geller","4":"43","5":"`speaker`"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[5],"max":[5]},"pages":{}}}
-  </script>
+| ID                | Token  | Sentence      | Repeats | Affected Columns |
+|:------------------|:-------|:--------------|--------:|:-----------------|
+| Col:speaker Row:2 | Phoebe | Phoebe Buffay |      40 | `speaker`        |
+| Col:speaker Row:2 | Buffay | Phoebe Buffay |      40 | `speaker`        |
+| Col:speaker Row:3 | Monica | Monica Geller |      25 | `speaker`        |
+| Col:speaker Row:3 | Geller | Monica Geller |      25 | `speaker`        |
+| Col:speaker Row:4 | Ross   | Ross Geller   |      43 | `speaker`        |
 
 The second function is `report_on_folder` which iterates over a folder
 of data files, producing a proper noun report for each. It is foreseen
@@ -151,9 +159,13 @@ replacement_rules <- report_to_replacement_rules(
 )
 ```
 
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["If"],"name":[1],"type":["chr"],"align":["left"]},{"label":["From"],"name":[2],"type":["chr"],"align":["left"]},{"label":["To"],"name":[3],"type":["chr"],"align":["left"]}],"data":[{"1":"Phoebe Buffay","2":"Phoebe","3":"Phoebe"},{"1":"Phoebe Buffay","2":"Buffay","3":"Buffay"},{"1":"Monica Geller","2":"Monica","3":"Monica"},{"1":"Monica Geller","2":"Geller","3":"Geller"},{"1":"Ross Geller","2":"Ross","3":"Ross"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[5],"max":[5]},"pages":{}}}
-  </script>
+| If            | From   | To     |
+|:--------------|:-------|:-------|
+| Phoebe Buffay | Phoebe | Phoebe |
+| Phoebe Buffay | Buffay | Buffay |
+| Monica Geller | Monica | Monica |
+| Monica Geller | Geller | Geller |
+| Ross Geller   | Ross   | Ross   |
 
 The csv file is intended to be edited by the data controller, who hence
 does not need to understand R, and can be reimported using the

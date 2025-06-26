@@ -2,5 +2,12 @@
 output: 
   md_document:
     variant: markdown_github
-    df_print: paged
 ---
+``` {r setup, echo=F}
+knitr::opts_chunk$set(collapse = T, comment = "#>", rows.print = 5, max.print=5)
+#options(rows.print = 5, max.print=5)
+
+registerS3method("knit_print", "data.frame", function(x, ...) {
+  knitr::knit_print(knitr::kable(head(x, 5)), ...)
+})
+```
