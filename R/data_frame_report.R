@@ -26,7 +26,7 @@ data_frame_report <- function(frm,
     arrange(PK) |>
     rename(Token = token, Sentence = sentence) |>
     select("ID", "Token", "Sentence", "Repeats", "Affected Columns")
-  
+
   class(report) <- c("pid_report", class(report))
   report
 }
