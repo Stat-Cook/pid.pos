@@ -98,6 +98,12 @@ report
 report
 ```
 
+For a top level summary of the report, the `summary` method for class `pid_report` can be used:
+
+``` {r}
+summary(report)
+```
+
 The second function is `report_on_folder` which iterates over a folder of data files,
 producing a proper noun report for each.  It is foreseen that this function will 
 be the more useful, used just before data release to evidence no PID risks.

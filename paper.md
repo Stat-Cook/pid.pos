@@ -89,13 +89,13 @@ library(pid.pos)
 the_one_in_massapequa
 ```
 
-| scene | utterance | speaker          | text                                                                             |
-|----:|------:|:----------|:------------------------------------------------|
-|     1 |         1 | Scene Directions | [Scene: Central Perk, everyone is there.]                                      |
-|     1 |         2 | Phoebe Buffay    | Oh, Ross, Mon, is it okay if I bring someone to your parent’s anniversary party? |
-|     1 |         3 | Monica Geller    | Yeah.                                                                            |
-|     1 |         4 | Ross Geller      | Sure. Yeah.                                                                      |
-|     1 |         5 | Joey Tribbiani   | So, who’s the guy?                                                               |
+| scene | utterance | speaker          | text                                                                             | text2                                                                            |
+|---:|----:|:------|:----------------------------|:----------------------------|
+|     1 |         1 | Scene Directions | [Scene: Central Perk, everyone is there.]                                      | [Scene: Central Perk, everyone is there.]                                      |
+|     1 |         2 | Phoebe Buffay    | Oh, Ross, Mon, is it okay if I bring someone to your parent’s anniversary party? | Oh, Ross, Mon, is it okay if I bring someone to your parent’s anniversary party? |
+|     1 |         3 | Monica Geller    | Yeah.                                                                            | Yeah.                                                                            |
+|     1 |         4 | Ross Geller      | Sure. Yeah.                                                                      | Sure. Yeah.                                                                      |
+|     1 |         5 | Joey Tribbiani   | So, who’s the guy?                                                               | So, who’s the guy?                                                               |
 
 The package has two main functions for identifying PID risks, depending
 on the users needs.  
@@ -121,6 +121,19 @@ report
 | Col:speaker Row:3 | Monica | Monica Geller |      25 | `speaker`        |
 | Col:speaker Row:3 | Geller | Monica Geller |      25 | `speaker`        |
 | Col:speaker Row:4 | Ross   | Ross Geller   |      43 | `speaker`        |
+
+For a top level summary of the report, the `summary` method for class
+`pid_report` can be used:
+
+``` r
+summary(report)
+```
+
+| Column    | Cases of Proper Nouns | Unique Cases of Proper Nouns | Most Common Proper Noun Sentence            |
+|:-------|---------------:|-------------------:|:----------------------------|
+| `speaker` |                   243 |                           14 | Ross Geller                                 |
+| `text`    |                   198 |                           99 | [Scene: Central Perk, everyone is there.] |
+| `text2`   |                   198 |                           99 | [Scene: Central Perk, everyone is there.] |
 
 The second function is `report_on_folder` which iterates over a folder
 of data files, producing a proper noun report for each. It is foreseen

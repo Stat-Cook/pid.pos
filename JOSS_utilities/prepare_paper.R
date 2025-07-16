@@ -12,7 +12,6 @@ md_style <- md_document("markdown_github", df_print = kable_head)
 render("JOSS_utilities/paper.rmd", md_style, output_file = "paper.md", output_dir = getwd())
 
 joss_preamble <- read_lines("JOSS_utilities/joss_preamble.txt")
-joss_preamble
 
 c(joss_preamble, read_lines("paper.md")) |> 
   stringr::str_replace_all("\\\\(\\[|\\])", "\\1") |>
