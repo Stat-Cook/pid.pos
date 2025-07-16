@@ -16,7 +16,7 @@ data_frame_report <- function(frm,
   #' @importFrom tibble as_tibble
   tags <- data_frame_tagger(frm, chunk_size, to_remove)
 
-  left_join(
+  report <- left_join(
     tags$`Proper Nouns`,
     tags$Sentences,
     by = "ID"
@@ -26,4 +26,7 @@ data_frame_report <- function(frm,
     arrange(PK) |>
     rename(Token = token, Sentence = sentence) |>
     select("ID", "Token", "Sentence", "Repeats", "Affected Columns")
+  
+  class(report) <- c("pid_report", class(report))
+  report
 }
