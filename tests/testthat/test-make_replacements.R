@@ -8,9 +8,9 @@ test_that("make and merge replacements workflow", {
   .replacer <- random_replacement.f()
 
   .rules.replaced <- auto_replace(.rules, .replacer)
-  
+
   redactions <- prepare_redactions(.rules.replaced)
-  
+
   .new <- frm |>
     mutate(across(
       where(is.character),

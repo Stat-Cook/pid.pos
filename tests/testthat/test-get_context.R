@@ -3,7 +3,7 @@ test_that("get_context works", {
 
   text.responses <- data_frame_report(.subset) |>
     filter(`Affected Columns` == "`text`")
-  
+
   set_context_window(5)
   context <- get_context(text.responses$Sentence, text.responses$Token)
 
@@ -20,4 +20,3 @@ test_that("get_context works", {
     all(context.0 != context)
   )
 })
-
