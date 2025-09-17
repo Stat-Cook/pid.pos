@@ -11,7 +11,7 @@ test_that("make and merge replacements workflow", {
 
   redactions <- prepare_redactions(.rules.replaced)
 
-  .new <- frm |>
+  .new <- the_one_in_massapequa |>
     mutate(across(
       where(is.character),
       ~ redactions(.x)
