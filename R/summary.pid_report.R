@@ -5,7 +5,7 @@ most_common <- function(cnt, names) {
 
 
 summary.pid_report <- function(object, ...) {
-  #' Summary mehtod for class `pid_report`.
+  #' Summary method for class `pid_report`.
   #'
   #' @param object An object of class `pid_report`.
   #'

@@ -1,4 +1,4 @@
-auto_replace <- function(frm, replacement.f) {
+auto_replace <- function(frm, replacement.f, filter=F) {
   #' Apply a replacement function to a `rules.frm`.
   #'
   #'
@@ -7,10 +7,16 @@ auto_replace <- function(frm, replacement.f) {
   #'
   #' @param frm A `data.frame` with columns `If`, `From`, and `To`.
   #' @param replacement.f A function for transforming the `To` column.
-  #'
+  #' @param filter Logical.  If `TRUE` will only apply to rows where `From` and `To` are different.
+  #' 
   #' @return `data.frame`
   #'
   #' @export
+  #' 
+  if (filter){
+    frm <- filter(frm, From != To)
+  }
+  
   frm |>
     mutate(
       To = replacement.f(To)
@@ -40,6 +46,7 @@ hashing_replacement.f <- function(key, salt = "", hash = sha256) {
 
   hash_function
 }
+
 
 #' @importFrom R6 R6Class
 #' @importFrom purrr simplify
@@ -95,6 +102,7 @@ RandomReplacer <- R6Class(
   )
 )
 
+
 random_replacement.f <- function(replacement_size = 10, replacement_space = LETTERS) {
   #' Function factory for random replacement.
   #'
@@ -116,6 +124,7 @@ random_replacement.f <- function(replacement_size = 10, replacement_space = LETT
     .replace$transform(x)
   }
 }
+
 
 all_random_replacement.f <- function(replacement_size = 10, replacement_space = LETTERS) {
   #' Function factory for random replacement.
