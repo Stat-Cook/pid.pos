@@ -9,7 +9,7 @@ prepare_redactions.character <- function(object) {
   #' @exportS3Method
   rules.frm <- read.csv(object)
 
-  make_replacements(object)
+  prepare_redactions(rules.frm)
 }
 
 prepare_redactions.data.frame <- function(object) {

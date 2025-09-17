@@ -8,13 +8,14 @@ test_that("make and merge replacements workflow", {
   .replacer <- random_replacement.f()
 
   .rules.replaced <- auto_replace(.rules, .replacer)
-
-  .replacements <- make_replacements(.rules.replaced)
-
-  .new <- merge_replacements(
-    the_one_in_massapequa,
-    .replacements
-  )
+  
+  redactions <- prepare_redactions(.rules.replaced)
+  
+  .new <- frm |>
+    mutate(across(
+      where(is.character),
+      ~ redactions(.x)
+    ))
 
   expect_true(any(.new$speaker != the_one_in_massapequa$speaker))
 })

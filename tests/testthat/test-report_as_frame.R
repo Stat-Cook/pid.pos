@@ -17,10 +17,10 @@ test_that("report_to_replacement_rules", {
     # Check the file is not empty
     expect_true(file.size(temp_file) > 0)
 
-    .rules_from_file <- load_replacement_rules(temp_file)
-    expect_type(.rules_from_file, "character")
+    .rules_from_file <- prepare_redactions(temp_file)
+    expect_type(.rules_from_file, "closure")
 
-    .rules_from_file.parsed <- load_replacement_rules(temp_file, parse = T)
+    .rules_from_file.parsed <- prepare_redactions(temp_file)
     expect_type(.rules_from_file.parsed, "closure")
   })
 })
@@ -35,7 +35,7 @@ test_that("report_as_rules_template", {
     To = c("XXX", "YYY")
   )
 
-  replacement.func <- parse_replacement_rules(.rules, parse = T)
+  replacement.func <- redaction_function_factory(.rules)
 
   replaced.data <- .data |>
     mutate(
