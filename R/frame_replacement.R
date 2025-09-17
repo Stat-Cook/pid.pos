@@ -24,6 +24,7 @@ if_factory <- function(If) {
 
 
 then.function.list <- function(rules.frm) {
+  #' @importFrom dplyr group_by group_map
   rules.frm |>
     group_by(If) |>
     group_map(
@@ -42,6 +43,7 @@ if.function.list <- function(rules.frm) {
 }
 
 redaction_function_factory <- function(rules.frm) {
+  #' @importFrom purrr reduce
   #' @export
   then.functions <- then.function.list(rules.frm)
   if.functions <- if.function.list(rules.frm)
