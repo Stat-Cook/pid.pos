@@ -96,7 +96,8 @@ parse_replacement_rules <- function(rules.frm, parse = F) {
 if_modify <- function(frm, group) {
   .if <- group$If
 
-  .left <- sprintf("stringr::str_detect(.x, '%s')", .if)
+  #.left <- sprintf("stringr::str_detect(.x, '%s')", .if)
+  .left <- sprintf(".x == '%s'", .if)
   .right <- paste(c(".x", frm$Replace), collapse = " |> ")
 
 
