@@ -6,13 +6,12 @@ test_that("frame_replacement works", {
     From = c("Rachel", "Green"),
     To = c("XXX", "YYY")
   )
-  
-  
+
+
   .redacted <- frame_replacement(last100, rules.frm)
-  
+
   expect_equal(
     sum(str_detect(.redacted$speaker, "Rachel Green")),
     0
   )
-  
 })
