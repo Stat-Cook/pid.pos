@@ -15,7 +15,9 @@ CachedRedact <- R6::R6Class("CachedRedact", list(
       self$redacted <- c(self$redacted, new)
     }
 
-    self$redacted[vec]
+    .vec <- self$redacted[vec]
+    .vec <- unname(.vec)
+    .vec
   },
   get_uncoded_keys = function(vec) {
     setdiff(vec, names(self$redacted))

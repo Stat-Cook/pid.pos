@@ -36,18 +36,18 @@ report_to_replacement_rules <- function(report, path = NULL,
 }
 
 
-
-if_modify <- function(frm, group) {
-  .if <- group$If
-
-  .left <- sprintf("stringr::str_detect(.x, '%s')", .if)
-  # .left <- sprintf(".x == '%s'", .if)
-  .right <- paste(c(".x", frm$Replace), collapse = " |> ")
-
-
-  sprintf("%s ~ %s", .left, .right)
-}
-
-escape_quote_mark <- function(vec) {
-  str_replace_all(vec, "'", "\\\\'")
-}
+# 
+# if_modify <- function(frm, group) {
+#   .if <- group$If
+# 
+#   .left <- sprintf("stringr::str_detect(.x, '%s')", .if)
+#   # .left <- sprintf(".x == '%s'", .if)
+#   .right <- paste(c(".x", frm$Replace), collapse = " |> ")
+# 
+# 
+#   sprintf("%s ~ %s", .left, .right)
+# }
+# 
+# escape_quote_mark <- function(vec) {
+#   str_replace_all(vec, "'", "\\\\'")
+# }
