@@ -1,4 +1,4 @@
-auto_replace <- function(frm, replacement.f, filter=F) {
+auto_replace <- function(frm, replacement.f, filter = F) {
   #' Apply a replacement function to a `rules.frm`.
   #'
   #'
@@ -8,15 +8,15 @@ auto_replace <- function(frm, replacement.f, filter=F) {
   #' @param frm A `data.frame` with columns `If`, `From`, and `To`.
   #' @param replacement.f A function for transforming the `To` column.
   #' @param filter Logical.  If `TRUE` will only apply to rows where `From` and `To` are different.
-  #' 
+  #'
   #' @return `data.frame`
   #'
   #' @export
-  #' 
-  if (filter){
+  #'
+  if (filter) {
     frm <- filter(frm, From != To)
   }
-  
+
   frm |>
     mutate(
       To = replacement.f(To)

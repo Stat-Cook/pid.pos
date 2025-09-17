@@ -23,10 +23,11 @@ data_frame_report <- function(frm,
   ) %>%
     as_tibble() |>
     arrange(PK) |>
-    rename(Token = token,
-           Document = Sentence,
-           Sentence  = sentence
-           ) |>
+    rename(
+      Token = token,
+      Document = Sentence,
+      Sentence = sentence
+    ) |>
     select("ID", "Token", "Sentence", "Document", "Repeats", "Affected Columns")
 
   class(report) <- c("pid_report", class(report))
