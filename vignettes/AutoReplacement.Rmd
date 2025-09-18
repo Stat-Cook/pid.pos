@@ -71,48 +71,19 @@ updated.replacement_rules
 head(updated.replacement_rules, 5)
 ```
 
-The `updated.replacement_rules` can then converted to a replacement function via `load_replacement_rules`: 
+The `updated.replacement_rules` can then converted to a replacement function via `redaction_function_factory`: 
 
-``` {r, eval=F}
-load_replacement_rules(updated.replacement_rules)
-```
-``` {r, eval=F}
-function(.x) {
-  dplyr::case_when(
-    stringr::str_detect(.x, "(Cut to Monica and Chandler)") ~ .x |> stringr::str_replace_all("Monica", "CCBTU") |>
-      stringr::str_replace_all("Chandler", "TFXGJ"),
-    stringr::str_detect(.x, "(Cut to Monica, at the microphone)") ~ .x |> stringr::str_replace_all("Monica", "CCBTU"),
-    stringr::str_detect(.x, "(Cut to Phoebe and Joey)") ~ .x |> stringr::str_replace_all("Phoebe", "IYNWQ") |>
-      stringr::str_replace_all("Joey", "JZKUZ"),
-    ...,
-    .default = .x
-  )
-}
+``` {r}
+redact_function <- redaction_function_factory(updated.replacement_rules)
 ```
 
 which if parsed, can be used to modify the original data set:    
 
-``` {r, results="hide", message=F}
-redaction.f <- load_replacement_rules(updated.replacement_rules, parse = T)
-
-library(dplyr)
-the_one_in_massapequa |>
-  mutate(
-    across(
-      where(is.character),
-      redaction.f
-    )
+``` {r}
+head(the_one_in_massapequa, 5) |>
+  dplyr::mutate(
+    across(where(is.character), redact_function)
   )
-```
 
-``` {r, echo = F}
-the_one_in_massapequa |>
-  mutate(
-    across(
-      where(is.character),
-      redaction.f
-    )
-  ) |>
-  head(5)
 ```
 

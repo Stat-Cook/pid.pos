@@ -1,6 +1,11 @@
 # Possibly deprecated
 
 prepare_redactions <- function(object) {
+  #' Prepare redaction function from replacement rules.
+  #' 
+  #' @param object The `replacement_rules` (can be a path to a csv file
+  #' or a `data.frame`).
+  #' 
   #' @export
   UseMethod("prepare_redactions")
 }

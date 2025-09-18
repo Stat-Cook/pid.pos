@@ -43,6 +43,10 @@ if.function.list <- function(rules.frm) {
 }
 
 redaction_function_factory <- function(rules.frm) {
+  #' Create a redaction function from a `data.frame` of replacement rules.
+  #' 
+  #' @param rules.frm A data.frame with columns `If`, `From` and `To`.
+  #' 
   #' @importFrom purrr reduce
   #' @export
   then.functions <- then.function.list(rules.frm)

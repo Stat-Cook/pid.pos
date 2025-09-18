@@ -9,3 +9,5 @@ Main.R
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
+
+paper.md

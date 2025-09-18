@@ -9,6 +9,12 @@ vector_merge_redactions <- function(vec, cached_redactions, preprocess = utf8_en
 
 
 merge_redactions <- function(frm, replacements, preprocess = utf8_encode) {
+  #' Remove PID from a data frame via a merge/
+  #' 
+  #' @param frm The data frame to be redacted
+  #' @param replacements A data frame with `If` and `Then` columns
+  #' @param preprocess A function of preprocessing steps to be applied to the text columns.
+  #' 
   #' @export
   frm |>
     mutate(across(
