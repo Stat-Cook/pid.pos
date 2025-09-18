@@ -47,7 +47,7 @@ redaction_function_factory <- function(rules.frm) {
   #'
   #' @param rules.frm A data.frame with columns `If`, `From` and `To`.
   #'
-  #' @importFrom purrr reduce
+  #' @importFrom purrr reduce map2
   #' @export
   then.functions <- then.function.list(rules.frm)
   if.functions <- if.function.list(rules.frm)
