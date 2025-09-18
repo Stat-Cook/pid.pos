@@ -84,6 +84,5 @@ head(the_one_in_massapequa, 5) |>
   dplyr::mutate(
     across(where(is.character), redact_function)
   )
-
 ```
 

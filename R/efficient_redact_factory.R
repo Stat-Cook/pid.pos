@@ -66,14 +66,14 @@ divide_map <- function(frm, func, n = NULL, .progress = T) {
 
 efficient_redaction <- function(frm, redact, n = NULL, .progress = T) {
   #' A wrapper for efficient redaction.
-  #' 
+  #'
   #' @param frm The data frame to be redacted
   #' @param redact A  function which converts free text to redacted text.
   #' @param n The number of chunks to split the data frame into for processing.
   #' @param .progress Whether to show a progress bar.
-  #' 
-  #' 
-  #' @export 
+  #'
+  #'
+  #' @export
   UseMethod("efficient_redaction", redact)
 }
 
