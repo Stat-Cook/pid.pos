@@ -134,41 +134,23 @@ function (in this case <code>random_replacement.f</code>):</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Monica Geller Geller QNLAM</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Ross Geller   Ross   FXZPU</span></span></code></pre>
 <p>The <code>updated.replacement_rules</code> can then converted to a
-replacement function via <code>load_replacement_rules</code>:</p>
+replacement function via <code>redaction_function_factory</code>:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/load_replacement_rules.html">load_replacement_rules</a></span><span class="op">(</span><span class="va">updated.replacement_rules</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw">function</span><span class="op">(</span><span class="va">.x</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html" class="external-link">case_when</a></span><span class="op">(</span></span>
-<span>    <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html" class="external-link">str_detect</a></span><span class="op">(</span><span class="va">.x</span>, <span class="st">"(Cut to Monica and Chandler)"</span><span class="op">)</span> <span class="op">~</span> <span class="va">.x</span> <span class="op">|&gt;</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html" class="external-link">str_replace_all</a></span><span class="op">(</span><span class="st">"Monica"</span>, <span class="st">"CCBTU"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>      <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html" class="external-link">str_replace_all</a></span><span class="op">(</span><span class="st">"Chandler"</span>, <span class="st">"TFXGJ"</span><span class="op">)</span>,</span>
-<span>    <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html" class="external-link">str_detect</a></span><span class="op">(</span><span class="va">.x</span>, <span class="st">"(Cut to Monica, at the microphone)"</span><span class="op">)</span> <span class="op">~</span> <span class="va">.x</span> <span class="op">|&gt;</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html" class="external-link">str_replace_all</a></span><span class="op">(</span><span class="st">"Monica"</span>, <span class="st">"CCBTU"</span><span class="op">)</span>,</span>
-<span>    <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html" class="external-link">str_detect</a></span><span class="op">(</span><span class="va">.x</span>, <span class="st">"(Cut to Phoebe and Joey)"</span><span class="op">)</span> <span class="op">~</span> <span class="va">.x</span> <span class="op">|&gt;</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html" class="external-link">str_replace_all</a></span><span class="op">(</span><span class="st">"Phoebe"</span>, <span class="st">"IYNWQ"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>      <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html" class="external-link">str_replace_all</a></span><span class="op">(</span><span class="st">"Joey"</span>, <span class="st">"JZKUZ"</span><span class="op">)</span>,</span>
-<span>    <span class="va">...</span>,</span>
-<span>    .default <span class="op">=</span> <span class="va">.x</span></span>
-<span>  <span class="op">)</span></span>
-<span><span class="op">}</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">redact_function</span> <span class="op">&lt;-</span> <span class="fu">redaction_function_factory</span><span class="op">(</span><span class="va">updated.replacement_rules</span><span class="op">)</span></span></code></pre></div>
 <p>which if parsed, can be used to modify the original data set:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">redaction.f</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/load_replacement_rules.html">load_replacement_rules</a></span><span class="op">(</span><span class="va">updated.replacement_rules</span>, parse <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span>
-<span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
-<span><span class="va">the_one_in_massapequa</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span></span>
-<span>      <span class="fu"><a href="https://tidyselect.r-lib.org/reference/where.html" class="external-link">where</a></span><span class="op">(</span><span class="va">is.character</span><span class="op">)</span>,</span>
-<span>      <span class="va">redaction.f</span></span>
-<span>    <span class="op">)</span></span>
-<span>  <span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 4</span></span></span>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">the_one_in_massapequa</span>, <span class="fl">5</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
+<span>    <span class="fu">across</span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.character</span><span class="op">)</span>, <span class="va">redact_function</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 4</span></span></span>
 <span><span class="co">#&gt;   scene utterance speaker          text                                         </span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                        </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1         1 Scene Directions [Scene: YIYLU MRGYZ, everyone is there.]     </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     1         2 IYNWQ ZVCCI      Oh, FXZPU, EHUFY, is it okay if I bring some…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     1         3 CCBTU QNLAM      Yeah.                                        </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     1         4 FXZPU QNLAM      Sure. Yeah.                                  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>     1         5 JZKUZ UTNHH      So, who's the guy?</span></span></code></pre>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>     1         5 JZKUZ UTNHH      So, who's the guy?</span></span></code></pre></div>
   </main>
 </div>
 

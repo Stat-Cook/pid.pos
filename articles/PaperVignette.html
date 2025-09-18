@@ -169,13 +169,13 @@ frame which contain the sentence</li>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">report</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/data_frame_report.html">data_frame_report</a></span><span class="op">(</span><span class="va">the_one_in_massapequa</span><span class="op">)</span></span>
 <span><span class="va">report</span></span></code></pre></div>
-<pre><code><span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 176 × 5</span></span></span>
-<span><span class="co">#&gt;   ID                Token  Sentence      Repeats `Affected Columns`</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Col:speaker Row:2 Phoebe Phoebe Buffay      40 `speaker`         </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Col:speaker Row:2 Buffay Phoebe Buffay      40 `speaker`         </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Col:speaker Row:3 Monica Monica Geller      25 `speaker`         </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Col:speaker Row:3 Geller Monica Geller      25 `speaker`         </span></span>
+<pre><code><span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 176 × 6</span></span></span>
+<span><span class="co">#&gt;   ID                Token  Sentence      Document     Repeats `Affected Columns`</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Col:speaker Row:2 Phoebe Phoebe Buffay Phoebe Buff…      40 `speaker`         </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Col:speaker Row:2 Buffay Phoebe Buffay Phoebe Buff…      40 `speaker`         </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Col:speaker Row:3 Monica Monica Geller Monica Gell…      25 `speaker`         </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Col:speaker Row:3 Geller Monica Geller Monica Gell…      25 `speaker`         </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 172 more rows</span></span></span></code></pre>
 <p>For a top level summary of the report, the <code>summary</code>
 method for class <code>pid_report</code> can be used:</p>
@@ -242,9 +242,9 @@ R to ‘parse’ the function for use as part of a data pipeline:</p>
 <code class="sourceCode R"><span><span class="va">replacement.func</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/load_replacement_rules.html">load_replacement_rules</a></span><span class="op">(</span><span class="st">"path/to/report.csv"</span>, parse <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">the_one_in_massapequa</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span></span>
-<span>      <span class="fu"><a href="https://tidyselect.r-lib.org/reference/where.html" class="external-link">where</a></span><span class="op">(</span><span class="va">is.character</span><span class="op">)</span>,</span>
+<span>  <span class="fu">mutate</span><span class="op">(</span></span>
+<span>    <span class="fu">across</span><span class="op">(</span></span>
+<span>      <span class="fu">where</span><span class="op">(</span><span class="va">is.character</span><span class="op">)</span>,</span>
 <span>      <span class="va">replacement.func</span></span>
 <span>    <span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
