@@ -4,12 +4,12 @@
 \alias{merge_redactions}
 \title{Remove PID from a data frame via a merge/}
 \usage{
-merge_redactions(frm, replacements, preprocess = utf8_encode)
+merge_redactions(frm, cached_redactions, preprocess = utf8_encode)
 }
 \arguments{
 \item{frm}{The data frame to be redacted}
 
-\item{replacements}{A data frame with `If` and `Then` columns}
+\item{cached_redactions}{A data frame with `If` and `Then` columns}
 
 \item{preprocess}{A function of preprocessing steps to be applied to the text columns.}
 }
