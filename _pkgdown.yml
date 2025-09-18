@@ -9,7 +9,12 @@ reference:
   - data_frame_tagger
   - report_on_folder
   - report_to_replacement_rules
-  - load_replacement_rules
+  - efficient_redaction
+  - efficient_redact_factory
+  - frame_replacement
+  - merge_redactions
+  - prepare_redactions
+  - redaction_function_factory
 - title: "UDpipe Utilities"
   desc: >
   contents:
