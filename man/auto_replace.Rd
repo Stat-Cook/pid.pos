@@ -4,12 +4,14 @@
 \alias{auto_replace}
 \title{Apply a replacement function to a `rules.frm`.}
 \usage{
-auto_replace(frm, replacement.f)
+auto_replace(frm, replacement.f, filter = F)
 }
 \arguments{
 \item{frm}{A `data.frame` with columns `If`, `From`, and `To`.}
 
 \item{replacement.f}{A function for transforming the `To` column.}
+
+\item{filter}{Logical.  If `TRUE` will only apply to rows where `From` and `To` are different.}
 }
 \value{
 `data.frame`

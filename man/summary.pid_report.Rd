@@ -2,7 +2,7 @@
 % Please edit documentation in R/summary.pid_report.R
 \name{summary.pid_report}
 \alias{summary.pid_report}
-\title{Summary mehtod for class `pid_report`.}
+\title{Summary method for class `pid_report`.}
 \usage{
 \method{summary}{pid_report}(object, ...)
 }
@@ -19,6 +19,6 @@ A data frame describing any column determined to contain PID.
 }
 }
 \description{
-Summary mehtod for class `pid_report`.
+Summary method for class `pid_report`.
 }
 \keyword{internal}
