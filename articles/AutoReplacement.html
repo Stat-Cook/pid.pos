@@ -136,7 +136,7 @@ function (in this case <code>random_replacement.f</code>):</p>
 <p>The <code>updated.replacement_rules</code> can then converted to a
 replacement function via <code>redaction_function_factory</code>:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">redact_function</span> <span class="op">&lt;-</span> <span class="fu">redaction_function_factory</span><span class="op">(</span><span class="va">updated.replacement_rules</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">redact_function</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/redaction_function_factory.html">redaction_function_factory</a></span><span class="op">(</span><span class="va">updated.replacement_rules</span><span class="op">)</span></span></code></pre></div>
 <p>which if parsed, can be used to modify the original data set:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">the_one_in_massapequa</span>, <span class="fl">5</span><span class="op">)</span> <span class="op">|&gt;</span></span>

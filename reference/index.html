@@ -72,10 +72,40 @@
         <dd>Convert the output of `data_frame_report` to a csv file for editing. It is intended the user changes the `To` column to define desired replacements.</dd>
       </dl><dl><dt>
 
-          <code><a href="load_replacement_rules.html">load_replacement_rules()</a></code>
+          <code><a href="efficient_redaction.html">efficient_redaction()</a></code>
 
         </dt>
-        <dd>Convert a set of `replacement_rules` (as defined with `report_to_replacement_rules`) to a function that can be used to modify a data frame.</dd>
+        <dd>A wrapper for efficient redaction.</dd>
+      </dl><dl><dt>
+
+          <code><a href="efficient_redact_factory.html">efficient_redact_factory()</a></code>
+
+        </dt>
+        <dd>Stateful recoding template function</dd>
+      </dl><dl><dt>
+
+          <code><a href="frame_replacement.html">frame_replacement()</a></code>
+
+        </dt>
+        <dd>Remove PID from a data frame.</dd>
+      </dl><dl><dt>
+
+          <code><a href="merge_redactions.html">merge_redactions()</a></code>
+
+        </dt>
+        <dd>Remove PID from a data frame via a merge/</dd>
+      </dl><dl><dt>
+
+          <code><a href="prepare_redactions.html">prepare_redactions()</a></code>
+
+        </dt>
+        <dd>Prepare redaction function from replacement rules.</dd>
+      </dl><dl><dt>
+
+          <code><a href="redaction_function_factory.html">redaction_function_factory()</a></code>
+
+        </dt>
+        <dd>Create a redaction function from a `data.frame` of replacement rules.</dd>
       </dl></div><div class="section level2">
       <h2 id="udpipe-utilities">UDpipe Utilities<a class="anchor" aria-label="anchor" href="#udpipe-utilities"></a></h2>
 

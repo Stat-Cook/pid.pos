@@ -46,7 +46,7 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">auto_replace</span><span class="op">(</span><span class="va">frm</span>, <span class="va">replacement.f</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">auto_replace</span><span class="op">(</span><span class="va">frm</span>, <span class="va">replacement.f</span>, filter <span class="op">=</span> <span class="cn">F</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -59,6 +59,10 @@
 
 <dt id="arg-replacement-f">replacement.f<a class="anchor" aria-label="anchor" href="#arg-replacement-f"></a></dt>
 <dd><p>A function for transforming the `To` column.</p></dd>
+
+
+<dt id="arg-filter">filter<a class="anchor" aria-label="anchor" href="#arg-filter"></a></dt>
+<dd><p>Logical.  If `TRUE` will only apply to rows where `From` and `To` are different.</p></dd>
 
 </dl></div>
     <div class="section level2">
