@@ -9,7 +9,7 @@ test_that("report_to_replacement_rules", {
     temp_file <- local_tempfile(fileext = ".csv")
 
     # Run the function
-    .rules <- report_to_replacement_rules(.report, path = temp_file)
+    .rules <- report_to_redaction_rules(.report, path = temp_file)
 
     # Check the file exists
     expect_true(file.exists(temp_file))

@@ -8,13 +8,16 @@ reference:
   - data_frame_report
   - data_frame_tagger
   - report_on_folder
-  - report_to_replacement_rules
+  - report_to_redaction_rules
+- title: "Redaction tools"
+  desc: >
+  contents:
+  - prepare_redactions
+  - frame_replacement
+  - redaction_function_factory
   - efficient_redaction
   - efficient_redact_factory
-  - frame_replacement
   - merge_redactions
-  - prepare_redactions
-  - redaction_function_factory
 - title: "UDpipe Utilities"
   desc: >
   contents:

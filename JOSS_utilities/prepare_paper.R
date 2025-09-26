@@ -1,6 +1,6 @@
 library(rmarkdown)
 library(readr)
-
+devtools::load_all()
 
 kable_head <- function(x, ...) {
   head(x, 5) |> 

@@ -42,7 +42,7 @@ The basic workflow is hence:
 library(pid.pos)
 
 report <- data_frame_report(the_one_in_massapequa)
-replacement_rules <- report_to_replacement_rules(report)
+replacement_rules <- report_to_redaction_rules(report)
 
 replacement_rules
 ```

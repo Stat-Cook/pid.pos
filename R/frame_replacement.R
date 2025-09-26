@@ -74,7 +74,6 @@ frame_replacement <- function(frm, rules.frm) {
   #' Applied the replacement rules (as defined in a `data.frame` with columns
   #' `If`, `From` and `To`) to all character columns in a data frame.
   #'
-  #'
   #' @param frm The data frame containing text
   #' @param rules.frm The `data.frame` containing `If`, `From` and `To` rules.
   #'

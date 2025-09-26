@@ -1,7 +1,7 @@
 test_that("make and merge replacements workflow", {
   report <- data_frame_report(the_one_in_massapequa)
 
-  .rules <- report_to_replacement_rules(
+  .rules <- report_to_redaction_rules(
     report
   )
 

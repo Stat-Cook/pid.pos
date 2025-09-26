@@ -89,13 +89,13 @@ library(pid.pos)
 the_one_in_massapequa
 ```
 
-| scene | utterance | speaker          | text                                                                             | text2                                                                            |
-|---:|----:|:------|:----------------------------|:----------------------------|
-|     1 |         1 | Scene Directions | [Scene: Central Perk, everyone is there.]                                      | [Scene: Central Perk, everyone is there.]                                      |
-|     1 |         2 | Phoebe Buffay    | Oh, Ross, Mon, is it okay if I bring someone to your parent’s anniversary party? | Oh, Ross, Mon, is it okay if I bring someone to your parent’s anniversary party? |
-|     1 |         3 | Monica Geller    | Yeah.                                                                            | Yeah.                                                                            |
-|     1 |         4 | Ross Geller      | Sure. Yeah.                                                                      | Sure. Yeah.                                                                      |
-|     1 |         5 | Joey Tribbiani   | So, who’s the guy?                                                               | So, who’s the guy?                                                               |
+| scene | utterance | speaker | text |
+|----:|------:|:----------|:------------------------------------------------|
+| 1 | 1 | Scene Directions | [Scene: Central Perk, everyone is there.] |
+| 1 | 2 | Phoebe Buffay | Oh, Ross, Mon, is it okay if I bring someone to your parent’s anniversary party? |
+| 1 | 3 | Monica Geller | Yeah. |
+| 1 | 4 | Ross Geller | Sure. Yeah. |
+| 1 | 5 | Joey Tribbiani | So, who’s the guy? |
 
 The package has two main functions for identifying PID risks, depending
 on the users needs.  
@@ -112,28 +112,46 @@ into a new data frame of:
 ``` r
 report <- data_frame_report(the_one_in_massapequa)
 report
+#> Warning: 'xfun::attr()' is deprecated.
+#> Use 'xfun::attr2()' instead.
+#> See help("Deprecated")
+#> Warning: 'xfun::attr()' is deprecated.
+#> Use 'xfun::attr2()' instead.
+#> See help("Deprecated")
 ```
 
-| ID                | Token  | Sentence      | Repeats | Affected Columns |
-|:------------------|:-------|:--------------|--------:|:-----------------|
-| Col:speaker Row:2 | Phoebe | Phoebe Buffay |      40 | `speaker`        |
-| Col:speaker Row:2 | Buffay | Phoebe Buffay |      40 | `speaker`        |
-| Col:speaker Row:3 | Monica | Monica Geller |      25 | `speaker`        |
-| Col:speaker Row:3 | Geller | Monica Geller |      25 | `speaker`        |
-| Col:speaker Row:4 | Ross   | Ross Geller   |      43 | `speaker`        |
+    #> Warning: 'xfun::attr()' is deprecated.
+    #> Use 'xfun::attr2()' instead.
+    #> See help("Deprecated")
+    #> Warning: 'xfun::attr()' is deprecated.
+    #> Use 'xfun::attr2()' instead.
+    #> See help("Deprecated")
+
+| ID                | Token  | Sentence      | Document      | Repeats | Affected Columns |
+|:----------------|:------|:------------|:------------|-------:|:---------------|
+| Col:speaker Row:2 | Phoebe | Phoebe Buffay | Phoebe Buffay |      40 | `speaker`        |
+| Col:speaker Row:2 | Buffay | Phoebe Buffay | Phoebe Buffay |      40 | `speaker`        |
+| Col:speaker Row:3 | Monica | Monica Geller | Monica Geller |      25 | `speaker`        |
+| Col:speaker Row:3 | Geller | Monica Geller | Monica Geller |      25 | `speaker`        |
+| Col:speaker Row:4 | Ross   | Ross Geller   | Ross Geller   |      43 | `speaker`        |
 
 For a top level summary of the report, the `summary` method for class
 `pid_report` can be used:
 
 ``` r
 summary(report)
+#> Warning: 'xfun::attr()' is deprecated.
+#> Use 'xfun::attr2()' instead.
+#> See help("Deprecated")
+#> Warning: 'xfun::attr()' is deprecated.
+#> Use 'xfun::attr2()' instead.
+#> See help("Deprecated")
 ```
 
-| Column    | Cases of Proper Nouns | Unique Cases of Proper Nouns | Most Common Proper Noun Sentence            |
+| Column | Cases of Proper Nouns | Unique Cases of Proper Nouns | Most Common Proper Noun Sentence |
 |:-------|---------------:|-------------------:|:----------------------------|
-| `speaker` |                   243 |                           14 | Ross Geller                                 |
-| `text`    |                   198 |                           99 | [Scene: Central Perk, everyone is there.] |
-| `text2`   |                   198 |                           99 | [Scene: Central Perk, everyone is there.] |
+| `speaker` | 243 | 14 | Ross Geller |
+| `text` | 99 | 99 | [Scene: Central Perk, everyone is there.] |
 
 The second function is `report_on_folder` which iterates over a folder
 of data files, producing a proper noun report for each. It is foreseen
@@ -157,7 +175,7 @@ basic functionality designed for minimal technical knowledge to assist
 in the redaction of PID.
 
 Where a PID report has been ran, the resulting data frame can be passed
-to the function `report_to_replacement_rules` which will convert the
+to the function `report_to_redaction_rules` which will convert the
 report to a csv file with three headings:
 
 -   `If` - the sentence pattern which, if it matches, the replacement is
@@ -166,11 +184,18 @@ report to a csv file with three headings:
 -   `To` - the intended replacement
 
 ``` r
-replacement_rules <- report_to_replacement_rules(
+replacement_rules <- report_to_redaction_rules(
   report, 
   path='path/to/report.csv'
 )
 ```
+
+    #> Warning: 'xfun::attr()' is deprecated.
+    #> Use 'xfun::attr2()' instead.
+    #> See help("Deprecated")
+    #> Warning: 'xfun::attr()' is deprecated.
+    #> Use 'xfun::attr2()' instead.
+    #> See help("Deprecated")
 
 | If            | From   | To     |
 |:--------------|:-------|:-------|
@@ -182,24 +207,24 @@ replacement_rules <- report_to_replacement_rules(
 
 The csv file is intended to be edited by the data controller, who hence
 does not need to understand R, and can be reimported using the
-`load_replacement_rules` function:
+`prepare_redactions` function:
 
 ``` r
-load_replacement_rules('path/to/report.csv')
+prepare_redactions('path/to/report.csv')
 ```
 
-The `load_replacement_rules` function creates a string replacement rule
-to capture the desired redactions, with the option for R to ‘parse’ the
+The `prepare_redactions` function creates a string replacement rule to
+capture the desired redactions, with the option for R to ‘parse’ the
 function for use as part of a data pipeline:
 
 ``` r
-replacement.func <- load_replacement_rules('path/to/report.csv', parse=T)
+redaction.func <- prepare_redactions('path/to/report.csv')
 
 the_one_in_massapequa |>
   mutate(
     across(
       where(is.character),
-      replacement.func
+      redaction.func
     )
   )
 ```

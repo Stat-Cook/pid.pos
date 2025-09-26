@@ -62,7 +62,7 @@ rather than fully automate it.
 
 To install the current version of `PID.POS` package, use the following code:
 
-``` {r, eval=F}
+``` {r install.1, eval=F}
 # install.packages("pak")
 pak::pkg_install("Stat-Cook/PID.POS")
 ```
@@ -70,12 +70,12 @@ pak::pkg_install("Stat-Cook/PID.POS")
 To assist with understanding the `PID.POS` package, we include a subset of the 'friends' 
 data set from the `friends` package.
 
-``` {r, warning = F, message = F, results="hide"}
+``` {r load, warning = F, message = F, results="hide"}
 library(pid.pos)
 the_one_in_massapequa
 ```
 
-``` {r, warning = F, message = F, echo=F}
+``` {r dataset, warning = F, message = F, echo=F}
 the_one_in_massapequa
 ```
 
@@ -89,12 +89,12 @@ First, the `data_frame_report` function converts a typical R data frame into a n
 * `Repeats` - the number of times the sentence occurs in the data set
 * `Affected Columns` - the columns in the original data frame which contain the sentence
 
-``` {r, results="hide", message=F}
+``` {r report.1, results="hide", message=F}
 report <- data_frame_report(the_one_in_massapequa)
 report
 ```
 
-``` {r, echo=F, message=F}
+``` {r report.2, echo=F, message=F}
 report
 ```
 
@@ -109,7 +109,7 @@ producing a proper noun report for each.  It is foreseen that this function will
 be the more useful, used just before data release to evidence no PID risks.
 
 ``` {r, eval=F}
-report_on_folder("path/to/data/")
+report_on_folder('path/to/data/')
 browse_model_location()
 ```    
 
@@ -124,44 +124,45 @@ basic functionality designed for minimal technical knowledge to assist in the
 redaction of PID.
 
 Where a PID report has been ran, the resulting data frame can be passed to the function 
-`report_to_replacement_rules` which will convert the report to a csv file with three headings:
+`report_to_redaction_rules` which will convert the report to a csv file with three headings:
 
 * `If` - the sentence pattern which, if it matches, the replacement is applied
 * `From` - the pattern to be replaced
 * `To` - the intended replacement
 
 ``` {r, eval = F, results="hide"}
-replacement_rules <- report_to_replacement_rules(
-  report,
-  path = "path/to/report.csv"
+replacement_rules <- report_to_redaction_rules(
+  report, 
+  path='path/to/report.csv'
 )
 ```
 
 ``` {r, echo=F}
-replacement_rules <- report_to_replacement_rules(report)
+replacement_rules <- report_to_redaction_rules(report)
 replacement_rules
 ```
 The csv file is intended to be edited by the data controller, who hence does not need 
-to understand R, and can be reimported using the `load_replacement_rules` function:
+to understand R, and can be reimported using the `prepare_redactions` function:
 
 ``` {r, eval=F}
-load_replacement_rules("path/to/report.csv")
+prepare_redactions('path/to/report.csv')
 ```
 
-The  `load_replacement_rules` function creates a string replacement rule to capture the 
+The  `prepare_redactions` function creates a string replacement rule to capture the 
 desired redactions, with the option for R to 'parse' the function for use as part of a data
 pipeline:
 
 ``` {r, eval=F}
-replacement.func <- load_replacement_rules("path/to/report.csv", parse = T)
+redaction.func <- prepare_redactions('path/to/report.csv')
 
 the_one_in_massapequa |>
   mutate(
     across(
       where(is.character),
-      replacement.func
+      redaction.func
     )
   )
+
 ```
 
 For a more advanced user, the `load_replacement_rules` function utilizes the `str_detect` and 
