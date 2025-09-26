@@ -1,5 +1,5 @@
 report_to_redaction_rules <- function(report, path = NULL,
-                                        add_context = F) {
+                                      add_context = F) {
   #' Convert the output of `data_frame_report` to a csv file for editing.
   #' It is intended the user changes the `To` column to define desired
   #' replacements.
