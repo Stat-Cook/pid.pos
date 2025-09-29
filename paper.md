@@ -7,8 +7,8 @@ authors:
     orcid: 0000-0003-3343-8271
     equal-contrib: false
     affiliation: 1
-  - name: A N Other
-    orcid: XXXX-XXXX-XXXX-XXXX
+  - name: Md Asaduzzaman
+    orcid: 0000-0002-8885-6721
     equal-contrib: false # (This is how you can denote equal contributions between multiple authors)
     affiliation: 1
   - name: Sarahjane Jones
@@ -229,10 +229,8 @@ the_one_in_massapequa |>
   )
 ```
 
-For a more advanced user, the `load_replacement_rules` function utilizes
-the `str_detect` and `str_replace_all` functions from the `stringr`
-package, and hence supports regex. Further utilities are available,
-notably tools to automatically encode the `To` column (see [Auto
+Further utilities are available, notably tools to automatically encode
+the `To` column (see [Auto
 Replacements](https://stat-cook.github.io/pid.pos/articles/AutoReplacement.html)).
 
 # Current applications
@@ -244,8 +242,8 @@ patient safety.
 
 # Contributions
 
-The package was designed by RC and …. Implementation was done by RC.
-Quality assurance was done by … Documentation was written by RC….
+The package was designed by RC, MA and SJ. Implementation was done by
+RC. Quality assurance was done by MA. Documentation was written by RC.
 Funding for the work was won by RC and SJ.
 
 # Acknowledgements
