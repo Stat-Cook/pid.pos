@@ -1,6 +1,7 @@
 ``` {r setup, echo=F}
 knitr::opts_chunk$set(collapse = T, comment = "#>")
 options(tibble.print_min = 4, tibble.print_max = 4)
+attr <- base::attr
 ```
 
 # Summary
