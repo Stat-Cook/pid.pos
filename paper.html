@@ -43,7 +43,7 @@
 </div>
 <div class="section level1">
 <h1 id="statement-of-need">Statement of need<a class="anchor" aria-label="anchor" href="#statement-of-need"></a></h1>
-<p>The world is embedded in a data revolution. Never before have we had the depth or breadth of data being captured and analysed than we do at present, and this is only set to increase. In response, international bodies are taking steps to ensure legal protection of an individual’s rights to their own data [@GDPR]. One effect of increase legislation has been a growing awareness of the role and responsibility of data controllers [@ICODataController] and the risks of big data [@clarke2016big]. Among these concerns, a risk of ‘personal identifiability’ i.e. the ability to directly or indirectly identify an individual from a dataset [@finck2020they], is paramount and, if breeched, can lead to reputation damage and fines [@ICOWhatIf].</p>
+<p>The world is embedded in a data revolution. Never before have we had the depth or breadth of data being captured and analysed than we do at present, and this is only set to increase. In response, international bodies are taking steps to ensure legal protection of an individual’s rights to their own data [@GDPR]. One effect of increase legislation in the European Union has been a growing awareness of the role and responsibility of data controllers [@ICODataController] and the risks of big data [@clarke2016big]. Among these concerns, a risk of ‘personal identifiability’ i.e. the ability to directly or indirectly identify an individual from a dataset [@finck2020they], is paramount and, if breeched, can lead to reputation damage and fines [@ICOWhatIf].</p>
 <p>Where data is structured and comprises only a few hundred observations, a manual inspection can identify variables which contain directly personally identifiable data (PID) with a reasonable time investment. However, in the case of modern large data sets which may comprise millions of observations, a manual inspection may miss PID if it is embedded within a passage of text, or is a rarity for the given variable. The <code>PID.POS</code> (Personal Identifiability Detection by Part Of Speech tagging) package is designed to aid with the identification of PID risks in data sets. In comparison to existing packages which rely on a curated list of common names and string-matching, <code>PID.POS</code> builds on the existing <code>udpipe</code> framework, extracting all examples of proper nouns and providing a mechanism for the review and redaction of PID risks.</p>
 </div>
 <div class="section level1">
@@ -98,19 +98,7 @@ First, the <code>data_frame_report</code> function converts a typical R data fra
 <code>Affected Columns</code> - the columns in the original data frame which contain the sentence</li>
 </ul><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">report</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/data_frame_report.html">data_frame_report</a></span><span class="op">(</span><span class="va">the_one_in_massapequa</span><span class="op">)</span></span>
-<span><span class="va">report</span></span>
-<span><span class="co">#&gt; Warning: 'xfun::attr()' is deprecated.</span></span>
-<span><span class="co">#&gt; Use 'xfun::attr2()' instead.</span></span>
-<span><span class="co">#&gt; See help("Deprecated")</span></span>
-<span><span class="co">#&gt; Warning: 'xfun::attr()' is deprecated.</span></span>
-<span><span class="co">#&gt; Use 'xfun::attr2()' instead.</span></span>
-<span><span class="co">#&gt; See help("Deprecated")</span></span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co">#&gt; Warning: 'xfun::attr()' is deprecated.</span></span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="co">#&gt; Use 'xfun::attr2()' instead.</span></span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="co">#&gt; See help("Deprecated")</span></span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co">#&gt; Warning: 'xfun::attr()' is deprecated.</span></span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="co">#&gt; Use 'xfun::attr2()' instead.</span></span>
-<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="co">#&gt; See help("Deprecated")</span></span></code></pre></div>
+<span><span class="va">report</span></span></code></pre></div>
 <table class="table"><colgroup><col width="22%"><col width="9%"><col width="17%"><col width="17%"><col width="10%"><col width="21%"></colgroup><thead><tr class="header"><th align="left">ID</th>
 <th align="left">Token</th>
 <th align="left">Sentence</th>
@@ -148,14 +136,8 @@ First, the <code>data_frame_report</code> function converts a typical R data fra
 <td align="right">43</td>
 <td align="left"><code>speaker</code></td>
 </tr></tbody></table><p>For a top level summary of the report, the <code>summary</code> method for class <code>pid_report</code> can be used:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">report</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: 'xfun::attr()' is deprecated.</span></span>
-<span><span class="co">#&gt; Use 'xfun::attr2()' instead.</span></span>
-<span><span class="co">#&gt; See help("Deprecated")</span></span>
-<span><span class="co">#&gt; Warning: 'xfun::attr()' is deprecated.</span></span>
-<span><span class="co">#&gt; Use 'xfun::attr2()' instead.</span></span>
-<span><span class="co">#&gt; See help("Deprecated")</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">report</span><span class="op">)</span></span></code></pre></div>
 <table class="table"><colgroup><col width="10%"><col width="21%"><col width="27%"><col width="39%"></colgroup><thead><tr class="header"><th align="left">Column</th>
 <th align="right">Cases of Proper Nouns</th>
 <th align="right">Unique Cases of Proper Nouns</th>
@@ -169,7 +151,7 @@ First, the <code>data_frame_report</code> function converts a typical R data fra
 <td align="right">99</td>
 <td align="left">[Scene: Central Perk, everyone is there.]</td>
 </tr></tbody></table><p>The second function is <code>report_on_folder</code> which iterates over a folder of data files, producing a proper noun report for each. It is foreseen that this function will be the more useful, used just before data release to evidence no PID risks.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/report_on_folder.html">report_on_folder</a></span><span class="op">(</span><span class="st">'path/to/data/'</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/browse_model_location.html">browse_model_location</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>NB: the <code>data_frame_report</code> and <code>report_on_folder</code> functions automate the download of the pre-trained <code>udpipe</code> model. These models are required to be cached to the users hard-drive and hence firewall issues may present. The vignette … is included to help with common issues.</p>
@@ -182,17 +164,11 @@ basic functionality designed for minimal technical knowledge to assist in the re
 <code>From</code> - the pattern to be replaced</li>
 <li>
 <code>To</code> - the intended replacement</li>
-</ul><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+</ul><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">replacement_rules</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/report_to_redaction_rules.html">report_to_redaction_rules</a></span><span class="op">(</span></span>
 <span>  <span class="va">report</span>, </span>
 <span>  path<span class="op">=</span><span class="st">'path/to/report.csv'</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co">#&gt; Warning: 'xfun::attr()' is deprecated.</span></span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="co">#&gt; Use 'xfun::attr2()' instead.</span></span>
-<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="co">#&gt; See help("Deprecated")</span></span>
-<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="co">#&gt; Warning: 'xfun::attr()' is deprecated.</span></span>
-<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="co">#&gt; Use 'xfun::attr2()' instead.</span></span>
-<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="co">#&gt; See help("Deprecated")</span></span></code></pre></div>
 <table class="table"><thead><tr class="header"><th align="left">If</th>
 <th align="left">From</th>
 <th align="left">To</th>
@@ -212,10 +188,10 @@ basic functionality designed for minimal technical knowledge to assist in the re
 <td align="left">Ross</td>
 <td align="left">Ross</td>
 </tr></tbody></table><p>The csv file is intended to be edited by the data controller, who hence does not need to understand R, and can be reimported using the <code>prepare_redactions</code> function:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/prepare_redactions.html">prepare_redactions</a></span><span class="op">(</span><span class="st">'path/to/report.csv'</span><span class="op">)</span></span></code></pre></div>
 <p>The <code>prepare_redactions</code> function creates a string replacement rule to capture the desired redactions, with the option for R to ‘parse’ the function for use as part of a data pipeline:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">redaction.func</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/prepare_redactions.html">prepare_redactions</a></span><span class="op">(</span><span class="st">'path/to/report.csv'</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">the_one_in_massapequa</span> <span class="op">|&gt;</span></span>
