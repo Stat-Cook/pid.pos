@@ -90,14 +90,12 @@ present, and this is only set to increase. In response, international
 bodies are taking steps to ensure legal protection of an individual’s
 rights to their own data <span class="citation">(European Parliament and
 Council of the European Union 2016)</span>. One effect of increase
-legislation in the European Union has been a growing awareness of the
-role and responsibility of data controllers <span class="citation">(ICO,
-n.d.b)</span> and the risks of big data <span class="citation">(Clarke
-2016)</span>. Among these concerns, a risk of ‘personal identifiability’
-i.e. the ability to directly or indirectly identify an individual from a
-dataset <span class="citation">(Finck and Pallas 2020)</span>, is
-paramount and, if breeched, can lead to reputation damage and fines
-<span class="citation">(ICO, n.d.a)</span>.</p>
+legislation has been a growing awareness of the role and responsibility
+of data controllers <span class="citation">(ICO, n.d.b)</span> and the
+risks of big data <span class="citation">(Clarke 2016)</span>. Among
+these concerns, a risk of ‘personal identifiability’ i.e. the ability to
+directly or indirectly identify an individual from a dataset <span class="citation">(Finck and Pallas 2020)</span>, is paramount and, if
+breeched, can lead to reputation damage and fines <span class="citation">(ICO, n.d.a)</span>.</p>
 <p>Where data is structured and comprises only a few hundred
 observations, a manual inspection can identify variables which contain
 directly personally identifiable data (PID) with a reasonable time
@@ -170,18 +168,18 @@ frame which contain the sentence</li>
 </ul>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">report</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/data_frame_report.html">data_frame_report</a></span><span class="op">(</span><span class="va">the_one_in_massapequa</span><span class="op">)</span></span>
-<span><span class="va">report</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 176 × 6</span></span></span>
+<span><span class="va">report</span></span></code></pre></div>
+<pre><code><span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 176 × 6</span></span></span>
 <span><span class="co">#&gt;   ID                Token  Sentence      Document     Repeats `Affected Columns`</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Col:speaker Row:2 Phoebe Phoebe Buffay Phoebe Buff…      40 `speaker`         </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Col:speaker Row:2 Buffay Phoebe Buffay Phoebe Buff…      40 `speaker`         </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Col:speaker Row:3 Monica Monica Geller Monica Gell…      25 `speaker`         </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Col:speaker Row:3 Geller Monica Geller Monica Gell…      25 `speaker`         </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 172 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 172 more rows</span></span></span></code></pre>
 <p>For a top level summary of the report, the <code>summary</code>
 method for class <code>pid_report</code> can be used:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">report</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 × 4</span></span></span>
 <span><span class="co">#&gt;   Column    Cases of Proper Noun…¹ Unique Cases of Prop…² Most Common Proper N…³</span></span>
@@ -194,8 +192,8 @@ method for class <code>pid_report</code> can be used:</p>
 over a folder of data files, producing a proper noun report for each. It
 is foreseen that this function will be the more useful, used just before
 data release to evidence no PID risks.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/report_on_folder.html">report_on_folder</a></span><span class="op">(</span><span class="st">"path/to/data/"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/report_on_folder.html">report_on_folder</a></span><span class="op">(</span><span class="st">'path/to/data/'</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/browse_model_location.html">browse_model_location</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>NB: the <code>data_frame_report</code> and
 <code>report_on_folder</code> functions automate the download of the
@@ -219,10 +217,10 @@ replacement is applied</li>
 <li>
 <code>To</code> - the intended replacement</li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">replacement_rules</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/report_to_redaction_rules.html">report_to_redaction_rules</a></span><span class="op">(</span></span>
-<span>  <span class="va">report</span>,</span>
-<span>  path <span class="op">=</span> <span class="st">"path/to/report.csv"</span></span>
+<span>  <span class="va">report</span>, </span>
+<span>  path<span class="op">=</span><span class="st">'path/to/report.csv'</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 176 × 3</span></span></span>
 <span><span class="co">#&gt;   If            From   To    </span></span>
@@ -235,13 +233,13 @@ replacement is applied</li>
 <p>The csv file is intended to be edited by the data controller, who
 hence does not need to understand R, and can be reimported using the
 <code>prepare_redactions</code> function:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/prepare_redactions.html">prepare_redactions</a></span><span class="op">(</span><span class="st">"path/to/report.csv"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/prepare_redactions.html">prepare_redactions</a></span><span class="op">(</span><span class="st">'path/to/report.csv'</span><span class="op">)</span></span></code></pre></div>
 <p>The <code>prepare_redactions</code> function creates a string
 replacement rule to capture the desired redactions, with the option for
 R to ‘parse’ the function for use as part of a data pipeline:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">redaction.func</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/prepare_redactions.html">prepare_redactions</a></span><span class="op">(</span><span class="st">"path/to/report.csv"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">redaction.func</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/prepare_redactions.html">prepare_redactions</a></span><span class="op">(</span><span class="st">'path/to/report.csv'</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">the_one_in_massapequa</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">mutate</span><span class="op">(</span></span>
