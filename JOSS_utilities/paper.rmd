@@ -1,7 +1,6 @@
 ``` {r setup, echo=F}
-knitr::opts_chunk$set(collapse = T, comment = "#>")
+knitr::opts_chunk$set(collapse = T, comment = "#>", warning=F)
 options(tibble.print_min = 4, tibble.print_max = 4)
-attr <- base::attr
 ```
 
 # Summary
@@ -14,16 +13,14 @@ implementation of a redaction process.
 
 # Statement of need  
 
-
 The world is embedded in a data revolution.  Never before have we had the depth or breadth of data 
 being captured  and analysed than we do at present, and this is only set to increase. 
 In response, international bodies are taking steps to ensure legal protection of an individual's rights 
-to their own data [@GDPR].  One effect of increase legislation  has been a growing awareness of the role and 
-responsibility of data controllers [@ICODataController] and the risks of big data [@clarke2016big]. 
+to their own data [@GDPR].  One effect of increase legislation in the European Union 
+ has been a growing awareness of the role and  responsibility of data controllers [@ICODataController] and the risks of big data [@clarke2016big]. 
 Among these concerns, a risk of 'personal identifiability' i.e. the ability to directly or 
 indirectly identify an individual from a dataset [@finck2020they], is paramount  and, if breeched,
 can lead to reputation damage and fines [@ICOWhatIf]. 
-
 
 
 Where data  is structured  and comprises only a few hundred observations, a manual inspection can 
@@ -79,18 +76,15 @@ First, the `data_frame_report` function converts a typical R data frame into a n
 * `Repeats` - the number of times the sentence occurs in the data set
 * `Affected Columns` - the columns in the original data frame which contain the sentence
 
-``` {r report.1, results="hide", message=F}
+``` {r, message=F, warning = F}
 report <- data_frame_report(the_one_in_massapequa)
 report
 ```
 
-``` {r report.2, echo=F, message=F}
-report
-```
 
 For a top level summary of the report, the `summary` method for class `pid_report` can be used:
 
-``` {r}
+``` {r, warning=F}
 summary(report)
 ```
 
