@@ -19,12 +19,11 @@ report_to_redaction_rules <- function(report, path = NULL,
   #' }
   #'
   #' @examples
-  #' \dontrun(
+  #' \dontrun{
   #' example.data <- head(the_one_in_massapequa)
   #' report <- data_frame_report(example.data, to_remove = "speaker")
   #' report_to_redaction_rules(report)
-  #' )
-  #'
+  #' }
   #'
   #' @export
   .frm <- report |>

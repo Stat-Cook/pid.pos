@@ -28,11 +28,10 @@ It is intended the user changes the `To` column to define desired
 redactions.
 }
 \examples{
-\dontrun(
+\dontrun{
 example.data <- head(the_one_in_massapequa)
 report <- data_frame_report(example.data, to_remove = "speaker")
 report_to_redaction_rules(report)
-)
-
+}
 
 }

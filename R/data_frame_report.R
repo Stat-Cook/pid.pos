@@ -23,10 +23,10 @@ data_frame_report <- function(frm,
   #' If no proper nouns are detected, an empty data frame is returned.
   #'
   #' @examples
-  #' \dontrun(
+  #' \dontrun{
   #' example.data <- head(the_one_in_massapequa, 10)
   #' data_frame_report(example.data, to_remove=c("scene", "utterance"))
-  #' )
+  #' }
   #' @export
   #' @importFrom magrittr %>%
   #' @importFrom dplyr group_by group_modify left_join where all_of
