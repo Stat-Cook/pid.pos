@@ -10,7 +10,7 @@ empty.report <- data.frame(
 report_on_folder <- function(data_path, report_dir = "Proper Noun Reports",
                              to_remove = c()) {
   #' Folder Report
-  #' 
+  #'
   #' Itterates over a folder of data files and produces a proper noun report for each.
   #' The reports are saved in the specified `report directory`.
   #'
@@ -21,7 +21,7 @@ report_on_folder <- function(data_path, report_dir = "Proper Noun Reports",
   #' @return NULL
   #'
   #' @export
-  #' 
+  #'
   #' @examples
   #' \dontrun{
   #' report_on_folder("path/to/data", report_dir="Proper Noun Reports")
