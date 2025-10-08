@@ -48,7 +48,6 @@ redaction_function_factory <- function(rules.frm) {
   #' @param rules.frm A data.frame with columns `If`, `From` and `To`.
   #'
   #' @importFrom purrr reduce map2
-  #' @export
   then.functions <- then.function.list(rules.frm)
   if.functions <- if.function.list(rules.frm)
 
@@ -77,7 +76,19 @@ frame_replacement <- function(frm, rules.frm) {
   #' @param frm The data frame containing text
   #' @param rules.frm The `data.frame` containing `If`, `From` and `To` rules.
   #'
-  #' @return `data.frame`
+  #' @return A data.frame with the same structure as
+  #'
+  #' @examples
+  #' \dontrun{
+  #' example.data <- head(the_one_in_massapequa)
+  #' report <- data_frame_report(example.data)
+  #' redactions.raw <- report_to_redaction_rules(report)
+  #' 
+  #' replace_by <- random_replacement.f()
+  #' redactions <- auto_replace(redactions.raw, replacement.f = replace_by)
+  #' 
+  #' frame_replacement(example.data, redactions)
+  #' }
   #'
   #' @export
   redaction.f <- redaction_function_factory(rules.frm)

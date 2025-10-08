@@ -19,3 +19,12 @@ It is designed to generate a replacement by a random combination of
 alpha-numeric characters, and apply a unique replacement to each instance
 of the same input.
 }
+\examples{
+
+replace_by <- all_random_replacement.f()
+auto_replace(raw_redaction_rules, replacement.f = replace_by) 
+
+replace_by <- all_random_replacement.f(replacement_space = LETTERS[1:10], replacement_size = 20)
+auto_replace(raw_redaction_rules, replacement.f = replace_by)
+
+}

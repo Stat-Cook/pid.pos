@@ -14,9 +14,15 @@ auto_replace(frm, replacement.f, filter = F)
 \item{filter}{Logical.  If `TRUE` will only apply to rows where `From` and `To` are different.}
 }
 \value{
-`data.frame`
+A `data.frame` like `frm` but with the `To` column transformed by `replacement.f`.
 }
 \description{
 Several function factories have been implemented to create replacement functions
 (`hashing_replacement.f`, `random_replacement.f`, `all_random_replacement.f`)
+}
+\examples{
+
+replace_by <- random_replacement.f()
+auto_replace(raw_redaction_rules, replacement.f = replace_by)
+
 }

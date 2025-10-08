@@ -20,3 +20,9 @@ NB: other functions can be used, if they take `key` as a kew word argument.}
 \description{
 Function factory for hashing replacement.
 }
+\examples{
+replace_by <- hashing_replacement.f(key="PIDPOS", salt="SALT")
+auto_replace(raw_redaction_rules, replacement.f = replace_by)
+
+
+}

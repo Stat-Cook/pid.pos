@@ -9,7 +9,12 @@ auto_replace <- function(frm, replacement.f, filter = F) {
   #' @param replacement.f A function for transforming the `To` column.
   #' @param filter Logical.  If `TRUE` will only apply to rows where `From` and `To` are different.
   #'
-  #' @return `data.frame`
+  #' @return A `data.frame` like `frm` but with the `To` column transformed by `replacement.f`.
+  #'
+  #' @examples
+  #' 
+  #' replace_by <- random_replacement.f()
+  #' auto_replace(raw_redaction_rules, replacement.f = replace_by)
   #'
   #' @export
   #'
@@ -33,6 +38,11 @@ hashing_replacement.f <- function(key, salt = "", hash = sha256) {
   #'    NB: other functions can be used, if they take `key` as a kew word argument.
   #'
   #' @return `function`
+  #'
+  #' @examples
+  #' replace_by <- hashing_replacement.f(key="PIDPOS", salt="SALT")
+  #' auto_replace(raw_redaction_rules, replacement.f = replace_by)
+  #'
   #'
   #' @importFrom openssl sha256
   #' @export
@@ -114,6 +124,15 @@ random_replacement.f <- function(replacement_size = 10, replacement_space = LETT
   #' @param replacement_space The space from which to sample replacements (default is `LETTERS`).
   #'
   #' @return `function`
+  #' 
+  #' @examples 
+  #' 
+  #' replace_by <- random_replacement.f()
+  #' auto_replace(raw_redaction_rules, replacement.f = replace_by) 
+  #' 
+  #' replace_by <- random_replacement.f(replacement_space = LETTERS[1:10], replacement_size = 20)
+  #' auto_replace(raw_redaction_rules, replacement.f = replace_by)
+  #' 
   #' @export
 
   .replace <- RandomReplacer$new(replacement_size, replacement_space)
@@ -138,6 +157,15 @@ all_random_replacement.f <- function(replacement_size = 10, replacement_space = 
   #' @param replacement_space The space from which to sample replacements (default is `LETTERS`).
   #'
   #' @return `function`
+  #' 
+  #' @examples 
+  #' 
+  #' replace_by <- all_random_replacement.f()
+  #' auto_replace(raw_redaction_rules, replacement.f = replace_by) 
+  #' 
+  #' replace_by <- all_random_replacement.f(replacement_space = LETTERS[1:10], replacement_size = 20)
+  #' auto_replace(raw_redaction_rules, replacement.f = replace_by)
+  #' 
   #' @export
 
   .replace <- RandomReplacer$new(replacement_size, replacement_space)

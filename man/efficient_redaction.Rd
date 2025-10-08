@@ -15,6 +15,29 @@ efficient_redaction(frm, redact, n = NULL, .progress = T)
 
 \item{.progress}{Whether to show a progress bar.}
 }
+\value{
+A data frame with the same structure as `frm` but with redacted text.
+}
 \description{
-A wrapper for efficient redaction.
+An experimental function for the efficient application of the redaction functions.
+This function wraps a redaction function in a  dynamic programming class which
+stores previously redacted values and reuses them when the same value is encountered again.
+}
+\details{
+This function splits the data frame into chunks and processes each chunk separately.
+This is useful for large data frames where the redaction function may be slow.
+}
+\examples{
+\dontrun{
+example.data <- head(the_one_in_massapequa)
+report <- data_frame_report(example.data, to_remove="speaker")
+redactions.raw <- report_to_redaction_rules(report)
+
+replace_by <- random_replacement.f()
+redactions <- auto_replace(redactions.raw, replacement.f = replace_by)
+redaction.f <- prepare_redactions(redactions)
+efficient_redaction(example.data, redaction.f)
+}
+
+
 }
