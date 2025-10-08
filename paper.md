@@ -56,8 +56,9 @@ variable. The `PID.POS` (Personal Identifiability Detection by Part Of
 Speech tagging) package is designed to aid with the identification of
 PID risks in data sets. In comparison to existing packages which rely on
 a curated list of common names and string-matching, `PID.POS` builds on
-the existing `udpipe` framework, extracting all examples of proper nouns
-and providing a mechanism for the review and redaction of PID risks.
+the existing `udpipe` framework[@straka2016udpipe; @udpipecran],
+extracting all examples of proper nouns and providing a mechanism for
+the review and redaction of PID risks.
 
 # Comparison to existing R packages
 
