@@ -67,9 +67,30 @@
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>`data.frame`</p>
+    <p>A `data.frame` like `frm` but with the `To` column transformed by `replacement.f`.</p>
     </div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">replace_by</span> <span class="op">&lt;-</span> <span class="fu"><a href="random_replacement.f.html">random_replacement.f</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">auto_replace</span><span class="op">(</span><span class="va">raw_redaction_rules</span>, replacement.f <span class="op">=</span> <span class="va">replace_by</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 10 × 3</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    If                                                                From  To   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> <span style="color: #949494;">"</span>[Scene: Central Perk, everyone is there.]<span style="color: #949494;">"</span>                       Cent… VNXC…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> <span style="color: #949494;">"</span>[Scene: Central Perk, everyone is there.]<span style="color: #949494;">"</span>                       Perk  WTLM…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> <span style="color: #949494;">"</span>Oh, Ross, Mon, is it okay if I bring someone to your parent's a… Ross  LFMZ…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> <span style="color: #949494;">"</span>Oh, Ross, Mon, is it okay if I bring someone to your parent's a… Mon   AYRC…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> <span style="color: #949494;">"</span>Well, his name is Parker and I met him at the drycleaners.<span style="color: #949494;">"</span>      Park… HFAT…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> <span style="color: #949494;">"</span>Every year Ross makes the toast, and it's always really moving,… Ross  LFMZ…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> <span style="color: #949494;">"</span>And you wonder why Ross is their favorite?<span style="color: #949494;">"</span>                      Ross  LFMZ…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> <span style="color: #949494;">"</span>Any time Ross makes a toast everyone cries, and hugs him, and p… Ross  LFMZ…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> <span style="color: #949494;">"</span>[Scene: Chandler and Monica's, they're getting ready to leave f… Chan… JOBU…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> <span style="color: #949494;">"</span>[Scene: Chandler and Monica's, they're getting ready to leave f… Moni… CFDJ…</span>
+<span class="r-in"><span></span></span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
 
