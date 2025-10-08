@@ -10,7 +10,7 @@ vignette: >
 ---
 
 ``` {r setup, echo=F}
-knitr::opts_chunk$set(collapse = T, comment = "#>", warning=F)
+knitr::opts_chunk$set(collapse = T, comment = "#>", warning = F)
 options(tibble.print_min = 4, tibble.print_max = 4)
 ```
 
@@ -104,7 +104,7 @@ producing a proper noun report for each.  It is foreseen that this function will
 be the more useful, used just before data release to evidence no PID risks.
 
 ``` {r, eval=F}
-report_on_folder('path/to/data/')
+report_on_folder("path/to/data/")
 browse_model_location()
 ```    
 
@@ -127,8 +127,8 @@ Where a PID report has been ran, the resulting data frame can be passed to the f
 
 ``` {r, eval = F, results="hide"}
 replacement_rules <- report_to_redaction_rules(
-  report, 
-  path='path/to/report.csv'
+  report,
+  path = "path/to/report.csv"
 )
 ```
 
@@ -140,7 +140,7 @@ The csv file is intended to be edited by the data controller, who hence does not
 to understand R, and can be reimported using the `prepare_redactions` function:
 
 ``` {r, eval=F}
-prepare_redactions('path/to/report.csv')
+prepare_redactions("path/to/report.csv")
 ```
 
 The  `prepare_redactions` function creates a string replacement rule to capture the 
@@ -148,7 +148,7 @@ desired redactions, with the option for R to 'parse' the function for use as par
 pipeline:
 
 ``` {r, eval=F}
-redaction.func <- prepare_redactions('path/to/report.csv')
+redaction.func <- prepare_redactions("path/to/report.csv")
 
 the_one_in_massapequa |>
   mutate(
@@ -157,7 +157,6 @@ the_one_in_massapequa |>
       redaction.func
     )
   )
-
 ```
 
  Further utilities are 
