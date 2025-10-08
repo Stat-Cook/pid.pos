@@ -74,7 +74,7 @@ head(updated.replacement_rules, 5)
 The `updated.replacement_rules` can then converted to a replacement function via `redaction_function_factory`: 
 
 ``` {r}
-redact_function <- redaction_function_factory(updated.replacement_rules)
+redact_function <- prepare_redactions(updated.replacement_rules)
 ```
 
 which if parsed, can be used to modify the original data set:    
