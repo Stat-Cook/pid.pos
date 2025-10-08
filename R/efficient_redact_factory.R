@@ -66,20 +66,20 @@ divide_map <- function(frm, func, n = NULL, .progress = T) {
 
 efficient_redaction <- function(frm, redact, n = NULL, .progress = T) {
   #' A wrapper for efficient redaction.
-  #' 
+  #'
   #' An experimental function for the efficient application of the redaction functions.
   #' This function wraps a redaction function in a  dynamic programming class which
   #' stores previously redacted values and reuses them when the same value is encountered again.
-  #' 
+  #'
   #' This function splits the data frame into chunks and processes each chunk separately.
   #' This is useful for large data frames where the redaction function may be slow.
-  #' 
+  #'
   #'
   #' @param frm The data frame to be redacted
   #' @param redact A  function which converts free text to redacted text.
   #' @param n The number of chunks to split the data frame into for processing.
   #' @param .progress Whether to show a progress bar.
-  #' 
+  #'
   #' @returns A data frame with the same structure as `frm` but with redacted text.
   #'
   #' @examples
@@ -93,7 +93,7 @@ efficient_redaction <- function(frm, redact, n = NULL, .progress = T) {
   #' redaction.f <- prepare_redactions(redactions)
   #' efficient_redaction(example.data, redaction.f)
   #' }
-  #' 
+  #'
   #'
   #' @export
   UseMethod("efficient_redaction", redact)
