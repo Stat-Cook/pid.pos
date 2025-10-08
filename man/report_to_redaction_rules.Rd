@@ -11,7 +11,7 @@ report_to_redaction_rules(report, path = NULL, add_context = F)
 
 \item{path}{[optional] File path for write.}
 
-\item{add_context}{[optional] Binary-flag. If True, adds a `Context` column giving a subset 
+\item{add_context}{[optional] Binary-flag. If True, adds a `Context` column giving a subset
 of the sentence being redacted around the token.}
 }
 \value{

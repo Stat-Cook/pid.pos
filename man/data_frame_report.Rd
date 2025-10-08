@@ -9,7 +9,7 @@ data_frame_report(frm, chunk_size = 100, to_remove = c())
 \arguments{
 \item{frm}{A data frame to check for proper nouns}
 
-\item{chunk_size}{[optional] The number of sentences to tag at a time.  The optimal value 
+\item{chunk_size}{[optional] The number of sentences to tag at a time.  The optimal value
 has yet to be determined.}
 
 \item{to_remove}{[optional] A character vector of column names to remove from the data frame}
@@ -31,9 +31,8 @@ noun and reports the location in the data set, the sentence containing the
 proper noun, and how often the sentence occurs.
 }
 \examples{
-\dontrun{
+\dontrun(
 example.data <- head(the_one_in_massapequa, 10)
 data_frame_report(example.data, to_remove=c("scene", "utterance"))
-}
-
+)
 }
