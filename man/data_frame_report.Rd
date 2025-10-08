@@ -31,8 +31,9 @@ noun and reports the location in the data set, the sentence containing the
 proper noun, and how often the sentence occurs.
 }
 \examples{
-
+\dontrun{
 example.data <- head(the_one_in_massapequa, 10)
 data_frame_report(example.data, to_remove=c("scene", "utterance"))
+}
 
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/report_on_folder.R
 \name{report_on_folder}
 \alias{report_on_folder}
-\title{Itterates over a folder of data files and produces a report on proper nouns.}
+\title{Folder Report}
 \usage{
 report_on_folder(
   data_path,
@@ -18,5 +18,12 @@ report_on_folder(
 \item{to_remove}{A character vector of column names to remove from the data frame}
 }
 \description{
-Itterates over a folder of data files and produces a report on proper nouns.
+Itterates over a folder of data files and produces a proper noun report for each.
+The reports are saved in the specified `report directory`.
+}
+\examples{
+\dontrun{
+report_on_folder("path/to/data", report_dir="Proper Noun Reports")
+}
+
 }

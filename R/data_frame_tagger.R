@@ -24,8 +24,6 @@ data_frame_tagger <- function(frm, chunk_size = 1e2,
   #' @param chunk_size The number of sentences to tag at a time
   #' @param to_remove A character vector of column names to remove from the data frame
   #'
-  #' @export
-  #'
   #' @importFrom dplyr group_by group_modify row_number ungroup
   #' @importFrom glue glue
   #' @importFrom progress progress_bar
