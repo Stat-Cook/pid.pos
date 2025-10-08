@@ -12,7 +12,7 @@ auto_replace <- function(frm, replacement.f, filter = F) {
   #' @return A `data.frame` like `frm` but with the `To` column transformed by `replacement.f`.
   #'
   #' @examples
-  #' 
+  #'
   #' replace_by <- random_replacement.f()
   #' auto_replace(raw_redaction_rules, replacement.f = replace_by)
   #'
@@ -124,15 +124,15 @@ random_replacement.f <- function(replacement_size = 10, replacement_space = LETT
   #' @param replacement_space The space from which to sample replacements (default is `LETTERS`).
   #'
   #' @return `function`
-  #' 
-  #' @examples 
-  #' 
+  #'
+  #' @examples
+  #'
   #' replace_by <- random_replacement.f()
-  #' auto_replace(raw_redaction_rules, replacement.f = replace_by) 
-  #' 
+  #' auto_replace(raw_redaction_rules, replacement.f = replace_by)
+  #'
   #' replace_by <- random_replacement.f(replacement_space = LETTERS[1:10], replacement_size = 20)
   #' auto_replace(raw_redaction_rules, replacement.f = replace_by)
-  #' 
+  #'
   #' @export
 
   .replace <- RandomReplacer$new(replacement_size, replacement_space)
@@ -157,15 +157,15 @@ all_random_replacement.f <- function(replacement_size = 10, replacement_space = 
   #' @param replacement_space The space from which to sample replacements (default is `LETTERS`).
   #'
   #' @return `function`
-  #' 
-  #' @examples 
-  #' 
+  #'
+  #' @examples
+  #'
   #' replace_by <- all_random_replacement.f()
-  #' auto_replace(raw_redaction_rules, replacement.f = replace_by) 
-  #' 
+  #' auto_replace(raw_redaction_rules, replacement.f = replace_by)
+  #'
   #' replace_by <- all_random_replacement.f(replacement_space = LETTERS[1:10], replacement_size = 20)
   #' auto_replace(raw_redaction_rules, replacement.f = replace_by)
-  #' 
+  #'
   #' @export
 
   .replace <- RandomReplacer$new(replacement_size, replacement_space)

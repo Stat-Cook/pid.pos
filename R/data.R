@@ -34,9 +34,9 @@
 #' It is made using the first 20 rows of `the_one_in_massapequa` data set.
 #'
 #' \describe{
-#'  \item{If}{The text to be redacted (character)}  
+#'  \item{If}{The text to be redacted (character)}
 #'  \item{From}{The text to be replaced (character)}
 #'  \item{To}{The text to replace it with (character)}
 #' }
-#' 
+#'
 "raw_redaction_rules"

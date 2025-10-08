@@ -83,10 +83,10 @@ frame_replacement <- function(frm, rules.frm) {
   #' example.data <- head(the_one_in_massapequa)
   #' report <- data_frame_report(example.data)
   #' redactions.raw <- report_to_redaction_rules(report)
-  #' 
+  #'
   #' replace_by <- random_replacement.f()
   #' redactions <- auto_replace(redactions.raw, replacement.f = replace_by)
-  #' 
+  #'
   #' frame_replacement(example.data, redactions)
   #' }
   #'
