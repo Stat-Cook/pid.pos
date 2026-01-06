@@ -60,6 +60,7 @@ hashing_replacement.f <- function(key, salt = "", hash = sha256) {
 
 #' @importFrom R6 R6Class
 #' @importFrom purrr simplify
+#' @importFrom glue glue
 RandomReplacer <- R6Class(
   "RandomReplacer",
   list(
@@ -82,8 +83,8 @@ RandomReplacer <- R6Class(
       desired.length <- length(x.distinct)
 
       if (desired.length > self$max_replacements) {
-        stop("More replacements than `size` and `space` allow without collisions.
-             Please increase either and try again.")
+        stop(glue("To encode this vector requires {desired.length} new values.
+        The current configuration only allows for {self$max_replacements} unique replacements."))
       }
 
       if (desired.length > self$max_replacements / 2) {
@@ -138,8 +139,17 @@ random_replacement.f <- function(replacement_size = 10, replacement_space = LETT
   .replace <- RandomReplacer$new(replacement_size, replacement_space)
 
   function(x) {
+    x.str <- substitute(x)
     x <- as.character(x)
-    .replace$learn(x)
+    
+    tryCatch(
+      .replace$learn(x),
+      error = function(e) {
+        stop(glue("Error while generating replacements for input: {x.str}. 
+                  {e$message}
+                  Please increase `replacement_size` or `replacement_space` and try again."))
+      }
+    )
     .replace$transform(x)
   }
 }
@@ -171,8 +181,18 @@ all_random_replacement.f <- function(replacement_size = 10, replacement_space = 
   .replace <- RandomReplacer$new(replacement_size, replacement_space)
 
   function(x) {
+    x.str <- substitute(x)
     x <- seq_along(x)
-    .replace$learn(x)
+    
+    tryCatch(
+      .replace$learn(x),
+      error = function(e) {
+        stop(glue("Error while generating replacements for input: {x.str}. 
+                  {e$message}
+                  Please increase `replacement_size` or `replacement_space` and try again."))
+      }
+    )
+    
     .replace$transform(x)
   }
 }
