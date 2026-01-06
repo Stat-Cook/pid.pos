@@ -1,7 +1,7 @@
 data_frame_report <- function(frm,
                               chunk_size = 1e2,
                               to_ignore = c(),
-                              warn_if_missing=F) {
+                              warn_if_missing = F) {
   #' Proper Noun Detection
   #'
   #' For a given data set, the function reports each detected instance of a proper
@@ -11,10 +11,10 @@ data_frame_report <- function(frm,
   #' @param frm A data frame to check for proper nouns
   #' @param chunk_size [optional] The number of sentences to tag at a time.  The optimal value
   #'   has yet to be determined.
-  #' @param to_ignore [optional] A vector of column names to be ignored by the algorithm.  
+  #' @param to_ignore [optional] A vector of column names to be ignored by the algorithm.
   #'   Intended to be used for variables that are giving strong false positives, such as
   #'   IDs or ICD-10 codes.
-  #' @param warn_if_missing [optional] Raise a warning if the `to_ignore` columns are 
+  #' @param warn_if_missing [optional] Raise a warning if the `to_ignore` columns are
   #'   not in the data frame.
   #'
   #' @return A `pid_report` (inheriting from tibble) containing:
@@ -40,11 +40,11 @@ data_frame_report <- function(frm,
   #' @importFrom glue glue
   #' @importFrom progress progress_bar
   #' @importFrom tibble as_tibble
-  #' 
-  
+  #'
+
   frm_cols <- colnames(frm)
   cant_remove <- setdiff(to_ignore, frm_cols)
-  
+
   if (warn_if_missing & (length(cant_remove) > 0)) {
     warning(
       glue(
@@ -52,7 +52,7 @@ data_frame_report <- function(frm,
       )
     )
   }
-  
+
   tags <- data_frame_tagger(frm, chunk_size, to_ignore)
 
   report <- left_join(

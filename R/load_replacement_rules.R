@@ -36,8 +36,6 @@
 #' }
 
 
-
-
 #' parse_replacement_rules <- function(rules.frm, parse = F) {
 #'   #' @importFrom dplyr group_by group_map
 #'   #' @importFrom dplyr case_when
