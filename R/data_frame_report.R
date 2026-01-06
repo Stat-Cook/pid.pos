@@ -1,6 +1,7 @@
 data_frame_report <- function(frm,
                               chunk_size = 1e2,
                               to_remove = c()) {
+                              warn_if_missing=F) {
   #' Proper Noun Detection
   #'
   #' For a given data set, the function reports each detected instance of a proper
@@ -34,6 +35,19 @@ data_frame_report <- function(frm,
   #' @importFrom glue glue
   #' @importFrom progress progress_bar
   #' @importFrom tibble as_tibble
+  #' 
+  
+  frm_cols <- colnames(frm)
+  cant_remove <- setdiff(to_remove, frm_cols)
+  
+  if (warn_if_missing & (length(cant_remove) > 0)) {
+    warning(
+      glue(
+        "The following columns to remove were not found in the data frame: {paste(cant_remove, collapse=', ')}"
+      )
+    )
+  }
+  
   tags <- data_frame_tagger(frm, chunk_size, to_remove)
 
   report <- left_join(
