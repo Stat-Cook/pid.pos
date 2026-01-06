@@ -29,7 +29,6 @@ test_that("get_implemented_extensions() works", {
 })
 
 
-
 test_that("list_files_by_extension() works", {
   local({
     temp_dir <- local_tempdir("dir")

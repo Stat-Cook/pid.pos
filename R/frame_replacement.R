@@ -22,7 +22,6 @@ if_factory <- function(If) {
 }
 
 
-
 then.function.list <- function(rules.frm) {
   #' @importFrom dplyr group_by group_map
   rules.frm |>
@@ -31,7 +30,6 @@ then.function.list <- function(rules.frm) {
       ~ then_factory(.x$From, .x$To, .y$If)
     )
 }
-
 
 
 if.function.list <- function(rules.frm) {

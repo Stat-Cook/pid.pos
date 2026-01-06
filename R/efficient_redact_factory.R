@@ -25,7 +25,6 @@ CachedRedact <- R6::R6Class("CachedRedact", list(
 ))
 
 
-
 efficient_redact_factory <- function(redact.function) {
   #' Stateful recoding template function
   #'
