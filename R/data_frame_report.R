@@ -29,7 +29,7 @@ data_frame_report <- function(frm,
   #'
   #' @examples
   #' data(the_one_in_massapequa)
-  #' example.data <- head(the_one_in_massapequa, 10)
+  #' example.data <- head(the_one_in_massapequa, 20)
   #' try(
   #'   data_frame_report(example.data, to_ignore=c("scene", "utterance"))
   #' )
