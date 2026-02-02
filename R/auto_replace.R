@@ -141,11 +141,11 @@ random_replacement.f <- function(replacement_size = 10, replacement_space = LETT
   function(x) {
     x.str <- substitute(x)
     x <- as.character(x)
-    
+
     tryCatch(
       .replace$learn(x),
       error = function(e) {
-        stop(glue("Error while generating replacements for input: {x.str}. 
+        stop(glue("Error while generating replacements for input: {x.str}.
                   {e$message}
                   Please increase `replacement_size` or `replacement_space` and try again."))
       }
@@ -183,16 +183,16 @@ all_random_replacement.f <- function(replacement_size = 10, replacement_space = 
   function(x) {
     x.str <- substitute(x)
     x <- seq_along(x)
-    
+
     tryCatch(
       .replace$learn(x),
       error = function(e) {
-        stop(glue("Error while generating replacements for input: {x.str}. 
+        stop(glue("Error while generating replacements for input: {x.str}.
                   {e$message}
                   Please increase `replacement_size` or `replacement_space` and try again."))
       }
     )
-    
+
     .replace$transform(x)
   }
 }
