@@ -14,7 +14,7 @@ raw_redaction_rules
 }
 \description{
 \describe{
- \item{If}{The text to be redacted (character)}  
+ \item{If}{The text to be redacted (character)}
  \item{From}{The text to be replaced (character)}
  \item{To}{The text to replace it with (character)}
 }

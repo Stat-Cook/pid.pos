@@ -4,7 +4,7 @@
 \alias{data_frame_report}
 \title{Proper Noun Detection}
 \usage{
-data_frame_report(frm, chunk_size = 100, to_remove = c())
+data_frame_report(frm, chunk_size = 100, to_ignore = c(), warn_if_missing = F)
 }
 \arguments{
 \item{frm}{A data frame to check for proper nouns}
@@ -12,15 +12,20 @@ data_frame_report(frm, chunk_size = 100, to_remove = c())
 \item{chunk_size}{[optional] The number of sentences to tag at a time.  The optimal value
 has yet to be determined.}
 
-\item{to_remove}{[optional] A character vector of column names to remove from the data frame}
+\item{to_ignore}{[optional] A vector of column names to be ignored by the algorithm.
+Intended to be used for variables that are giving strong false positives, such as
+IDs or ICD-10 codes.}
+
+\item{warn_if_missing}{[optional] Raise a warning if the `to_ignore` columns are
+not in the data frame.}
 }
 \value{
-A tibble containing:
+A `pid_report` (inheriting from tibble) containing:
 \itemize{
   \item `ID`: The location of the sentence in the data frame in the form `Col:<colname> Row:<rownumber>`.
   \item `Token`: The detected proper noun.
   \item `Sentence`: The sentence containing the proper noun.
-  \item Repats: The number of times the sentence occurs in the data frame.
+  \item `Repeats`: The number of times the sentence occurs in the data frame.
   \item `Affected Columns`: The columns in the data frame where the sentence occurs.
 }
 If no proper nouns are detected, an empty data frame is returned.
@@ -31,8 +36,9 @@ noun and reports the location in the data set, the sentence containing the
 proper noun, and how often the sentence occurs.
 }
 \examples{
-\dontrun{
-example.data <- head(the_one_in_massapequa, 10)
-data_frame_report(example.data, to_remove=c("scene", "utterance"))
-}
+data(the_one_in_massapequa)
+example.data <- head(the_one_in_massapequa, 20)
+try(
+  data_frame_report(example.data, to_ignore=c("scene", "utterance"))
+)
 }

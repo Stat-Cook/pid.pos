@@ -21,7 +21,7 @@ alpha-numeric characters, and apply the same replacement if the input is repeate
 \examples{
 
 replace_by <- random_replacement.f()
-auto_replace(raw_redaction_rules, replacement.f = replace_by) 
+auto_replace(raw_redaction_rules, replacement.f = replace_by)
 
 replace_by <- random_replacement.f(replacement_space = LETTERS[1:10], replacement_size = 20)
 auto_replace(raw_redaction_rules, replacement.f = replace_by)
