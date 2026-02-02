@@ -6,7 +6,7 @@ browse_udpipe_repo <- function(model = "english-ewt") {
   #'
   #' @export
   #' @importFrom utils browseURL
-  
+
   url_root <- "https://github.com/jwijffels/udpipe.models.ud.2.5/blob/master/inst/udpipe-ud-2.5-191206"
   url_path <- sprintf("%s-ud-2.5-191206.udpipe", model)
   udpipe_repo <- paste(url_root, url_path, sep = "/")

@@ -56,8 +56,10 @@ data_frame_report <- function(frm,
     )
   }
 
-  tags <- data_frame_tagger(frm, model, 
-                            chunk_size, to_ignore)
+  tags <- data_frame_tagger(
+    frm, model,
+    chunk_size, to_ignore
+  )
 
   report <- left_join(
     tags$`Proper Nouns`,
