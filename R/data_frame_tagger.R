@@ -16,13 +16,14 @@ remove_if_exists <- function(frm, to_remove) {
 }
 
 
-data_frame_tagger <- function(frm, chunk_size = 1e2,
-                              to_remove = c()) {
+data_frame_tagger <- function(frm, model = "english-ewt", 
+                              chunk_size = 1e2,
+                              to_ignore = c()) {
   #' Tags a data frame with part of speech tags
   #'
   #' @param frm A data frame to tag
   #' @param chunk_size The number of sentences to tag at a time
-  #' @param to_remove A character vector of column names to remove from the data frame
+  #' @param to_ignore A character vector of column names to remove from the data frame
   #'
   #' @importFrom dplyr group_by group_modify row_number ungroup
   #' @importFrom glue glue
@@ -34,7 +35,7 @@ data_frame_tagger <- function(frm, chunk_size = 1e2,
 
   character.frm <- frm %>%
     select(where(is.character)) %>%
-    remove_if_exists(to_remove)
+    remove_if_exists(to_ignore)
 
 
   if (any(dim(character.frm) == 0)) {
@@ -61,7 +62,9 @@ data_frame_tagger <- function(frm, chunk_size = 1e2,
       ID = glue("Col:{Column} Row:{Row}")
     )
 
-  tag_frm <- chunked_pos_tag(sentence.frm$Sentence,
+  tag_frm <- chunked_pos_tag(
+    sentence.frm$Sentence,
+    model = model,
     chunk_size = chunk_size,
     doc_ids = sentence.frm$ID
   )

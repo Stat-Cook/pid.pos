@@ -1,4 +1,5 @@
 data_frame_report <- function(frm,
+                              model = "english-ewt",
                               chunk_size = 1e2,
                               to_ignore = c(),
                               warn_if_missing = F) {
@@ -9,6 +10,8 @@ data_frame_report <- function(frm,
   #' proper noun, and how often the sentence occurs.
   #'
   #' @param frm A data frame to check for proper nouns
+  #' @param model [optional] The `udpipe` model to use for part of speech tagging.  See
+  #'   ... for the list of all available models.
   #' @param chunk_size [optional] The number of sentences to tag at a time.  The optimal value
   #'   has yet to be determined.
   #' @param to_ignore [optional] A vector of column names to be ignored by the algorithm.
@@ -53,7 +56,8 @@ data_frame_report <- function(frm,
     )
   }
 
-  tags <- data_frame_tagger(frm, chunk_size, to_ignore)
+  tags <- data_frame_tagger(frm, model, 
+                            chunk_size, to_ignore)
 
   report <- left_join(
     tags$`Proper Nouns`,

@@ -26,7 +26,7 @@ test_that("data_frame_tagger - correct size", {
 test_that("data_frame_tagger: correct size with `to_remove`", {
   # test that the function returns the expected results
 
-  res <- data_frame_tagger(sentence_frm, to_remove = c("Random", "Numeric"))
+  res <- data_frame_tagger(sentence_frm, to_ignore = c("Random", "Numeric"))
 
   expect_equal(nrow(res$`All Tags`), 18)
   expect_equal(nrow(res$`Proper Nouns`), 3)
