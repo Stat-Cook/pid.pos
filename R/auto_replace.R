@@ -35,7 +35,7 @@ hashing_replacement.f <- function(key, salt = "", hash = sha256) {
   #' @param key The hash key (passed to `hash`)
   #' @param salt The hash salt
   #' @param hash The desired hash function (default is `sha256` from `openssl` package).
-  #'    NB: other functions can be used, if they take `key` as a kew word argument.
+  #'    NB: other functions can be used, if they take `key` as a key word argument.
   #'
   #' @return `function`
   #'
