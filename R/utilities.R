@@ -22,11 +22,11 @@ enable_local_models <- function(sub_folder = TRUE) {
   if (sub_folder) {
     local_dir <- file.path(local_dir, "pid_pos_models")
   }
-  
-  if (!dir.exists(local_dir)){
+
+  if (!dir.exists(local_dir)) {
     dir.create(local_dir)
   }
-  
+
   set_model_folder(local_dir)
 }
 
