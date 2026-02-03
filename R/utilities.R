@@ -18,12 +18,16 @@ enable_local_models <- function(sub_folder = TRUE) {
   #' @examples
   #' enable_local_models()
   #' enable_local_models(sub_folder=FALSE)
-  wd <- getwd()
+  local_dir <- getwd()
   if (sub_folder) {
-    wd <- file.path(wd, "pid_pos_models")
+    local_dir <- file.path(local_dir, "pid_pos_models")
   }
-
-  set_model_folder(wd)
+  
+  if (!dir.exists(local_dir)){
+    dir.create(local_dir)
+  }
+  
+  set_model_folder(local_dir)
 }
 
 enable_package_models <- function() {
