@@ -16,7 +16,7 @@ remove_if_exists <- function(frm, to_remove) {
 }
 
 
-data_frame_tagger <- function(frm, model = "english-ewt", 
+data_frame_tagger <- function(frm, model = "english-ewt",
                               chunk_size = 1e2,
                               to_ignore = c()) {
   #' Tags a data frame with part of speech tags
