@@ -9,7 +9,7 @@ tagger_factory <- function(model = "english-ewt", model_dir = pid.pos_env$model_
   #' @importFrom udpipe udpipe
   #' @importFrom dplyr mutate
   #' @export
-  #' @example 
+  #' @examples
   #' tagger <- tagger_factory("english-ewt")
   #' tagged <- tagger(c("This is a test.", "Another sentence."), doc_id = c("doc1", "doc2"))
   #' tagged
