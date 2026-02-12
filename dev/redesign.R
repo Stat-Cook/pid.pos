@@ -1,4 +1,6 @@
-tagger_factory <- function(model = "english-ewt", model.dir = pid.pos_env$model_folder) {
+tagger_factory <- function(model = "english-ewt", 
+                           model_dir = pid.pos_env$model_folder,
+                           udpipe_repo = pid.pos_env$udpipe_version) {
   #' 
   #' Creates a tagging function using the specified UDPipe model.
   #' 
@@ -34,7 +36,7 @@ tagger_factory <- function(model = "english-ewt", model.dir = pid.pos_env$model_
     names(utf8_docs) <- doc_id
 
     tagged <- tryCatch(
-      udpipe(utf8_docs, model, model_dir = model.dir),
+      udpipe(utf8_docs, model, model_dir = model_dir, udpipe_model_repo=udpipe_repo),
       error = function(e){
         print(e$message)
         stop(
@@ -182,7 +184,7 @@ filter_to_proper_nouns <- function(tag_frm) {
   #' example.data <- head(the_one_in_massapequa, 20)
   #' tagged <- tag_data_frame(example.data, tagger="english-ewt")
   #' filter_to_proper_nouns(tagged$`All Tags`)
-  #' 
+  
   tag_frm %>%
     filter(upos == "PROPN") %>%
     # rename(ID = doc_id) |>
@@ -276,3 +278,5 @@ pid_pos <- function(frm,
   class(report) <- c("pid_report", class(report))
   report
 }
+
+
