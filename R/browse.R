@@ -6,10 +6,24 @@ browse_udpipe_repo <- function(model = "english-ewt") {
   #'
   #' @export
   #' @importFrom utils browseURL
+  #' 
+  
+  udpipe_repo <- with(
+    pid.pos_env, 
+    {
+      .date <- repo_dates[[udpipe_version]]
+      .version <- udpipe_version
+      .version.number <- stringr::str_extract(.version, "\\d.\\d$")
 
-  url_root <- "https://github.com/jwijffels/udpipe.models.ud.2.5/blob/master/inst/udpipe-ud-2.5-191206"
-  url_path <- sprintf("%s-ud-2.5-191206.udpipe", model)
-  udpipe_repo <- paste(url_root, url_path, sep = "/")
+      url_root <- sprintf(
+        "https://github.com/%s/blob/master/inst/udpipe-ud-%s-%s",
+        .version, .version.number, .date
+      )
+      url_path <- sprintf("%s-ud-%s-%s.udpipe", model, .version.number, .date)
+      paste(url_root, url_path, sep = "/")
+    }
+  )
+  
   browseURL(udpipe_repo)
 }
 

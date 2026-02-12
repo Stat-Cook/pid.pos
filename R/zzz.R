@@ -1,15 +1,26 @@
+pid.pos_env <- new.env()
+
 .onLoad <- function(libname, pkgname) {
-  # ns_dplyr <- ns_env(pkgname)
 
   op <- options()
-  op.pid.pos <- list(
-    pid.pos.context_window = 25
-  )
+  op.pid.pos <- list(pid.pos.context_window = 25)
   toset <- !(names(op.pid.pos) %in% names(op))
-  if (any(toset)) options(op.pid.pos[toset])
-
+  if (any(toset))
+    options(op.pid.pos[toset])
+  
   pid.pos_env$deault_model_folder <- user_data_dir("pid.pos")
+  pid.pos_env$allowed_repos <- c(`2.5` = "jwijffels/udpipe.models.ud.2.5",
+                                 `2.4` = "jwijffels/udpipe.models.ud.2.4",
+                                 `2.3` = "jwijffels/udpipe.models.ud.2.3")
+  pid.pos_env$repo_dates <- c(
+    "jwijffels/udpipe.models.ud.2.5" = "191206",
+    "jwijffels/udpipe.models.ud.2.4" = "190531",
+    "jwijffels/udpipe.models.ud.2.3" = "181115"
+  )
+  
+  pid.pos_env$udpipe_repo <- pid.pos_env$allowed_repos[["2.5"]]
+  
   enable_local_models()
-
+  
   invisible()
 }
