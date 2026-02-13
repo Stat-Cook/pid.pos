@@ -1,23 +1,41 @@
-#' Creates a tagging function using the specified UDPipe model.
+#' Create a UDPipe tagging function
 #'
-#' @param model The UDPipe model to use.
-#' @param model_dir Directory where models are stored.
-#' @param udpipe_repo Repository URL for UDPipe models.
-#' @return A function that tags documents.
+#' Returns a function that tags text documents using a specified UDPipe model.
+#' The returned function accepts a character vector of documents and returns
+#' a tibble with tokens, sentences, and token metadata.
+#'
+#' @param model Character. The name of the UDPipe model to use. Defaults to `"english-ewt"`.
+#' @param model_dir Character. Directory where UDPipe models are stored. Defaults to `pid.pos_env$model_folder`.
+#' @param udpipe_repo Character. URL or path of the UDPipe model repository. Defaults to `pid.pos_env$udpipe_version`.
+#'
+#' @return A function that takes a character vector of documents and returns a `tibble`
+#' with columns:
+#' \describe{
+#'   \item{ID}{Document identifier}
+#'   \item{Token}{Individual token text}
+#'   \item{Sentence}{Sentence containing the token}
+#' }
+#' and all columns returned by the `udpipe::udpipe()` function for each token.
+#' 
 #' @export
+#'
 #' @examples
+#' # Create a tagger for the English EWT model
 #' ewt_tagger <- udpipe_factory("english-ewt")
-#' ewt_tagger(c("This is a test.", "Another sentence."))
-#' 
+#' docs <- c("This is a test.", "Another sentence.")
+#' ewt_tagger(docs)
+#'
+#' # Create a tagger for the English GUM model
 #' gum_tagger <- udpipe_factory("english-gum")
-#' gum_tagger(c("This is a test.", "Another sentence."))
-#' 
+#' gum_tagger(docs)
+#'
+#' # Create a tagger for the English LINES model
 #' lines_tagger <- udpipe_factory("english-lines")
-#' lines_tagger(c("This is a test.", "Another sentence."))
-#' 
+#' lines_tagger(docs)
+
 udpipe_factory <- function(model = "english-ewt",
                            model_dir = pid.pos_env$model_folder,
-                           udpipe_repo = pid.pos_env$udpipe_version) {
+                           udpipe_repo = pid.pos_env$udpipe_repo) {
   
   function(docs, doc_ids = NULL) {
     
@@ -42,7 +60,7 @@ udpipe_factory <- function(model = "english-ewt",
           paste0(
             "UDPipe model could not be loaded.\n",
             "Original error: ", e$message, "\n",
-            "Please run `browse_model_location()` to see if models are downloaded\n",
+            "Please run `browse_model_location()` to see if models are downloaded.\n",
             "If not present download via `browse_udpipe_repo()."
           ),
           call. = FALSE
@@ -50,7 +68,7 @@ udpipe_factory <- function(model = "english-ewt",
       }
     )
     
-    tagged |>
+    result <- tagged |>
       dplyr::mutate(`TokenNo` = as.numeric(.data$token_id)) |>
       dplyr::rename(
         ID = doc_id,
@@ -58,5 +76,6 @@ udpipe_factory <- function(model = "english-ewt",
         Sentence = sentence
       ) |>
       tibble::as_tibble()
+    select(result, ID, Token, Sentence, all_of(colnames(result)))
   }
 }
