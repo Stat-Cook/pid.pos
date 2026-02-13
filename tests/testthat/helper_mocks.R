@@ -25,3 +25,8 @@ fake_tagger <- function(docs, ids) {
     upos = "XXX"
   )
 }
+
+# Fake tagger function
+fake_tagger_failure <- function(docs, ids) {
+  stop("model missing")
+}
