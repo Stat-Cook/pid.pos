@@ -30,3 +30,11 @@ test_that("tagger errors cleanly when UDPipe fails", {
   # Expect a controlled error with your custom message
   expect_error(tagger("This is a test."))
 })
+
+test_that("tagger can download model", {
+  # Inject the failing fake
+  tagger <- udpipe_factory(model = "english-ewt")
+  # Expect a controlled error with your custom message
+  result <- tagger("This is a test.")
+  expect_equal(nrow(result), 5)
+})
