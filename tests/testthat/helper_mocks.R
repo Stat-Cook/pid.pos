@@ -15,3 +15,13 @@ fake_udpipe_success <- function(...) {
 fake_udpipe_failure <- function(...) {
   stop("Model missing")
 }
+
+# Fake tagger function
+fake_tagger <- function(docs, ids) {
+  tibble::tibble(
+    ID = ids,
+    Token = docs, 
+    Sentence = docs, 
+    upos = "XXX"
+  )
+}
