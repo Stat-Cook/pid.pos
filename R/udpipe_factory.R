@@ -14,6 +14,7 @@
 #'   \item{ID}{Document identifier}
 #'   \item{Token}{Individual token text}
 #'   \item{Sentence}{Sentence containing the token}
+#'   \item{upos}{The universal parts of speech tag of the token. See https://universaldependencies.org/format.html}
 #' }
 #' and all columns returned by the `udpipe::udpipe()` function for each token.
 #' 
@@ -76,6 +77,7 @@ udpipe_factory <- function(model = "english-ewt",
         Sentence = sentence
       ) |>
       tibble::as_tibble()
-    select(result, ID, Token, Sentence, all_of(colnames(result)))
+    
+    select(result, ID, Token, Sentence, upos, all_of(colnames(result)))
   }
 }
