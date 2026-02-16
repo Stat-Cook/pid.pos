@@ -33,5 +33,24 @@ fake_tagger <- function(docs, ids) {
 
 # Fake tagger function
 fake_tagger_failure <- function(docs, ids) {
-  stop("model missing")
+  stop("Model missing")
+}
+
+fake_tag_data_frame <- function(frm, tagger, chunk_size, to_ignore) {
+  list(
+    AllTags = tibble::tibble(
+      ID = c("Col:text Row:1", "Col:text Row:2"),
+      Token = c("John", "London"),
+      Sentence = c("John went home.", "London is big."),
+      upos = c("XXX", "PROPN"),
+      PK = 1:2
+    ),
+    Documents = tibble::tibble(
+      ID = c("Col:text Row:1", "Col:text Row:2"),
+      Document = c("John went home.", "London is big."),
+      Repeats = c(1, 1),
+      `Affected Columns` = c("text", "text"),
+      PK = 1:2
+    )
+  )
 }
