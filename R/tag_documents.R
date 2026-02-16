@@ -36,7 +36,7 @@
 #' 
 tag_documents <- function(docs,
                           doc_ids=NULL,
-                          tagger = udpipe_factory(),
+                          tagger = NULL,
                           chunk_size = 100) {
 
   if (!is.character(docs) || length(docs) == 0) {
@@ -45,6 +45,10 @@ tag_documents <- function(docs,
   
   if (!is.numeric(chunk_size) || chunk_size < 1) {
     stop("`chunk_size` must be a positive integer.", call. = FALSE)
+  }
+  
+  if (is.null(tagger)){
+    tagger <- udpipe_factory()
   }
 
   doc_ids <- format_doc_id(docs, doc_ids)
