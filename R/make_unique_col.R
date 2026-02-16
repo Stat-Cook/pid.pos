@@ -15,12 +15,12 @@ make_unique_col <- function(df, base = ".row_index") {
   
   # Check that df is a data frame and base is a single character string
   if (!is.data.frame(df)) {
-    type_error("`df` must be a data frame.", var = "df", 
-               value = df, call = caller_env())
+    type_error("`df` must be a data frame.", 
+               var = "df", value = df)
   }
   if (!is.character(base) || length(base) > 1 ){
-    type_error("`base` must be a single character string.", var = "base", 
-               value = base, call = caller_env())
+    type_error("`base` must be a single character string.", 
+               var = "base", value = base)
   }
 
   name <- base

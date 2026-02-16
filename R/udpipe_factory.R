@@ -39,7 +39,7 @@ udpipe_factory <- function(model = "english-ewt",
                            udpipe_repo = pid.pos_env$udpipe_repo) {
   function(docs, doc_ids = NULL) {
     if (!is.character(docs) || length(docs) == 0) {
-      type_error("`docs` must be a non-empty character vector.", call = caller_env())
+      type_error("`docs` must be a non-empty character vector.")
     }
     
     doc_ids <- format_doc_id(docs, doc_ids)
@@ -65,8 +65,7 @@ udpipe_factory <- function(model = "english-ewt",
               "\n",
               "Please run `browse_model_location()` to see if models are downloaded.\n",
               "If not present download via `browse_udpipe_repo()."
-            ),
-            call. = FALSE
+            )
           )
         }
         stop(e)

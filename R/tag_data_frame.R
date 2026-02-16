@@ -40,16 +40,13 @@ tag_data_frame <- function(frm,
                            to_ignore = character()) {
   
   if (!is.data.frame(frm)) {
-    type_error("`frm` must be a data frame.", call = caller_env())
+    type_error("`frm` must be a data frame.")
   }
   
   if (!is.numeric(chunk_size) || chunk_size < 1) {
-    type_error("`chunk_size` must be a positive integer.", call = caller_env())
+    type_error("`chunk_size` must be a positive integer.")
   }
   
-  # if(is.character(tagger)){
-  #   tagger <- udpipe_factory(tagger)
-  # }  
   if(is.character(tagger)){
     .tagger <- udpipe_factory(tagger)
   } else {

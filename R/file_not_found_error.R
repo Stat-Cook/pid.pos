@@ -1,7 +1,6 @@
 #' A custom abort function 
 #' 
-#' @param msg The error message to display
-#' @param inherited_class A character vector of additional classes to inherit from (optional)
+#' @param message The error message to display
 #' @param ... Additional arguments to pass to `abort()`
 #' @param call The call environment to use for the error (defaults to the caller's environment)
 #' 
@@ -20,14 +19,4 @@
 #' result <- try(f(), silent = TRUE)
 #' result
 #' 
-file_not_found_error <- function(msg, inherited_class = NULL, ..., call = caller_env()) {
-  
-  cls <- c("pid_pos_file_not_found_error", "file_not_found_error", "pid_pos_error", inherited_class)
-  
-  abort(
-    message = msg,
-    class = cls,
-    call = call,
-    !!!list(...)
-  )
-}
+file_not_found_error <- new_error_type("file_not_found_error")

@@ -40,11 +40,11 @@ tag_documents <- function(docs,
                           chunk_size = 100) {
 
   if (!is.character(docs) || length(docs) == 0) {
-    type_error("`docs` must be a non-empty character vector.", call = caller_env())
+    type_error("`docs` must be a non-empty character vector.")
   }
   
   if (!is.numeric(chunk_size) || chunk_size < 1) {
-    type_error("`chunk_size` must be a positive integer.", call = caller_env())
+    type_error("`chunk_size` must be a positive integer.")
   }
   
   if (is.null(tagger)){
