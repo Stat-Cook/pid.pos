@@ -1,4 +1,4 @@
-summarize_repeated_setences <- function(frm, ...) {
+summarize_repeated_sentences <- function(frm, ...) {
   #' @importFrom utils head read.csv write.csv
   first <- head(frm, 1)
   first$Repeats <- nrow(frm)
@@ -56,7 +56,7 @@ data_frame_tagger <- function(frm, model = "english-ewt",
     )
 
   sentence.frm <- group_by(doc.grid, Sentence) %>%
-    group_modify(summarize_repeated_setences) |>
+    group_modify(summarize_repeated_sentences) |>
     ungroup() |>
     mutate(
       ID = glue("Col:{Column} Row:{Row}")
