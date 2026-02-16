@@ -1,0 +1,33 @@
+#' Generate a unique column name for a data frame.
+#' 
+#' This function generates a unique column name for a data frame by appending a number to a base name until it finds a name that is not already in the data frame.
+#' 
+#' @param df A data frame to check for existing column names.
+#' @param base A character string to use as the base for the column name. Default is ".row_index".
+#' 
+#' @return A character string that is a unique column name for the data frame.
+#' 
+#' @examples
+#' df <- data.frame(a = 1:5, b = 6:10)
+#' make_unique_col(df)
+make_unique_col <- function(df, base = ".row_index") {
+  #' @importFrom rlang abort
+  
+  # Check that df is a data frame and base is a single character string
+  if (!is.data.frame(df)) {
+    type_error("`df` must be a data frame.", var = "df", 
+               value = df, call = caller_env())
+  }
+  if (!is.character(base) || length(base) > 1 ){
+    type_error("`base` must be a single character string.", var = "base", 
+               value = base, call = caller_env())
+  }
+
+  name <- base
+  i <- 1
+  while (name %in% names(df)) {
+    name <- paste0(base, i)
+    i <- i + 1
+  }
+  name
+}
