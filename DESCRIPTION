@@ -9,13 +9,13 @@ Authors@R:
     person("Md", "Assaduzaman", role=c("aut"), comment = c(ORCID = "0000-0002-8885-6721")),
     person("Sarahjane", "Jones", role=c("aut"), comment = c(ORCID = "0000-0003-4729-4029"))
   )
-Maintainer: The package maintainer <yourself@somewhere.net>
+Maintainer: Robert Cook <rzc1@staff.staffs.ac.uk>
 Description: A package for the detection and contextualization of personally 
     identifiable data (PID) in free text via natural language processing (NLP).  
     This package is a wraper to the 'english-ewt-2.5' UDPipe model intended to 
     extract 'proper nouns' and provide a report of their usage/ context in a 
     set of free text documents.  The main point of entry to the package is via 
-    the `proper_noun_report` function (see `Troubleshooting` vignette for 
+    the `...` function (see `Troubleshooting` vignette for 
     possible issues with the automated downloading of the pretrained UDPipe 
     model).
 License: MIT + file LICENSE
@@ -41,6 +41,7 @@ Suggests:
     rmarkdown,
     openxlsx,
     testthat (>= 3.0.0),
+    mockery,
     covr,
     withr
 Config/testthat/edition: 3
