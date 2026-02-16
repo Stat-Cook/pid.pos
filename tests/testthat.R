@@ -7,6 +7,7 @@
 # * https://testthat.r-lib.org/reference/test_package.html#special-files
 
 library(testthat)
+library(mockery)
 library(pid.pos)
 
 test_check("pid.pos")
