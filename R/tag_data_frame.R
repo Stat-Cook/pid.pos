@@ -11,6 +11,7 @@
 #' @importFrom progress progress_bar
 #' @importFrom dplyr where all_of filter
 #' @importFrom purrr simplify
+#' @importFrom tidyr pivot_longer
 #'
 #' @return A list with two elements:
 #' \describe{
@@ -39,11 +40,11 @@ tag_data_frame <- function(frm,
                            to_ignore = character()) {
   
   if (!is.data.frame(frm)) {
-    stop("`frm` must be a data frame.", call. = FALSE)
+    type_error("`frm` must be a data frame.", call = caller_env())
   }
   
   if (!is.numeric(chunk_size) || chunk_size < 1) {
-    stop("`chunk_size` must be a positive integer.", call. = FALSE)
+    type_error("`chunk_size` must be a positive integer.", call = caller_env())
   }
   
   # if(is.character(tagger)){
