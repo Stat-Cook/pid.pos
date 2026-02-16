@@ -3,10 +3,7 @@ pid.pos_env <- new.env()
 .onLoad <- function(libname, pkgname) {
 
   op <- options()
-  op.pid.pos <- list(pid.pos.context_window = 25)
-  toset <- !(names(op.pid.pos) %in% names(op))
-  if (any(toset))
-    options(op.pid.pos[toset])
+  if (is.null(op[["pid_pos_context_window"]])) options(pid_pos_context_window = 25)
   
   pid.pos_env$deault_model_folder <- user_data_dir("pid.pos")
   pid.pos_env$allowed_repos <- c(`2.5` = "jwijffels/udpipe.models.ud.2.5",
