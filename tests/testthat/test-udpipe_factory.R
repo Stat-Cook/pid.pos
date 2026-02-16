@@ -28,7 +28,10 @@ test_that("tagger errors cleanly when UDPipe fails", {
   mockery::stub(tagger, "udpipe::udpipe", fake_udpipe_failure)
   
   # Expect a controlled error with your custom message
-  expect_error(tagger("This is a test."))
+  expect_error(tagger("This is a test."), "Model missing")
+  
+  mockery::stub(tagger, "udpipe::udpipe", fake_udpipe_file_not_found_failure)
+  expect_error(tagger("This is a test."), "UDPipe model could not be loaded")
 })
 
 test_that("tagger can download model", {

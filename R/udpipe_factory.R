@@ -17,7 +17,7 @@
 #'   \item{upos}{The universal parts of speech tag of the token. See https://universaldependencies.org/format.html}
 #' }
 #' and all columns returned by the `udpipe::udpipe()` function for each token.
-#' 
+#'
 #' @export
 #'
 #' @examples
@@ -37,11 +37,9 @@
 udpipe_factory <- function(model = "english-ewt",
                            model_dir = pid.pos_env$model_folder,
                            udpipe_repo = pid.pos_env$udpipe_repo) {
-  
   function(docs, doc_ids = NULL) {
-    
     if (!is.character(docs) || length(docs) == 0) {
-      stop("`docs` must be a non-empty character vector.", call. = FALSE)
+      type_error("`docs` must be a non-empty character vector.", call = caller_env())
     }
     
     doc_ids <- format_doc_id(docs, doc_ids)
@@ -57,25 +55,29 @@ udpipe_factory <- function(model = "english-ewt",
         udpipe_model_repo = udpipe_repo
       ),
       error = function(e) {
-        stop(
-          paste0(
-            "UDPipe model could not be loaded.\n",
-            "Original error: ", e$message, "\n",
-            "Please run `browse_model_location()` to see if models are downloaded.\n",
-            "If not present download via `browse_udpipe_repo()."
-          ),
-          call. = FALSE
-        )
+        msg <- conditionMessage(e)
+        if (grepl("File.*does not exist", msg)) {
+          file_not_found_error(
+            paste0(
+              "UDPipe model could not be loaded.\n",
+              "Original error: ",
+              e$message,
+              "\n",
+              "Please run `browse_model_location()` to see if models are downloaded.\n",
+              "If not present download via `browse_udpipe_repo()."
+            ),
+            call. = FALSE
+          )
+        }
+        stop(e)
       }
     )
     
     result <- tagged |>
       dplyr::mutate(`TokenNo` = as.numeric(.data$token_id)) |>
-      dplyr::rename(
-        ID = doc_id,
-        Token = token,
-        Sentence = sentence
-      ) |>
+      dplyr::rename(ID = doc_id,
+                    Token = token,
+                    Sentence = sentence) |>
       tibble::as_tibble()
     
     select(result, ID, Token, Sentence, upos, all_of(colnames(result)))

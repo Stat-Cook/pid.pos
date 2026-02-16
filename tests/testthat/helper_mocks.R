@@ -17,6 +17,10 @@ fake_udpipe_failure <- function(...) {
   stop("Model missing")
 }
 
+fake_udpipe_file_not_found_failure <- function(...) {
+  stop("File not found: ... does not exist.")
+}
+
 # Fake tagger function
 fake_tagger <- function(docs, ids) {
   tibble::tibble(
