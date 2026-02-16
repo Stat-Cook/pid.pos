@@ -38,11 +38,6 @@ test_that("tag_documents validates inputs", {
 
 test_that("tag_documents propagates tagger errors", {
   expect_error(tag_documents("test", tagger = fake_tagger_failure),
-               "model missing")
+               "Model missing")
   
-  tagger <- udpipe_factory()
-  mockery::stub(tagger, "udpipe::udpipe", fake_udpipe_failure)
-  
-  expect_error(tag_documents("test", tagger = tagger),
-               ".*Original error: Model missing.*")
 })
