@@ -3,9 +3,9 @@
 # Successful mock
 fake_udpipe_success <- function(...) {
   data.frame(
-    doc_id   = "doc1",
+    doc_id = "doc1",
     token_id = 1,
-    token    = "Test",
+    token = "Test",
     sentence = "Test sentence",
     upos = "XXX",
     stringsAsFactors = FALSE
@@ -25,8 +25,8 @@ fake_udpipe_file_not_found_failure <- function(...) {
 fake_tagger <- function(docs, ids) {
   tibble::tibble(
     ID = ids,
-    Token = docs, 
-    Sentence = docs, 
+    Token = docs,
+    Sentence = docs,
     upos = "XXX"
   )
 }

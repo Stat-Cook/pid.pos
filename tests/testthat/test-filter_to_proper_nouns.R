@@ -5,9 +5,9 @@ test_that("filter_to_proper_nouns filters only PROPN rows", {
     Sentence = c(1, 1, 2, 2),
     upos = c("PROPN", "VERB", "PROPN", "ADV")
   )
-  
+
   result <- filter_to_proper_nouns(df)
-  
+
   expect_equal(nrow(result), 2)
   expect_true(all(df$upos[df$upos == "PROPN"] == "PROPN"))
 })
@@ -20,9 +20,9 @@ test_that("returns only ID, Token, Sentence columns", {
     upos = "PROPN",
     extra = "ignored"
   )
-  
+
   result <- filter_to_proper_nouns(df)
-  
+
   expect_named(result, c("ID", "Token", "Sentence"))
 })
 
@@ -33,9 +33,9 @@ test_that("returns empty tibble when no proper nouns present", {
     Sentence = c(1, 1),
     upos = c("VERB", "ADV")
   )
-  
+
   result <- filter_to_proper_nouns(df)
-  
+
   expect_equal(nrow(result), 0)
 })
 
@@ -46,9 +46,9 @@ test_that("handles empty data frame", {
     Sentence = integer(),
     upos = character()
   )
-  
+
   result <- filter_to_proper_nouns(df)
-  
+
   expect_equal(nrow(result), 0)
 })
 
@@ -64,7 +64,7 @@ test_that("errors if required columns are missing", {
     ID = 1,
     Token = "John"
   )
-  
+
   expect_error(
     filter_to_proper_nouns(df),
     "Missing required columns"

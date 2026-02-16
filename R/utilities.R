@@ -45,17 +45,16 @@ enable_package_models <- function() {
 
 set_udpipe_version <- function(version = c("2.5", "2.4", "2.3")) {
   #' Set the udpipe model repository version.
-  #' 
+  #'
   #' @param version Character. The udpipe model version to use. One of "2.5", "2.4", or "2.3".
-  #' 
+  #'
   #' @return Character. The udpipe model repository.
-  #' 
+  #'
   #' @examples
   #' set_udpipe_version("2.4")
   #' @export
-  #' 
+  #'
   version <- match.arg(version)
-  pid.pos_env$udpipe_version  <- pid.pos_env$allowed_repos[[version]]
-  pid.pos_env$udpipe_version 
+  pid.pos_env$udpipe_version <- pid.pos_env$allowed_repos[[version]]
+  pid.pos_env$udpipe_version
 }
-
