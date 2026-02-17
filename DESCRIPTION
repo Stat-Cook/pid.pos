@@ -15,7 +15,7 @@ Description: A package for the detection and contextualization of personally
     This package is a wraper to the 'english-ewt-2.5' UDPipe model intended to 
     extract 'proper nouns' and provide a report of their usage/ context in a 
     set of free text documents.  The main point of entry to the package is via 
-    the `...` function (see `Troubleshooting` vignette for 
+    the `pid_pos` function (see `Troubleshooting` vignette for 
     possible issues with the automated downloading of the pretrained UDPipe 
     model).
 License: MIT + file LICENSE
