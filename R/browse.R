@@ -6,10 +6,10 @@ browse_udpipe_repo <- function(model = "english-ewt") {
   #'
   #' @export
   #' @importFrom utils browseURL
-  #' 
-  
+  #'
+
   udpipe_repo <- with(
-    pid.pos_env, 
+    pid.pos_env,
     {
       .date <- repo_dates[[udpipe_version]]
       .version <- udpipe_version
@@ -23,7 +23,7 @@ browse_udpipe_repo <- function(model = "english-ewt") {
       paste(url_root, url_path, sep = "/")
     }
   )
-  
+
   browseURL(udpipe_repo)
 }
 

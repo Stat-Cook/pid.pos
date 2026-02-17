@@ -33,7 +33,6 @@
 #' # Create a tagger for the English LINES model
 #' lines_tagger <- udpipe_factory("english-lines")
 #' lines_tagger(docs)
-
 udpipe_factory <- function(model = "english-ewt",
                            model_dir = pid.pos_env$model_folder,
                            udpipe_repo = pid.pos_env$udpipe_repo) {
@@ -41,12 +40,12 @@ udpipe_factory <- function(model = "english-ewt",
     if (!is.character(docs) || length(docs) == 0) {
       type_error("`docs` must be a non-empty character vector.")
     }
-    
+
     doc_ids <- format_doc_id(docs, doc_ids)
     
     utf8_docs <- utf8::utf8_encode(docs)
     names(utf8_docs) <- doc_ids
-    
+
     tagged <- tryCatch(
       udpipe::udpipe(
         utf8_docs,
@@ -71,12 +70,14 @@ udpipe_factory <- function(model = "english-ewt",
         stop(e)
       }
     )
-    
+
     result <- tagged |>
       dplyr::mutate(`TokenNo` = as.numeric(.data$token_id)) |>
-      dplyr::rename(ID = doc_id,
-                    Token = token,
-                    Sentence = sentence) |>
+      dplyr::rename(
+        ID = doc_id,
+        Token = token,
+        Sentence = sentence
+      ) |>
       tibble::as_tibble()
     
     dplyr::select(result, ID, Token, Sentence, upos, all_of(colnames(result)))
