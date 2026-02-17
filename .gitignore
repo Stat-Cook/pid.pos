@@ -17,3 +17,7 @@ JOSS_utilities/paper.html
 pid_pos.docx
 
 rjavaenv/
+
+pid_pos_models/
+
+.Rprofile
