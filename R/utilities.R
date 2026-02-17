@@ -59,3 +59,21 @@ set_udpipe_version <- function(version = c("2.5", "2.4", "2.3")) {
   pid.pos_env$udpipe_version 
 }
 
+
+summarize_repeated_sentences <- function(frm, ...) {
+  #' @importFrom utils head read.csv write.csv
+  first <- head(frm, 1)
+  first$Repeats <- nrow(frm)
+  first$`Affected Columns` <- paste(
+    glue("`{unique(frm$Column)}`"),
+    collapse = ", "
+  )
+  first
+}
+
+
+remove_if_exists <- function(frm, to_remove) {
+  to_remove <- intersect(colnames(frm), to_remove)
+  frm %>% select(-all_of(to_remove))
+}
+
