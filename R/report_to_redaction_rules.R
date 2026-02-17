@@ -26,22 +26,21 @@
 #' @export
 report_to_redaction_rules <- function(report, path = NULL,
                                       include_context = FALSE) {
-
   required_cols <- c("Sentence", "Token")
   missing <- setdiff(required_cols, names(report))
   if (length(missing) > 0) {
     validation_error("report is missing columns: ", paste(missing, collapse = ", "))
   }
-  
+
   if (!inherits(report, "data.frame")) {
     type_error("`report` must be a data.frame or tibble")
   }
-  
+
   if (!is.null(path) && !is.character(path)) {
     type_error("`path` must be a string or NULL")
   }
-  
-  
+
+
   .frm <- report |>
     mutate(
       If = Sentence,
@@ -49,18 +48,18 @@ report_to_redaction_rules <- function(report, path = NULL,
       To = Token,
       .keep = "none"
     )
-  
+
   if (include_context) {
     .frm <- .frm |>
       mutate(
         Context = map2(If, From, get_context)
       )
   }
-  
+
   if (is.null(path)) {
     return(.frm)
   }
-  
+
   readr::write_csv(.frm, path)
   .frm
 }

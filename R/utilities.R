@@ -76,4 +76,3 @@ remove_if_exists <- function(frm, to_remove) {
   to_remove <- intersect(colnames(frm), to_remove)
   frm %>% select(-all_of(to_remove))
 }
-
