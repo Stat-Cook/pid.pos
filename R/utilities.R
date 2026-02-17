@@ -18,16 +18,21 @@ enable_local_models <- function(sub_folder = TRUE) {
   #' @examples
   #' enable_local_models()
   #' enable_local_models(sub_folder=FALSE)
+
   local_dir <- getwd()
   if (sub_folder) {
     local_dir <- file.path(local_dir, "pid_pos_models")
   }
 
   if (!dir.exists(local_dir)) {
-    dir.create(local_dir)
+    if (!dir.create(local_dir, recursive = TRUE)) {
+      stop("Could not create local model folder: ", local_dir)
+    }
   }
 
   set_model_folder(local_dir)
+  invisible(local_dir)
+
 }
 
 enable_package_models <- function() {
@@ -54,9 +59,22 @@ set_udpipe_version <- function(version = c("2.5", "2.4", "2.3")) {
   #' set_udpipe_version("2.4")
   #' @export
   #'
+  pkg_env <- getNamespace("pid.pos")
+  if (!exists("pid.pos_env", envir = pkg_env)) {
+    stop("pid.pos_env does not exist. Initialize it first.")
+  }
+  
   version <- match.arg(version)
+  
+  if (!version %in% names(pid.pos_env$allowed_repos)){
+    validation_error("No repository defined for version")
+  }
+  
+  # repo <- pid.pos_env$allowed_repos[[version]]
+  # if (is.null(repo)) stop("No repository defined for version ", version)
   pid.pos_env$udpipe_version <- pid.pos_env$allowed_repos[[version]]
-  pid.pos_env$udpipe_version
+  
+  invisible(pid.pos_env$udpipe_version)
 }
 
 
