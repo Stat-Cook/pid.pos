@@ -35,7 +35,10 @@ Imports:
     progress,
     readxl,
     stringr,
-    utf8
+    utf8,
+    tidyr,
+    readr,
+    rlang
 Suggests: 
     knitr,
     rmarkdown,
