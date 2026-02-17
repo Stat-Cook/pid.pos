@@ -3,6 +3,7 @@ browse_udpipe_repo <- function(model = "english-ewt") {
   #'
   #' Intended for user download where `udpipe` fails to download automatically.
   #'
+  #' @param model A string naming a UDPipe model.  See `udpipe::udpipe_download_model()` for the list of available models.
   #'
   #' @export
   #' @importFrom utils browseURL
@@ -11,8 +12,8 @@ browse_udpipe_repo <- function(model = "english-ewt") {
   udpipe_repo <- with(
     pid.pos_env,
     {
-      .date <- repo_dates[[udpipe_version]]
-      .version <- udpipe_version
+      .date <- repo_dates[[udpipe_repo]]
+      .version <- udpipe_repo
       .version.number <- stringr::str_extract(.version, "\\d.\\d$")
 
       url_root <- sprintf(
