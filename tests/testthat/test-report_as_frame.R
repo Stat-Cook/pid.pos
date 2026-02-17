@@ -3,7 +3,7 @@
 test_that("report_to_replacement_rules", {
   local({
     .report <- head(the_one_in_massapequa, 10) |>
-      data_frame_report()
+      pid_pos()
 
     # Create a temporary file
     temp_file <- local_tempfile(fileext = ".csv")
