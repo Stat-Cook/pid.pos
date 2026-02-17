@@ -19,7 +19,7 @@
 #' and all columns returned by the `udpipe::udpipe()` function for each token.
 #'
 #' @export
-#'
+#' 
 #' @examples
 #' # Create a tagger for the English EWT model
 #' ewt_tagger <- udpipe_factory("english-ewt")
@@ -44,7 +44,7 @@ udpipe_factory <- function(model = "english-ewt",
     
     doc_ids <- format_doc_id(docs, doc_ids)
     
-    utf8_docs <- utf8_encode(docs)
+    utf8_docs <- utf8::utf8_encode(docs)
     names(utf8_docs) <- doc_ids
     
     tagged <- tryCatch(
@@ -79,6 +79,6 @@ udpipe_factory <- function(model = "english-ewt",
                     Sentence = sentence) |>
       tibble::as_tibble()
     
-    select(result, ID, Token, Sentence, upos, all_of(colnames(result)))
+    dplyr::select(result, ID, Token, Sentence, upos, all_of(colnames(result)))
   }
 }
