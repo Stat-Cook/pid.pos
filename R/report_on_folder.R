@@ -41,7 +41,7 @@ report_on_folder <- function(data_path, report_dir = "Proper Noun Reports",
     frm <- read_data(.file) %>%
       remove_if_exists(to_remove)
 
-    report <- data_frame_report(frm)
+    report <- pid_pos(frm)
 
     base <- str_replace(base, "\\..*$", ".csv")
 
