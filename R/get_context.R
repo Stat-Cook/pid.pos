@@ -12,30 +12,32 @@
 #'
 #' @keywords internal
 
-get_context <- function(sentence, token, 
+get_context <- function(sentence, token,
                         context_window = getOption("pid_pos_context_window")) {
-    loc <- stringr::str_locate(sentence, token)
-    
-    # If token not found, return NA
-    if (any(is.na(loc))) return(NA_character_)
-    
-    start <- loc[1]
-    end   <- loc[2]
-    sent_len <- stringr::str_length(sentence)
-    
-    from <- max(start - context_window, 1)
-    to   <- min(end + context_window, sent_len)
-    
-    ctx <- stringr::str_sub(sentence, from, to)
-    ctx <- paste0(if (from > 1) "..." else "", ctx, if (to < sent_len) "..." else "")
-    
-    ctx
+  loc <- stringr::str_locate(sentence, token)
+
+  # If token not found, return NA
+  if (any(is.na(loc))) {
+    return(NA_character_)
+  }
+
+  start <- loc[1]
+  end <- loc[2]
+  sent_len <- stringr::str_length(sentence)
+
+  from <- max(start - context_window, 1)
+  to <- min(end + context_window, sent_len)
+
+  ctx <- stringr::str_sub(sentence, from, to)
+  ctx <- paste0(if (from > 1) "..." else "", ctx, if (to < sent_len) "..." else "")
+
+  ctx
 }
 
 # get_context <- function(sentences, tokens) {
-# 
+#
 #   context_window <- getOption("pid.pos.context_window")
-# 
+#
 #   context.frm <- str_locate(sentences, tokens) |>
 #     as_tibble() |>
 #     mutate(
@@ -49,10 +51,9 @@ get_context <- function(sentence, token,
 #       Append = ifelse(ContextTo == SentenceLength, "", "..."),
 #       Context = sprintf("%s%s%s", Prepend, Context, Append)
 #     )
-# 
+#
 #   context.frm$Context
 # }
-
 
 
 set_context_window <- function(x) {
