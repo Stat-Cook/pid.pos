@@ -39,10 +39,13 @@
 #' tag_ewt <- udpipe_factory("english-ewt")
 #' pid_pos(example.data, to_ignore = c("scene", "utterance"), tagger = tag_ewt)
 #'
+#'
 #' filter_to_long_proper_nouns <- function(frm) {
-#'   filter_to_proper_nouns(frm) |>
-#'     filter(nchar(Token) > 1)
+#'   frm |>
+#'     dplyr::filter(nchar(Token) > 1)
+#'     filter_to_proper_nouns(frm) 
 #' }
+#' 
 #' pid_pos(example.data,
 #'   to_ignore = c("scene", "utterance"),
 #'   tagger = tag_ewt, filter = filter_to_long_proper_nouns
