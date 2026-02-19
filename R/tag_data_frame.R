@@ -18,7 +18,9 @@
 #'   \item{AllTags}{A tibble of token-level annotations}
 #'   \item{Documents}{A tibble describing the processed documents}
 #' }
-#'
+#' 
+#' @export
+#' 
 #' @examples
 #' example.data <- head(the_one_in_massapequa, 20)
 #'
