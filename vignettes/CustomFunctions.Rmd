@@ -1,0 +1,228 @@
+---
+title: "Using custom functions in `pid_pos`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Using custom functions in `pid_pos`}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Out of the box, `pid_pos()` relies on the `udpipe` package to perform part-of-speech (POS) tagging.  
+However, the `pid_pos` API is intentionally flexible and allows users to:
+
+- Supply their own custom POS tagging functions
+- Implement custom filtering logic
+- Integrate alternative tagging engines (e.g., Python libraries)
+
+This vignette demonstrates each of these extensions.
+
+A custom tagger must:
+
+- Accept a single character string (a sentence)
+- Return a data frame with one row per token
+
+A custom filter must:
+
+- Accept the tagger’s returned data frame
+- Return a filtered version of that data frame
+
+We begin by loading the package:
+
+```{r setup}
+library(pid.pos)
+```
+
+We will use the example dataset:
+
+```{r}
+example.data <- head(the_one_in_massapequa, 20)
+example.data
+```
+
+---
+
+# Custom POS Tagging Functions
+
+As a minimal example, suppose we want to tag only the main characters from *Friends* as proper nouns.
+
+```{r}
+friends <- c("Joey", "Phoebe", "Ross", "Chandler", "Monica", "Rachel")
+```
+
+We define a sentence-level tagging function:
+
+```{r}
+sentence_tagger <- function(sentence) {
+
+  clean_text <- gsub("[[:punct:]]", "", sentence)
+  tokens <- strsplit(clean_text, "\\s+")[[1]]
+  tokens <- tokens[tokens != ""]
+  
+  tibble::tibble(
+    Token = tokens,
+    upos = ifelse(tokens %in% friends, "PROPN", "XXX")
+  )
+}
+
+sentence_tagger("Joey sat in Central Perk")
+```
+
+To use this with `pid_pos()`, we wrap it with `custom_tagger()`:
+
+```{r}
+friends_tagger <- custom_tagger(sentence_tagger)
+
+friends_tagger(example.data$text)
+```
+
+We can now supply it to `pid_pos()`:
+
+```{r}
+result <- pid_pos(example.data, tagger = friends_tagger)
+result
+```
+
+---
+
+# Custom Filtering Functions
+
+The default `filter_to_proper_noun()` assumes:
+
+1. Proper nouns are labeled `"PROPN"`
+2. The POS column is named `"upos"`
+
+If your tagger uses different conventions, you must supply a custom filter.
+
+For example, suppose:
+
+- Proper nouns are labeled `"NNP"`
+- The POS column is named `"POS"`
+
+We define:
+
+```{r}
+custom_filter <- function(tag_frm) {
+  dplyr::filter(tag_frm, POS == "NNP")
+}
+```
+
+And a compatible tagger:
+
+```{r}
+friends_tagger2 <- custom_tagger(function(sentence) {
+  
+  if (is.na(sentence)) {
+    return(tibble::tibble(Token = character(), POS = character()))
+  }
+  
+  clean_text <- gsub("[[:punct:]]", "", sentence)
+  tokens <- strsplit(clean_text, "\\s+")[[1]]
+  tokens <- tokens[tokens != ""]
+  
+  tibble::tibble(
+    Token = tokens,
+    POS = ifelse(tokens %in% friends, "NNP", "XXX")
+  )
+})
+```
+
+Now use both:
+
+```{r}
+pid_pos(
+  example.data,
+  tagger = friends_tagger2,
+  filter = custom_filter
+)
+```
+
+---
+
+# Using Other Tagging Frameworks (Python Example)
+
+The tagging engine can also be replaced entirely. For example, Python’s `nltk` library provides POS tagging functionality.
+
+The following Python function (included in the package as `nltk_function.py`) defines a simple wrapper:
+
+```python
+from nltk.tokenize import word_tokenize
+from nltk.tag import pos_tag
+
+def nltk_pos_tagger(sentence):
+    tokens = word_tokenize(sentence)
+    return pos_tag(tokens)
+```
+
+We can bridge this into R using `reticulate` (see [this vignette](https://cran.r-project.org/web/packages/reticulate/vignettes/calling_python.html) for an intro to using `reticulate`).
+
+> **Note:** This section requires a working Python installation and the `nltk` module.  
+> If these are not available, the code below will be skipped.
+
+```{r, eval = FALSE}
+reticulate::use_virtualenv("YOUR ENVIRONMENT", required = TRUE)
+
+if (!reticulate::py_module_available("nltk")){
+  reticulate::py_install("nltk", pip = TRUE)
+}
+```
+
+```{r, eval = reticulate::py_available(initialize = FALSE)}
+
+nltk_tagger <- custom_tagger(function(sentence) {
+  
+  tagged <- nltk_pos_tagger(sentence)
+  
+  tagged_frm <- tibble::as_tibble(
+    do.call(rbind, tagged),
+    .name_repair = "minimal"
+  )
+  
+  colnames(tagged_frm) <- c("Token", "POS")
+  
+  dplyr::mutate(
+    tagged_frm,
+    dplyr::across(dplyr::everything(), as.character)
+  )
+})
+  
+nltk_filter <- function(frm) {
+  dplyr::filter(frm, POS %in% c("NNP", "NNPS"))
+}
+  
+pid_pos(
+  example.data,
+  tagger = nltk_tagger,
+  filter = nltk_filter
+)
+```
+
+---
+
+# Summary
+
+The `pid_pos()` API separates:
+
+- **Tagging logic**
+- **Filtering logic**
+
+This design allows users to:
+
+- Implement lightweight dictionary-based taggers
+- Swap in alternative POS frameworks
+- Integrate external engines such as Python libraries
+- Customize filtering criteria without modifying tagging code
+
+By adhering to the simple contract:
+
+- Taggers return a token-level data frame
+- Filters return a subset of that data frame
+
+`pid_pos()` can operate with virtually any POS tagging system.
+
