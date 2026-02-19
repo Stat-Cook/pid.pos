@@ -8,7 +8,7 @@
 #' @param pos_function A function for the tagging of a single sentence, with the signature `function(sentence)`
 #'
 #' @return A function that can be used for the tagging of a whole document, with the signature `function(docs, doc_ids=seq_along(docs))`
-#'
+#' @export
 #' @examples
 #'
 #' # Example of a POS tagging function for a single sentence
@@ -21,13 +21,13 @@
 #'     Token = tokens,
 #'     upos = ifelse(tokens %in% proper_nouns, "PROPN", "OTHER")
 #'   ) |>
-#'     mutate(Sentence = sentence)
+#'     dplyr::mutate(Sentence = sentence)
 #' }
 #'
 #' .tagger <- custom_tagger(pos_function)
 #'
 #' docs <- c("Alice is here", "Bob is there", "Charlie is everywhere")
-#' tagger(docs)
+#' .tagger(docs)
 #'
 #' doc.frm <- data.frame(Text = docs)
 #' pid_pos(doc.frm, tagger = .tagger, filter_func = filter_to_proper_nouns)
@@ -52,7 +52,8 @@ custom_tagger <- function(pos_function) {
     purrr::map2(
       docs, doc_ids,
       ~ pos_function(.x) |>
-        dplyr::mutate(doc_id = .y)
+        dplyr::mutate(ID = .y,
+                      Sentence = .x)
     ) |>
       purrr::list_rbind()
   }
