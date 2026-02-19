@@ -52,8 +52,10 @@ custom_tagger <- function(pos_function) {
     purrr::map2(
       docs, doc_ids,
       ~ pos_function(.x) |>
-        dplyr::mutate(ID = .y,
-                      Sentence = .x)
+        dplyr::mutate(
+          ID = .y,
+          Sentence = .x
+        )
     ) |>
       purrr::list_rbind()
   }

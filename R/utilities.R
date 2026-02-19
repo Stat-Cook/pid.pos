@@ -32,7 +32,6 @@ enable_local_models <- function(sub_folder = TRUE) {
 
   set_model_folder(local_dir)
   invisible(local_dir)
-
 }
 
 enable_package_models <- function() {
@@ -63,17 +62,17 @@ set_udpipe_version <- function(version = c("2.5", "2.4", "2.3")) {
   if (!exists("pid.pos_env", envir = pkg_env)) {
     stop("pid.pos_env does not exist. Initialize it first.")
   }
-  
+
   version <- match.arg(version)
-  
-  if (!version %in% names(pid.pos_env$allowed_repos)){
+
+  if (!version %in% names(pid.pos_env$allowed_repos)) {
     validation_error("No repository defined for version")
   }
-  
+
   # repo <- pid.pos_env$allowed_repos[[version]]
   # if (is.null(repo)) stop("No repository defined for version ", version)
   pid.pos_env$udpipe_version <- pid.pos_env$allowed_repos[[version]]
-  
+
   invisible(pid.pos_env$udpipe_version)
 }
 
