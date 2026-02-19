@@ -25,3 +25,4 @@ The package is built on the [UDPipe](https://lindat.mff.cuni.cz/services/udpipe/
 If you encounter a bug, please file a minimal reproducible example on github. Any feature requests, or requests for guidance on using the package can also be submitted this way though please read the documentation first.
 
 Contribution to pid.pos is welcome, to do so please open an issue so the development team can check it is compatible with the design principles or feel free to fork the repository.
+
