@@ -6,12 +6,12 @@
 #' @param base A character string to use as the base for the column name. Default is ".row_index".
 #'
 #' @return A character string that is a unique column name for the data frame.
-#'
-#' @examples
-#' df <- data.frame(a = 1:5, b = 6:10)
-#' make_unique_col(df)
+#' 
+#' @keywords internal
+#' 
+#' 
 make_unique_col <- function(df, base = ".row_index") {
-  #' @importFrom rlang abort
+
 
   # Check that df is a data frame and base is a single character string
   if (!is.data.frame(df)) {
