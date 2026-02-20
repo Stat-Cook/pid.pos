@@ -37,7 +37,7 @@ In many cases, users may wish to manually populate the `To` column (for example,
 
 We begin by generating a PID report and converting it into redaction rules:
 
-```{r, results="hide", message=FALSE}
+```{r, results="hide", message=FALSE, eval=F}
 library(pid.pos)
 
 report <- pid_pos(the_one_in_massapequa)
@@ -46,7 +46,10 @@ replacement_rules <- report_to_redaction_rules(report)
 replacement_rules
 ```
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, message=FALSE}
+report <- pid_pos(the_one_in_massapequa)
+replacement_rules <- report_to_redaction_rules(report)
+
 head(replacement_rules, 5)
 ```
 
