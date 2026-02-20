@@ -29,5 +29,5 @@ filter_to_proper_nouns <- function(tag_frm) {
 
   tag_frm %>%
     dplyr::filter(.data$upos == "PROPN") %>%
-    dplyr::select(.data$ID, .data$Token, .data$Sentence)
+    dplyr::select(all_of(c("ID", "Token", "Sentence")))
 }

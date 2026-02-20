@@ -99,7 +99,7 @@ pid_pos <- function(frm,
   report <- left_join(filtered_tags, tagged$Documents, by = "ID") %>%
     as_tibble() |>
     arrange(.data$PK) |>
-    select(-.data$PK)
+    select(-all_of("PK"))
 
   structure(
     report,
