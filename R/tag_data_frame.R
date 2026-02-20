@@ -12,6 +12,7 @@
 #' @importFrom dplyr where all_of filter
 #' @importFrom purrr simplify
 #' @importFrom tidyr pivot_longer
+#' @importFrom rlang :=
 #'
 #' @return A list with two elements:
 #' \describe{
@@ -73,11 +74,12 @@ tag_data_frame <- function(frm,
     rename(Row = all_of(new_col)) |>
     mutate(PK = row_number())
 
-  document_frm <- group_by(doc_grid, Document) %>%
+  document_frm <- group_by(doc_grid, .data$Document) %>%
     group_modify(summarize_repeated_sentences) |>
     ungroup() |>
     mutate(ID = glue("Col:{Column} Row:{Row}")) |>
-    dplyr::select(Document, ID, Repeats, `Affected Columns`, PK)
+    dplyr::select(.data$Document, .data$ID, .data$Repeats, 
+                  .data$`Affected Columns`, .data$PK)
 
   tag_frm <- tag_documents(
     document_frm$Document,

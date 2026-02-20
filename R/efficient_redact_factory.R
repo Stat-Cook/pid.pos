@@ -101,9 +101,13 @@ efficient_redaction <- function(frm, redact, n = NULL, .progress = T) {
 efficient_redaction.efficient.redact.function <- function(frm, redact, n = NULL, .progress = T) {
   #' @exportS3Method
   #'
+  #' @importFrom dplyr across where mutate
 
   .mutate <- function(frm) {
-    mutate(frm, across(where(is.character), \(i) redact(i)))
+    dplyr::mutate(
+      frm, 
+      dplyr::across(where(is.character), \(i) redact(i))
+    )
   }
 
   divide_map(frm, .mutate, n, .progress)

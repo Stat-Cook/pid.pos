@@ -25,7 +25,7 @@ if_factory <- function(If) {
 then.function.list <- function(rules.frm) {
   #' @importFrom dplyr group_by group_map
   rules.frm |>
-    group_by(If) |>
+    group_by(.data$If) |>
     group_map(
       ~ then_factory(.x$From, .x$To, .y$If)
     )
@@ -34,7 +34,7 @@ then.function.list <- function(rules.frm) {
 
 if.function.list <- function(rules.frm) {
   rules.frm |>
-    group_by(If) |>
+    group_by(.data$If) |>
     group_map(
       ~ if_factory(.y$If)
     )
@@ -93,7 +93,7 @@ frame_replacement <- function(frm, rules.frm) {
 
   frm |>
     mutate(
-      across(
+      dplyr::across(
         where(is.character),
         \(i) redaction.f(i)
       )

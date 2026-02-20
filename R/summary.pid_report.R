@@ -27,7 +27,7 @@ summary.pid_report <- function(object, ...) {
 
   object <- as_tibble(object)
 
-  .distinct <- distinct(object, Sentence, Repeats, `Affected Columns`)
+  # .distinct <- distinct(object, .data$Sentence, .data$Repeats, .data$`Affected Columns`)
   .uni <- unique(object$`Affected Columns`)
   affected.cols <- unique(simplify(str_extract_all(.uni, "`.*?`")))
 

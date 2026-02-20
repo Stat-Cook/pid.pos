@@ -31,7 +31,7 @@ report_on_folder <- function(data_path, report_dir = "Proper Noun Reports",
   #' @importFrom stringr str_replace str_replace_all
   .files <- find_files(data_path)
 
-  doc_id <- NA
+  # doc_id <- NA
 
   if (!dir.exists(report_dir)) dir.create(report_dir)
 

@@ -43,16 +43,16 @@ report_to_redaction_rules <- function(report, path = NULL,
 
   .frm <- report |>
     mutate(
-      If = Sentence,
-      From = Token,
-      To = Token,
+      If = .data$Sentence,
+      From = .data$Token,
+      To = .data$Token,
       .keep = "none"
     )
 
   if (include_context) {
     .frm <- .frm |>
       mutate(
-        Context = map2(If, From, get_context)
+        Context = map2(.data$If, .data$From, get_context)
       )
   }
 

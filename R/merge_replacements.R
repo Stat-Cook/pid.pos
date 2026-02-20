@@ -1,14 +1,24 @@
-vector_merge_redactions <- function(vec, cached_redactions, preprocess = utf8::utf8_encode) {
+vector_merge_redactions <- function(vec,
+                                    cached_redactions,
+                                    preprocess = utf8::utf8_encode) {
   #' @importFrom dplyr left_join join_by
+  #' 
+  
+  # Bindings to suppress codetools warnings 
+  # about "no visible binding for global variable" `Old` and `If`
+  Old <- If <- NA
+  
   frm <- data.frame(Old = preprocess(vec)) |>
     left_join(cached_redactions, by = dplyr::join_by(Old == If)) |>
-    mutate(New = ifelse(is.na(Then), Old, Then))
-
+    mutate(New = ifelse(is.na(.data$Then), .data$Old, .data$Then))
+  
   frm$New
 }
 
 
-merge_redactions <- function(frm, cached_redactions, preprocess = utf8::utf8_encode) {
+merge_redactions <- function(frm,
+                             cached_redactions,
+                             preprocess = utf8::utf8_encode) {
   #' Remove PID from a data frame via a merge/
   #'
   #' @param frm The data frame to be redacted
@@ -17,7 +27,7 @@ merge_redactions <- function(frm, cached_redactions, preprocess = utf8::utf8_enc
   #'
   #' @export
   frm |>
-    mutate(across(
+    mutate(dplyr::across(
       where(is.character),
       ~ vector_merge_redactions(.x, cached_redactions, preprocess = preprocess)
     ))

@@ -74,12 +74,14 @@ udpipe_factory <- function(model = "english-ewt",
     result <- tagged |>
       dplyr::mutate(`TokenNo` = as.numeric(.data$token_id)) |>
       dplyr::rename(
-        ID = doc_id,
-        Token = token,
-        Sentence = sentence
+        ID = .data$doc_id,
+        Token = .data$token,
+        Sentence = .data$sentence
       ) |>
       tibble::as_tibble()
 
-    dplyr::select(result, ID, Token, Sentence, upos, all_of(colnames(result)))
+    dplyr::select(result, 
+                  all_of(c("ID", "Token", "Sentence", "upos")), 
+                  all_of(colnames(result)))
   }
 }

@@ -10,6 +10,7 @@ auto_replace <- function(frm, replacement.f, filter = F) {
   #' @param filter Logical.  If `TRUE` will only apply to rows where `From` and `To` are different.
   #'
   #' @return A `data.frame` like `frm` but with the `To` column transformed by `replacement.f`.
+  #' @importFrom rlang .data
   #'
   #' @examples
   #'
@@ -19,13 +20,11 @@ auto_replace <- function(frm, replacement.f, filter = F) {
   #' @export
   #'
   if (filter) {
-    frm <- filter(frm, From != To)
+    frm <- dplyr::filter(frm, .data$From != .data$FromTo)
   }
-
+  
   frm |>
-    mutate(
-      To = replacement.f(To)
-    )
+    dplyr::mutate(To = replacement.f(.data$To))
 }
 
 
@@ -46,14 +45,14 @@ hashing_replacement.f <- function(key, salt = "", hash = sha256) {
   #'
   #' @importFrom openssl sha256
   #' @export
-
+  
   key <- as.character(key)
-
+  
   hash_function <- function(x) {
     paste(x, salt, sep = "_") |>
       hash(key = key)
   }
-
+  
   hash_function
 }
 
@@ -81,29 +80,35 @@ RandomReplacer <- R6Class(
     learn = function(x) {
       x.distinct <- unique(x)
       desired.length <- length(x.distinct)
-
+      
       if (desired.length > self$max_replacements) {
-        stop(glue("To encode this vector requires {desired.length} new values.
-        The current configuration only allows for {self$max_replacements} unique replacements."))
+        stop(
+          glue(
+            "To encode this vector requires {desired.length} new values.
+        The current configuration only allows for {self$max_replacements} unique replacements."
+          )
+        )
       }
-
+      
       if (desired.length > self$max_replacements / 2) {
-        warning("You are learning more replacements than half of the maximum allowed.
+        warning(
+          "You are learning more replacements than half of the maximum allowed.
                 This may cause repeated delays due to repeated sampling of the same replacement.
-                If performance is poor, increase `size` or `space` to allow for more replacements.")
+                If performance is poor, increase `size` or `space` to allow for more replacements."
+        )
       }
-
+      
       unique_suggested <- unique(self$generate_suggestions(desired.length))
       unique_length <- length(unique_suggested)
-
+      
       while (unique_length < desired.length) {
         new_suggestions <- self$generate_suggestions(desired.length)
         to_add <- setdiff(new_suggestions, unique_suggested)
-
+        
         unique_suggested <- c(unique_suggested, to_add)
         unique_length <- length(unique_suggested)
       }
-
+      
       self$dictionary <- unique_suggested[1:desired.length]
       names(self$dictionary) <- x.distinct
     },
@@ -114,7 +119,8 @@ RandomReplacer <- R6Class(
 )
 
 
-random_replacement.f <- function(replacement_size = 10, replacement_space = LETTERS) {
+random_replacement.f <- function(replacement_size = 10,
+                                 replacement_space = LETTERS) {
   #' Function factory for random replacement.
   #'
   #' It is designed to generate a replacement by a random combination of
@@ -135,19 +141,19 @@ random_replacement.f <- function(replacement_size = 10, replacement_space = LETT
   #' auto_replace(raw_redaction_rules, replacement.f = replace_by)
   #'
   #' @export
-
+  
   .replace <- RandomReplacer$new(replacement_size, replacement_space)
-
+  
   function(x) {
     x.str <- substitute(x)
     x <- as.character(x)
-
+    
     tryCatch(
       .replace$learn(x),
       error = function(e) {
-        stop(glue("Error while generating replacements for input: {x.str}.
-                  {e$message}
-                  Please increase `replacement_size` or `replacement_space` and try again."))
+        stop(
+          random_replacement_error_message(x.str)
+        )
       }
     )
     .replace$transform(x)
@@ -155,7 +161,8 @@ random_replacement.f <- function(replacement_size = 10, replacement_space = LETT
 }
 
 
-all_random_replacement.f <- function(replacement_size = 10, replacement_space = LETTERS) {
+all_random_replacement.f <- function(replacement_size = 10,
+                                     replacement_space = LETTERS) {
   #' Function factory for random replacement.
   #'
   #' It is designed to generate a replacement by a random combination of
@@ -177,22 +184,28 @@ all_random_replacement.f <- function(replacement_size = 10, replacement_space = 
   #' auto_replace(raw_redaction_rules, replacement.f = replace_by)
   #'
   #' @export
-
+  
   .replace <- RandomReplacer$new(replacement_size, replacement_space)
-
+  
   function(x) {
     x.str <- substitute(x)
-    x <- seq_along(x)
-
+    x.seq <- seq_along(x)
+    
     tryCatch(
-      .replace$learn(x),
+      .replace$learn(x.seq),
       error = function(e) {
-        stop(glue("Error while generating replacements for input: {x.str}.
-                  {e$message}
-                  Please increase `replacement_size` or `replacement_space` and try again."))
+        stop(
+          random_replacement_error_message(x.str)
+        )
       }
     )
-
-    .replace$transform(x)
+    
+    .replace$transform(x.seq)
   }
 }
+
+random_replacement_error_message <- function(x) glue(
+  "Error while generating replacements for input: {x}.
+                  {e$message}
+                  Please increase `replacement_size` or `replacement_space` and try again."
+)

@@ -28,6 +28,6 @@ filter_to_proper_nouns <- function(tag_frm) {
   }
 
   tag_frm %>%
-    dplyr::filter(upos == "PROPN") %>%
-    dplyr::select(ID, Token, Sentence)
+    dplyr::filter(.data$upos == "PROPN") %>%
+    dplyr::select(.data$ID, .data$Token, .data$Sentence)
 }
