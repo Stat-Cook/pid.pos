@@ -24,26 +24,26 @@ test_that("basic functionality works", {
 
   expect_equal(nrow(res), sum(sapply(strsplit(docs, " "), length)))
 
-  expect_true(all(c("word", "pos", "doc_id") %in% colnames(res)))
+  expect_true(all(c("word", "pos", "ID", "Sentence") %in% colnames(res)))
 
-  expect_true(all(res$doc_id %in% 1:2))
+  expect_true(all(res$ID %in% 1:2))
 })
 
 test_that("custom doc_ids are used", {
   res_custom <- tagger(docs, doc_ids = c(10, 20))
-  expect_true(all(res_custom$doc_id %in% c(10, 20)))
+  expect_true(all(res_custom$ID %in% c(10, 20)))
 })
 
 test_that("POS function returning empty data frame is handled", {
   res_edge <- tagger_empty(c("Test", ""))
   expect_equal(nrow(res_edge), 1) # only one word from non-empty doc
-  expect_true(all(c("word", "pos", "doc_id") %in% colnames(res_edge)))
+  expect_true(all(c("word", "pos", "ID", "Sentence") %in% colnames(res_edge)))
 })
 
 test_that("special characters are handled", {
   res_special <- tagger(docs_special)
-  expect_true(all(c("word", "pos", "doc_id") %in% colnames(res_special)))
-  expect_equal(sum(res_special$doc_id == 1), length(unlist(strsplit(docs_special[1], " "))))
+  expect_true(all(c("word", "pos", "ID", "Sentence") %in% colnames(res_special)))
+  expect_equal(sum(res_special$ID == 1), length(unlist(strsplit(docs_special[1], " "))))
 })
 
 test_that("results are consistent across multiple runs", {
