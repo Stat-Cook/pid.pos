@@ -15,30 +15,29 @@ knitr::opts_chunk$set(
   comment = "#>",
   rows.print = 6
 )
+library(pid.pos)
+pid.pos:::set_model_folder(tempdir())
 ```
 
+This package is designed to support the identification and redaction of personally identifiable data (PID) within textual datasets.
 
-This package intends to aid the user in identifying and removing PID from the data set.
-The `report_to_replacement_rules` function is used to generate a `replacement_rules` table, which
-contains the rules for replacing PID in the data set.  In the first instance it is intended 
-for the user to manually define the `To` column of the `replacement_rules` and then parse the 
-file back into R.
+The `report_to_redaction_rules()` function generates a `replacement_rules` table from the output of `pid_pos()`. This table specifies candidate values for redaction and provides a `To` column in which users can define replacement values.
 
-If the data set contains a large quantity of PID, and hence it is not practical to
-define all replacements, the `auto_replace` utility may be beneficial.  This function
-operates on the `replacement_rules` table produced by `report_to_replacement_rules` 
-and encodes the `To` column.   The precise replacement method can be defined by the user, 
-with three methods supplied by the package:
+In many cases, users may wish to manually populate the `To` column (for example, replacing names with consistent pseudonyms). However, when a dataset contains a large volume of PID, manual specification may be impractical. In such cases, the `auto_replace()` utility can be used to automatically generate replacement values.
 
-- `hashing_replacement.f` - hashes the `To` column using a key and salt, 
-  producing a unique replacement for each value.
-- `random_replacement.f` - replaces the `To` column with a random value from a defined space.
-- `all_random_replacement.f` - replaces the `To` column with a random value from a defined space, 
-  but ensures that all replacements are unique.
-  
-The basic workflow is hence:
+`auto_replace()` operates on a `replacement_rules` table and encodes the `To` column according to a user-defined replacement function. The package provides three built-in replacement strategies:
 
-```{r, results="hide", message=F}
+- `hashing_replacement.f()` — hashes values using a key and salt, producing deterministic and reproducible replacements.
+- `random_replacement.f()` — generates random replacements from a defined character space.
+- `all_random_replacement.f()` — generates random replacements while ensuring all outputs are unique.
+
+---
+
+# Basic Workflow
+
+We begin by generating a PID report and converting it into redaction rules:
+
+```{r, results="hide", message=FALSE}
 library(pid.pos)
 
 report <- pid_pos(the_one_in_massapequa)
@@ -47,42 +46,59 @@ replacement_rules <- report_to_redaction_rules(report)
 replacement_rules
 ```
 
-``` {r, echo=F}
+```{r, echo=FALSE}
 head(replacement_rules, 5)
 ```
 
-To fill in the `To` column we initialize a replacement function (in this case `random_replacement.f`):
-  
-``` {r}
+To automatically populate the `To` column, we first initialise a replacement function.  
+In this example, we use `random_replacement.f()` to generate five-character replacements drawn from uppercase letters:
+
+```{r}
 replacement.f <- random_replacement.f(
   replacement_size = 5,
   replacement_space = LETTERS
 )
 ```
 
-and then apply it to the `replacement_rules` table:
+We then apply this function using `auto_replace()`:
 
-``` {r, results="hide"}
+```{r, results="hide"}
 set.seed(101)
-updated.replacement_rules <- auto_replace(replacement_rules, replacement.f)
-updated.replacement_rules
-```
-``` {r, echo=F}
-head(updated.replacement_rules, 5)
-```
+updated_replacement_rules <- auto_replace(
+  replacement_rules,
+  replacement.f
+)
 
-The `updated.replacement_rules` can then converted to a replacement function via `redaction_function_factory`: 
-
-``` {r}
-redact_function <- prepare_redactions(updated.replacement_rules)
+updated_replacement_rules
 ```
 
-which if parsed, can be used to modify the original data set:    
+```{r, echo=FALSE}
+head(updated_replacement_rules, 5)
+```
 
-``` {r}
+The resulting `updated_replacement_rules` table can be converted into an executable redaction function using `prepare_redactions()`:
+
+```{r}
+redact_function <- prepare_redactions(updated_replacement_rules)
+```
+
+This function can then be applied across character columns in the original dataset:
+
+```{r}
 head(the_one_in_massapequa, 5) |>
   dplyr::mutate(
-    across(where(is.character), redact_function)
+    dplyr::across(where(is.character), redact_function)
   )
 ```
 
+---
+
+# Summary
+
+The automatic replacement tools allow users to:
+
+- Rapidly generate redaction mappings for large datasets
+- Choose between deterministic or randomised replacement strategies
+- Convert replacement rules into reusable redaction functions
+
+This approach separates PID identification from transformation, enabling reproducible and auditable redaction workflows.
