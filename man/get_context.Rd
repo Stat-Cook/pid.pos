@@ -2,9 +2,13 @@
 % Please edit documentation in R/get_context.R
 \name{get_context}
 \alias{get_context}
-\title{Get the context of a token in a sentence.}
+\title{NB: to set the context window size, use `set_context_window()`.}
 \usage{
-get_context(sentences, tokens)
+get_context(
+  sentence,
+  token,
+  context_window = getOption("pid_pos_context_window")
+)
 }
 \arguments{
 \item{sentences}{A character vector of sentences.}

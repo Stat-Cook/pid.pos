@@ -4,7 +4,7 @@
 \name{raw_redaction_rules}
 \alias{raw_redaction_rules}
 \title{raw_redaction_rules
-An example of a redaction rules produced by the `data_frame_report` function.
+An example of a redaction rules produced by the `pid_pos` function.
 It is made using the first 20 rows of `the_one_in_massapequa` data set.}
 \format{
 An object of class \code{pid_report} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 10 rows and 3 columns.

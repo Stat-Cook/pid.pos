@@ -21,7 +21,7 @@ Applied the replacement rules (as defined in a `data.frame` with columns
 \examples{
 \dontrun{
 example.data <- head(the_one_in_massapequa)
-report <- data_frame_report(example.data)
+report <- pid_pos(example.data)
 redactions.raw <- report_to_redaction_rules(report)
 
 replace_by <- random_replacement.f()
