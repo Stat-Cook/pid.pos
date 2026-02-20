@@ -21,3 +21,5 @@ rjavaenv/
 pid_pos_models/
 
 .Rprofile
+/doc/
+/Meta/
