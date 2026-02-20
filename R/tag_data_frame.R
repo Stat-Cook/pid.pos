@@ -79,8 +79,10 @@ tag_data_frame <- function(frm,
     ungroup() |>
     mutate(ID = glue("Col:{Column} Row:{Row}")) |>
     dplyr::select(
-      all_of(c("Document", "ID", "Repeats",
-      "Affected Columns", "PK"))
+      all_of(c(
+        "Document", "ID", "Repeats",
+        "Affected Columns", "PK"
+      ))
     )
 
   tag_frm <- tag_documents(
