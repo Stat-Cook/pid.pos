@@ -2,12 +2,20 @@
 ^\.Rproj\.user$
 ^LICENSE\.md$
 docs
+^data-raw$
 Proper Noun Report
 Main.R
+
 ^\.github$
 ^codecov\.yml$
 ^_pkgdown\.yml$
+
 ^docs$
 ^pkgdown$
+^dev
+
+^CODE_OF_CONDUCT
+^CONTRIBUTING
+^JOSS
 
 paper.md
