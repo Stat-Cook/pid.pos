@@ -80,8 +80,10 @@ udpipe_factory <- function(model = "english-ewt",
       ) |>
       tibble::as_tibble()
 
-    dplyr::select(result, 
-                  all_of(c("ID", "Token", "Sentence", "upos")), 
-                  all_of(colnames(result)))
+    dplyr::select(
+      result,
+      all_of(c("ID", "Token", "Sentence", "upos")),
+      all_of(colnames(result))
+    )
   }
 }
