@@ -2,16 +2,16 @@ vector_merge_redactions <- function(vec,
                                     cached_redactions,
                                     preprocess = utf8::utf8_encode) {
   #' @importFrom dplyr left_join join_by
-  #' 
-  
-  # Bindings to suppress codetools warnings 
+  #'
+
+  # Bindings to suppress codetools warnings
   # about "no visible binding for global variable" `Old` and `If`
   Old <- If <- NA
-  
+
   frm <- data.frame(Old = preprocess(vec)) |>
     left_join(cached_redactions, by = dplyr::join_by(Old == If)) |>
     mutate(New = ifelse(is.na(.data$Then), .data$Old, .data$Then))
-  
+
   frm$New
 }
 

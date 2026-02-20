@@ -22,7 +22,7 @@ auto_replace <- function(frm, replacement.f, filter = F) {
   if (filter) {
     frm <- dplyr::filter(frm, .data$From != .data$FromTo)
   }
-  
+
   frm |>
     dplyr::mutate(To = replacement.f(.data$To))
 }
@@ -45,14 +45,14 @@ hashing_replacement.f <- function(key, salt = "", hash = sha256) {
   #'
   #' @importFrom openssl sha256
   #' @export
-  
+
   key <- as.character(key)
-  
+
   hash_function <- function(x) {
     paste(x, salt, sep = "_") |>
       hash(key = key)
   }
-  
+
   hash_function
 }
 
@@ -80,7 +80,7 @@ RandomReplacer <- R6Class(
     learn = function(x) {
       x.distinct <- unique(x)
       desired.length <- length(x.distinct)
-      
+
       if (desired.length > self$max_replacements) {
         stop(
           glue(
@@ -89,7 +89,7 @@ RandomReplacer <- R6Class(
           )
         )
       }
-      
+
       if (desired.length > self$max_replacements / 2) {
         warning(
           "You are learning more replacements than half of the maximum allowed.
@@ -97,18 +97,18 @@ RandomReplacer <- R6Class(
                 If performance is poor, increase `size` or `space` to allow for more replacements."
         )
       }
-      
+
       unique_suggested <- unique(self$generate_suggestions(desired.length))
       unique_length <- length(unique_suggested)
-      
+
       while (unique_length < desired.length) {
         new_suggestions <- self$generate_suggestions(desired.length)
         to_add <- setdiff(new_suggestions, unique_suggested)
-        
+
         unique_suggested <- c(unique_suggested, to_add)
         unique_length <- length(unique_suggested)
       }
-      
+
       self$dictionary <- unique_suggested[1:desired.length]
       names(self$dictionary) <- x.distinct
     },
@@ -141,13 +141,13 @@ random_replacement.f <- function(replacement_size = 10,
   #' auto_replace(raw_redaction_rules, replacement.f = replace_by)
   #'
   #' @export
-  
+
   .replace <- RandomReplacer$new(replacement_size, replacement_space)
-  
+
   function(x) {
     x.str <- substitute(x)
     x <- as.character(x)
-    
+
     tryCatch(
       .replace$learn(x),
       error = function(e) {
@@ -184,13 +184,13 @@ all_random_replacement.f <- function(replacement_size = 10,
   #' auto_replace(raw_redaction_rules, replacement.f = replace_by)
   #'
   #' @export
-  
+
   .replace <- RandomReplacer$new(replacement_size, replacement_space)
-  
+
   function(x) {
     x.str <- substitute(x)
     x.seq <- seq_along(x)
-    
+
     tryCatch(
       .replace$learn(x.seq),
       error = function(e) {
@@ -199,13 +199,15 @@ all_random_replacement.f <- function(replacement_size = 10,
         )
       }
     )
-    
+
     .replace$transform(x.seq)
   }
 }
 
-random_replacement_error_message <- function(x) glue(
-  "Error while generating replacements for input: {x}.
+random_replacement_error_message <- function(x) {
+  glue(
+    "Error while generating replacements for input: {x}.
                   {e$message}
                   Please increase `replacement_size` or `replacement_space` and try again."
-)
+  )
+}

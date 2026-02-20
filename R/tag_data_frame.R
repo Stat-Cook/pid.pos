@@ -78,8 +78,10 @@ tag_data_frame <- function(frm,
     group_modify(summarize_repeated_sentences) |>
     ungroup() |>
     mutate(ID = glue("Col:{Column} Row:{Row}")) |>
-    dplyr::select(.data$Document, .data$ID, .data$Repeats, 
-                  .data$`Affected Columns`, .data$PK)
+    dplyr::select(
+      .data$Document, .data$ID, .data$Repeats,
+      .data$`Affected Columns`, .data$PK
+    )
 
   tag_frm <- tag_documents(
     document_frm$Document,

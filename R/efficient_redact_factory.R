@@ -105,7 +105,7 @@ efficient_redaction.efficient.redact.function <- function(frm, redact, n = NULL,
 
   .mutate <- function(frm) {
     dplyr::mutate(
-      frm, 
+      frm,
       dplyr::across(where(is.character), \(i) redact(i))
     )
   }
