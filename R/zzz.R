@@ -17,8 +17,8 @@ pid.pos_env <- new.env()
   )
 
   pid.pos_env$udpipe_repo <- pid.pos_env$allowed_repos[["2.5"]]
-
-  enable_local_models()
+  
+  enable_package_models()
 
   invisible()
 }

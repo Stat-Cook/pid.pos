@@ -17,6 +17,12 @@ The path to the model folder.
 Intended if you want to use local udpipe models for a specific R project.
 }
 \examples{
-enable_local_models()
-enable_local_models(sub_folder=FALSE)
+\dontrun{
+  tmp <- withr::local_tempdir()
+  withr::local_dir(tmp)    
+  
+  enable_local_models()
+  enable_local_models(sub_folder=FALSE)
+}
+
 }
