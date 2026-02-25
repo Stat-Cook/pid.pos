@@ -37,21 +37,21 @@ batched_redact.cached_redact_function <- function(frm, redact, n = NULL, .progre
   #' @exportS3Method
   #'
   #' @importFrom dplyr across where mutate
-  
+
   .mutate <- function(frm) {
     dplyr::mutate(
       frm,
       dplyr::across(where(is.character), \(i) redact(i))
     )
   }
-  
+
   divide_map(frm, .mutate, n, .progress)
 }
 
 batched_redact.default <- function(frm, redact, n = NULL, .progress = T) {
   #' @exportS3Method
   #'
-  
+
   cached.f <- cached_redact_factory(redact)
   batched_redact(frm, cached.f, n = n, .progress = .progress)
 }

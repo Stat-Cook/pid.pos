@@ -1,11 +1,11 @@
 export_as_tree <- function(report, name, report_path) {
   output_file <- file.path(report_path, paste0(name, ".csv"))
   output.dir <- dirname(output_file)
-  
+
   if (!dir.exists(output.dir)) {
     dir.create(output.dir, recursive = TRUE)
   }
-  
+
   write.csv(report, output_file, row.names = FALSE)
   output_file
 }

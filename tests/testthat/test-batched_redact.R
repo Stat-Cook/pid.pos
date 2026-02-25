@@ -12,14 +12,14 @@ df <- tibble::tibble(
 
 test_that("batched_redact.default applies redaction correctly", {
   result <- batched_redact(df, redact_fun, n = 2, .progress = FALSE)
-  
+
   # Character columns are redacted
   expect_true(all(grepl("^REDACTED_", result$name)))
   expect_true(all(grepl("^REDACTED_", result$notes)))
-  
+
   # Non-character column unchanged
   expect_equal(result$id, df$id)
-  
+
   # Number of rows/columns preserved
   expect_equal(dim(result), dim(df))
 })
@@ -27,9 +27,9 @@ test_that("batched_redact.default applies redaction correctly", {
 test_that("batched_redact.cached_redact_function applies function correctly", {
   # Wrap redact_fun in cached_redact_function manually
   cached_fun <- cached_redact_factory(redact_fun)
-  
+
   result <- batched_redact(df, cached_fun, n = 3, .progress = FALSE)
-  
+
   expect_true(all(grepl("^REDACTED_", result$name)))
   expect_true(all(grepl("^REDACTED_", result$notes)))
 })
@@ -42,7 +42,7 @@ test_that("batched_redact works with n = NULL", {
 test_that("batched_redact handles empty data frame", {
   empty_df <- df[0, ]
   result <- batched_redact(empty_df, redact_fun)
-  
+
   expect_equal(nrow(result), 0)
   expect_equal(ncol(result), ncol(df))
 })

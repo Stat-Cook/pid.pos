@@ -1,14 +1,15 @@
 #' @keywords internal
 if_function_factory <- function(df) {
   pattern <- df$If[1]
-  
+
   if (!all(df$If == pattern)) {
     stop(sprintf("Rule block contains multiple 'If' values: %s", df$If))
   }
-  
+
   structure(\(vec) grepl(pattern, vec, fixed = TRUE),
-            class = "if_function",
-            If = pattern)
+    class = "if_function",
+    If = pattern
+  )
 }
 print.if_function <- function(x, ...) {
   sprintf("`if_function` for %s", attr(x, "If")) |>
@@ -38,7 +39,7 @@ then.list.factory <- function(df) {
 rule.logic <- function(df) {
   cond_fun <- if.function.factory(df)
   replace_funs <- then.list.factory(df)
-  
+
   list(condition = cond_fun, replace = replace_funs)
 }
 
@@ -59,7 +60,8 @@ rule.logic <- function(df) {
 #'   report_to_redaction_rules()
 #'
 #' redaction_rules <- auto_replace(raw_rules,
-#'   replacement.f = random_replacement.f())
+#'   replacement.f = random_replacement.f()
+#' )
 #'
 #' redaction_func <- redaction_function_factory(redaction_rules)
 #'
@@ -69,29 +71,28 @@ rule.logic <- function(df) {
 redaction_function_factory <- function(rules.frm) {
   grouped <- dplyr::group_split(rules.frm, .data$If)
   rule_blocks <- purrr::map(grouped, rule.logic)
-  
+
   parsed_function <- function(vec) {
     purrr::reduce(rule_blocks, function(acc, block) {
       cond <- block$condition(acc)
-      
+
       if (any(cond)) {
         replaced_subset <- purrr::reduce(block$replace, \(a, f) f(a), .init = acc[cond])
         acc[cond] <- replaced_subset
       }
-      
+
       acc
     }, .init = vec)
   }
-  
+
   structure(parsed_function, class = "redaction_function", NRules = length(rule_blocks))
 }
 
-#' @exportS3Method 
+#' @exportS3Method
 print.redaction_function <- function(x, ...) {
   sprintf("`redaction_function` with %d rules", attr(x, "NRules")) |>
     print()
 }
-
 
 
 #' Remove PID from a data frame.
@@ -118,7 +119,6 @@ print.redaction_function <- function(x, ...) {
 #'
 #' @export
 frame_replacement <- function(frm, rules.frm) {
-
   redaction.f <- redaction_function_factory(rules.frm)
   redaction.f(frm)
   # frm |>
