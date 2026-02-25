@@ -7,7 +7,12 @@
 report_on_folder(
   data_path,
   report_dir = "Proper Noun Reports",
-  to_remove = c()
+  tagger = "english-ewt",
+  filter_func = filter_to_proper_nouns,
+  chunk_size = 100,
+  to_ignore = c(),
+  export_function = NULL,
+  verbose = FALSE
 )
 }
 \arguments{
@@ -15,15 +20,40 @@ report_on_folder(
 
 \item{report_dir}{The directory to save the reports}
 
-\item{to_remove}{A character vector of column names to remove from the data frame}
+\item{tagger}{[optional] Either a string naming a UDPipe model (see ... for the list of models)
+or a custom tagging function (see ... for details of what is required).}
+
+\item{filter_func}{[optional] A function that takes a tagged data frame and returns}
+
+\item{chunk_size}{[optional] The number of sentences to tag at a time.  The optimal value
+has yet to be determined.}
+
+\item{to_ignore}{[optional] A vector of column names to be ignored by the algorithm.
+Intended to be used for variables that are giving strong false positives, such as
+IDs or ICD-10 codes.}
 }
 \description{
-Itterates over a folder of data files and produces a proper noun report for each.
+Iterates over a folder of data files and produces a proper noun report for each.
 The reports are saved in the specified `report directory`.
 }
 \examples{
-\dontrun{
-report_on_folder("path/to/data", report_dir="Proper Noun Reports")
-}
+{
+  input_dir <- withr::local_tempdir()
+  output_dir <- withr::local_tempdir()
+  
+  dir.create(input_dir, recursive = TRUE, showWarnings = FALSE)
+  dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
+  
+  example_data <- data.frame(text = "Joey went to London", 
+                             stringsAsFactors = FALSE)
+  
+  utils::write.csv(example_data, 
+                   file.path(input_dir, "example.csv"), 
+                   row.names = FALSE)
+  
+  paths <- report_on_folder(input_dir, report_dir = output_dir)
+  
+  paths
+}  
 
 }
