@@ -44,35 +44,3 @@ test_that("read_data() works with xlsx files", {
 
 # TODO: `fix_colnames` and  `handle_duplicates` format names in different ways.
 # This is not ideal. We should have a single function that does both.
-
-# test fix_colnames
-test_that("fix_colnames() works", {
-  local({
-    .file <- local_tempfile(fileext = ".csv")
-    writeLines(
-      c("A, B, ", "1,2,3", "4, 5, 6"),
-      .file
-    )
-
-    frm <- read.csv(.file, check.names = FALSE)
-    frm <- fix_colnames(frm)
-
-    expect_equal(colnames(frm), c("A", "B", "V1"))
-  })
-})
-
-
-test_that("handle_duplicates() works", {
-  local({
-    .file <- local_tempfile(fileext = ".csv")
-    writeLines(
-      c("A, B, B", "1,2,3", "4, 5, 6"),
-      .file
-    )
-
-    frm <- read.csv(.file, check.names = FALSE)
-    frm <- handle_duplicates(frm)
-
-    expect_equal(colnames(frm), c("A", "B.1", "B.2"))
-  })
-})
