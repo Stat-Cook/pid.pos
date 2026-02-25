@@ -7,50 +7,72 @@ empty.report <- data.frame(
 )
 
 
-report_on_folder <- function(data_path, report_dir = "Proper Noun Reports",
-                             to_remove = c()) {
+report_on_folder <- function(data_path,
+                             report_dir = "Proper Noun Reports",
+                             tagger = "english-ewt",
+                             filter_func = filter_to_proper_nouns,
+                             chunk_size = 100,
+                             to_ignore = c(),
+                             export_function = NULL,
+                             verbose=FALSE) {
   #' Folder Report
   #'
-  #' Itterates over a folder of data files and produces a proper noun report for each.
+  #' Iterates over a folder of data files and produces a proper noun report for each.
   #' The reports are saved in the specified `report directory`.
   #'
   #' @param data_path The path to the data files
   #' @param report_dir The directory to save the reports
-  #' @param to_remove A character vector of column names to remove from the data frame
+  #' @inheritParams pid_pos
   #'
   #' @return NULL
   #'
   #' @export
   #'
   #' @examples
-  #' \dontrun{
-  #' report_on_folder("path/to/data", report_dir="Proper Noun Reports")
-  #' }
+  #' {
+  #'   input_dir <- withr::local_tempdir()
+  #'   output_dir <- withr::local_tempdir()
+  #'   
+  #'   dir.create(input_dir, recursive = TRUE, showWarnings = FALSE)
+  #'   dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
+  #'   
+  #'   example_data <- data.frame(text = "Joey went to London", 
+  #'                              stringsAsFactors = FALSE)
+  #'   
+  #'   utils::write.csv(example_data, 
+  #'                    file.path(input_dir, "example.csv"), 
+  #'                    row.names = FALSE)
+  #'   
+  #'   paths <- report_on_folder(input_dir, report_dir = output_dir)
+  #'   
+  #'   paths
+  #' }  
   #'
   #' @importFrom dplyr arrange
   #' @importFrom stringr str_replace str_replace_all
-  .files <- find_files(data_path)
-
-  # doc_id <- NA
-
-  if (!dir.exists(report_dir)) dir.create(report_dir)
-
-  for (.file in .files) {
-    base <- basename(.file)
-
-    frm <- read_data(.file) %>%
-      remove_if_exists(to_remove)
-
-    report <- pid_pos(frm)
-
-    base <- str_replace(base, "\\..*$", ".csv")
-
-    noun.report.path <- file.path(report_dir, base)
-
-    if (nrow(report) == 0) {
-      write.csv(empty.report, noun.report.path)
-    } else {
-      write.csv(report, noun.report.path)
-    }
+  
+  if (!dir.exists(data_path)) {
+    stop("data_path does not exist: ", data_path)
   }
+  
+  supported_files <- find_supported_files(data_path, 
+                                          extensions = get_implemented_extensions(),
+                                          verbose = verbose
+  )
+
+  if (!dir.exists(report_dir)) {
+    report_dir <- normalizePath(report_dir, mustWork = FALSE)
+    dir.create(report_dir, recursive = TRUE)
+  }
+  
+  
+  output_paths <- process_supported_files(supported_files,
+                          report_dir,
+                          tagger = tagger,
+                          filter_func = filter_func,
+                          chunk_size = chunk_size,
+                          to_ignore = to_ignore,
+                          export_function = export_function)
+  
+  invisible(output_paths)
 }
