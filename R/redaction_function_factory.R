@@ -36,6 +36,10 @@ print.then_function <- function(x, ...) {
 
 #' @keywords internal
 then_list_factory <- function(df) {
+  if (!all(c("From", "To") %in% names(df))) {
+    validation_error("Columns `From` and `To` are needed in `df`")
+  }
+  
   purrr::map2(df$From, df$To, then_function_factory)
 }
 
@@ -96,6 +100,7 @@ redaction_function_factory <- function(rules.frm) {
   )
 }
 
+#' @exportS3Method
 print.redaction_function <- function(x, ...) {
   sprintf(
     "`redaction_function` with %d rules over %d blocks",
