@@ -76,45 +76,45 @@ test_that("then_list_factory errors if columns missing", {
 })
 
 
-test_that("rule.logic returns list with condition and replace elements", {
+test_that("rule_logic returns list with condition and replace elements", {
   df <- data.frame(x = 1)
 
   mock_cond <- function() "cond"
   mock_replace <- list("r1", "r2")
 
-  mockery::stub(rule.logic, "if.function.factory", function(df) mock_cond)
-  mockery::stub(rule.logic, "then.list.factory", function(df) mock_replace)
+  mockery::stub(rule_logic, "if_function_factory", function(df) mock_cond)
+  mockery::stub(rule_logic, "then_list_factory", function(df) mock_replace)
 
-  result <- rule.logic(df)
+  result <- rule_logic(df)
 
   expect_type(result, "list")
   expect_named(result, c("condition", "replace"))
 })
 
-test_that("rule.logic passes through factory outputs unchanged", {
+test_that("rule_logic passes through factory outputs unchanged", {
   df <- data.frame(x = 1)
 
   mock_cond <- function() TRUE
   mock_replace <- list(function(x) x + 1)
 
-  mockery::stub(rule.logic, "if.function.factory", function(df) mock_cond)
-  mockery::stub(rule.logic, "then.list.factory", function(df) mock_replace)
+  mockery::stub(rule_logic, "if_function_factory", function(df) mock_cond)
+  mockery::stub(rule_logic, "then_list_factory", function(df) mock_replace)
 
-  result <- rule.logic(df)
+  result <- rule_logic(df)
 
   expect_identical(result$condition, mock_cond)
   expect_identical(result$replace, mock_replace)
 })
 
-test_that("rule.logic calls both factories once", {
+test_that("rule_logic calls both factories once", {
   df <- data.frame(x = 1)
 
   cond_calls <- 0
   replace_calls <- 0
 
   mockery::stub(
-    rule.logic,
-    "if.function.factory",
+    rule_logic,
+    "if_function_factory",
     function(df) {
       cond_calls <<- cond_calls + 1
       function() NULL
@@ -122,28 +122,28 @@ test_that("rule.logic calls both factories once", {
   )
 
   mockery::stub(
-    rule.logic,
-    "then.list.factory",
+    rule_logic,
+    "then_list_factory",
     function(df) {
       replace_calls <<- replace_calls + 1
       list()
     }
   )
 
-  rule.logic(df)
+  rule_logic(df)
 
   expect_equal(cond_calls, 1)
   expect_equal(replace_calls, 1)
 })
 
-test_that("rule.logic propagates errors from factories", {
+test_that("rule_logic propagates errors from factories", {
   df <- data.frame(x = 1)
 
   mockery::stub(
-    rule.logic,
-    "if.function.factory",
+    rule_logic,
+    "if_function_factory",
     function(df) stop("bad condition")
   )
 
-  expect_error(rule.logic(df), "bad condition")
+  expect_error(rule_logic(df), "bad condition")
 })
