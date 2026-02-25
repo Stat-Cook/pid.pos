@@ -17,7 +17,7 @@ redact_supported_files <- function(file_list,
 
         redacted <- redact(frm, redacter)
 
-        export_function(redacted, .y, report_path)
+        export_function(redacted, .y, output_path)
       },
       error = function(e) {
         warning("Failed processing a data frame: ", e$message)
