@@ -1,17 +1,18 @@
 #' @keywords internal
 if_function_factory <- function(df) {
   pattern <- df$If[1]
-  
+
   if (!all(df$If == pattern)) {
     stop(sprintf("Rule block contains multiple 'If' values: %s", df$If))
   }
-  
+
   structure(\(vec) grepl(pattern, vec, fixed = TRUE),
-            class = "if_function",
-            If = pattern)
+    class = "if_function",
+    If = pattern
+  )
 }
 
-#' @exportS3Method 
+#' @exportS3Method
 print.if_function <- function(x, ...) {
   sprintf("`if_function` for %s", attr(x, "If")) |>
     print()
@@ -27,7 +28,7 @@ then_function_factory <- function(from, to) {
   )
 }
 
-#' @exportS3Method 
+#' @exportS3Method
 print.then_function <- function(x, ...) {
   sprintf("`then_function` for %s -> %s", attr(x, "from"), attr(x, "to")) |>
     print()
@@ -42,10 +43,9 @@ then_list_factory <- function(df) {
 rule_logic <- function(df) {
   cond_fun <- if_function_factory(df)
   replace_funs <- then_list_factory(df)
-  
+
   list(condition = cond_fun, replace = replace_funs)
 }
-
 
 
 #' Replacement rules to redaction function
@@ -64,7 +64,8 @@ rule_logic <- function(df) {
 #'   report_to_redaction_rules()
 #'
 #' redaction_rules <- auto_replace(raw_rules,
-#'   replacement.f = random_replacement.f())
+#'   replacement.f = random_replacement.f()
+#' )
 #'
 #' redaction_func <- redaction_function_factory(redaction_rules)
 #'
@@ -74,29 +75,31 @@ rule_logic <- function(df) {
 redaction_function_factory <- function(rules.frm) {
   grouped <- dplyr::group_split(rules.frm, .data$If)
   rule_blocks <- purrr::map(grouped, rule_logic)
-  
+
   parsed_function <- function(vec) {
     purrr::reduce(rule_blocks, function(acc, block) {
       cond <- block$condition(acc)
-      
+
       if (any(cond)) {
         replaced_subset <- purrr::reduce(block$replace, \(a, f) f(a), .init = acc[cond])
         acc[cond] <- replaced_subset
       }
-      
+
       acc
     }, .init = vec)
   }
-  
+
   structure(parsed_function,
-            class = "redaction_function",
-            NRules = nrow(rules.frm),
-            NBlocks = length(rule_blocks)
-            )
+    class = "redaction_function",
+    NRules = nrow(rules.frm),
+    NBlocks = length(rule_blocks)
+  )
 }
 
 print.redaction_function <- function(x, ...) {
-  sprintf("`redaction_function` with %d rules over %d blocks", 
-          attr(x, "NRules"), attr(x, "NBlocks")) |>
+  sprintf(
+    "`redaction_function` with %d rules over %d blocks",
+    attr(x, "NRules"), attr(x, "NBlocks")
+  ) |>
     print()
 }
