@@ -40,7 +40,7 @@ test_that("rule_logic combines if + then functions", {
 
 test_that("redaction_function_factory applies rules correctly", {
   redactor <- redaction_function_factory(rules)
-  expect_s3_class(redactor, "redaction_function")
+  expect_s3_class(redactor, "redact_function")
 
   input <- c("foo a b c", "bar x y", "baz z")
   out <- redactor(input)
@@ -51,14 +51,14 @@ test_that("redaction_function_factory applies rules correctly", {
   expect_equal(out[3], "baz z") # unchanged
 })
 
-test_that("redaction_function preserves unmatched text", {
+test_that("redact_function preserves unmatched text", {
   redactor <- redaction_function_factory(rules)
   input <- c("no match")
   out <- redactor(input)
   expect_equal(out, "no match")
 })
 
-test_that("print.redaction_function shows correct NRules", {
+test_that("print.redact_function shows correct NRules", {
   redactor <- redaction_function_factory(rules)
   txt <- capture.output(print(redactor))
   expect_match(txt, "`redaction_function` with 3 rules over 2 blocks") # foo + bar
