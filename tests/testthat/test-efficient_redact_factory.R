@@ -19,9 +19,9 @@ test_that("CachedRedact functions", {
 })
 
 
-test_that("efficient_redact_factory basic", {
+test_that("cached_redact_factory basic", {
   .redact <- function(vec) str_replace_all(vec, ".", "X")
-  eff.f <- efficient_redact_factory(.redact)
+  eff.f <- cached_redact_factory(.redact)
 
   test.vec <- c(letters, LETTERS)
   .coded <- eff.f(test.vec)
@@ -44,18 +44,18 @@ test_that("divide_map", {
 })
 
 
-test_that("efficient_redaction", {
+test_that("batched & cached redaction", {
   top100 <- head(the_one_in_massapequa, 100)
   .redact <- function(vec) str_replace_all(vec, ".", "X")
-  method1 <- efficient_redaction(top100, .redact)
+  method1 <- batched_redact(top100, .redact)
 
   expect_equal(
     str_length(method1$speaker),
     str_length(top100$speaker)
   )
 
-  .eff.redact <- efficient_redact_factory(.redact)
-  method2 <- efficient_redaction(top100, .eff.redact)
+  .eff.redact <- cached_redact_factory(.redact)
+  method2 <- batched_redact(top100, .eff.redact)
 
   expect_equal(
     str_length(method2$speaker),
