@@ -104,3 +104,24 @@ remove_if_exists <- function(frm, to_remove) {
   to_remove <- intersect(colnames(frm), to_remove)
   frm %>% select(-all_of(to_remove))
 }
+
+
+divide_map <- function(frm, func, n = NULL, .progress = T) {
+  if (nrow(frm) == 0) {
+    return(frm)
+  }
+  
+  if (is.null(n)) {
+    n <- round(sqrt(nrow(frm)))
+  }
+  
+  .split <- ceiling(
+    seq_len(nrow(frm)) * n / nrow(frm)
+  )
+  
+  .grps <- split(frm, .split)
+  
+  map(.grps, func, .progress = .progress) |>
+    bind_rows()
+}
+
