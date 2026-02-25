@@ -39,7 +39,7 @@ then_list_factory <- function(df) {
   if (!all(c("From", "To") %in% names(df))) {
     validation_error("Columns `From` and `To` are needed in `df`")
   }
-  
+
   purrr::map2(df$From, df$To, then_function_factory)
 }
 
