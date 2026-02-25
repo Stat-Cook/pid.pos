@@ -15,6 +15,7 @@ pid.pos_env <- new.env()
     "jwijffels/udpipe.models.ud.2.4" = "190531",
     "jwijffels/udpipe.models.ud.2.3" = "181115"
   )
+  reinstate_default_reader()
 
   pid.pos_env$udpipe_repo <- pid.pos_env$allowed_repos[["2.5"]]
 
