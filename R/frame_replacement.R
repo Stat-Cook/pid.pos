@@ -1,4 +1,3 @@
-
 #' Remove PID from a data frame.
 #'
 #' Applied the replacement rules (as defined in a `data.frame` with columns
