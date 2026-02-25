@@ -40,20 +40,20 @@ The reports are saved in the specified `report directory`.
 {
   input_dir <- withr::local_tempdir()
   output_dir <- withr::local_tempdir()
-  
+
   dir.create(input_dir, recursive = TRUE, showWarnings = FALSE)
   dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
-  
-  example_data <- data.frame(text = "Joey went to London", 
+
+  example_data <- data.frame(text = "Joey went to London",
                              stringsAsFactors = FALSE)
-  
-  utils::write.csv(example_data, 
-                   file.path(input_dir, "example.csv"), 
+
+  utils::write.csv(example_data,
+                   file.path(input_dir, "example.csv"),
                    row.names = FALSE)
-  
+
   paths <- report_on_folder(input_dir, report_dir = output_dir)
-  
+
   paths
-}  
+}
 
 }
