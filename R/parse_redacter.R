@@ -6,11 +6,11 @@ parse_redacter <- function(redacter, with_cache = T) {
 #' @exportS3Method
 parse_redacter.data.frame <- function(redacter, with_cache = T) {
   redaction_function_factory(redacter) |>
-    parse_redacter()
+    parse_redacter(with_cache)
 }
 
 #' @exportS3Method
-parse_redacter.redaction_function <- function(redacter, with_cache = T) {
+parse_redacter.redact_function <- function(redacter, with_cache = T) {
   if (with_cache) {
     cached_redact_factory(redacter)
   } else {
