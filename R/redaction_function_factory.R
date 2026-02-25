@@ -94,14 +94,14 @@ redaction_function_factory <- function(rules.frm) {
   }
 
   structure(parsed_function,
-    class = "redaction_function",
+    class = "redact_function",
     NRules = nrow(rules.frm),
     NBlocks = length(rule_blocks)
   )
 }
 
 #' @exportS3Method
-print.redaction_function <- function(x, ...) {
+print.redact_function <- function(x, ...) {
   sprintf(
     "`redaction_function` with %d rules over %d blocks",
     attr(x, "NRules"), attr(x, "NBlocks")
