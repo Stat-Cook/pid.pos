@@ -31,8 +31,12 @@ print.then_function <- function(x, ...) {
 }
 
 #' @keywords internal
-then.list.factory <- function(df) {
-  purrr::map2(df$From, df$To, then.function.factory)
+then_list_factory <- function(df) {
+  if (!all(c("From", "To") %in% names(df))) {
+    validation_error("Columns `From` and `To` are needed in `df`")
+  }
+  
+  purrr::map2(df$From, df$To, then_function_factory)
 }
 
 #' @keywords internal
