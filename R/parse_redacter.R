@@ -17,3 +17,8 @@ parse_redacter.redact_function <- function(redacter, with_cache = T) {
     redacter
   }
 }
+
+#' @exportS3Method
+parse_redacter.cached_redact_function <- function(redacter, with_cache = T) {
+  redacter
+}

@@ -50,7 +50,7 @@ cached_redact_factory <- function(redact.function) {
 
   structure(
     .f,
-    class = "cached_redact_function",
+    class = c("cached_redact_function", "redact_function"),
     cache = cr
   )
 }
