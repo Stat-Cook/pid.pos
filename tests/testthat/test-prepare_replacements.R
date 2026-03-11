@@ -9,7 +9,7 @@ test_that("make and merge replacements workflow", {
 
   .rules.replaced <- auto_replace(.rules, .replacer)
 
-  redactions <- prepare_redactions(.rules.replaced)
+  redactions <- parse_redacter(.rules.replaced)
 
   .new <- the_one_in_massapequa |>
     mutate(across(
