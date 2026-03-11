@@ -19,3 +19,4 @@ coverage:
 ignore:
   - "**/browse.R"
   - "browse.R"
+  - "zzz.R"
