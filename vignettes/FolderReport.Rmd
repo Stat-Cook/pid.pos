@@ -123,11 +123,11 @@ head(replaced_rules)
 The user may prefer to set the replacements manually by saving the `distinct_rules` to file and manually setting the `To` column.  The user may prefer a  hybrid approach, changing the `To` column to any value (e.g. '' or 'XXX') and setting the `filter` argument of `auto_replace` to `TRUE` so it only creates replacements where `From` and `To` don't match.
 
 ``` {r}
-distinct_rules |> 
+distinct_rules |>
   dplyr::mutate(
     To = ifelse(To == "Geller", "XXX", To)
   ) |>
-  auto_replace(replacer, filter=TRUE)
+  auto_replace(replacer, filter = TRUE)
 ```
 
 With the `To` column set as desired, this frame can now be used in `redact`:
