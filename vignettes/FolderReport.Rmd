@@ -21,13 +21,22 @@ A common struggle in research is how data controllers can gain some level of con
 
 To help overcome these issues, as part of the `PID.POS` package we have implemented an API for the automated production  of proper noun reports on all files found within the same directory.  The intention is that should a collection of data sets be required for transfer, they can be placed in a single location, and the reports generated. 
 
-To demonstrate how this function works - we have supplied a collection of data sets featuring free text with the package.  The free text data draws on the `janeaustenr` package - constructing three csv files:
+To demonstrate how this function works - we have supplied a collection of data sets featuring free text with the package.  The free text data draws on the `friends` package - containing the scripts for three episodes of season 8:
 
-* `Emma.csv`
-* `PridePrejudice.csv`
-* `SenseSensability.csv`
+* `The One After 'I DO'.csv`
+* `The One Where Rachel Tells.csv`
+* `The One with the Red Sweater.csv`
 
-with each file consisting of 1000 rows and four columns (a primary key, a line of text from the book, a reference category, and the string-length of the text).  The first step in processing the data is to identify where the files are in your local folder structure:
+With each file consisting of 6 columns:
+
+With each file consisting of 6 columns:
+
+* `text` - The line of the script (dialogue or action)
+* `speaker` - The character uttering the line
+* `season` - Numeric ID of which season the episode was in
+* `episode` - Numeric ID of which episode the dialogue was in
+* `scene` 
+* `utterance`
 
 ```{r setup}
 library(pid.pos)
@@ -35,17 +44,18 @@ library(pid.pos)
 data_path <- system.file("vignette_data", package = "pid.pos")
 list.files(data_path)
 ```
+
 and we check the files are the intended data:
 
 ``` {r}
-emma.csv <- system.file("vignette_data", "Emma.csv", package = "pid.pos")
-kable(read.csv(emma.csv, nrows = 5))
+rachell_tells <- system.file("vignette_data", "The One Where Rachel Tells.csv", package = "pid.pos")
+rachell <- read.csv(rachell_tells, nrows = 5)
 ```
-To generate reports we call `report_on_folder` which takes three arguments:
+
+To generate reports we call `report_on_folder` which has two key arguments:
 
 * `data_path` - the path to the data directory
-* `report_dir` - a system path to where the proper noun reports should be saved
-* `to_remove` [optional] - a vector of columns to be ignored e.g. primary keys.
+* `report_dir` - [optional] a system path to where the proper noun reports should be saved
 
 ``` {r, eval=F}
 report_on_folder(data_path, report_dir = "Proper Noun Report")
@@ -57,14 +67,72 @@ Once evaluated the `report_dir` folder  gets populated by a set of csv files, on
 browseURL("Proper Noun Report")
 ```
 
-Each of these files consists of 5 columns:
+Each of these files consists of 6 columns:
 
-* `doc_id` - a reference of where the proper noun was detected
-* `token` - the proper noun detected
-* `sentence` - the full free text field
-* `Repeats` - how many times `sentence` appeared in the data set
-* `Affected Columns` - all the columns that `sentence` occured in.
+* `ID` - a reference of where the proper noun was detected
+* `Token` - the proper noun detected
+* `Sentence` - the sentence containing proper nouns
+* `Document` - the full document `Sentence` occurs in.
+* `Repeats` - how many times `Document` appeared in the data set
+* `Affected Columns` - all the columns that `Document` occurred in.
 
 ``` {r, eval=F}
-read.csv("Proper Noun Report/Emma.csv")
+read.csv("Proper Noun Report/The One Where Rachel Tells.csv")
+```
+
+The `report_on_folder` function is a high level API for the `pid_pos` package and 
+allows for various options to control the reporting process.  These optional arguments are:
+
+* `tagger` - The proper noun tagger to use.  The default is the "english-ewt" 
+udpipe model, users can change this by either supplying a character string of an available udpipe model (see) or a custom tagger function.  See ... for details on 
+implementing a custom tagger.
+* `filter_func` - a function which takes a data frame of tagged tokens and filters it to the tokens of interest.  By default, this is set to filter for proper nouns, but users can implement their own function to filter for other types of tokens e.g. locations, or dates.  If using the udpipe taggers, the `upos` column contains the universal part of speech tags which can be used to filter for a wide range of token types.
+* `chunk_size` - the number of rows to process at a time.  This is designed to help with memory management when processing large files, but can be set to `NULL` to read in the whole file at once.
+* `to_ignore` - a vector of column names to ignore when searching for proper nouns.  This is designed to help with cases where there are known columns that contain proper nouns e.g. primary keys, or name columns.  By default, this is set to `NULL` and all columns are processed.
+* `export_function` - a function which takes the resulting data frames and exports them to the desired location.  Two export functions are included in the package 
+(`export_as_tree` to have the reports nested in the same folder structure as the raw data and `export_flat` to flatten the structure and capture the nested nature via file naming). 
+* `verbose` - 
+
+## Redacting  
+
+Aside from only tagging and reporting on where PID risks are - we may also wish to redact the raw files.  Doing this on a case-by-case basis is cumbersome if working
+with large volumes of data, and so we introduce equivalent  functionality for the replacement of proper nouns.
+
+The first step is to create a set of replacement rules modelled on the PID reports.  We will work on the assumption that replacements won't depend on the document or column the proper noun appears in (e.g. whenever the phrase "Monica Geller" appears we want it to be replaced with the same tokens).  Hence, we combine all distinct proper nouns reports:
+
+``` {r}
+distinct_rules <- get_distinct_redaction_rules("PN Report")
+```
+
+The replacements will be based on this data frame.  The most conservative approach
+to redaction is to use the `auto_replacement` and `all_random_replacement.f` functions included in the package.  The `auto_replacement` function takes a data frame with `If`, `From` and `To` and replaces the `To` column with a unique randomly generated string, for example:
+
+``` {r}
+replacer <- all_random_replacement.f()
+replaced_rules <- auto_replace(distinct_rules, replacer)
+head(replaced_rules)
+```
+
+The user may prefer to set the replacements manually by saving the `distinct_rules` to file and manually setting the `To` column.  The user may prefer a  hybrid approach, changing the `To` column to any value (e.g. '' or 'XXX') and setting the `filter` argument of `auto_replace` to `TRUE` so it only creates replacements where `From` and `To` don't match.
+
+``` {r}
+distinct_rules <- get_distinct_redaction_rules("PN Report")
+distinct_rules |> 
+  dplyr::mutate(
+    To = ifelse(To == "Geller", "XXX", To)
+  ) |>
+  auto_replace(replacer, filter=TRUE)
+```
+
+With the `To` column set as desired, this frame can now be used in `redact`:
+
+``` {r}
+redacted_rachell <- redact(rachell, replaced_rules)
+redacted_rachell
+```
+
+And these redactions rules can be applied over the intial file structure in much the way it was constructed:
+
+``` {r}
+redact_at_folder(data_path, replaced_rules)
 ```
