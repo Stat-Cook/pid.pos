@@ -94,7 +94,7 @@ redaction_function_factory <- function(rules.frm) {
   }
 
   structure(parsed_function,
-    class = "redact_function",
+    class = c("redact_function", "function"),
     NRules = nrow(rules.frm),
     NBlocks = length(rule_blocks)
   )
