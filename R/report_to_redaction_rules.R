@@ -47,7 +47,8 @@ report_to_redaction_rules <- function(report, path = NULL,
       From = .data$Token,
       To = .data$Token,
       .keep = "none"
-    )
+    ) |>
+    filter(!is.na(If))
 
   if (include_context) {
     .frm <- .frm |>
