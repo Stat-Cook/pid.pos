@@ -13,7 +13,7 @@
 #'
 #' @return A tibble (`tbl_df`) with columns depending on `tagger`s output.
 #'
-#' @export
+#' @keywords internal
 #'
 #' @examples
 #' # Sample text

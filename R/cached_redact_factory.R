@@ -40,8 +40,7 @@ cached_redact_factory <- function(redact.function) {
   #' @param redact.function A single input function to perform variable recoding.
   #'
   #' @returns A function
-  #'
-  #'
+  #' @keywords internal
   cr <- CachedRedact$new(redact.function)
 
   .f <- function(vec) {

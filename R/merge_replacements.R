@@ -3,7 +3,7 @@ vector_merge_redactions <- function(vec,
                                     preprocess = utf8::utf8_encode) {
   #' @importFrom dplyr left_join join_by
   #'
-
+  #' @keywords internals 
   # Bindings to suppress codetools warnings
   # about "no visible binding for global variable" `Old` and `If`
   Old <- If <- NA
@@ -19,12 +19,12 @@ vector_merge_redactions <- function(vec,
 merge_redactions <- function(frm,
                              cached_redactions,
                              preprocess = utf8::utf8_encode) {
-  #' Remove PID from a data frame via a merge/
+  #' Remove PID from a data frame via a merge
   #'
   #' @param frm The data frame to be redacted
   #' @param cached_redactions A data frame with `If` and `Then` columns
   #' @param preprocess A function of preprocessing steps to be applied to the text columns.
-  #'
+  #' 
   #' @export
   frm |>
     mutate(dplyr::across(

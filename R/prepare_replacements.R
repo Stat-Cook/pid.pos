@@ -1,5 +1,3 @@
-# Possibly deprecated
-
 prepare_redactions <- function(object) {
   #' Prepare a function from redaction rules.
   #'
@@ -24,7 +22,10 @@ prepare_redactions <- function(object) {
   #' f(example.data$text)
   #' }
   #'
-  #' @export
+  #' @keywords internal
+  #' @section Deprecated
+  #' 
+  lifecycle::deprecate_warn("0.1", "prepare_redactions()", "parse_redacter()")
   UseMethod("prepare_redactions")
 }
 
