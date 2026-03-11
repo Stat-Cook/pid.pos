@@ -5,6 +5,8 @@ pid.pos_env <- new.env()
   if (is.null(op[["pid_pos_context_window"]])) options(pid_pos_context_window = 25)
 
   pid.pos_env$deault_model_folder <- user_data_dir("pid.pos")
+  pid.pos_env$model_folder <- pid.pos_env$deault_model_folder
+  
   pid.pos_env$allowed_repos <- c(
     `2.5` = "jwijffels/udpipe.models.ud.2.5",
     `2.4` = "jwijffels/udpipe.models.ud.2.4",
