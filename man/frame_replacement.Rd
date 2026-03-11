@@ -18,6 +18,12 @@ A data.frame with the same structure as
 Applied the replacement rules (as defined in a `data.frame` with columns
 `If`, `From` and `To`) to all character columns in a data frame.
 }
+\section{Deprecated}{
+
+
+This function is being deprecated as the API is formalized  Please use `redact` instead.
+}
+
 \examples{
 \dontrun{
 example.data <- head(the_one_in_massapequa)
@@ -31,3 +37,4 @@ frame_replacement(example.data, redactions)
 }
 
 }
+\keyword{internal}

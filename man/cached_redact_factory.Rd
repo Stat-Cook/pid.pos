@@ -16,3 +16,4 @@ A function
 Dynamic programming wrapper to a mono-variable function - performs
 given recoding function on unique values and recycles previous states.
 }
+\keyword{internal}

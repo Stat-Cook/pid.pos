@@ -17,6 +17,10 @@ A function that can be applied to a data frame.
 Convert the `replacement_rules` (as defined with `report_to_redaction_rules`)
 to a function that can be applied to a data frame.
 }
+\section{Deprecated}{
+NA
+}
+
 \examples{
 \dontrun{
 example.data <- head(the_one_in_massapequa)
@@ -31,3 +35,4 @@ f(example.data$text)
 }
 
 }
+\keyword{internal}

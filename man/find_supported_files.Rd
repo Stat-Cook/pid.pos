@@ -10,6 +10,14 @@ find_supported_files(
   verbose = FALSE
 )
 }
+\arguments{
+\item{data_path}{The file path at which data is stored}
+
+\item{extensions}{Optional.  The set of file extensions to scanned for.}
+
+\item{verbose}{Boolean flag - if TRUE will...}
+}
 \description{
 Read all supported files in a folder into a named list of data.frames
 }
+\keyword{internal}

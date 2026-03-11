@@ -2,7 +2,7 @@
 % Please edit documentation in R/merge_replacements.R
 \name{merge_redactions}
 \alias{merge_redactions}
-\title{Remove PID from a data frame via a merge/}
+\title{Remove PID from a data frame via a merge}
 \usage{
 merge_redactions(frm, cached_redactions, preprocess = utf8::utf8_encode)
 }
@@ -14,5 +14,5 @@ merge_redactions(frm, cached_redactions, preprocess = utf8::utf8_encode)
 \item{preprocess}{A function of preprocessing steps to be applied to the text columns.}
 }
 \description{
-Remove PID from a data frame via a merge/
+Remove PID from a data frame via a merge
 }

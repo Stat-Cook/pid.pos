@@ -45,3 +45,4 @@ lines_tagger <- udpipe_factory("english-lines")
 lines_result <- tag_documents(example_text, tagger = lines_tagger)
 
 }
+\keyword{internal}
