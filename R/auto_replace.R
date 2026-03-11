@@ -152,7 +152,7 @@ random_replacement.f <- function(replacement_size = 10,
       .replace$learn(x),
       error = function(e) {
         stop(
-          random_replacement_error_message(x.str)
+          random_replacement_error_message(x.str, e)
         )
       }
     )
@@ -195,7 +195,7 @@ all_random_replacement.f <- function(replacement_size = 10,
       .replace$learn(x.seq),
       error = function(e) {
         stop(
-          random_replacement_error_message(x.str)
+          random_replacement_error_message(x.str, e)
         )
       }
     )
@@ -204,7 +204,7 @@ all_random_replacement.f <- function(replacement_size = 10,
   }
 }
 
-random_replacement_error_message <- function(x) {
+random_replacement_error_message <- function(x, e) {
   glue(
     "Error while generating replacements for input: {x}.
                   {e$message}
