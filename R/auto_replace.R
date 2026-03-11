@@ -20,7 +20,7 @@ auto_replace <- function(frm, replacement.f, filter = F) {
   #' @export
   #'
   if (filter) {
-    frm <- dplyr::filter(frm, .data$From != .data$FromTo)
+    frm <- dplyr::filter(frm, .data$From != .data$To)
   }
 
   frm |>
