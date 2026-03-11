@@ -22,7 +22,7 @@ A custom abort function
 \examples{
 #' # Example of using type_error
 f <- function() {
-  file_not_found_error("This is a type error", call = rlang::caller_env())
+  pid.pos:::file_not_found_error("This is a type error", call = rlang::caller_env())
 }
 
 # Trigger the error safely without stopping R

@@ -18,7 +18,7 @@ prepare_redactions <- function(object) {
   #' replace_by <- random_replacement.f()
   #' redactions <- auto_replace(redactions.raw, replacement.f = replace_by)
   #'
-  #' f <- prepare_redactions(redactions)
+  #' f <- pid.pos:::prepare_redactions(redactions)
   #' f(example.data$text)
   #' }
   #'

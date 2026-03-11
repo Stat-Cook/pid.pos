@@ -13,7 +13,7 @@
 #' @examples
 #' #' # Example of using type_error
 #' f <- function() {
-#'   type_error("This is a type error", call = rlang::caller_env())
+#'   pid.pos:::type_error("This is a type error", call = rlang::caller_env())
 #' }
 #'
 #' # Trigger the error safely without stopping R

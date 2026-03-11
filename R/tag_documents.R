@@ -24,15 +24,15 @@
 #'
 #' # Create a tagger for the English EWT model
 #' ewt_tagger <- udpipe_factory("english-ewt")
-#' ewt_result <- tag_documents(example_text, tagger = ewt_tagger)
+#' ewt_result <- pid.pos:::tag_documents(example_text, tagger = ewt_tagger)
 #'
 #' # Create a tagger for the English GUM model
 #' gum_tagger <- udpipe_factory("english-gum")
-#' gum_result <- tag_documents(example_text, tagger = gum_tagger)
+#' gum_result <- pid.pos:::tag_documents(example_text, tagger = gum_tagger)
 #'
 #' # Create a tagger for the English LINES model
 #' lines_tagger <- udpipe_factory("english-lines")
-#' lines_result <- tag_documents(example_text, tagger = lines_tagger)
+#' lines_result <- pid.pos:::tag_documents(example_text, tagger = lines_tagger)
 #'
 tag_documents <- function(docs,
                           doc_ids = NULL,
