@@ -5,31 +5,42 @@ reference:
 - title: "PID.POS"
   desc: >
   contents:
-  - data_frame_report
-  - data_frame_tagger
-  - report_on_folder
-  - report_to_redaction_rules
+  - pid_pos
+  - tag_data_frame
+  - udpipe_factory
+  - custom_tagger
+  - filter_to_proper_nouns
 - title: "Redaction tools"
   desc: >
   contents:
-  - prepare_redactions
-  - frame_replacement
-  - redaction_function_factory
-  - efficient_redaction
-  - efficient_redact_factory
-  - merge_redactions
-- title: "UDpipe Utilities"
-  desc: >
-  contents:
-  - browse_model_location
-  - browse_udpipe_repo
-- title: "Automatic Replacement Utilities"
+  - report_to_redaction_rules
+  - redact
+  - parse_redacter
+  - batched_redact
+- title: "Replacement Utilities"
   desc: >
   contents:
   - auto_replace
   - hashing_replacement.f
   - random_replacement.f
   - all_random_replacement.f
+- title: "Folder level API"
+  desc: >
+  contents:
+  - report_on_folder
+  - get_distinct_redaction_rules
+  - redact_at_folder
+- title: "Package Utilities"
+  desc: > 
+  contents:
+  - browse_model_location
+  - browse_udpipe_repo
+  - enable_local_models
+  - enable_package_models 
+  - register_reader
+  - set_udpipe_version
+  - reinstate_default_reader
+  - merge_redactions
 - title: "Datasets"
   desc: >
   contents:
@@ -44,3 +55,4 @@ articles:
   - udpipe-model
   - FolderReport
   - AutoReplacement
+  - CustomFunctions
