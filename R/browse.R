@@ -9,7 +9,7 @@ browse_udpipe_repo <- function(model = "english-ewt") {
   #' @importFrom utils browseURL
   #'
 
-  .date <- pid.pos_env$repo_dates[[udpipe_repo]]
+  .date <- pid.pos_env$repo_dates[[pid.pos_env$udpipe_repo]]
   .version <- pid.pos_env$udpipe_repo
   .version.number <- stringr::str_extract(.version, "\\d.\\d$")
 
