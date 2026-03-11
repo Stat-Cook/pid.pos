@@ -128,3 +128,17 @@ test_that("RandomReplacer exceptions", {
   expect_error(replacer$learn(letters[1:10]))
   expect_warning(replacer$learn(letters[1:6]))
 })
+
+test_that("custom error messages",{
+  error <- list(message = "Stop")
+  expect_match(
+    random_replacement_error_message("Test", error),
+    "Test"
+  )
+  
+  small.all.random <- all_random_replacement.f(1, 1:3)
+  expect_error(small.all.random(letters))
+  
+  small.random <- random_replacement.f(1, 1:3)
+  expect_error(small.random(letters))
+})
