@@ -14,6 +14,10 @@ get_implemented_extensions <- function() {
 find_supported_files <- function(data_path,
                                  extensions = get_implemented_extensions(),
                                  verbose = FALSE) {
+  if (!is.character(data_path) | length(data_path) != 1) {
+    stop("`data_path` should be a single string")
+  }
+  
   if (!dir.exists(data_path)) {
     stop("data_path does not exist: ", data_path)
   }
