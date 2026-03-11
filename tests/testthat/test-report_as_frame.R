@@ -17,10 +17,10 @@ test_that("report_to_replacement_rules", {
     # Check the file is not empty
     expect_true(file.size(temp_file) > 0)
 
-    .rules_from_file <- prepare_redactions(temp_file)
+    .rules_from_file <- parse_redacter(temp_file)
     expect_type(.rules_from_file, "closure")
 
-    .rules_from_file.parsed <- prepare_redactions(temp_file)
+    .rules_from_file.parsed <- parse_redacter(temp_file)
     expect_type(.rules_from_file.parsed, "closure")
   })
 })

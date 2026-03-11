@@ -8,7 +8,7 @@ test_that("frame_replacement works", {
   )
 
 
-  .redacted <- frame_replacement(last100, rules.frm)
+  .redacted <- redact(last100, rules.frm)
 
   expect_equal(
     sum(str_detect(.redacted$speaker, "Rachel Green")),
