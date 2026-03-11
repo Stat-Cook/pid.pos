@@ -1,10 +1,10 @@
 #' API for redaction across a file structure
-#' 
-#' @inheritParams find_supported_files 
-#' @inheritParams redact_supported_files 
-#' 
+#'
+#' @inheritParams find_supported_files
+#' @inheritParams redact_supported_files
+#'
 #' @export
-#' 
+#'
 redact_at_folder <- function(data_path,
                              redacter,
                              output_path = "Redacted Data",

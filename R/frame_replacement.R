@@ -19,16 +19,16 @@
 #'
 #' frame_replacement(example.data, redactions)
 #' }
-#' 
+#'
 #' @keywords internal
-#' 
+#'
 #' @section Deprecated:
-#' 
-#' This function is being deprecated as the API is formalized  Please use `redact` instead. 
-#' 
+#'
+#' This function is being deprecated as the API is formalized  Please use `redact` instead.
+#'
 frame_replacement <- function(frm, rules.frm) {
   lifecycle::deprecate_warn("0.1", "frame_replacement()", "redact()")
-  
+
   redaction.f <- redaction_function_factory(rules.frm)
   redaction.f(frm)
   # frm |>

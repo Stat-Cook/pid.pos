@@ -5,16 +5,15 @@ get_implemented_extensions <- function() {
 
 
 #' Read all supported files in a folder into a named list of data.frames
-#' 
+#'
 #' @param data_path  The file path at which data is stored
-#' @param extensions Optional.  The set of file extensions to scanned for.   
-#' @param verbose Boolean flag - if TRUE will...   
-#' 
+#' @param extensions Optional.  The set of file extensions to scanned for.
+#' @param verbose Boolean flag - if TRUE will...
+#'
 #' @keywords internal
 find_supported_files <- function(data_path,
                                  extensions = get_implemented_extensions(),
                                  verbose = FALSE) {
-
   if (!dir.exists(data_path)) {
     stop("data_path does not exist: ", data_path)
   }

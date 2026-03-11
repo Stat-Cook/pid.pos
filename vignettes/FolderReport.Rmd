@@ -117,11 +117,11 @@ The user may prefer to set the replacements manually by saving the `distinct_rul
 
 ``` {r}
 distinct_rules <- get_distinct_redaction_rules("PN Report")
-distinct_rules |> 
+distinct_rules |>
   dplyr::mutate(
     To = ifelse(To == "Geller", "XXX", To)
   ) |>
-  auto_replace(replacer, filter=TRUE)
+  auto_replace(replacer, filter = TRUE)
 ```
 
 With the `To` column set as desired, this frame can now be used in `redact`:

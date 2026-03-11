@@ -1,12 +1,12 @@
 #' Apply a redaction to a list of files.
-#' 
+#'
 #' @param file_list File path to location of data sets
 #' @param output_path File path to write redacted data to
 #' @param redacter A redaction rules data frame or redaction function
-#' @param export_function A function to define export 
-#' 
+#' @param export_function A function to define export
+#'
 #' @keywords internal
-#' 
+#'
 redact_supported_files <- function(file_list,
                                    output_path,
                                    redacter,

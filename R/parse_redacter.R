@@ -1,9 +1,9 @@
 #' Parse a data frame into a redaction function with optional caching.
 #'
-#' @param redacter A data.frame containing `From`, `To` and `If` or a file path to 
-#'  
+#' @param redacter A data.frame containing `From`, `To` and `If` or a file path to
+#'
 #' @param with_cache [Default True] A binary flag to control if memoization is required.
-#' 
+#'
 #' @export
 parse_redacter <- function(redacter, with_cache = T) {
   UseMethod("parse_redacter")

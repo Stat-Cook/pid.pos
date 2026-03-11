@@ -24,9 +24,8 @@ pid.pos:::set_model_folder(.tmp)
   model <- "english-ewt-ud-2.5-191206.udpipe"
   to <- file.path(.tmp, model)
   url <- file.path("https://raw.githubusercontent.com/jwijffels/udpipe.models.ud.2.5/master/inst/udpipe-ud-2.5-191206/", model)
-  curl::curl_download(url, to, mode="wb")
+  curl::curl_download(url, to, mode = "wb")
 }
-
 ```
 
 This package is designed to support the identification and redaction of personally identifiable data (PID) within textual datasets.
@@ -108,7 +107,7 @@ cached_redacter
 This new function has a `memoization` layer built in, so that if the same document is presented - replacements are called from memory.  This may speed up data processing if the same passage of text is presented multiple times, but comes at the cost of memory.  The `cached_redact_function` can be used in `redact` in the same way:
 
 ``` {r}
-redacted_docs <-redact(
+redacted_docs <- redact(
   the_one_in_massapequa,
   cached_redacter
 )

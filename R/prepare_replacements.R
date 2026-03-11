@@ -24,7 +24,7 @@ prepare_redactions <- function(object) {
   #'
   #' @keywords internal
   #' @section Deprecated
-  #' 
+  #'
   lifecycle::deprecate_warn("0.1", "prepare_redactions()", "parse_redacter()")
   UseMethod("prepare_redactions")
 }
