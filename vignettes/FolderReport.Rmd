@@ -80,6 +80,10 @@ Each of these files consists of 6 columns:
 read.csv("Proper Noun Report/The One Where Rachel Tells.csv")
 ```
 
+``` {r, echo=F}
+read.csv(system.file("vignette_reports", "The One Where Rachel Tells.csv", package = "pid.pos"))
+```
+
 The `report_on_folder` function is a high level API for the `pid_pos` package and 
 allows for various options to control the reporting process.  These optional arguments are:
 
@@ -100,8 +104,11 @@ with large volumes of data, and so we introduce equivalent  functionality for th
 
 The first step is to create a set of replacement rules modelled on the PID reports.  We will work on the assumption that replacements won't depend on the document or column the proper noun appears in (e.g. whenever the phrase "Monica Geller" appears we want it to be replaced with the same tokens).  Hence, we combine all distinct proper nouns reports:
 
-``` {r}
-distinct_rules <- get_distinct_redaction_rules("PN Report")
+``` {r, eval=F}
+distinct_rules <- get_distinct_redaction_rules("Proper Noun Report")
+```
+``` {r, echo=F}
+distinct_rules <- get_distinct_redaction_rules(system.file("vignette_reports", package="pid.pos"))
 ```
 
 The replacements will be based on this data frame.  The most conservative approach
@@ -116,7 +123,6 @@ head(replaced_rules)
 The user may prefer to set the replacements manually by saving the `distinct_rules` to file and manually setting the `To` column.  The user may prefer a  hybrid approach, changing the `To` column to any value (e.g. '' or 'XXX') and setting the `filter` argument of `auto_replace` to `TRUE` so it only creates replacements where `From` and `To` don't match.
 
 ``` {r}
-distinct_rules <- get_distinct_redaction_rules("PN Report")
 distinct_rules |> 
   dplyr::mutate(
     To = ifelse(To == "Geller", "XXX", To)
