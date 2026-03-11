@@ -18,6 +18,8 @@ report_on_folder(
 \arguments{
 \item{data_path}{The file path at which data is stored}
 
+\item{report_dir}{The location to write PID reports to}
+
 \item{tagger}{[optional] Either a string naming a UDPipe model (see ... for the list of models)
 or a custom tagging function (see ... for details of what is required).}
 

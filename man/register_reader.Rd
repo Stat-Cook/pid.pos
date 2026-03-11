@@ -4,7 +4,7 @@
 \alias{register_reader}
 \title{Add a reader function for a specific file extension.}
 \usage{
-register_reader(fun, ext, env = pid.pos_env)
+register_reader(fun, ext)
 }
 \arguments{
 \item{fun}{The function to read files with the specified extension.

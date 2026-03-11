@@ -11,11 +11,11 @@ get_context(
 )
 }
 \arguments{
+\item{sentence}{A character vector of sentences.}
+
+\item{token}{A character vector of tokens.}
+
 \item{context_window}{The width of window around the token to be taken.}
-
-\item{sentences}{A character vector of sentences.}
-
-\item{tokens}{A character vector of tokens.}
 }
 \description{
 NB: to set the context window size, use `set_context_window()`.

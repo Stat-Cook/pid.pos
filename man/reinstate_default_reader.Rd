@@ -4,7 +4,7 @@
 \alias{reinstate_default_reader}
 \title{Reinstate the default read functionality for csv, tsv, xls, and xlsx files.}
 \usage{
-reinstate_default_reader(env = pid.pos_env)
+reinstate_default_reader()
 }
 \description{
 Reinstate the default read functionality for csv, tsv, xls, and xlsx files.
