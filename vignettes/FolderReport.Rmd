@@ -48,7 +48,7 @@ list.files(data_path)
 and we check the files are the intended data:
 
 ``` {r}
-rachell_tells <- system.file("vignette_data", "The One Where Rachel Tells.csv", package = "pid.pos")
+rachell_tells <- system.file("vignette_data", "The_One_Where_Rachel_Tells.csv", package = "pid.pos")
 rachell <- read.csv(rachell_tells, nrows = 5)
 ```
 
@@ -77,11 +77,11 @@ Each of these files consists of 6 columns:
 * `Affected Columns` - all the columns that `Document` occurred in.
 
 ``` {r, eval=F}
-read.csv("Proper Noun Report/The One Where Rachel Tells.csv")
+read.csv("Proper Noun Report/The_One_Where_Rachel_Tells.csv")
 ```
 
 ``` {r, echo=F}
-read.csv(system.file("vignette_reports", "The One Where Rachel Tells.csv", package = "pid.pos"))
+read.csv(system.file("vignette_reports", "The_One_Where_Rachel_Tells.csv", package = "pid.pos"))
 ```
 
 The `report_on_folder` function is a high level API for the `pid_pos` package and 
