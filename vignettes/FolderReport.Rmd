@@ -108,7 +108,7 @@ The first step is to create a set of replacement rules modelled on the PID repor
 distinct_rules <- get_distinct_redaction_rules("Proper Noun Report")
 ```
 ``` {r, echo=F}
-distinct_rules <- get_distinct_redaction_rules(system.file("vignette_reports", package="pid.pos"))
+distinct_rules <- get_distinct_redaction_rules(system.file("vignette_reports", package = "pid.pos"))
 ```
 
 The replacements will be based on this data frame.  The most conservative approach
