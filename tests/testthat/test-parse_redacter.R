@@ -18,6 +18,6 @@ test_that("parse_redacter dispatches correctly", {
   cached <- parse_redacter(df)
 
   expect_type(cached, "closure")
-  expect_equal(class(cached), "cached_redact_function")
+  expect_equal(class(cached), c("cached_redact_function", "redact_function"))
   expect_equal(cached("anything"), "Bob")
 })

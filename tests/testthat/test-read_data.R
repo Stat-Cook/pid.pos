@@ -31,7 +31,7 @@ test_that("read_data() works with tsv files", {
 test_that("read_data() works with xlsx files", {
   local({
     .file <- local_tempfile(fileext = ".xlsx")
-    openxlsx::write.xlsx(sentence_frm, .file)
+    writexl::write_xlsx(sentence_frm, .file)
 
     class(.file) <- "xls_path"
 
