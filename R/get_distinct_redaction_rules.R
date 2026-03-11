@@ -25,7 +25,7 @@ get_distinct_redaction_rules.character <- function(object, include_context = FAL
 get_distinct_redaction_rules.list <- function(object, include_context = FALSE) {
   map(object, report_to_redaction_rules, include_context = include_context) |>
     bind_rows() |>
-    distinct(.keep_all = TRUE)
+    distinct(.keep_all = TRUE) 
 }
 
 get_distinct_redaction_rules.data.frame <- function(object, include_context = FALSE) {
