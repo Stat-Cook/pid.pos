@@ -1,4 +1,3 @@
-
 read_data <- function(file_path, ...) {
   ext <- tolower(tools::file_ext(file_path))
 
