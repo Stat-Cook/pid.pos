@@ -13,7 +13,7 @@ empty.report <- data.frame(
 #'
 #' @inheritParams find_supported_files
 #' @inheritParams pid_pos
-#' @param export_function A function to control exporting the reports to disk.  Current 
+#' @param export_function A function to control exporting the reports to disk.  Current
 #'  options  are `export_as_tree` and `export_flat`
 #'
 #' @return NULL
@@ -28,12 +28,15 @@ empty.report <- data.frame(
 #'   dir.create(input_dir, recursive = TRUE, showWarnings = FALSE)
 #'   dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
 #'
-#'   example_data <- data.frame(text = "Joey went to London",
-#'                              stringsAsFactors = FALSE)
+#'   example_data <- data.frame(
+#'     text = "Joey went to London",
+#'     stringsAsFactors = FALSE
+#'   )
 #'
 #'   utils::write.csv(example_data,
-#'                    file.path(input_dir, "example.csv"),
-#'                    row.names = FALSE)
+#'     file.path(input_dir, "example.csv"),
+#'     row.names = FALSE
+#'   )
 #'
 #'   paths <- report_on_folder(input_dir, report_dir = output_dir)
 #'
@@ -50,8 +53,6 @@ report_on_folder <- function(data_path,
                              to_ignore = c(),
                              export_function = NULL,
                              verbose = FALSE) {
-
-
   if (!dir.exists(data_path)) {
     stop("data_path does not exist: ", data_path)
   }
