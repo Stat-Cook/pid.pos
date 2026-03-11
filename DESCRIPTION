@@ -38,6 +38,7 @@ Imports:
     utf8,
     tidyr,
     readr,
+    lifecycle,
     rlang
 Suggests: 
     knitr,
