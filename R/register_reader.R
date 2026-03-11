@@ -16,7 +16,7 @@ register_reader <- function(fun, ext, env = pid.pos_env) {
   if (!is.function(fun)) {
     stop("The reader must be a function.", call. = FALSE)
   }
-
+  
   env$file_readers[[tolower(ext)]] <- fun
   invisible(TRUE)
 }
@@ -30,8 +30,9 @@ reinstate_default_reader <- function(env = pid.pos_env) {
   #' @examples
   #' reinstate_default_reader()
   default_readers <- list(
-    csv  = function(path, ...) read_delim(path, ",", ...),
-    tsv  = function(path, ...) read_delim(path, "\t", ...),
+    csv  = function(path, ..., show_col_types = FALSE)
+      readr::read_csv(path, ..., show_col_types = show_col_types),
+    tsv  = readr::read_tsv,
     xls  = readxl::read_excel,
     xlsx = readxl::read_excel
   )
