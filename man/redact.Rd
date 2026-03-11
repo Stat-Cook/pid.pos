@@ -10,6 +10,10 @@ redact(object, redacter, in_batches = T, ...)
 \item{object}{The object to be redacted - either a vector or data frame}
 
 \item{redacter}{A `data.frame` of redaction rules or a function created by `redaction_function_factory()`.}
+
+\item{in_batches}{Boolean flag - if True the supplied data will be processed in chunks.}
+
+\item{...}{Other arguments to control batching. See ... for details.}
 }
 \description{
 Redact PID

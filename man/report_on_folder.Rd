@@ -16,9 +16,7 @@ report_on_folder(
 )
 }
 \arguments{
-\item{data_path}{The path to the data files}
-
-\item{report_dir}{The directory to save the reports}
+\item{data_path}{The file path at which data is stored}
 
 \item{tagger}{[optional] Either a string naming a UDPipe model (see ... for the list of models)
 or a custom tagging function (see ... for details of what is required).}
@@ -31,6 +29,11 @@ has yet to be determined.}
 \item{to_ignore}{[optional] A vector of column names to be ignored by the algorithm.
 Intended to be used for variables that are giving strong false positives, such as
 IDs or ICD-10 codes.}
+
+\item{export_function}{A function to control exporting the reports to disk.  Current 
+options  are `export_as_tree` and `export_flat`}
+
+\item{verbose}{Boolean flag - if TRUE will...}
 }
 \description{
 Iterates over a folder of data files and produces a proper noun report for each.

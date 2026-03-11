@@ -1,7 +1,7 @@
 #' A custom abort function
 #'
-#' @param msg The error message to display
-#' @param inherited_class A character vector of additional classes to inherit from (optional)
+#' @param subclass a vector of inherited error class
+#' @param message The error message to display
 #' @param ... Additional arguments to pass to `abort()`
 #' @param call The call environment to use for the error (defaults to the caller's environment)
 #'
@@ -9,16 +9,6 @@
 #'
 #' @importFrom rlang abort caller_env
 #' @keywords internal
-#'
-#' @examples
-#' #' # Example of using type_error
-#' f <- function() {
-#'   pid.pos:::type_error("This is a type error", call = rlang::caller_env())
-#' }
-#'
-#' # Trigger the error safely without stopping R
-#' result <- try(f(), silent = TRUE)
-#' result
 #'
 base_error <- function(subclass,
                        message,
@@ -33,6 +23,7 @@ base_error <- function(subclass,
     !!!list(...)
   )
 }
+
 
 new_error_type <- function(name, parent = NULL) {
   function(message, ..., call = caller_env()) {

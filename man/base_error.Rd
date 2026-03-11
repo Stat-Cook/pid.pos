@@ -7,29 +7,18 @@
 base_error(subclass, message, ..., call)
 }
 \arguments{
+\item{subclass}{a vector of inherited error class}
+
+\item{message}{The error message to display}
+
 \item{...}{Additional arguments to pass to `abort()`}
 
 \item{call}{The call environment to use for the error (defaults to the caller's environment)}
-
-\item{msg}{The error message to display}
-
-\item{inherited_class}{A character vector of additional classes to inherit from (optional)}
 }
 \value{
 An error object with the specified message and classes
 }
 \description{
 A custom abort function
-}
-\examples{
-#' # Example of using type_error
-f <- function() {
-  pid.pos:::type_error("This is a type error", call = rlang::caller_env())
-}
-
-# Trigger the error safely without stopping R
-result <- try(f(), silent = TRUE)
-result
-
 }
 \keyword{internal}

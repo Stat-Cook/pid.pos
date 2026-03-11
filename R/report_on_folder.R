@@ -6,7 +6,42 @@ empty.report <- data.frame(
   "Affected Columns" = character(0)
 )
 
-
+#' Folder Report
+#'
+#' Iterates over a folder of data files and produces a proper noun report for each.
+#' The reports are saved in the specified `report directory`.
+#'
+#' @inheritParams find_supported_files
+#' @inheritParams pid_pos
+#' @param export_function A function to control exporting the reports to disk.  Current 
+#'  options  are `export_as_tree` and `export_flat`
+#'
+#' @return NULL
+#'
+#' @export
+#'
+#' @examples
+#' {
+#'   input_dir <- withr::local_tempdir()
+#'   output_dir <- withr::local_tempdir()
+#'
+#'   dir.create(input_dir, recursive = TRUE, showWarnings = FALSE)
+#'   dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
+#'
+#'   example_data <- data.frame(text = "Joey went to London",
+#'                              stringsAsFactors = FALSE)
+#'
+#'   utils::write.csv(example_data,
+#'                    file.path(input_dir, "example.csv"),
+#'                    row.names = FALSE)
+#'
+#'   paths <- report_on_folder(input_dir, report_dir = output_dir)
+#'
+#'   paths
+#' }
+#'
+#' @importFrom dplyr arrange
+#' @importFrom stringr str_replace str_replace_all
 report_on_folder <- function(data_path,
                              report_dir = "Proper Noun Reports",
                              tagger = "english-ewt",
@@ -15,41 +50,7 @@ report_on_folder <- function(data_path,
                              to_ignore = c(),
                              export_function = NULL,
                              verbose = FALSE) {
-  #' Folder Report
-  #'
-  #' Iterates over a folder of data files and produces a proper noun report for each.
-  #' The reports are saved in the specified `report directory`.
-  #'
-  #' @param data_path The path to the data files
-  #' @param report_dir The directory to save the reports
-  #' @inheritParams pid_pos
-  #'
-  #' @return NULL
-  #'
-  #' @export
-  #'
-  #' @examples
-  #' {
-  #'   input_dir <- withr::local_tempdir()
-  #'   output_dir <- withr::local_tempdir()
-  #'
-  #'   dir.create(input_dir, recursive = TRUE, showWarnings = FALSE)
-  #'   dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
-  #'
-  #'   example_data <- data.frame(text = "Joey went to London",
-  #'                              stringsAsFactors = FALSE)
-  #'
-  #'   utils::write.csv(example_data,
-  #'                    file.path(input_dir, "example.csv"),
-  #'                    row.names = FALSE)
-  #'
-  #'   paths <- report_on_folder(input_dir, report_dir = output_dir)
-  #'
-  #'   paths
-  #' }
-  #'
-  #' @importFrom dplyr arrange
-  #' @importFrom stringr str_replace str_replace_all
+
 
   if (!dir.exists(data_path)) {
     stop("data_path does not exist: ", data_path)

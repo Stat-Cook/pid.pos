@@ -4,7 +4,7 @@
 #'
 #' @param sentences A character vector of sentences.
 #' @param tokens A character vector of tokens.
-#'
+#' @param context_window The width of window around the token to be taken.
 #'
 #' @importFrom dplyr mutate
 #' @importFrom stringr str_locate str_sub
