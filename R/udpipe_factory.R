@@ -5,13 +5,14 @@
 #' a tibble with tokens, sentences, and token metadata.
 #'
 #' @param model Character. The name of the UDPipe model to use. Defaults to `english-ewt`.
-#' @param model_dir Character. Directory where UDPipe models are stored. 
-#' @param udpipe_repo Character. URL or path of the UDPipe model repository. 
-#' 
-#' @seealso [enable_local_models()], [enable_package_models()] and  
+#' @param model_dir Character. Directory where UDPipe models are stored.
+#' @param udpipe_repo Character. URL or path of the UDPipe model repository.
+#'
+#' @seealso [enable_local_models()], [enable_package_models()] and
 #'   [set_udpipe_version()] for control of the configuration environment.
-#' 
 #' @return A function that takes a character vector of documents and returns a [tibble]
+#' @return A function that takes a character vector of documents and returns a `tibble`
+#'
 #' with columns:
 #' \describe{
 #'   \item{ID}{Document identifier}
@@ -19,7 +20,7 @@
 #'   \item{Sentence}{Sentence containing the token}
 #'   \item{upos}{The universal parts of speech tag of the token. See https://universaldependencies.org/format.html}
 #' }
-#' and all columns returned by the [udpipe()][udpipe::udpipe]
+#' and all columns returned by the <[udpipe()`][udpipe::udpipe]> 
 #'   function for each token.
 #'
 #' @export
