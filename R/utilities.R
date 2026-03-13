@@ -4,28 +4,28 @@ set_model_folder <- function(path) {
   path
 }
 
-enable_local_models <- function(sub_folder = TRUE) {
-  #' Set the model folder to a local 'pid_pos_models' sub-folder.
-  #'
-  #' Intended if you want to use local udpipe models for a specific R project.
-  #'
-  #' @param sub_folder Logical. If TRUE, use a 'pid_pos_models' sub-folder
-  #'   of the current working directory. If FALSE use the current working directory.
-  #'
-  #' @return The path to the model folder.
-  #'
-  #' @export
-  #'
-  #' @examples
-  #' \dontrun{
-  #'   tmp <- withr::local_tempdir()
-  #'   withr::local_dir(tmp)
-  #'
-  #'   enable_local_models()
-  #'   enable_local_models(sub_folder=FALSE)
-  #' }
-  #'
 
+#' Set the model folder to a local 'pid_pos_models' sub-folder.
+#'
+#' Intended if you want to use local udpipe models for a specific R project.
+#'
+#' @param sub_folder Logical. If TRUE, use a 'pid_pos_models' sub-folder
+#'   of the current working directory. If FALSE use the current working directory.
+#'
+#' @return The path to the model folder.
+#'
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#'   tmp <- withr::local_tempdir()
+#'   withr::local_dir(tmp)
+#'
+#'   enable_local_models()
+#'   enable_local_models(sub_folder=FALSE)
+#' }
+#'
+enable_local_models <- function(sub_folder = TRUE) {
   local_dir <- getwd()
   if (sub_folder) {
     local_dir <- file.path(local_dir, "pid_pos_models")
@@ -41,16 +41,16 @@ enable_local_models <- function(sub_folder = TRUE) {
   invisible(local_dir)
 }
 
-enable_package_models <- function() {
-  #' Set the model folder to the package data folder.
-  #'
-  #' Intended if you want to share udpipe models between different R projects.
-  #'
-  #' @return The path to the model folder.
-  #' @export
-  #' @examples
-  #' enable_package_models()
 
+#' Set the model folder to the package data folder.
+#'
+#' Intended if you want to share udpipe models between different R projects.
+#'
+#' @return The path to the model folder.
+#' @export
+#' @examples
+#' enable_package_models()
+enable_package_models <- function() {
   cache_dir <- tools::R_user_dir("pid.pos", which = "cache")
 
   if (!dir.exists(cache_dir)) {
@@ -62,17 +62,18 @@ enable_package_models <- function() {
 }
 
 
+#' Set the udpipe model repository version.
+#'
+#' @param version Character. The udpipe model version to use. One of "2.5", "2.4", or "2.3".
+#'
+#' @return Character. The udpipe model repository.
+#'
+#' @examples
+#' set_udpipe_version("2.4")
+#' @export
+#'
 set_udpipe_version <- function(version = c("2.5", "2.4", "2.3")) {
-  #' Set the udpipe model repository version.
-  #'
-  #' @param version Character. The udpipe model version to use. One of "2.5", "2.4", or "2.3".
-  #'
-  #' @return Character. The udpipe model repository.
-  #'
-  #' @examples
-  #' set_udpipe_version("2.4")
-  #' @export
-  #'
+
   pkg_env <- getNamespace("pid.pos")
   if (!exists("pid.pos_env", envir = pkg_env)) {
     stop("pid.pos_env does not exist. Initialize it first.")
@@ -84,16 +85,14 @@ set_udpipe_version <- function(version = c("2.5", "2.4", "2.3")) {
     validation_error("No repository defined for version")
   }
 
-  # repo <- pid.pos_env$allowed_repos[[version]]
-  # if (is.null(repo)) stop("No repository defined for version ", version)
   pid.pos_env$udpipe_version <- pid.pos_env$allowed_repos[[version]]
 
   invisible(pid.pos_env$udpipe_version)
 }
 
 
+#' @importFrom utils head read.csv write.csv
 summarize_repeated_sentences <- function(frm, ...) {
-  #' @importFrom utils head read.csv write.csv
   first <- head(frm, 1)
   first$Repeats <- nrow(frm)
   first$`Affected Columns` <- paste(glue("`{unique(frm$Column)}`"), collapse = ", ")
