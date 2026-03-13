@@ -20,7 +20,7 @@
 #'   \item{Sentence}{Sentence containing the token}
 #'   \item{upos}{The universal parts of speech tag of the token. See https://universaldependencies.org/format.html}
 #' }
-#' and all columns returned by the <[udpipe()`][udpipe::udpipe]> 
+#' and all columns returned by the <[udpipe()`][udpipe::udpipe]>
 #'   function for each token.
 #'
 #' @export
