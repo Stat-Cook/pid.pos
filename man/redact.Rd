@@ -9,7 +9,7 @@ redact(object, redacter, in_batches = T, ...)
 \arguments{
 \item{object}{The object to be redacted - either a vector or data frame}
 
-\item{redacter}{A `data.frame` of redaction rules or a function created by `redaction_function_factory()`.}
+\item{redacter}{A \code{data.frame} of redaction rules or a function created by \code{redaction_function_factory()}.}
 
 \item{in_batches}{Boolean flag - if True the supplied data will be processed in chunks.}
 

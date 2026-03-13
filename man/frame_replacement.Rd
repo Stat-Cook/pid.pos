@@ -9,19 +9,19 @@ frame_replacement(frm, rules.frm)
 \arguments{
 \item{frm}{The data frame containing text}
 
-\item{rules.frm}{The `data.frame` containing `If`, `From` and `To` rules.}
+\item{rules.frm}{The \code{data.frame} containing \code{If}, \code{From} and \code{To} rules.}
 }
 \value{
 A data.frame with the same structure as
 }
 \description{
-Applied the replacement rules (as defined in a `data.frame` with columns
-`If`, `From` and `To`) to all character columns in a data frame.
+Applied the replacement rules (as defined in a \code{data.frame} with columns
+\code{If}, \code{From} and \code{To}) to all character columns in a data frame.
 }
 \section{Deprecated}{
 
 
-This function is being deprecated as the API is formalized  Please use `redact` instead.
+This function is being deprecated as the API is formalized  Please use \code{redact} instead.
 }
 
 \examples{

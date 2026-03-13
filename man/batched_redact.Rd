@@ -16,7 +16,7 @@ batched_redact(frm, redact, n = NULL, .progress = T)
 \item{.progress}{Whether to show a progress bar.}
 }
 \value{
-A data frame with the same structure as `frm` but with redacted text.
+A data frame with the same structure as \code{frm} but with redacted text.
 }
 \description{
 An experimental function for the efficient application of the redaction functions.

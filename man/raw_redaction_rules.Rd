@@ -4,8 +4,8 @@
 \name{raw_redaction_rules}
 \alias{raw_redaction_rules}
 \title{raw_redaction_rules
-An example of a redaction rules produced by the `pid_pos` function.
-It is made using the first 20 rows of `the_one_in_massapequa` data set.}
+An example of a redaction rules produced by the \code{pid_pos} function.
+It is made using the first 20 rows of \code{the_one_in_massapequa} data set.}
 \format{
 An object of class \code{pid_report} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 10 rows and 3 columns.
 }
@@ -14,9 +14,9 @@ raw_redaction_rules
 }
 \description{
 \describe{
- \item{If}{The text to be redacted (character)}
- \item{From}{The text to be replaced (character)}
- \item{To}{The text to replace it with (character)}
+\item{If}{The text to be redacted (character)}
+\item{From}{The text to be replaced (character)}
+\item{To}{The text to replace it with (character)}
 }
 }
 \keyword{datasets}

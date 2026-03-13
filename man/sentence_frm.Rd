@@ -8,10 +8,10 @@ and tests.}
 \format{
 A data frame with 5 rows and 4 columns:
 \describe{
-  \item{ID}{The row number (integer)}
-  \item{Sentence}{The free text to detect PID in.}
-  \item{Numeric}{Example numeric data (discrete) to be ignored by the algorithm}
-  \item{Random}{Example numeric data (continuous) to be ignored by the algorithm}
+\item{ID}{The row number (integer)}
+\item{Sentence}{The free text to detect PID in.}
+\item{Numeric}{Example numeric data (discrete) to be ignored by the algorithm}
+\item{Random}{Example numeric data (continuous) to be ignored by the algorithm}
 }
 }
 \usage{

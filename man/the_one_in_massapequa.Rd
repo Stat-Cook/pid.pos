@@ -7,10 +7,10 @@
 \format{
 A data frame with 3,100 rows and 6 columns:
 \describe{
-  \item{scene}{The scene number (integer)}
-  \item{utterance}{The utterance-by-scene number (integer)}
-  \item{speaker}{The speaker of the utterance (character)}
-  \item{text}{The text of the utterance (character)}
+\item{scene}{The scene number (integer)}
+\item{utterance}{The utterance-by-scene number (integer)}
+\item{speaker}{The speaker of the utterance (character)}
+\item{text}{The text of the utterance (character)}
 }
 }
 \usage{

@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_context.R
 \name{set_context_window}
 \alias{set_context_window}
-\title{Set the context window size for the `get_context` function.}
+\title{Set the context window size for the \code{get_context} function.}
 \usage{
 set_context_window(x)
 }
@@ -11,6 +11,6 @@ set_context_window(x)
 before and after the token in the context.}
 }
 \description{
-Set the context window size for the `get_context` function.
+Set the context window size for the \code{get_context} function.
 }
 \keyword{internal}

@@ -8,11 +8,11 @@ filter_to_proper_nouns(tag_frm)
 }
 \arguments{
 \item{tag_frm}{A data frame containing at least the columns
-`upos`, `ID`, `Token`, and `Sentence`.}
+\code{upos}, \code{ID}, \code{Token}, and \code{Sentence}.}
 }
 \value{
-A tibble containing only rows where `upos == "PROPN"`,
-  with columns `ID`, `Token`, and `Sentence`.
+A tibble containing only rows where \code{upos == "PROPN"},
+with columns \code{ID}, \code{Token}, and \code{Sentence}.
 }
 \description{
 Filter a tagged data frame to proper nouns

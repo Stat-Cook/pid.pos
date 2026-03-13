@@ -59,7 +59,6 @@ rule_logic <- function(df) {
 #' @param rules.frm A data.frame with columns `If`, `From` and `To`.
 #'
 #' @importFrom purrr reduce map2
-#'
 #' @examples
 #' data(the_one_in_massapequa)
 #' example.data <- head(the_one_in_massapequa)

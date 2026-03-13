@@ -7,15 +7,15 @@
 hashing_replacement.f(key, salt = "", hash = sha256)
 }
 \arguments{
-\item{key}{The hash key (passed to `hash`)}
+\item{key}{The hash key (passed to \code{hash})}
 
 \item{salt}{The hash salt}
 
-\item{hash}{The desired hash function (default is `sha256` from `openssl` package).
-NB: other functions can be used, if they take `key` as a key word argument.}
+\item{hash}{The desired hash function (default is \code{sha256} from \code{openssl} package).
+NB: other functions can be used, if they take \code{key} as a key word argument.}
 }
 \value{
-`function`
+\code{function}
 }
 \description{
 Function factory for hashing replacement.

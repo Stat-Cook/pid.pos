@@ -7,9 +7,9 @@
 parse_redacter(redacter, with_cache = T)
 }
 \arguments{
-\item{redacter}{A data.frame containing `From`, `To` and `If` or a file path to}
+\item{redacter}{A data.frame containing \code{From}, \code{To} and \code{If} or a file path to}
 
-\item{with_cache}{[Default True] A binary flag to control if memoization is required.}
+\item{with_cache}{A binary flag to control if memoization is required.}
 }
 \description{
 Parse a data frame into a redaction function with optional caching.

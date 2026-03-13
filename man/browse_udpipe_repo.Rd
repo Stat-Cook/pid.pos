@@ -7,8 +7,8 @@
 browse_udpipe_repo(model = "english-ewt")
 }
 \arguments{
-\item{model}{A string naming a UDPipe model.  See `udpipe::udpipe_download_model()` for the list of available models.}
+\item{model}{A string naming a UDPipe model.  See \code{udpipe::udpipe_download_model()} for the list of available models.}
 }
 \description{
-Intended for user download where `udpipe` fails to download automatically.
+Intended for user download where \code{udpipe} fails to download automatically.
 }

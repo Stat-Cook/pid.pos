@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_context.R
 \name{get_context}
 \alias{get_context}
-\title{NB: to set the context window size, use `set_context_window()`.}
+\title{NB: to set the context window size, use \code{set_context_window()}.}
 \usage{
 get_context(
   sentence,
@@ -18,6 +18,6 @@ get_context(
 \item{context_window}{The width of window around the token to be taken.}
 }
 \description{
-NB: to set the context window size, use `set_context_window()`.
+NB: to set the context window size, use \code{set_context_window()}.
 }
 \keyword{internal}

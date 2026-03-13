@@ -9,7 +9,7 @@ merge_redactions(frm, cached_redactions, preprocess = utf8::utf8_encode)
 \arguments{
 \item{frm}{The data frame to be redacted}
 
-\item{cached_redactions}{A data frame with `If` and `Then` columns}
+\item{cached_redactions}{A data frame with \code{If} and \code{Then} columns}
 
 \item{preprocess}{A function of preprocessing steps to be applied to the text columns.}
 }

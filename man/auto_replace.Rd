@@ -2,23 +2,23 @@
 % Please edit documentation in R/auto_replace.R
 \name{auto_replace}
 \alias{auto_replace}
-\title{Apply a replacement function to a `rules.frm`.}
+\title{Apply a replacement function to a \code{rules.frm}.}
 \usage{
 auto_replace(frm, replacement.f, filter = F)
 }
 \arguments{
-\item{frm}{A `data.frame` with columns `If`, `From`, and `To`.}
+\item{frm}{A \code{data.frame} with columns \code{If}, \code{From}, and \code{To}.}
 
-\item{replacement.f}{A function for transforming the `To` column.}
+\item{replacement.f}{A function for transforming the \code{To} column.}
 
-\item{filter}{Logical.  If `TRUE` will only apply to rows where `From` and `To` are different.}
+\item{filter}{Logical.  If \code{TRUE} will only apply to rows where \code{From} and \code{To} are different.}
 }
 \value{
-A `data.frame` like `frm` but with the `To` column transformed by `replacement.f`.
+A \code{data.frame} like \code{frm} but with the \code{To} column transformed by \code{replacement.f}.
 }
 \description{
 Several function factories have been implemented to create replacement functions
-(`hashing_replacement.f`, `random_replacement.f`, `all_random_replacement.f`)
+(\code{hashing_replacement.f}, \code{random_replacement.f}, \code{all_random_replacement.f})
 }
 \examples{
 

@@ -11,7 +11,7 @@
 #' @seealso [enable_local_models()], [enable_package_models()] and  
 #'   [set_udpipe_version()] for control of the configuration environment.
 #' 
-#' @return A function that takes a character vector of documents and returns a `tibble`
+#' @return A function that takes a character vector of documents and returns a [tibble]
 #' with columns:
 #' \describe{
 #'   \item{ID}{Document identifier}
@@ -19,7 +19,7 @@
 #'   \item{Sentence}{Sentence containing the token}
 #'   \item{upos}{The universal parts of speech tag of the token. See https://universaldependencies.org/format.html}
 #' }
-#' and all columns returned by the <[udpipe()`][udpipe::udpipe]> 
+#' and all columns returned by the [udpipe()][udpipe::udpipe]
 #'   function for each token.
 #'
 #' @export

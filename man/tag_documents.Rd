@@ -13,15 +13,15 @@ tag_documents(docs, doc_ids = NULL, tagger = NULL, chunk_size = 100)
 default IDs will be generated.}
 
 \item{tagger}{Function. A tagging function, typically created with
-`udpipe_factory()`.}
+\code{udpipe_factory()}.}
 
 \item{chunk_size}{Integer. Number of documents to process per batch. Defaults to 100.}
 }
 \value{
-A tibble (`tbl_df`) with columns depending on `tagger`s output.
+A tibble (\code{tbl_df}) with columns depending on \code{tagger}s output.
 }
 \description{
-`tag_documents()` applies a tagging function (defaulting to a `udpipe_factory()`) to a
+\code{tag_documents()} applies a tagging function (defaulting to a \code{udpipe_factory()}) to a
 vector of text documents, optionally splitting them into chunks for memory efficiency.
 The function returns a tibble containing tokens, sentences, and token-level metadata.
 }

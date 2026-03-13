@@ -14,8 +14,8 @@ tag_data_frame(
 \arguments{
 \item{frm}{A data frame to tag}
 
-\item{tagger}{Either a string naming a UDPipe model (see `udpipe_factory` for the list of models)
-or a custom tagging function (see `udpipe_factory` for details of what is required).}
+\item{tagger}{Either a string naming a UDPipe model (see \code{udpipe_factory} for the list of models)
+or a custom tagging function (see \code{udpipe_factory} for details of what is required).}
 
 \item{chunk_size}{The number of sentences to tag at a time}
 
@@ -24,8 +24,8 @@ or a custom tagging function (see `udpipe_factory` for details of what is requir
 \value{
 A list with two elements:
 \describe{
-  \item{AllTags}{A tibble of token-level annotations}
-  \item{Documents}{A tibble describing the processed documents}
+\item{AllTags}{A tibble of token-level annotations}
+\item{Documents}{A tibble describing the processed documents}
 }
 }
 \description{

@@ -7,10 +7,10 @@
 custom_tagger(pos_function)
 }
 \arguments{
-\item{pos_function}{A function for the tagging of a single sentence, with the signature `function(sentence)`}
+\item{pos_function}{A function for the tagging of a single sentence, with the signature \verb{function(sentence)}}
 }
 \value{
-A function that can be used for the tagging of a whole document, with the signature `function(docs, doc_ids=seq_along(docs))`
+A function that can be used for the tagging of a whole document, with the signature \verb{function(docs, doc_ids=seq_along(docs))}
 }
 \description{
 This function converts a function for the tagging of a single sentence

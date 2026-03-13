@@ -2,23 +2,23 @@
 % Please edit documentation in R/summary.pid_report.R
 \name{summary.pid_report}
 \alias{summary.pid_report}
-\title{Summary method for class `pid_report`.}
+\title{Summary method for class \code{pid_report}.}
 \usage{
 \method{summary}{pid_report}(object, ...)
 }
 \arguments{
-\item{object}{An object of class `pid_report`.}
+\item{object}{An object of class \code{pid_report}.}
 }
 \value{
 A data frame describing any column determined to contain PID.
 \itemize{
-  \item Column
-  \item Cases of Proper Nouns - the number of sentences with proper nouns in the column
-  \item Unique Cases of Proper Nouns - the number of unique sentences with proper nouns in the column
-  \item Most Common Proper Noun Sentence - the most commonly occurring sentence containing proper nouns.
+\item Column
+\item Cases of Proper Nouns - the number of sentences with proper nouns in the column
+\item Unique Cases of Proper Nouns - the number of unique sentences with proper nouns in the column
+\item Most Common Proper Noun Sentence - the most commonly occurring sentence containing proper nouns.
 }
 }
 \description{
-Summary method for class `pid_report`.
+Summary method for class \code{pid_report}.
 }
 \keyword{internal}

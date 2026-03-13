@@ -7,14 +7,14 @@
 prepare_redactions(object)
 }
 \arguments{
-\item{object}{The `replacement_rules` (can be a path to a csv file
-or a `data.frame`).}
+\item{object}{The \code{replacement_rules} (can be a path to a csv file
+or a \code{data.frame}).}
 }
 \value{
 A function that can be applied to a data frame.
 }
 \description{
-Convert the `replacement_rules` (as defined with `report_to_redaction_rules`)
+Convert the \code{replacement_rules} (as defined with \code{report_to_redaction_rules})
 to a function that can be applied to a data frame.
 }
 \section{Deprecated}{

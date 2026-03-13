@@ -9,7 +9,7 @@ type_error(message, ..., call = caller_env())
 \arguments{
 \item{message}{The error message to display}
 
-\item{...}{Additional arguments to pass to `abort()`}
+\item{...}{Additional arguments to pass to \code{abort()}}
 
 \item{call}{The call environment to use for the error (defaults to the caller's environment)}
 }

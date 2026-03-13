@@ -7,5 +7,5 @@
 browse_model_location()
 }
 \description{
-Intended for usage in `udpipe` fails to download automatically.
+Intended for usage in \code{udpipe} fails to download automatically.
 }

@@ -9,10 +9,10 @@ all_random_replacement.f(replacement_size = 10, replacement_space = LETTERS)
 \arguments{
 \item{replacement_size}{The size of the replacement (number of characters in each replacement).}
 
-\item{replacement_space}{The space from which to sample replacements (default is `LETTERS`).}
+\item{replacement_space}{The space from which to sample replacements (default is \code{LETTERS}).}
 }
 \value{
-`function`
+\code{function}
 }
 \description{
 It is designed to generate a replacement by a random combination of

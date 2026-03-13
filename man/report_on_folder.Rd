@@ -20,29 +20,29 @@ report_on_folder(
 
 \item{report_dir}{The location to write PID reports to}
 
-\item{tagger}{[optional] Either a string naming a UDPipe model (see  \link[udpipe]{udpipe_download_model} 
-for the list of models) or a custom tagging function (see \code{vignette("custom-functions")}
+\item{tagger}{Either a string naming a UDPipe model (see  \link[udpipe:udpipe_download_model]{udpipe::udpipe_download_model}
+for the list of models) or a custom tagging function (see \href{../articles/custom-functions.html}{Custom Functions}
 for details of what is required).}
 
-\item{filter_func}{[optional] A function to filter the tagged instances. See
+\item{filter_func}{A function to filter the tagged instances. See
 the 'Custom Filtering Functions' section of \code{vignette("custom-functions")}
 for more details.}
 
-\item{chunk_size}{[optional] The number of sentences to tag at a time.  The optimal value
+\item{chunk_size}{The number of sentences to tag at a time.  The optimal value
 has yet to be determined.}
 
-\item{to_ignore}{[optional] A vector of column names to be ignored by the algorithm.
+\item{to_ignore}{A vector of column names to be ignored by the algorithm.
 Intended to be used for variables that are giving strong false positives, such as
 IDs or ICD-10 codes.}
 
 \item{export_function}{A function to control exporting the reports to disk.  Current
-options  are `export_as_tree` and `export_flat`}
+options  are \code{export_as_tree} and \code{export_flat}}
 
 \item{verbose}{Boolean flag - if TRUE will...}
 }
 \description{
 Iterates over a folder of data files and produces a proper noun report for each.
-The reports are saved in the specified `report directory`.
+The reports are saved in the specified \verb{report directory}.
 }
 \examples{
 {

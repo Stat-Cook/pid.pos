@@ -7,10 +7,10 @@
 redaction_function_factory(rules.frm)
 }
 \arguments{
-\item{rules.frm}{A data.frame with columns `If`, `From` and `To`.}
+\item{rules.frm}{A data.frame with columns \code{If}, \code{From} and \code{To}.}
 }
 \description{
-Convert a `data.frame` of redaction rules into a function that can be applied to a character vector.
+Convert a \code{data.frame} of redaction rules into a function that can be applied to a character vector.
 }
 \examples{
 data(the_one_in_massapequa)
