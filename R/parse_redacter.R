@@ -8,7 +8,9 @@ parse_redacter <- function(redacter, with_cache = T) {
   UseMethod("parse_redacter")
 }
 
+#' @exportS3Method
 parse_redacter.default <- function(redacter, with_cache = T) {
+
   stop(
     paste("`redacter` of type", class(redacter), "is not supported.")
   )
