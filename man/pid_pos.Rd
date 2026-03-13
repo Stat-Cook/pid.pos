@@ -16,10 +16,13 @@ pid_pos(
 \arguments{
 \item{frm}{A data frame to check for proper nouns}
 
-\item{tagger}{[optional] Either a string naming a UDPipe model (see ... for the list of models)
-or a custom tagging function (see ... for details of what is required).}
+\item{tagger}{[optional] Either a string naming a UDPipe model (see  \link[udpipe]{udpipe_download_model} 
+for the list of models) or a custom tagging function (see \code{vignette("custom-functions")}
+for details of what is required).}
 
-\item{filter_func}{[optional] A function that takes a tagged data frame and returns}
+\item{filter_func}{[optional] A function to filter the tagged instances. See
+the 'Custom Filtering Functions' section of \code{vignette("custom-functions")}
+for more details.}
 
 \item{chunk_size}{[optional] The number of sentences to tag at a time.  The optimal value
 has yet to be determined.}
@@ -36,20 +39,21 @@ A `pid_report` (inheriting from tibble) containing:
 \itemize{
   \item `ID`: The location of the sentence in the data frame in the form `Col:<colname> Row:<rownumber>`.
   \item `Token`: The detected proper noun.
-  \item `Sentence`: The sentence containing the proper noun.
-  \item `Repeats`: The number of times the sentence occurs in the data frame.
-  \item `Affected Columns`: The columns in the data frame where the sentence occurs.
+  \item `Sentence`: The sentence in which the proper noun occurs.
+  \item `Document`: The source string (data frame cell) containing the sentence.
+  \item `Repeats`: The number of times the `Document` occurs in the data frame.
+  \item `Affected Columns`: The columns in the data frame where the `Document` occurs.
 }
 If no proper nouns are detected, an empty data frame is returned.
 }
 \description{
 For a given data set, the function reports each detected instance of a proper
-noun and reports the location in the data set, the sentence containing the
-proper noun, and how often the sentence occurs.
+noun and reports the location in the data set, the `Document` containing the
+proper noun, and how often the `Document` occurs.
 }
 \examples{
 data(the_one_in_massapequa)
-example.data <- head(the_one_in_massapequa, 20)
+example.data <- head(the_one_in_massapequa, 50)
 try(
   pid_pos(example.data, to_ignore = c("scene", "utterance"))
 )

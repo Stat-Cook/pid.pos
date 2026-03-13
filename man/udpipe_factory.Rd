@@ -11,11 +11,11 @@ udpipe_factory(
 )
 }
 \arguments{
-\item{model}{Character. The name of the UDPipe model to use. Defaults to `"english-ewt"`.}
+\item{model}{Character. The name of the UDPipe model to use. Defaults to `english-ewt`.}
 
-\item{model_dir}{Character. Directory where UDPipe models are stored. Defaults to `pid.pos_env$model_folder`.}
+\item{model_dir}{Character. Directory where UDPipe models are stored.}
 
-\item{udpipe_repo}{Character. URL or path of the UDPipe model repository. Defaults to `pid.pos_env$udpipe_version`.}
+\item{udpipe_repo}{Character. URL or path of the UDPipe model repository.}
 }
 \value{
 A function that takes a character vector of documents and returns a `tibble`
@@ -46,4 +46,8 @@ gum_tagger(docs)
 # Create a tagger for the English LINES model
 lines_tagger <- udpipe_factory("english-lines")
 lines_tagger(docs)
+}
+\seealso{
+`enable_local_models()`, `enable_package_models()` and  
+  `set_udpipe_version()` for control of the configuration environment.
 }

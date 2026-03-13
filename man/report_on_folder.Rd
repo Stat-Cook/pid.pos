@@ -20,10 +20,13 @@ report_on_folder(
 
 \item{report_dir}{The location to write PID reports to}
 
-\item{tagger}{[optional] Either a string naming a UDPipe model (see ... for the list of models)
-or a custom tagging function (see ... for details of what is required).}
+\item{tagger}{[optional] Either a string naming a UDPipe model (see  \link[udpipe]{udpipe_download_model} 
+for the list of models) or a custom tagging function (see \code{vignette("custom-functions")}
+for details of what is required).}
 
-\item{filter_func}{[optional] A function that takes a tagged data frame and returns}
+\item{filter_func}{[optional] A function to filter the tagged instances. See
+the 'Custom Filtering Functions' section of \code{vignette("custom-functions")}
+for more details.}
 
 \item{chunk_size}{[optional] The number of sentences to tag at a time.  The optimal value
 has yet to be determined.}
@@ -32,7 +35,7 @@ has yet to be determined.}
 Intended to be used for variables that are giving strong false positives, such as
 IDs or ICD-10 codes.}
 
-\item{export_function}{A function to control exporting the reports to disk.  Current 
+\item{export_function}{A function to control exporting the reports to disk.  Current
 options  are `export_as_tree` and `export_flat`}
 
 \item{verbose}{Boolean flag - if TRUE will...}
@@ -49,12 +52,15 @@ The reports are saved in the specified `report directory`.
   dir.create(input_dir, recursive = TRUE, showWarnings = FALSE)
   dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
 
-  example_data <- data.frame(text = "Joey went to London",
-                             stringsAsFactors = FALSE)
+  example_data <- data.frame(
+    text = "Joey went to London",
+    stringsAsFactors = FALSE
+  )
 
   utils::write.csv(example_data,
-                   file.path(input_dir, "example.csv"),
-                   row.names = FALSE)
+    file.path(input_dir, "example.csv"),
+    row.names = FALSE
+  )
 
   paths <- report_on_folder(input_dir, report_dir = output_dir)
 
