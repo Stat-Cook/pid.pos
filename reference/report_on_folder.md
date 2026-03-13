@@ -1,6 +1,6 @@
 # Folder Report
 
-Itterates over a folder of data files and produces a proper noun report
+Iterates over a folder of data files and produces a proper noun report
 for each. The reports are saved in the specified \`report directory\`.
 
 ## Usage
@@ -9,7 +9,12 @@ for each. The reports are saved in the specified \`report directory\`.
 report_on_folder(
   data_path,
   report_dir = "Proper Noun Reports",
-  to_remove = c()
+  tagger = "english-ewt",
+  filter_func = filter_to_proper_nouns,
+  chunk_size = 100,
+  to_ignore = c(),
+  export_function = NULL,
+  verbose = FALSE
 )
 ```
 
@@ -17,20 +22,72 @@ report_on_folder(
 
 - data_path:
 
-  The path to the data files
+  The file path at which data is stored
 
 - report_dir:
 
-  The directory to save the reports
+  The location to write PID reports to
 
-- to_remove:
+- tagger:
 
-  A character vector of column names to remove from the data frame
+  \[optional\] Either a string naming a UDPipe model (see
+  [udpipe_download_model](https://rdrr.io/pkg/udpipe/man/udpipe_download_model.html)
+  for the list of models) or a custom tagging function (see
+  [`vignette("custom-functions")`](https://stat-cook.github.io/pid.pos/articles/custom-functions.md)
+  for details of what is required).
+
+- filter_func:
+
+  \[optional\] A function to filter the tagged instances. See the
+  'Custom Filtering Functions' section of
+  [`vignette("custom-functions")`](https://stat-cook.github.io/pid.pos/articles/custom-functions.md)
+  for more details.
+
+- chunk_size:
+
+  \[optional\] The number of sentences to tag at a time. The optimal
+  value has yet to be determined.
+
+- to_ignore:
+
+  \[optional\] A vector of column names to be ignored by the algorithm.
+  Intended to be used for variables that are giving strong false
+  positives, such as IDs or ICD-10 codes.
+
+- export_function:
+
+  A function to control exporting the reports to disk. Current options
+  are \`export_as_tree\` and \`export_flat\`
+
+- verbose:
+
+  Boolean flag - if TRUE will...
 
 ## Examples
 
 ``` r
-if (FALSE) { # \dontrun{
-report_on_folder("path/to/data", report_dir="Proper Noun Reports")
-} # }
+{
+  input_dir <- withr::local_tempdir()
+  output_dir <- withr::local_tempdir()
+
+  dir.create(input_dir, recursive = TRUE, showWarnings = FALSE)
+  dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
+
+  example_data <- data.frame(
+    text = "Joey went to London",
+    stringsAsFactors = FALSE
+  )
+
+  utils::write.csv(example_data,
+    file.path(input_dir, "example.csv"),
+    row.names = FALSE
+  )
+
+  paths <- report_on_folder(input_dir, report_dir = output_dir)
+
+  paths
+}
+#> $example
+#> [1] "/tmp/RtmpeXtiRc/file1ee8658ee603/example.csv"
+#> 
 ```

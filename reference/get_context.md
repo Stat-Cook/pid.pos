@@ -1,19 +1,27 @@
-# Get the context of a token in a sentence.
+# NB: to set the context window size, use \`set_context_window()\`.
 
 NB: to set the context window size, use \`set_context_window()\`.
 
 ## Usage
 
 ``` r
-get_context(sentences, tokens)
+get_context(
+  sentence,
+  token,
+  context_window = getOption("pid_pos_context_window")
+)
 ```
 
 ## Arguments
 
-- sentences:
+- sentence:
 
   A character vector of sentences.
 
-- tokens:
+- token:
 
   A character vector of tokens.
+
+- context_window:
+
+  The width of window around the token to be taken.

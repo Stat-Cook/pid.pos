@@ -22,7 +22,7 @@ hashing_replacement.f(key, salt = "", hash = sha256)
 
   The desired hash function (default is \`sha256\` from \`openssl\`
   package). NB: other functions can be used, if they take \`key\` as a
-  kew word argument.
+  key word argument.
 
 ## Value
 

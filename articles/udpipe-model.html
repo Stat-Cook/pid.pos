@@ -38,10 +38,11 @@
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/PaperVignette.html">PID.POS: An R package for the detection of personally identifiable data</a></li>
+<li><a class="dropdown-item" href="../articles/paper-vignette.html">PID.POS: An R package for the detection of personally identifiable data</a></li>
     <li><a class="dropdown-item" href="../articles/udpipe-model.html">Trouble shooting the UDpipe Model</a></li>
-    <li><a class="dropdown-item" href="../articles/FolderReport.html">Reporting on every file in a folder</a></li>
-    <li><a class="dropdown-item" href="../articles/AutoReplacement.html">Automatic Replacement Tools</a></li>
+    <li><a class="dropdown-item" href="../articles/folder-report.html">Reporting on every file in a folder</a></li>
+    <li><a class="dropdown-item" href="../articles/auto-replacement.html">Automatic Replacement Tools</a></li>
+    <li><a class="dropdown-item" href="../articles/custom-functions.html">Using custom functions in `pid_pos`</a></li>
   </ul>
 </li>
       </ul>
@@ -90,7 +91,7 @@ example data (<code>the_one_in_massapequa</code>):</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://stat-cook.github.io/pid.pos/">pid.pos</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">report</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/data_frame_report.html">data_frame_report</a></span><span class="op">(</span><span class="va">the_one_in_massapequa</span><span class="op">)</span></span>
+<span><span class="va">report</span> <span class="op">&lt;-</span> <span class="fu">data_frame_report</span><span class="op">(</span><span class="va">the_one_in_massapequa</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/browse_udpipe_repo.html">browse_udpipe_repo</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/browse_model_location.html">browse_model_location</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>If the model is not downloaded, an error is thrown signposting the

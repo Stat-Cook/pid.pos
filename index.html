@@ -16,8 +16,8 @@
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="PID detection via NLP">
-<meta name="description" content="A package for the detection and contextualization of personally identifiable data (PID) in free text via natural language processing (NLP). This package is a wraper to the english-ewt-2.5 UDPipe model intended to extract proper nouns and provide a report of their usage/ context in a set of free text documents. The main point of entry to the package is via the `proper_noun_report` function (see `Troubleshooting` vignette for possible issues with the automated downloading of the pretrained UDPipe model).">
-<meta property="og:description" content="A package for the detection and contextualization of personally identifiable data (PID) in free text via natural language processing (NLP). This package is a wraper to the english-ewt-2.5 UDPipe model intended to extract proper nouns and provide a report of their usage/ context in a set of free text documents. The main point of entry to the package is via the `proper_noun_report` function (see `Troubleshooting` vignette for possible issues with the automated downloading of the pretrained UDPipe model).">
+<meta name="description" content="A package for the detection and contextualization of personally identifiable data (PID) in free text via natural language processing (NLP). This package is a wraper to the english-ewt-2.5 UDPipe model intended to extract proper nouns and provide a report of their usage/ context in a set of free text documents. The main point of entry to the package is via the `pid_pos` function (see `Troubleshooting` vignette for possible issues with the automated downloading of the pretrained UDPipe model).">
+<meta property="og:description" content="A package for the detection and contextualization of personally identifiable data (PID) in free text via natural language processing (NLP). This package is a wraper to the english-ewt-2.5 UDPipe model intended to extract proper nouns and provide a report of their usage/ context in a set of free text documents. The main point of entry to the package is via the `pid_pos` function (see `Troubleshooting` vignette for possible issues with the automated downloading of the pretrained UDPipe model).">
 <meta property="og:image" content="https://stat-cook.github.io/pid.pos/logo.png">
 </head>
 <body>
@@ -41,10 +41,11 @@
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="articles/PaperVignette.html">PID.POS: An R package for the detection of personally identifiable data</a></li>
+<li><a class="dropdown-item" href="articles/paper-vignette.html">PID.POS: An R package for the detection of personally identifiable data</a></li>
     <li><a class="dropdown-item" href="articles/udpipe-model.html">Trouble shooting the UDpipe Model</a></li>
-    <li><a class="dropdown-item" href="articles/FolderReport.html">Reporting on every file in a folder</a></li>
-    <li><a class="dropdown-item" href="articles/AutoReplacement.html">Automatic Replacement Tools</a></li>
+    <li><a class="dropdown-item" href="articles/folder-report.html">Reporting on every file in a folder</a></li>
+    <li><a class="dropdown-item" href="articles/auto-replacement.html">Automatic Replacement Tools</a></li>
+    <li><a class="dropdown-item" href="articles/custom-functions.html">Using custom functions in `pid_pos`</a></li>
   </ul>
 </li>
       </ul>
@@ -87,11 +88,19 @@
   </main><aside class="col-md-3"><div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
+<li>
+<a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
+</li>
 </ul>
 </div>
 
+<div class="community">
+<h2 data-toc-skip>Community</h2>
+<ul class="list-unstyled">
+<li><a href="CONTRIBUTING.html">Contributing guide</a></li>
+<li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
+</ul>
+</div>
 
 <div class="citation">
 <h2 data-toc-skip>Citation</h2>

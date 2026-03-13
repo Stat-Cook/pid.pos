@@ -20,10 +20,11 @@ alpha-numeric characters, and apply the same replacement if the input is repeate
       <ul class="navbar-nav me-auto"><li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/PaperVignette.html">PID.POS: An R package for the detection of personally identifiable data</a></li>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/paper-vignette.html">PID.POS: An R package for the detection of personally identifiable data</a></li>
     <li><a class="dropdown-item" href="../articles/udpipe-model.html">Trouble shooting the UDpipe Model</a></li>
-    <li><a class="dropdown-item" href="../articles/FolderReport.html">Reporting on every file in a folder</a></li>
-    <li><a class="dropdown-item" href="../articles/AutoReplacement.html">Automatic Replacement Tools</a></li>
+    <li><a class="dropdown-item" href="../articles/folder-report.html">Reporting on every file in a folder</a></li>
+    <li><a class="dropdown-item" href="../articles/auto-replacement.html">Automatic Replacement Tools</a></li>
+    <li><a class="dropdown-item" href="../articles/custom-functions.html">Using custom functions in `pid_pos`</a></li>
   </ul></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
@@ -70,36 +71,36 @@ alpha-numeric characters, and apply the same replacement if the input is repeate
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">replace_by</span> <span class="op">&lt;-</span> <span class="fu">random_replacement.f</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="auto_replace.html">auto_replace</a></span><span class="op">(</span><span class="va">raw_redaction_rules</span>, replacement.f <span class="op">=</span> <span class="va">replace_by</span><span class="op">)</span> </span></span>
+<span class="r-in"><span><span class="fu"><a href="auto_replace.html">auto_replace</a></span><span class="op">(</span><span class="va">raw_redaction_rules</span>, replacement.f <span class="op">=</span> <span class="va">replace_by</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 10 × 3</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    If                                                                From  To   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> <span style="color: #949494;">"</span>[Scene: Central Perk, everyone is there.]<span style="color: #949494;">"</span>                       Cent… MKJE…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> <span style="color: #949494;">"</span>[Scene: Central Perk, everyone is there.]<span style="color: #949494;">"</span>                       Perk  PEFR…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> <span style="color: #949494;">"</span>Oh, Ross, Mon, is it okay if I bring someone to your parent's a… Ross  UIZD…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> <span style="color: #949494;">"</span>Oh, Ross, Mon, is it okay if I bring someone to your parent's a… Mon   AHEY…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> <span style="color: #949494;">"</span>Well, his name is Parker and I met him at the drycleaners.<span style="color: #949494;">"</span>      Park… XPVJ…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> <span style="color: #949494;">"</span>Every year Ross makes the toast, and it's always really moving,… Ross  UIZD…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> <span style="color: #949494;">"</span>And you wonder why Ross is their favorite?<span style="color: #949494;">"</span>                      Ross  UIZD…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> <span style="color: #949494;">"</span>Any time Ross makes a toast everyone cries, and hugs him, and p… Ross  UIZD…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> <span style="color: #949494;">"</span>[Scene: Chandler and Monica's, they're getting ready to leave f… Chan… VZQN…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> <span style="color: #949494;">"</span>[Scene: Chandler and Monica's, they're getting ready to leave f… Moni… CKAI…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> <span style="color: #949494;">"</span>[Scene: Central Perk, everyone is there.]<span style="color: #949494;">"</span>                       Cent… PMYI…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> <span style="color: #949494;">"</span>[Scene: Central Perk, everyone is there.]<span style="color: #949494;">"</span>                       Perk  MQNM…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> <span style="color: #949494;">"</span>Oh, Ross, Mon, is it okay if I bring someone to your parent's a… Ross  GWXP…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> <span style="color: #949494;">"</span>Oh, Ross, Mon, is it okay if I bring someone to your parent's a… Mon   EMAU…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> <span style="color: #949494;">"</span>Well, his name is Parker and I met him at the drycleaners.<span style="color: #949494;">"</span>      Park… ZCSA…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> <span style="color: #949494;">"</span>Every year Ross makes the toast, and it's always really moving,… Ross  GWXP…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> <span style="color: #949494;">"</span>And you wonder why Ross is their favorite?<span style="color: #949494;">"</span>                      Ross  GWXP…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> <span style="color: #949494;">"</span>Any time Ross makes a toast everyone cries, and hugs him, and p… Ross  GWXP…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> <span style="color: #949494;">"</span>[Scene: Chandler and Monica's, they're getting ready to leave f… Chan… JYAX…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> <span style="color: #949494;">"</span>[Scene: Chandler and Monica's, they're getting ready to leave f… Moni… EPYV…</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">replace_by</span> <span class="op">&lt;-</span> <span class="fu">random_replacement.f</span><span class="op">(</span>replacement_space <span class="op">=</span> <span class="va">LETTERS</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span>, replacement_size <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="auto_replace.html">auto_replace</a></span><span class="op">(</span><span class="va">raw_redaction_rules</span>, replacement.f <span class="op">=</span> <span class="va">replace_by</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 10 × 3</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    If                                                                From  To   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> <span style="color: #949494;">"</span>[Scene: Central Perk, everyone is there.]<span style="color: #949494;">"</span>                       Cent… JADI…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> <span style="color: #949494;">"</span>[Scene: Central Perk, everyone is there.]<span style="color: #949494;">"</span>                       Perk  DJBH…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> <span style="color: #949494;">"</span>Oh, Ross, Mon, is it okay if I bring someone to your parent's a… Ross  IGGB…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> <span style="color: #949494;">"</span>Oh, Ross, Mon, is it okay if I bring someone to your parent's a… Mon   AGAE…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> <span style="color: #949494;">"</span>Well, his name is Parker and I met him at the drycleaners.<span style="color: #949494;">"</span>      Park… EGAB…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> <span style="color: #949494;">"</span>Every year Ross makes the toast, and it's always really moving,… Ross  IGGB…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> <span style="color: #949494;">"</span>And you wonder why Ross is their favorite?<span style="color: #949494;">"</span>                      Ross  IGGB…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> <span style="color: #949494;">"</span>Any time Ross makes a toast everyone cries, and hugs him, and p… Ross  IGGB…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> <span style="color: #949494;">"</span>[Scene: Chandler and Monica's, they're getting ready to leave f… Chan… DFJB…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> <span style="color: #949494;">"</span>[Scene: Chandler and Monica's, they're getting ready to leave f… Moni… GDGA…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> <span style="color: #949494;">"</span>[Scene: Central Perk, everyone is there.]<span style="color: #949494;">"</span>                       Cent… FACA…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> <span style="color: #949494;">"</span>[Scene: Central Perk, everyone is there.]<span style="color: #949494;">"</span>                       Perk  IGEB…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> <span style="color: #949494;">"</span>Oh, Ross, Mon, is it okay if I bring someone to your parent's a… Ross  EHEH…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> <span style="color: #949494;">"</span>Oh, Ross, Mon, is it okay if I bring someone to your parent's a… Mon   GJBE…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> <span style="color: #949494;">"</span>Well, his name is Parker and I met him at the drycleaners.<span style="color: #949494;">"</span>      Park… BAAI…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> <span style="color: #949494;">"</span>Every year Ross makes the toast, and it's always really moving,… Ross  EHEH…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> <span style="color: #949494;">"</span>And you wonder why Ross is their favorite?<span style="color: #949494;">"</span>                      Ross  EHEH…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> <span style="color: #949494;">"</span>Any time Ross makes a toast everyone cries, and hugs him, and p… Ross  EHEH…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> <span style="color: #949494;">"</span>[Scene: Chandler and Monica's, they're getting ready to leave f… Chan… CAAC…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> <span style="color: #949494;">"</span>[Scene: Chandler and Monica's, they're getting ready to leave f… Moni… GCGG…</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

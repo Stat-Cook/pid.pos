@@ -1,4 +1,4 @@
-# raw_redaction_rules An example of a redaction rules produced by the \`data_frame_report\` function. It is made using the first 20 rows of \`the_one_in_massapequa\` data set.
+# raw_redaction_rules An example of a redaction rules produced by the \`pid_pos\` function. It is made using the first 20 rows of \`the_one_in_massapequa\` data set.
 
 - If:
 

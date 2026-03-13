@@ -18,10 +18,11 @@
       <ul class="navbar-nav me-auto"><li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/PaperVignette.html">PID.POS: An R package for the detection of personally identifiable data</a></li>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/paper-vignette.html">PID.POS: An R package for the detection of personally identifiable data</a></li>
     <li><a class="dropdown-item" href="../articles/udpipe-model.html">Trouble shooting the UDpipe Model</a></li>
-    <li><a class="dropdown-item" href="../articles/FolderReport.html">Reporting on every file in a folder</a></li>
-    <li><a class="dropdown-item" href="../articles/AutoReplacement.html">Automatic Replacement Tools</a></li>
+    <li><a class="dropdown-item" href="../articles/folder-report.html">Reporting on every file in a folder</a></li>
+    <li><a class="dropdown-item" href="../articles/auto-replacement.html">Automatic Replacement Tools</a></li>
+    <li><a class="dropdown-item" href="../articles/custom-functions.html">Using custom functions in `pid_pos`</a></li>
   </ul></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
@@ -47,31 +48,38 @@
 
       <dl><dt>
 
-          <code><a href="data_frame_report.html">data_frame_report()</a></code>
+          <code><a href="pid_pos.html">pid_pos()</a></code>
 
         </dt>
         <dd>Proper Noun Detection</dd>
 
         <dt>
 
-          <code><a href="data_frame_tagger.html">data_frame_tagger()</a></code>
+          <code><a href="tag_data_frame.html">tag_data_frame()</a></code>
 
         </dt>
         <dd>Tags a data frame with part of speech tags</dd>
 
         <dt>
 
-          <code><a href="report_on_folder.html">report_on_folder()</a></code>
+          <code><a href="udpipe_factory.html">udpipe_factory()</a></code>
 
         </dt>
-        <dd>Folder Report</dd>
+        <dd>Create a UDPipe tagging function</dd>
 
         <dt>
 
-          <code><a href="report_to_redaction_rules.html">report_to_redaction_rules()</a></code>
+          <code><a href="custom_tagger.html">custom_tagger()</a></code>
 
         </dt>
-        <dd>Initialize redaction rules</dd>
+        <dd>Convert a POS tagging function to a tagger for the pid_pos package</dd>
+
+        <dt>
+
+          <code><a href="filter_to_proper_nouns.html">filter_to_proper_nouns()</a></code>
+
+        </dt>
+        <dd>Filter a tagged data frame to proper nouns</dd>
       </dl></div><div class="section level2">
       <h2 id="redaction-tools">Redaction tools<a class="anchor" aria-label="anchor" href="#redaction-tools"></a></h2>
 
@@ -84,70 +92,40 @@
 
       <dl><dt>
 
-          <code><a href="prepare_redactions.html">prepare_redactions()</a></code>
+          <code><a href="report_to_redaction_rules.html">report_to_redaction_rules()</a></code>
 
         </dt>
-        <dd>Prepare a function from redaction rules.</dd>
+        <dd>Initialize redaction rules</dd>
 
         <dt>
 
-          <code><a href="frame_replacement.html">frame_replacement()</a></code>
+          <code><a href="redact.html">redact()</a></code>
 
         </dt>
-        <dd>Remove PID from a data frame.</dd>
+        <dd>Redact PID</dd>
+
+        <dt>
+
+          <code><a href="parse_redacter.html">parse_redacter()</a></code>
+
+        </dt>
+        <dd>Parse a data frame into a redaction function with optional caching.</dd>
 
         <dt>
 
           <code><a href="redaction_function_factory.html">redaction_function_factory()</a></code>
 
         </dt>
-        <dd>Create a redaction function from a `data.frame` of replacement rules.</dd>
+        <dd>Replacement rules to redaction function</dd>
 
         <dt>
 
-          <code><a href="efficient_redaction.html">efficient_redaction()</a></code>
+          <code><a href="batched_redact.html">batched_redact()</a></code>
 
         </dt>
         <dd>A wrapper for efficient redaction.</dd>
-
-        <dt>
-
-          <code><a href="efficient_redact_factory.html">efficient_redact_factory()</a></code>
-
-        </dt>
-        <dd>Stateful recoding template function</dd>
-
-        <dt>
-
-          <code><a href="merge_redactions.html">merge_redactions()</a></code>
-
-        </dt>
-        <dd>Remove PID from a data frame via a merge/</dd>
       </dl></div><div class="section level2">
-      <h2 id="udpipe-utilities">UDpipe Utilities<a class="anchor" aria-label="anchor" href="#udpipe-utilities"></a></h2>
-
-
-
-      <dl></dl></div><div class="section level2">
-
-
-
-
-      <dl><dt>
-
-          <code><a href="browse_model_location.html">browse_model_location()</a></code>
-
-        </dt>
-        <dd>Browse user to folder for UDPipe models.</dd>
-
-        <dt>
-
-          <code><a href="browse_udpipe_repo.html">browse_udpipe_repo()</a></code>
-
-        </dt>
-        <dd>Open github link to the 'english-ewt-2.5' UD model.</dd>
-      </dl></div><div class="section level2">
-      <h2 id="automatic-replacement-utilities">Automatic Replacement Utilities<a class="anchor" aria-label="anchor" href="#automatic-replacement-utilities"></a></h2>
+      <h2 id="replacement-utilities">Replacement Utilities<a class="anchor" aria-label="anchor" href="#replacement-utilities"></a></h2>
 
 
 
@@ -184,6 +162,101 @@
         </dt>
         <dd>Function factory for random replacement.</dd>
       </dl></div><div class="section level2">
+      <h2 id="folder-level-api">Folder level API<a class="anchor" aria-label="anchor" href="#folder-level-api"></a></h2>
+
+
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="report_on_folder.html">report_on_folder()</a></code>
+
+        </dt>
+        <dd>Folder Report</dd>
+
+        <dt>
+
+          <code><a href="get_distinct_redaction_rules.html">get_distinct_redaction_rules()</a></code>
+
+        </dt>
+        <dd>Title</dd>
+
+        <dt>
+
+          <code><a href="redact_at_folder.html">redact_at_folder()</a></code>
+
+        </dt>
+        <dd>API for redaction across a file structure</dd>
+      </dl></div><div class="section level2">
+      <h2 id="package-utilities">Package Utilities<a class="anchor" aria-label="anchor" href="#package-utilities"></a></h2>
+
+
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="browse_model_location.html">browse_model_location()</a></code>
+
+        </dt>
+        <dd>Browse user to folder for UDPipe models.</dd>
+
+        <dt>
+
+          <code><a href="browse_udpipe_repo.html">browse_udpipe_repo()</a></code>
+
+        </dt>
+        <dd>Open github link to the 'english-ewt-2.5' UD model.</dd>
+
+        <dt>
+
+          <code><a href="enable_local_models.html">enable_local_models()</a></code>
+
+        </dt>
+        <dd>Set the model folder to a local 'pid_pos_models' sub-folder.</dd>
+
+        <dt>
+
+          <code><a href="enable_package_models.html">enable_package_models()</a></code>
+
+        </dt>
+        <dd>Set the model folder to the package data folder.</dd>
+
+        <dt>
+
+          <code><a href="register_reader.html">register_reader()</a></code>
+
+        </dt>
+        <dd>Add a reader function for a specific file extension.</dd>
+
+        <dt>
+
+          <code><a href="set_udpipe_version.html">set_udpipe_version()</a></code>
+
+        </dt>
+        <dd>Set the udpipe model repository version.</dd>
+
+        <dt>
+
+          <code><a href="reinstate_default_reader.html">reinstate_default_reader()</a></code>
+
+        </dt>
+        <dd>Reinstate the default read functionality for csv, tsv, xls, and xlsx files.</dd>
+
+        <dt>
+
+          <code><a href="merge_redactions.html">merge_redactions()</a></code>
+
+        </dt>
+        <dd>Remove PID from a data frame via a merge</dd>
+      </dl></div><div class="section level2">
       <h2 id="datasets">Datasets<a class="anchor" aria-label="anchor" href="#datasets"></a></h2>
 
 
@@ -212,7 +285,7 @@
           <code><a href="raw_redaction_rules.html">raw_redaction_rules</a></code>
 
         </dt>
-        <dd>raw_redaction_rules An example of a redaction rules produced by the `data_frame_report` function. It is made using the first 20 rows of `the_one_in_massapequa` data set.</dd>
+        <dd>raw_redaction_rules An example of a redaction rules produced by the `pid_pos` function. It is made using the first 20 rows of `the_one_in_massapequa` data set.</dd>
       </dl></div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>

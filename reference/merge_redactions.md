@@ -1,11 +1,11 @@
-# Remove PID from a data frame via a merge/
+# Remove PID from a data frame via a merge
 
-Remove PID from a data frame via a merge/
+Remove PID from a data frame via a merge
 
 ## Usage
 
 ``` r
-merge_redactions(frm, cached_redactions, preprocess = utf8_encode)
+merge_redactions(frm, cached_redactions, preprocess = utf8::utf8_encode)
 ```
 
 ## Arguments

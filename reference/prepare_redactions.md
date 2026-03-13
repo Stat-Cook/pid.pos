@@ -21,18 +21,22 @@ prepare_redactions(object)
 
 A function that can be applied to a data frame.
 
+## Deprecated
+
+NA
+
 ## Examples
 
 ``` r
 if (FALSE) { # \dontrun{
 example.data <- head(the_one_in_massapequa)
-report <- data_frame_report(example.data, to_remove="speaker")
+report <- pid_pos(example.data, to_remove="speaker")
 redactions.raw <- report_to_redaction_rules(report)
 
 replace_by <- random_replacement.f()
 redactions <- auto_replace(redactions.raw, replacement.f = replace_by)
 
-f <- prepare_redactions(redactions)
+f <- pid.pos:::prepare_redactions(redactions)
 f(example.data$text)
 } # }
 ```
