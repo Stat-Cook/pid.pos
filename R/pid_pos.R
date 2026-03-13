@@ -5,12 +5,12 @@
 #' proper noun, and how often the `Document` occurs.
 #'
 #' @param frm A data frame to check for proper nouns
-#' @param tagger [optional] Either a string naming a UDPipe model (see  \link[udpipe]{udpipe_download_model} 
+#' @param tagger [optional] Either a string naming a UDPipe model (see  \link[udpipe]{udpipe_download_model}
 #'   for the list of models) or a custom tagging function (see \code{vignette("custom-functions")}
 #'   for details of what is required).
 #' @param filter_func [optional] A function to filter the tagged instances. See
 #'   the 'Custom Filtering Functions' section of \code{vignette("custom-functions")}
-#'   for more details.   
+#'   for more details.
 #' @param chunk_size [optional] The number of sentences to tag at a time.  The optimal value
 #'   has yet to be determined.
 #' @param to_ignore [optional] A vector of column names to be ignored by the algorithm.

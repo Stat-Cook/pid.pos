@@ -18,11 +18,11 @@ set_model_folder <- function(path) {
 #'
 #' @examples
 #' \dontrun{
-#'   tmp <- withr::local_tempdir()
-#'   withr::local_dir(tmp)
+#' tmp <- withr::local_tempdir()
+#' withr::local_dir(tmp)
 #'
-#'   enable_local_models()
-#'   enable_local_models(sub_folder=FALSE)
+#' enable_local_models()
+#' enable_local_models(sub_folder = FALSE)
 #' }
 #'
 enable_local_models <- function(sub_folder = TRUE) {
@@ -73,7 +73,6 @@ enable_package_models <- function() {
 #' @export
 #'
 set_udpipe_version <- function(version = c("2.5", "2.4", "2.3")) {
-
   pkg_env <- getNamespace("pid.pos")
   if (!exists("pid.pos_env", envir = pkg_env)) {
     stop("pid.pos_env does not exist. Initialize it first.")
