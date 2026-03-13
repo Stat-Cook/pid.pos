@@ -16,7 +16,7 @@ merge_redactions(frm, cached_redactions, preprocess = utf8::utf8_encode)
 
 - cached_redactions:
 
-  A data frame with \`If\` and \`Then\` columns
+  A data frame with `If` and `Then` columns
 
 - preprocess:
 

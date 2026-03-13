@@ -20,7 +20,7 @@ base_error(subclass, message, ..., call)
 
 - ...:
 
-  Additional arguments to pass to \`abort()\`
+  Additional arguments to pass to `abort()`
 
 - call:
 

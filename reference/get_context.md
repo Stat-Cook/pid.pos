@@ -1,6 +1,7 @@
-# NB: to set the context window size, use \`set_context_window()\`.
+# NB: to set the context window size, use `set_context_window()`.
 
-NB: to set the context window size, use \`set_context_window()\`.
+NB: to set the context window size, use
+[`set_context_window()`](https://stat-cook.github.io/pid.pos/reference/set_context_window.md).
 
 ## Usage
 

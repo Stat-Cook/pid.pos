@@ -12,8 +12,8 @@ parse_redacter(redacter, with_cache = T)
 
 - redacter:
 
-  A data.frame containing \`From\`, \`To\` and \`If\` or a file path to
+  A data.frame containing `From`, `To` and `If` or a file path to
 
 - with_cache:
 
-  \[Default True\] A binary flag to control if memoization is required.
+  A binary flag to control if memoization is required.

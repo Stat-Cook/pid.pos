@@ -13,8 +13,8 @@ get_distinct_redaction_rules(object, include_context = FALSE)
 - object:
 
   The object to extract distinct redaction rules from. Can be a path to
-  a folder of \`pid\` reports, a list of \`pid\` reports, or a single
-  data frame.
+  a folder of `pid` reports, a list of `pid` reports, or a single data
+  frame.
 
 - include_context:
 

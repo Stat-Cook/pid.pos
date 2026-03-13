@@ -21,9 +21,9 @@ tag_data_frame(
 
 - tagger:
 
-  Either a string naming a UDPipe model (see \`udpipe_factory\` for the
-  list of models) or a custom tagging function (see \`udpipe_factory\`
-  for details of what is required).
+  Either a string naming a UDPipe model (see `udpipe_factory` for the
+  list of models) or a custom tagging function (see `udpipe_factory` for
+  details of what is required).
 
 - chunk_size:
 

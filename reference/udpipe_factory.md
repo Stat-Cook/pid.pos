@@ -19,7 +19,7 @@ udpipe_factory(
 - model:
 
   Character. The name of the UDPipe model to use. Defaults to
-  \`english-ewt\`.
+  `english-ewt`.
 
 - model_dir:
 
@@ -32,7 +32,8 @@ udpipe_factory(
 ## Value
 
 A function that takes a character vector of documents and returns a
-\`tibble\` with columns:
+[tibble::tibble](https://tibble.tidyverse.org/reference/tibble.html)
+with columns:
 
 - ID:
 
@@ -51,13 +52,17 @@ A function that takes a character vector of documents and returns a
   The universal parts of speech tag of the token. See
   https://universaldependencies.org/format.html
 
-and all columns returned by the \`udpipe::udpipe()\` function for each
+and all columns returned by the
+[udpipe()](https://rdrr.io/pkg/udpipe/man/udpipe.html) function for each
 token.
 
 ## See also
 
-\`enable_local_models()\`, \`enable_package_models()\` and
-\`set_udpipe_version()\` for control of the configuration environment.
+[`enable_local_models()`](https://stat-cook.github.io/pid.pos/reference/enable_local_models.md),
+[`enable_package_models()`](https://stat-cook.github.io/pid.pos/reference/enable_package_models.md)
+and
+[`set_udpipe_version()`](https://stat-cook.github.io/pid.pos/reference/set_udpipe_version.md)
+for control of the configuration environment.
 
 ## Examples
 

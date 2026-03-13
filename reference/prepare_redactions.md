@@ -1,8 +1,8 @@
 # Prepare a function from redaction rules.
 
-Convert the \`replacement_rules\` (as defined with
-\`report_to_redaction_rules\`) to a function that can be applied to a
-data frame.
+Convert the `replacement_rules` (as defined with
+`report_to_redaction_rules`) to a function that can be applied to a data
+frame.
 
 ## Usage
 
@@ -14,8 +14,8 @@ prepare_redactions(object)
 
 - object:
 
-  The \`replacement_rules\` (can be a path to a csv file or a
-  \`data.frame\`).
+  The `replacement_rules` (can be a path to a csv file or a
+  `data.frame`).
 
 ## Value
 

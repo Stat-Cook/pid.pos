@@ -12,13 +12,13 @@ filter_to_proper_nouns(tag_frm)
 
 - tag_frm:
 
-  A data frame containing at least the columns \`upos\`, \`ID\`,
-  \`Token\`, and \`Sentence\`.
+  A data frame containing at least the columns `upos`, `ID`, `Token`,
+  and `Sentence`.
 
 ## Value
 
-A tibble containing only rows where \`upos == "PROPN"\`, with columns
-\`ID\`, \`Token\`, and \`Sentence\`.
+A tibble containing only rows where `upos == "PROPN"`, with columns
+`ID`, `Token`, and `Sentence`.
 
 ## Examples
 

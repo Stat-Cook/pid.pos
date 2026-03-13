@@ -1,6 +1,6 @@
-# Summary method for class \`pid_report\`.
+# Summary method for class `pid_report`.
 
-Summary method for class \`pid_report\`.
+Summary method for class `pid_report`.
 
 ## Usage
 
@@ -13,7 +13,7 @@ summary(object, ...)
 
 - object:
 
-  An object of class \`pid_report\`.
+  An object of class `pid_report`.
 
 ## Value
 

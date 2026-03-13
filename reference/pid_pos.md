@@ -1,8 +1,8 @@
 # Proper Noun Detection
 
 For a given data set, the function reports each detected instance of a
-proper noun and reports the location in the data set, the \`Document\`
-containing the proper noun, and how often the \`Document\` occurs.
+proper noun and reports the location in the data set, the `Document`
+containing the proper noun, and how often the `Document` occurs.
 
 ## Usage
 
@@ -25,54 +25,53 @@ pid_pos(
 
 - tagger:
 
-  \[optional\] Either a string naming a UDPipe model (see
-  [udpipe_download_model](https://rdrr.io/pkg/udpipe/man/udpipe_download_model.html)
-  for the list of models) or a custom tagging function (see
-  [`vignette("custom-functions")`](https://stat-cook.github.io/pid.pos/articles/custom-functions.md)
+  Either a string naming a UDPipe model (see
+  [udpipe::udpipe_download_model](https://rdrr.io/pkg/udpipe/man/udpipe_download_model.html)
+  for the list of models) or a custom tagging function (see [Custom
+  Functions](https://stat-cook.github.io/pid.pos/articles/custom-functions.md)
   for details of what is required).
 
 - filter_func:
 
-  \[optional\] A function to filter the tagged instances. See the
-  'Custom Filtering Functions' section of
+  A function to filter the tagged instances. See the 'Custom Filtering
+  Functions' section of
   [`vignette("custom-functions")`](https://stat-cook.github.io/pid.pos/articles/custom-functions.md)
   for more details.
 
 - chunk_size:
 
-  \[optional\] The number of sentences to tag at a time. The optimal
-  value has yet to be determined.
+  The number of sentences to tag at a time. The optimal value has yet to
+  be determined.
 
 - to_ignore:
 
-  \[optional\] A vector of column names to be ignored by the algorithm.
-  Intended to be used for variables that are giving strong false
-  positives, such as IDs or ICD-10 codes.
+  A vector of column names to be ignored by the algorithm. Intended to
+  be used for variables that are giving strong false positives, such as
+  IDs or ICD-10 codes.
 
 - warn_if_missing:
 
-  \[optional\] Raise a warning if the \`to_ignore\` columns are not in
-  the data frame.
+  Raise a warning if the `to_ignore` columns are not in the data frame.
 
 ## Value
 
-A \`pid_report\` (inheriting from tibble) containing:
+A `pid_report` (inheriting from tibble) containing:
 
-- \`ID\`: The location of the sentence in the data frame in the form
-  \`Col:\<colname\> Row:\<rownumber\>\`.
+- `ID`: The location of the sentence in the data frame in the form
+  `Col:<colname> Row:<rownumber>`.
 
-- \`Token\`: The detected proper noun.
+- `Token`: The detected proper noun.
 
-- \`Sentence\`: The sentence in which the proper noun occurs.
+- `Sentence`: The sentence in which the proper noun occurs.
 
-- \`Document\`: The source string (data frame cell) containing the
+- `Document`: The source string (data frame cell) containing the
   sentence.
 
-- \`Repeats\`: The number of times the \`Document\` occurs in the data
+- `Repeats`: The number of times the `Document` occurs in the data
   frame.
 
-- \`Affected Columns\`: The columns in the data frame where the
-  \`Document\` occurs.
+- `Affected Columns`: The columns in the data frame where the `Document`
+  occurs.
 
 If no proper nouns are detected, an empty data frame is returned.
 

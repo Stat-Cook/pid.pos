@@ -29,11 +29,16 @@
 ## Replacement Utilities
 
 - [`auto_replace()`](https://stat-cook.github.io/pid.pos/reference/auto_replace.md)
-  : Apply a replacement function to a \`rules.frm\`.
+  :
+
+  Apply a replacement function to a `rules.frm`.
+
 - [`hashing_replacement.f()`](https://stat-cook.github.io/pid.pos/reference/hashing_replacement.f.md)
   : Function factory for hashing replacement.
+
 - [`random_replacement.f()`](https://stat-cook.github.io/pid.pos/reference/random_replacement.f.md)
   : Function factory for random replacement.
+
 - [`all_random_replacement.f()`](https://stat-cook.github.io/pid.pos/reference/all_random_replacement.f.md)
   : Function factory for random replacement.
 
@@ -70,10 +75,14 @@
 
 - [`the_one_in_massapequa`](https://stat-cook.github.io/pid.pos/reference/the_one_in_massapequa.md)
   : The One in Massapequa
+
 - [`sentence_frm`](https://stat-cook.github.io/pid.pos/reference/sentence_frm.md)
   : A short data frame of free text including PID. Used for basic
   examples and tests.
+
 - [`raw_redaction_rules`](https://stat-cook.github.io/pid.pos/reference/raw_redaction_rules.md)
-  : raw_redaction_rules An example of a redaction rules produced by the
-  \`pid_pos\` function. It is made using the first 20 rows of
-  \`the_one_in_massapequa\` data set.
+  :
+
+  raw_redaction_rules An example of a redaction rules produced by the
+  `pid_pos` function. It is made using the first 20 rows of
+  `the_one_in_massapequa` data set.

@@ -1,6 +1,6 @@
 # Browse user to folder for UDPipe models.
 
-Intended for usage in \`udpipe\` fails to download automatically.
+Intended for usage in `udpipe` fails to download automatically.
 
 ## Usage
 

@@ -19,11 +19,11 @@ all_random_replacement.f(replacement_size = 10, replacement_space = LETTERS)
 
 - replacement_space:
 
-  The space from which to sample replacements (default is \`LETTERS\`).
+  The space from which to sample replacements (default is `LETTERS`).
 
 ## Value
 
-\`function\`
+`function`
 
 ## Examples
 

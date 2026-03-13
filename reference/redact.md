@@ -16,8 +16,8 @@ redact(object, redacter, in_batches = T, ...)
 
 - redacter:
 
-  A \`data.frame\` of redaction rules or a function created by
-  \`redaction_function_factory()\`.
+  A `data.frame` of redaction rules or a function created by
+  [`redaction_function_factory()`](https://stat-cook.github.io/pid.pos/reference/redaction_function_factory.md).
 
 - in_batches:
 

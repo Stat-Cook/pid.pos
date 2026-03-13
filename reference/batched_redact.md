@@ -31,7 +31,7 @@ batched_redact(frm, redact, n = NULL, .progress = T)
 
 ## Value
 
-A data frame with the same structure as \`frm\` but with redacted text.
+A data frame with the same structure as `frm` but with redacted text.
 
 ## Details
 

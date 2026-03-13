@@ -1,8 +1,8 @@
-# Apply a replacement function to a \`rules.frm\`.
+# Apply a replacement function to a `rules.frm`.
 
 Several function factories have been implemented to create replacement
-functions (\`hashing_replacement.f\`, \`random_replacement.f\`,
-\`all_random_replacement.f\`)
+functions (`hashing_replacement.f`, `random_replacement.f`,
+`all_random_replacement.f`)
 
 ## Usage
 
@@ -14,21 +14,21 @@ auto_replace(frm, replacement.f, filter = F)
 
 - frm:
 
-  A \`data.frame\` with columns \`If\`, \`From\`, and \`To\`.
+  A `data.frame` with columns `If`, `From`, and `To`.
 
 - replacement.f:
 
-  A function for transforming the \`To\` column.
+  A function for transforming the `To` column.
 
 - filter:
 
-  Logical. If \`TRUE\` will only apply to rows where \`From\` and \`To\`
-  are different.
+  Logical. If `TRUE` will only apply to rows where `From` and `To` are
+  different.
 
 ## Value
 
-A \`data.frame\` like \`frm\` but with the \`To\` column transformed by
-\`replacement.f\`.
+A `data.frame` like `frm` but with the `To` column transformed by
+`replacement.f`.
 
 ## Examples
 

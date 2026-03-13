@@ -16,7 +16,7 @@ type_error(message, ..., call = caller_env())
 
 - ...:
 
-  Additional arguments to pass to \`abort()\`
+  Additional arguments to pass to `abort()`
 
 - call:
 

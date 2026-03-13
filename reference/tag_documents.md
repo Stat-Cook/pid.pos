@@ -1,9 +1,10 @@
 # Tag a set of documents
 
-\`tag_documents()\` applies a tagging function (defaulting to a
-\`udpipe_factory()\`) to a vector of text documents, optionally
-splitting them into chunks for memory efficiency. The function returns a
-tibble containing tokens, sentences, and token-level metadata.
+`tag_documents()` applies a tagging function (defaulting to a
+[`udpipe_factory()`](https://stat-cook.github.io/pid.pos/reference/udpipe_factory.md))
+to a vector of text documents, optionally splitting them into chunks for
+memory efficiency. The function returns a tibble containing tokens,
+sentences, and token-level metadata.
 
 ## Usage
 
@@ -25,7 +26,7 @@ tag_documents(docs, doc_ids = NULL, tagger = NULL, chunk_size = 100)
 - tagger:
 
   Function. A tagging function, typically created with
-  \`udpipe_factory()\`.
+  [`udpipe_factory()`](https://stat-cook.github.io/pid.pos/reference/udpipe_factory.md).
 
 - chunk_size:
 
@@ -33,7 +34,7 @@ tag_documents(docs, doc_ids = NULL, tagger = NULL, chunk_size = 100)
 
 ## Value
 
-A tibble (\`tbl_df\`) with columns depending on \`tagger\`s output.
+A tibble (`tbl_df`) with columns depending on `tagger`s output.
 
 ## Examples
 

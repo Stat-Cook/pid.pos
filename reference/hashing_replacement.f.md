@@ -12,7 +12,7 @@ hashing_replacement.f(key, salt = "", hash = sha256)
 
 - key:
 
-  The hash key (passed to \`hash\`)
+  The hash key (passed to `hash`)
 
 - salt:
 
@@ -20,13 +20,13 @@ hashing_replacement.f(key, salt = "", hash = sha256)
 
 - hash:
 
-  The desired hash function (default is \`sha256\` from \`openssl\`
-  package). NB: other functions can be used, if they take \`key\` as a
-  key word argument.
+  The desired hash function (default is `sha256` from `openssl`
+  package). NB: other functions can be used, if they take `key` as a key
+  word argument.
 
 ## Value
 
-\`function\`
+`function`
 
 ## Examples
 

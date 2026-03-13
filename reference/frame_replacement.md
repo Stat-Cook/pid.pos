@@ -1,8 +1,7 @@
 # Remove PID from a data frame.
 
-Applied the replacement rules (as defined in a \`data.frame\` with
-columns \`If\`, \`From\` and \`To\`) to all character columns in a data
-frame.
+Applied the replacement rules (as defined in a `data.frame` with columns
+`If`, `From` and `To`) to all character columns in a data frame.
 
 ## Usage
 
@@ -18,7 +17,7 @@ frame_replacement(frm, rules.frm)
 
 - rules.frm:
 
-  The \`data.frame\` containing \`If\`, \`From\` and \`To\` rules.
+  The `data.frame` containing `If`, `From` and `To` rules.
 
 ## Value
 
@@ -27,7 +26,7 @@ A data.frame with the same structure as
 ## Deprecated
 
 This function is being deprecated as the API is formalized Please use
-\`redact\` instead.
+`redact` instead.
 
 ## Examples
 

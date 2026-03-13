@@ -62,7 +62,7 @@ a tibble with tokens, sentences, and token metadata.</p>
 
 
 <dl><dt id="arg-model">model<a class="anchor" aria-label="anchor" href="#arg-model"></a></dt>
-<dd><p>Character. The name of the UDPipe model to use. Defaults to `english-ewt`.</p></dd>
+<dd><p>Character. The name of the UDPipe model to use. Defaults to <code>english-ewt</code>.</p></dd>
 
 
 <dt id="arg-model-dir">model_dir<a class="anchor" aria-label="anchor" href="#arg-model-dir"></a></dt>
@@ -75,26 +75,27 @@ a tibble with tokens, sentences, and token metadata.</p>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A function that takes a character vector of documents and returns a `tibble`
+    <p>A function that takes a character vector of documents and returns a <a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble::tibble</a>
 with columns:</p><dl><dt>ID</dt>
 <dd><p>Document identifier</p></dd>
 
-  <dt>Token</dt>
+<dt>Token</dt>
 <dd><p>Individual token text</p></dd>
 
-  <dt>Sentence</dt>
+<dt>Sentence</dt>
 <dd><p>Sentence containing the token</p></dd>
 
-  <dt>upos</dt>
+<dt>upos</dt>
 <dd><p>The universal parts of speech tag of the token. See https://universaldependencies.org/format.html</p></dd>
 
 
-</dl><p>and all columns returned by the `udpipe::udpipe()` function for each token.</p>
+</dl><p>and all columns returned by the <a href="https://rdrr.io/pkg/udpipe/man/udpipe.html" class="external-link">udpipe()</a>
+function for each token.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p>`enable_local_models()`, `enable_package_models()` and
-  `set_udpipe_version()` for control of the configuration environment.</p></div>
+    <div class="dont-index"><p><code><a href="enable_local_models.html">enable_local_models()</a></code>, <code><a href="enable_package_models.html">enable_package_models()</a></code> and
+<code><a href="set_udpipe_version.html">set_udpipe_version()</a></code> for control of the configuration environment.</p></div>
     </div>
 
     <div class="section level2">

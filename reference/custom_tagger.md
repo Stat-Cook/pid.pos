@@ -16,12 +16,12 @@ custom_tagger(pos_function)
 - pos_function:
 
   A function for the tagging of a single sentence, with the signature
-  \`function(sentence)\`
+  `function(sentence)`
 
 ## Value
 
 A function that can be used for the tagging of a whole document, with
-the signature \`function(docs, doc_ids=seq_along(docs))\`
+the signature `function(docs, doc_ids=seq_along(docs))`
 
 ## Examples
 

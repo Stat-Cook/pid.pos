@@ -1,6 +1,6 @@
 # Replacement rules to redaction function
 
-Convert a \`data.frame\` of redaction rules into a function that can be
+Convert a `data.frame` of redaction rules into a function that can be
 applied to a character vector.
 
 ## Usage
@@ -13,7 +13,7 @@ redaction_function_factory(rules.frm)
 
 - rules.frm:
 
-  A data.frame with columns \`If\`, \`From\` and \`To\`.
+  A data.frame with columns `If`, `From` and `To`.
 
 ## Examples
 

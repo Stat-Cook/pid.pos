@@ -1,7 +1,7 @@
 # Folder Report
 
 Iterates over a folder of data files and produces a proper noun report
-for each. The reports are saved in the specified \`report directory\`.
+for each. The reports are saved in the specified `report directory`.
 
 ## Usage
 
@@ -30,34 +30,34 @@ report_on_folder(
 
 - tagger:
 
-  \[optional\] Either a string naming a UDPipe model (see
-  [udpipe_download_model](https://rdrr.io/pkg/udpipe/man/udpipe_download_model.html)
-  for the list of models) or a custom tagging function (see
-  [`vignette("custom-functions")`](https://stat-cook.github.io/pid.pos/articles/custom-functions.md)
+  Either a string naming a UDPipe model (see
+  [udpipe::udpipe_download_model](https://rdrr.io/pkg/udpipe/man/udpipe_download_model.html)
+  for the list of models) or a custom tagging function (see [Custom
+  Functions](https://stat-cook.github.io/pid.pos/articles/custom-functions.md)
   for details of what is required).
 
 - filter_func:
 
-  \[optional\] A function to filter the tagged instances. See the
-  'Custom Filtering Functions' section of
+  A function to filter the tagged instances. See the 'Custom Filtering
+  Functions' section of
   [`vignette("custom-functions")`](https://stat-cook.github.io/pid.pos/articles/custom-functions.md)
   for more details.
 
 - chunk_size:
 
-  \[optional\] The number of sentences to tag at a time. The optimal
-  value has yet to be determined.
+  The number of sentences to tag at a time. The optimal value has yet to
+  be determined.
 
 - to_ignore:
 
-  \[optional\] A vector of column names to be ignored by the algorithm.
-  Intended to be used for variables that are giving strong false
-  positives, such as IDs or ICD-10 codes.
+  A vector of column names to be ignored by the algorithm. Intended to
+  be used for variables that are giving strong false positives, such as
+  IDs or ICD-10 codes.
 
 - export_function:
 
   A function to control exporting the reports to disk. Current options
-  are \`export_as_tree\` and \`export_flat\`
+  are `export_as_tree` and `export_flat`
 
 - verbose:
 
@@ -88,6 +88,6 @@ report_on_folder(
   paths
 }
 #> $example
-#> [1] "/tmp/RtmpeXtiRc/file1ee8658ee603/example.csv"
+#> [1] "/tmp/RtmppegJbj/file1c367e50ad3f/example.csv"
 #> 
 ```
