@@ -16,6 +16,7 @@ reference:
   - report_to_redaction_rules
   - redact
   - parse_redacter
+  - redaction_function_factory
   - batched_redact
 - title: "Replacement Utilities"
   desc: >
@@ -51,8 +52,8 @@ articles:
 - title: Articles
   navbar: ~
   contents:
-  - PaperVignette
+  - paper-vignette
   - udpipe-model
-  - FolderReport
-  - AutoReplacement
-  - CustomFunctions
+  - folder-report
+  - auto-replacement
+  - custom-functions
